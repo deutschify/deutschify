@@ -6,7 +6,7 @@ const Footer = () => {
     // footer
     return (
         // footer
-        <div className="w-full flex text-center lg:text-center bg-palette-80 text-palette-50">
+        <div className="w-full flex text-center bg-palette-80 text-palette-50">
             <div className="w-3/12">
                 <img
                     src="./images/deutschifyLogo.png"
