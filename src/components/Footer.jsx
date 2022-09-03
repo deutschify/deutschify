@@ -17,7 +17,7 @@ const Footer = () => {
                     <div classname="">
                         <BsFacebook />
                     </div>
-                    <div classname="m-2">
+                    <div classname="">
                         <BsInstagram />
                     </div>
                 </div>
