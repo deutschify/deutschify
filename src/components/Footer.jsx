@@ -14,10 +14,10 @@ const Footer = () => {
                     alt=""
                 />
                 <div className="flex m-3 space-x-2">
-                    <div classname="">
+                    <div className="">
                         <BsFacebook />
                     </div>
-                    <div classname="">
+                    <div className="">
                         <BsInstagram />
                     </div>
                 </div>
