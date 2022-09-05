@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-export const content = ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"];
-export const theme = {
+module.exports = {
+    content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+theme: {
     extend: {
         colors: {
             palette: {
@@ -16,5 +17,6 @@ export const theme = {
             },
         },
     },
-};
-export const plugins = [];
+},
+plugins: [],
+}
