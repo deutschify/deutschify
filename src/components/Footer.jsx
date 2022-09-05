@@ -33,7 +33,7 @@ const Footer = () => {
             <div className="w-6/12">
                 <button className="text-palette-50 m-2 p-2">ABOUT US</button>
                 <button className="text-palette-50 m-2 p-2">CONTACT US</button>
-                <button className="text-palette-50 m-2 p-2">IMPRESSUM</button>
+                <button className="text-palette-50 m-2 p-2">RATE US</button>
                 <div className="w-12/12 m-2 flex  justify-center gap-1">
                     deutschify <AiOutlineCopyrightCircle /> 2022
                 </div>
