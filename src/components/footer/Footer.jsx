@@ -1,8 +1,11 @@
-import React from "react";
 
 import { BsFacebook } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
-import { AiOutlineCopyrightCircle } from "react-icons/ai"
+import { AiOutlineCopyrightCircle } from "react-icons/ai";
+import { Route, Routes, NavLink } from "react-router-dom";
+import AboutUs from "./AboutUs";
+import ContactUs from "./ContactUs";
+import RateUs from "./RateUs";
 
 const Footer = () => {
     // footer
@@ -24,11 +27,36 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-6/12">
-                <button className="text-palette-50 m-2 p-2">ABOUT US</button>
-                <button className="text-palette-50 m-2 p-2">CONTACT US</button>
-                <button className="text-palette-50 m-2 p-2">IMPRESSUM</button>
-                <div className="w-12/12 m-2 flex  justify-center gap-1">deutschify <AiOutlineCopyrightCircle /> 2022</div>
+            <div className="w-6/12 p-2">
+                <NavLink
+                    className="text-palette-50 m-2 p-2"
+                    to="/about-us"
+                    element={<AboutUs />}
+                >
+                    {" "}
+                    About Us{" "}
+                </NavLink>
+                <NavLink
+                    className="text-palette-50 m-2 p-2"
+                    to="/contact-us"
+                    element={<ContactUs />}
+                >
+                    {" "}
+                    Contact Us{" "}
+                </NavLink>
+                <NavLink
+                    className="text-palette-50 m-2 p-2"
+                    to="/rate-us"
+                    element={<RateUs />}
+                >
+                    {" "}
+                    Rate Us{" "}
+                </NavLink>
+
+                <div className="w-12/12 m-2 flex  justify-center gap-1">
+                    deutschify <AiOutlineCopyrightCircle /> 2022
+                </div>
+
             </div>
             {/* Copyright */}
         </div>
