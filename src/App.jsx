@@ -14,20 +14,10 @@ import LanguageLevels from "./components/LanguageLevels";
 import Einbuergerungstest from "./components/Einbuergerungstest";
 import Forum from "./components/Forum";
 import PageRegister from "./Pages/PageRegister";
-import Login from "./components/Login";
+import Login from "./Pages/PageLogin";
 import PageNotFound from "./components/PageNotFound";
 function App() {
-    const baseUrl = import.meta.env.VITE_BACKEND_URL;
-    const [currentUser, setCurrentUser] = useState({});
-
-    useEffect(() => {
-        (async () => {
-            const data = (await axios.get(`${baseUrl}/current-user`)).data;
-            const _currentUser = data.currentUser;
-            setCurrentUser(_currentUser);
-        })();
-    }, []);
-
+    
     return (
         <div className="bg-palette-50">
             <Header />
