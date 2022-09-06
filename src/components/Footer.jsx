@@ -7,13 +7,13 @@ const Footer = () => {
     return (
         // footer
         <div className="w-full flex text-center bg-palette-80 text-palette-50">
-            <div className="w-3/12">
+            <div className="w-3/12 text-center">
                 <img
-                    src="./images/deutschifyLogo.png"
-                    className="w-12 m-2"
+                    src="./images/deutschify-side.png"
+                    className="w-36 m-2"
                     alt=""
                 />
-                <div className="flex m-3 space-x-2">
+                <div className="w-36 flex justify-center m-3 space-x-2 text-xl">
                     <div className="">
                         <BsFacebook />
                     </div>

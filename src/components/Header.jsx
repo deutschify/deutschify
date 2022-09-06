@@ -3,10 +3,10 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
     return (
-        <div className="w-full bg-palette-80 text-palette-50 mt-4 flex">
+        <div className="w-full bg-palette-80 text-palette-50 flex">
             <img
-                src="./images/deutschifyLogo.png"
-                className="w-40 p-2"
+                src="./images/deutschify.png"
+                className="w-40 p-2 stroke-palette-50"
                 alt=""
             />
             <div className="flex items-center ">
@@ -19,9 +19,9 @@ const Header = () => {
                     <BsSearch className="flex text-xl" />
                 </div>
             </div>
-            <nav className="flex items-center m-5">
+            <nav className="flex items-center m-5 text-center">
                 <NavLink to="#" className="m-4">
-                    zu den Aufgaben
+                    Integrationsaufgaben
                 </NavLink>
                 <NavLink to="#" className="m-4">
                     Wörterbuch
@@ -38,6 +38,7 @@ const Header = () => {
             <div className="flex items-center m-10">
                 <div className="bg-palette-10 p-4 text-xl py-2 rounded-full">Login</div>
             </div>
+            
         </div>
     );
 };
