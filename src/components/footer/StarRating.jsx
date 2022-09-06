@@ -18,6 +18,7 @@ const StarRating = () => {
                             value={ratingValue}
                             onClick={() => setRating(ratingValue)}
                         />
+
                         <FaStar
                             size={30}
                             color={
@@ -25,13 +26,16 @@ const StarRating = () => {
                                     ? "#5C7A75"
                                     : "#99C1B9"
                             }
-                            className="cursor-pointer"
+                            className="cursor-pointer flex flex-col"
                             onMouseEnter={() => setHover(ratingValue)}
                             onMouseLeave={() => setHover(ratingValue)}
                         />
                     </label>
                 );
             })}
+            {rating > null && (
+                <div className="flex flex-col"> the rating is: {rating}/5</div>
+            )}
         </div>
     );
 };

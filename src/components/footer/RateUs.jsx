@@ -12,7 +12,7 @@ const RateUs = () => {
                             Vorname
                         </label>
                         <input
-                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-first-name"
                             type="text"
                             placeholder="Jane"
@@ -35,6 +35,7 @@ const RateUs = () => {
                 </div>
 
                 <StarRating />
+
                 <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full px-3">
                         <label
