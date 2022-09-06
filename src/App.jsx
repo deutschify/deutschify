@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import AboutUs from "./components/footer/AboutUs";
 import ContactUs from "./components/footer/ContactUs";
 import RateUs from "./components/footer/RateUs";
@@ -29,7 +29,7 @@ function App() {
     }, []);
 
     return (
-        <div className="App">
+        <div className="bg-palette-50">
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />
