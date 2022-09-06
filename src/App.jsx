@@ -29,7 +29,7 @@ function App() {
     }, []);
 
     return (
-        <div className="App">
+        <div className="bg-palette-50">
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />
