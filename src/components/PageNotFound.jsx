@@ -1,3 +1,6 @@
+
+import React from "react";
+
 const PageNotFound = () => {
     return <h1>Error 404</h1>;
 };
