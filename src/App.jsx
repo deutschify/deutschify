@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import AboutUs from "./components/footer/AboutUs";
 import ContactUs from "./components/footer/ContactUs";
 import RateUs from "./components/footer/RateUs";
@@ -16,8 +17,19 @@ import PageRegister from "./Pages/PageRegister";
 import Login from "./components/Login";
 import PageNotFound from "./components/PageNotFound";
 function App() {
+    const baseUrl = import.meta.env.VITE_BACKEND_URL;
+    const [currentUser, setCurrentUser] = useState({});
+
+    useEffect(() => {
+        (async () => {
+            const data = (await axios.get(`${baseUrl}/current-user`)).data;
+            const _currentUser = data.currentUser;
+            setCurrentUser(_currentUser);
+        })();
+    }, []);
+
     return (
-        <div className="App">
+        <div className="bg-palette-50">
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />

@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="w-full flex text-center bg-palette-80 text-palette-50">
             <div className="w-3/12">
                 <img
-                    src="./images/deutschifyLogo.png"
+                    src="./images/deutschify-side.png"
                     className="w-12 m-2"
                     alt=""
                 />
