@@ -2,6 +2,7 @@ import React from "react";
 import { useForm, SubmitHandler} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import {IUserRegistrationForm} from '../interfaces'
 
 const schema = yup.object().shape({
     vorName: yup
@@ -17,23 +18,15 @@ const schema = yup.object().shape({
     repeatPassword: yup.string().oneOf([yup.ref("password"), null]),
 });
 
-interface IUserForm {
-    vorName: string;
-    nachName: string;
-    email: string;
-    password: string;
-    repeatPassword: string;
-    sprache: string;
-    nationalität: string;
-}
+
 
 const PageRegister = () => {
-    const {register, formState: {errors}, handleSubmit} = useForm<IUserForm>({
+    const {register, formState: {errors}, handleSubmit} = useForm<IUserRegistrationForm>({
         mode: "onBlur",
         resolver: yupResolver(schema),
     });
 
-    const onSubmit: SubmitHandler<IUserForm> = (data: IUserForm) => {
+    const onSubmit: SubmitHandler<IUserRegistrationForm> = (data: IUserRegistrationForm) => {
         console.log(data);
         console.log(errors);
     };

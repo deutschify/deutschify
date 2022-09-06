@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
 import AboutUs from "./components/footer/AboutUs";
@@ -15,9 +14,12 @@ import Einbuergerungstest from "./components/Einbuergerungstest";
 import Forum from "./components/Forum";
 import PageRegister from "./Pages/PageRegister";
 import Login from "./Pages/PageLogin";
-import PageNotFound from "./components/PageNotFound";
+import PageNotFound from "./Pages/PageNotFound";
+
+export const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
 function App() {
-    
+
     return (
         <div className="bg-palette-50">
             <Header />
