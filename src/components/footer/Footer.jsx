@@ -1,3 +1,4 @@
+
 import { BsFacebook } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
@@ -55,6 +56,7 @@ const Footer = () => {
                 <div className="w-12/12 m-2 flex  justify-center gap-1">
                     deutschify <AiOutlineCopyrightCircle /> 2022
                 </div>
+
             </div>
             {/* Copyright */}
         </div>
