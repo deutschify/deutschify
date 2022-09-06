@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <div className="w-full bg-palette-80 text-palette-50 flex">
             <img
-                src="./images/deutschify.png"
+                src="./images/deutschify-bigletter.png"
                 className="w-40 p-2 stroke-palette-50"
                 alt=""
             />
