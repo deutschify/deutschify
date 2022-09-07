@@ -8,7 +8,7 @@ import Forum from "../Forum";
 
 const NavBar = () => {
     return (
-        <div className="w-full flex items-center">
+        <div className="hidden md:[w-full flex items-center]">
             <Nav className="w-full h-24">
                 <div className="flex">
                     <div className="p-10 w-80">
