@@ -15,7 +15,8 @@ const Footer = () => {
             <div className="w-3/12">
                 <img
                     src="./images/deutschify-side.png"
-                    className="w-12 m-2"
+                    className="w-20
+                     m-2"
                     alt=""
                 />
                 <div className="flex m-3 space-x-2">
