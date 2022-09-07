@@ -11,7 +11,7 @@ const Footer = () => {
     // footer
     return (
         // footer
-        <div className="w-full flex text-center bg-palette-80 text-palette-50">
+        <div className="w-full flex text-center bg-palette-80 text-palette-50 fixed bottom-0">
             <div className="w-3/12">
                 <img
                     src="./images/deutschify-side.png"
