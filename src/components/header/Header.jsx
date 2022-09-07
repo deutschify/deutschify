@@ -8,6 +8,7 @@ const Header = () => {
             <img
                 src="./images/deutschify.png"
                 className="w-36 p-2 stroke-palette-50"
+
                 alt=""
             />
             <SearchBar />
