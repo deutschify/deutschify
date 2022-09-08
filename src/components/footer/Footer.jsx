@@ -15,11 +15,11 @@ const Footer = () => {
             <div className="w-3/12">
                 <img
                     src="./images/deutschify-side.png"
-                    className="w-20
+                    className="w-40
                      m-2"
                     alt=""
                 />
-                <div className="flex m-3 space-x-2">
+                <div className="flex justify-center m-3 space-x-4 md:justify-start md:text-2xl md:ml-10">
                     <div className="">
                         <BsFacebook />
                     </div>
@@ -28,7 +28,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-6/12 p-2">
+            <div className="w-11/12 p-2 md:w-6/12 md:text-2xl">
                 <NavLink
                     className="text-palette-50 m-2 p-2"
                     to="/about-us"
