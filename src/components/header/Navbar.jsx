@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Nav } from "rsuite";
 import A1 from "../A1";
 import A2 from "../A2";
@@ -5,75 +6,182 @@ import B1 from "../B1";
 import Einbuergerungstest from "../Einbuergerungstest";
 import Dictionary from "../Dictionary";
 import Forum from "../Forum";
+import { BiMenu } from "react-icons/bi";
+import { BiX } from "react-icons/bi";
 
 const NavBar = () => {
+    const [showNav, setShowNav] = useState(false);
     return (
-        <div className="w-full flex items-center">
-            <Nav className="w-full h-24">
-                <div className="flex">
-                    <div className="p-10 w-80">
-                        <Nav.Menu
-                            className="text-2xl"
-                            trigger={["click", "hover"]}
-                            title="Übungen"
-                        >
-                            <div className="flex bg-palette-70 text-palette-80">
+        // Hamburger-Button
+        <div className="">
+            <div className="relative text-5xl flex overflow-hidden items-center justify-center rounded-full w-20 h-20 m-5 bg-palette-10 ring-0 ring-palette-70 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md md:hidden">
+                {showNav ? (
+                    <BiX onClick={() => setShowNav(!showNav)} className="" />
+                ) : (
+                    <BiMenu onClick={() => setShowNav(!showNav)} className="" />
+                )}
+                {/* Navbar-field in mobile Version */}
+                <div
+                    className={
+                        (showNav ? "left-20" : "left-full") +
+                        " bg-palette-20/75  fixed left-20 right-0 top-24 bottom-10 z-40 text-palette-50 text-center text-2xl p-10 rounded-bl-3xl rounded-tl-3xl transition-all"
+                    }
+                >
+                    <Nav className="m-2 mt-20">
+                        <div className="">
+                            <div className="">
                                 <Nav.Menu
-                                    className="relative"
-                                    title="Sprachniveau"
+                                    className=""
+                                    trigger={["click", "hover"]}
+                                    title="Übungen"
                                 >
-                                    {/* <div className="absolute w-40 left-60 bottom"> */}
-                                    <div className="absolute w-40 left-20 text-center">
-                                        <Nav.Item
-                                            className="bg-palette-60/75 text-palette-80"
-                                            to="/A1"
-                                            element={<A1 />}
+                                    <div className="flex bg-palette-70 text-palette-80 w-60">
+                                        <Nav.Menu
+                                            className="relative"
+                                            title="Sprachniveau"
                                         >
-                                            A1
-                                        </Nav.Item>
-                                        <Nav.Item
-                                            className="bg-palette-60/75 text-palette-80"
-                                            to="/A2"
-                                            element={<A2 />}
-                                        >
-                                            A2
-                                        </Nav.Item>
-                                        <Nav.Item
-                                            className="bg-palette-60/75 text-palette-80"
-                                            to="/B1"
-                                            element={<B1 />}
-                                        >
-                                            B1
-                                        </Nav.Item>
+                                            <div className="absolute w-60 left-20 text-center">
+                                                <Nav.Item
+                                                    className="bg-palette-60/75 text-palette-80"
+                                                    to="/A1"
+                                                    element={<A1 />}
+                                                >
+                                                    A1
+                                                </Nav.Item>
+                                                <Nav.Item
+                                                    className="bg-palette-60/75 text-palette-80"
+                                                    to="/A2"
+                                                    element={<A2 />}
+                                                >
+                                                    A2
+                                                </Nav.Item>
+                                                <Nav.Item
+                                                    className="bg-palette-60/75 text-palette-80"
+                                                    to="/B1"
+                                                    element={<B1 />}
+                                                >
+                                                    B1
+                                                </Nav.Item>
+                                            </div>
+                                        </Nav.Menu>
                                     </div>
+                                    <Nav.Item
+                                        className="flex bg-palette-70 text-palette-80 w-60"
+                                        to="/einbuergerungstest"
+                                        element={<Einbuergerungstest />}
+                                    >
+                                        Leben in Deutschland
+                                    </Nav.Item>
+                                </Nav.Menu>
+                            </div>
+                            <div className="">
+                                <Nav.Item
+                                    className="flex justify-center p-10"
+                                    to="/dictionary"
+                                    element={<Dictionary />}
+                                >
+                                    Wörterbuch
+                                </Nav.Item>
+                                <Nav.Item
+                                    className="flex justify-center"
+                                    to="/forum"
+                                    element={<Forum />}
+                                >
+                                    Forum
+                                </Nav.Item>
+                            </div>
+                        </div>
+                    </Nav>
+                    <div className=" w-20 ">
+                        <div className="hidden bg-palette-10 p-4 text-2xl justify-center rounded-full">
+                            A
+                        </div>
+                    </div>
+                    <div className="">
+                        <div className="bg-palette-10 p-4 mt-24  text-xl rounded-full">
+                            Login
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+                <div className="hidden md:block">
+                    <Nav className=" w-full h-24">
+                        <div className="flex">
+                            <div className="p-10 w-80">
+                                <Nav.Menu
+                                    className="text-2xl"
+                                    trigger={["click", "hover"]}
+                                    title="Übungen"
+                                >
+                                    <div className="flex bg-palette-70 text-palette-80">
+                                        <Nav.Menu
+                                            className="relative"
+                                            title="Sprachniveau"
+                                        >
+                                            <div className="absolute w-40 left-20 text-center">
+                                                <Nav.Item
+                                                    className="bg-palette-60/75 text-palette-80"
+                                                    to="/A1"
+                                                    element={<A1 />}
+                                                >
+                                                    A1
+                                                </Nav.Item>
+                                                <Nav.Item
+                                                    className="bg-palette-60/75 text-palette-80"
+                                                    to="/A2"
+                                                    element={<A2 />}
+                                                >
+                                                    A2
+                                                </Nav.Item>
+                                                <Nav.Item
+                                                    className="bg-palette-60/75 text-palette-80"
+                                                    to="/B1"
+                                                    element={<B1 />}
+                                                >
+                                                    B1
+                                                </Nav.Item>
+                                            </div>
+                                        </Nav.Menu>
+                                    </div>
+                                    <Nav.Item
+                                        className="bg-palette-70 text-palette-80"
+                                        to="/einbuergerungstest"
+                                        element={<Einbuergerungstest />}
+                                    >
+                                        Leben in Deutschland
+                                    </Nav.Item>
                                 </Nav.Menu>
                             </div>
                             <Nav.Item
-                                className="bg-palette-70 text-palette-80"
-                                to="/einbuergerungstest"
-                                element={<Einbuergerungstest />}
+                                className="p-10 w-80 text-2xl"
+                                to="/dictionary"
+                                element={<Dictionary />}
                             >
-                                Leben in Deutschland
+                                Wörterbuch
                             </Nav.Item>
-                        </Nav.Menu>
-                    </div>
-                    <Nav.Item
-                        className="p-10 w-80 text-2xl"
-                        to="/dictionary"
-                        element={<Dictionary />}
-                    >
-                        Wörterbuch
-                    </Nav.Item>
-                    <Nav.Item
-                        className="p-10 text-2xl w-80"
-                        to="/forum"
-                        element={<Forum />}
-                    >
-                        Forum
-                    </Nav.Item>
+                            <Nav.Item
+                                className="p-10 text-2xl w-80"
+                                to="/forum"
+                                element={<Forum />}
+                            >
+                                Forum
+                            </Nav.Item>
+                            <div className="flex items-center m-5">
+                                <div className="bg-palette-10 p-4 text-2xl py-2 rounded-full">
+                                    A
+                                </div>
+                            </div>
+                            <div className="flex items-center m-10">
+                                <div className="bg-palette-10 p-4 text-xl py-2 rounded-full">
+                                    Login
+                                </div>
+                            </div>
+                        </div>
+                    </Nav>
                 </div>
-            </Nav>
-        </div>
+            </div>
+        
     );
 };
 
