@@ -36,60 +36,60 @@ const NavBar = () => {
                                     trigger={["click", "hover"]}
                                     title="Übungen"
                                 >
-                                    <div className="flex bg-palette-70 text-palette-80 w-60">
+                                    <div className="bg-palette-70 text-palette-80 w-60">
                                         <Nav.Menu
-                                            className="relative"
+                                            className="text-center"
                                             title="Sprachniveau"
                                         >
-                                            <div className="absolute w-60 left-20 text-center">
-                                                <Nav.Item
+                                            <div className="flex flex-col w-60 absolute left-60 text-center">
+                                                <NavLink
                                                     className="bg-palette-60/75 text-palette-80"
                                                     to="/A1"
                                                     element={<A1 />}
                                                 >
                                                     A1
-                                                </Nav.Item>
-                                                <Nav.Item
+                                                </NavLink>
+                                                <NavLink
                                                     className="bg-palette-60/75 text-palette-80"
                                                     to="/A2"
                                                     element={<A2 />}
                                                 >
                                                     A2
-                                                </Nav.Item>
-                                                <Nav.Item
+                                                </NavLink>
+                                                <NavLink
                                                     className="bg-palette-60/75 text-palette-80"
                                                     to="/B1"
                                                     element={<B1 />}
                                                 >
                                                     B1
-                                                </Nav.Item>
+                                                </NavLink>
                                             </div>
                                         </Nav.Menu>
                                     </div>
-                                    <Nav.Item
+                                    <NavLink
                                         className="flex bg-palette-70 text-palette-80 w-60"
                                         to="/einbuergerungstest"
                                         element={<Einbuergerungstest />}
                                     >
                                         Leben in Deutschland
-                                    </Nav.Item>
+                                    </NavLink>
                                 </Nav.Menu>
                             </div>
                             <div className="">
-                                <Nav.Item
+                                <NavLink
                                     className="flex justify-center p-10"
                                     to="/dictionary"
                                     element={<Dictionary />}
                                 >
                                     Wörterbuch
-                                </Nav.Item>
-                                <Nav.Item
+                                </NavLink>
+                                <NavLink
                                     className="flex justify-center"
                                     to="/forum"
                                     element={<Forum />}
                                 >
                                     Forum
-                                </Nav.Item>
+                                </NavLink>
                             </div>
                         </div>
                     </Nav>
