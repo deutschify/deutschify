@@ -1,8 +1,10 @@
 import emailjs from 'emailjs-com'
+import {useState} from 'react'
+import ContactPopup from './ContactPopop'
 
 
 const ContactUs = () => {
-    
+    const [isOpen, setIsOpen] = useState(false);
 
     function sendEmail(e) {
         e.preventDefault();
@@ -15,6 +17,11 @@ const ContactUs = () => {
       });
       e.target.reset()
     }
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+      }
+
     return (
         <div className="bg-palette-50 h-max p-4">
             <h1 className="text-center text-3xl">Wir freuen uns von dir zu hören!</h1>
@@ -32,7 +39,16 @@ const ContactUs = () => {
                             <textarea className="w-96 h-60 p-2 rounded-2xl" name="message" id="" cols="30" rows="10" placeholder="Tippe deine Nachricht hier..."></textarea>
                         </div>
                         <div className="m-6">
-                            <input type="submit" className="w-96 h-10 p-2 rounded-full bg-palette-70" value="send message"/>
+                            <input type="submit" className="w-96 h-10 p-2 rounded-full bg-palette-70" value="send message" onClick={togglePopup}/>
+                            
+    {isOpen && <ContactPopup
+      content={<>
+        <b>Design your Popup</b>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <button>Test button</button>
+      </>}
+      handleClose={togglePopup}
+    />}
                         </div>
                     </div>
                 </form>
