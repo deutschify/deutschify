@@ -1,3 +1,4 @@
+
 import emailjs from "emailjs-com";
 import { useState } from "react";
 import ContactPopup from "./ContactPopop";
@@ -5,8 +6,10 @@ import ContactPopup from "./ContactPopop";
 const ContactUs = () => {
     const [isOpen, setIsOpen] = useState(false);
 
+
     function sendEmail(e) {
         e.preventDefault();
+
 
         emailjs
             .sendForm(
@@ -93,6 +96,7 @@ const ContactUs = () => {
                                     />
                                 )}
                             </div>
+
                         </div>
                     </div>
                 </form>
