@@ -2,13 +2,18 @@ import React from "react";
 import { useForm, SubmitHandler} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import {IUserRegistrationForm} from '../interfaces'
+import axios from 'axios';
+
+export const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
 
 const schema = yup.object().shape({
-    vorName: yup
+    firstName: yup
         .string()
         .matches(/^([^0-9]*)$/, "Vorname soll keine Nummer haben")
         .required(),
-    nachName: yup
+    lastName: yup
         .string()
         .matches(/^([^0-9]*)$/, "Nachname soll keine Nummer haben")
         .required(),
@@ -17,25 +22,31 @@ const schema = yup.object().shape({
     repeatPassword: yup.string().oneOf([yup.ref("password"), null]),
 });
 
-interface IUserForm {
-    vorName: string;
-    nachName: string;
-    email: string;
-    password: string;
-    repeatPassword: string;
-    sprache: string;
-    nationalität: string;
-}
+
 
 const PageRegister = () => {
-    const {register, formState: {errors}, handleSubmit} = useForm<IUserForm>({
+    const {register, formState: {errors}, handleSubmit} = useForm<IUserRegistrationForm>({
         mode: "onBlur",
         resolver: yupResolver(schema),
     });
 
-    const onSubmit: SubmitHandler<IUserForm> = (data: IUserForm) => {
+    const onSubmit: SubmitHandler<IUserRegistrationForm> = async(data: IUserRegistrationForm) => {
+        const {firstName, lastName, email, password, language, nationality} = data
+        
         console.log(data);
-        console.log(errors);
+        
+        await axios.post(`${baseUrl}/register`, {
+            firstName,
+            lastName,
+            email,
+            password,
+            language,
+            nationality,
+            safeOriginCode: import.meta.env.VITE_SAFE_ORIGIN_CODE,
+        }, 
+        { withCredentials: true });
+
+        console.log(errors)
     };
 
     return (
@@ -48,18 +59,18 @@ const PageRegister = () => {
                     <div>
                 <input
                     defaultValue=""
-                    {...register("vorName")}
-                    placeholder="Vorname"
+                    {...register("firstName")}
+                    placeholder="firstName"
                 />
-                {errors.vorName && <p>{errors?.vorName?.message}</p>}
+                {errors.firstName && <p>{errors?.firstName?.message}</p>}
             </div>
             <div>
                 <input
                     defaultValue=""
-                    {...register("nachName")}
-                    placeholder="Nachname"
+                    {...register("lastName")}
+                    placeholder="lastName"
                 />
-                {errors.nachName && <p>{errors?.nachName?.message}</p>}
+                {errors.lastName && <p>{errors?.lastName?.message}</p>}
             </div>
             <div>
                 <input
@@ -86,12 +97,12 @@ const PageRegister = () => {
                 {errors.repeatPassword && <p>Password don't match!</p>}
             </div>
             <div>
-                <select {...register("sprache")}>
+                <select {...register("language")}>
                     <option value="deutsch">deutsch</option>
                 </select>
             </div>
             <div>
-                <select {...register("nationalität")}>
+                <select {...register("nationality")}>
                     <option value="deutsche">Deutsche</option>
                 </select>
             </div>
