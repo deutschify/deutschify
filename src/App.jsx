@@ -16,7 +16,6 @@ import PageRegister from "./Pages/PageRegister";
 import Login from "./Pages/PageLogin";
 import PageNotFound from "./Pages/PageNotFound";
 
-export const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 function App() {
 

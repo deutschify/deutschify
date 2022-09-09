@@ -2,10 +2,10 @@ import React, {useEffect, useState} from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import axios from "axios";
+// import useStore from '../store/store';
 import {IUserLoginForm} from '../interfaces'
 
-import {baseUrl} from '../App';
+
 
 const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -14,21 +14,18 @@ const schema = yup.object().shape({
 
 const PageLogin = () => {
 
-    const [currentUser, setCurrentUser] = useState<IUserLoginForm>({
-        email: '',
-        password: ''
-    });
+    // const currentUser = useStore(state => state.currentUser);
 
-    useEffect(() => {
-        (async () => {
-            const data = (await axios.get(`${baseUrl}/current-user`)).data;
-            console.log(data.currentUser);
+    // useEffect(() => {
+    //     (async () => {
+    //         const data = (await axios.get(`${baseUrl}/current-user`)).data;
+    //         console.log(data.currentUser);
             
-            const _currentUser = data.currentUser;
-            setCurrentUser(_currentUser);
+    //         const _currentUser = data.currentUser;
+    //         setCurrentUser(_currentUser);
             
-        })();
-    }, []);
+    //     })();
+    // }, []);
     
     const {
         register,
@@ -42,11 +39,12 @@ const PageLogin = () => {
     const onSubmit: SubmitHandler<IUserLoginForm> = (data: IUserLoginForm) => {
         console.log(data);
         console.log(errors);
+        console.log('success');
+        
     };
 
     return (
         <div>
-            <pre>{currentUser.email}</pre>
             <h1 className="text-2xl">Welcome to Login</h1>
             <form
                 className="bg-white shadow-md rounded flex-col"
