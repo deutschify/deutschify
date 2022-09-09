@@ -7,10 +7,13 @@ const StarRating = () => {
 
     return (
         <div className="flex flex-row pb-6 ">
+            <div className="flex flex-wrap w-40">
             {[...Array(5)].map((star, i) => {
                 const ratingValue = i + 1;
+                
                 return (
-                    <label>
+                    
+                    <label className="">
                         <input
                             type="radio"
                             name="rating"
@@ -34,8 +37,9 @@ const StarRating = () => {
                 );
             })}
             {rating > null && (
-                <div className="flex flex-col"> the rating is: {rating}/5</div>
+                <div className=""> the rating is: {rating}/5</div>
             )}
+            </div>
         </div>
     );
 };
