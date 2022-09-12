@@ -14,6 +14,7 @@ const NavBar = () => {
     const [showNav, setShowNav] = useState(false);
     return (
         // Hamburger-Button
+
         <div className="">
             <div className="relative text-5xl flex overflow-hidden items-center justify-center rounded-full w-20 h-20 m-5 bg-palette-10 ring-0 ring-palette-70 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md md:hidden">
                 {showNav ? (
@@ -116,39 +117,39 @@ const NavBar = () => {
                                 className="text-2xl"
                                 trigger={["click", "hover"]}
                                 title="Übungen"
-                            >  <div className="bg-palette-70 w-80">
-                                <div className=" text-palette-80">
-                                    <Nav.Menu
-                                        className="text-center"
-                                        title="Sprachniveau"
-                                    >
-                                        <div className="flex flex-col w-40 absolute left-80">
-                                            <NavLink
-                                                className="bg-palette-60/75 text-palette-80"
-                                                to="/A1"
-                                                element={<A1 />}
-                                            >
-                                                A1
-                                            </NavLink>
-                                            <NavLink
-                                                className="bg-palette-60/75 text-palette-80"
-                                                to="/A2"
-                                                element={<A2 />}
-                                            >
-                                                A2
-                                            </NavLink>
-                                            <NavLink
-                                                className="bg-palette-60/75 text-palette-80"
-                                                to="/B1"
-                                                element={<B1 />}
-                                            >
-                                                B1
-                                            </NavLink>
-                                        </div>
-                                    </Nav.Menu>
-                                </div>
-                              
-                                    {" "}
+                            >
+                                {" "}
+                                <div className="bg-palette-70 w-80">
+                                    <div className=" text-palette-80">
+                                        <Nav.Menu
+                                            className="text-center"
+                                            title="Sprachniveau"
+                                        >
+                                            <div className="flex flex-col w-40 absolute left-80">
+                                                <NavLink
+                                                    className="bg-palette-60/75 text-palette-80"
+                                                    to="/A1"
+                                                    element={<A1 />}
+                                                >
+                                                    A1
+                                                </NavLink>
+                                                <NavLink
+                                                    className="bg-palette-60/75 text-palette-80"
+                                                    to="/A2"
+                                                    element={<A2 />}
+                                                >
+                                                    A2
+                                                </NavLink>
+                                                <NavLink
+                                                    className="bg-palette-60/75 text-palette-80"
+                                                    to="/B1"
+                                                    element={<B1 />}
+                                                >
+                                                    B1
+                                                </NavLink>
+                                            </div>
+                                        </Nav.Menu>
+                                    </div>{" "}
                                     <NavLink
                                         className="bg-palette-70 text-palette-80 flex justify-center"
                                         to="/einbuergerungstest"
