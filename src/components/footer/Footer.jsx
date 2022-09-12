@@ -15,10 +15,9 @@ const Footer = () => {
             <div className="w-3/12">
                 <NavLink className="" to="/" element={<Homepage />}>
                     <img
-                        src="./images/deutschifyLogo.png"
-                        className="w-12 m-2"
-                        // src="./images/deutschify-side.png"
-                        // className="w-40 m-2"
+                        src="./images/deutschify-side.png"
+                        className="w-40
+                     m-2"
                         alt=""
                     />
                 </NavLink>
