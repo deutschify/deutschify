@@ -1,8 +1,9 @@
 import StarRating from "./StarRating";
 const RateUs = () => {
     return (
-        <div className="bg-palette-60">
-            <form className="w-full max-w-lg pl-6 pt-6 pb-6 ">
+        <div className="bg-palette-60  flex">
+
+            <form className="w-full max-w-lg pl-6 pt-6 pb-6">
                 <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label
@@ -63,6 +64,7 @@ const RateUs = () => {
                 </div>
             </form>
         </div>
+    
     );
 };
 
