@@ -9,18 +9,17 @@ import RateUs from "./components/footer/RateUs";
 import "./App.css";
 import Footer from "./components/footer/Footer";
 import Homepage from "./components/Homepage";
-import Dictionary from "./components/Dictionary";
+import Dictionary from "./components/dictionary/Dictionary";
 import LanguageLevels from "./components/LanguageLevels";
 import Einbuergerungstest from "./components/Einbuergerungstest";
 import Forum from "./components/Forum";
 import PageRegister from "./Pages/PageRegister";
 import Login from "./Pages/PageLogin";
 import PageNotFound from "./components/PageNotFound";
-import A1 from "./components/A1"
-import A2 from "./components/A2"
-import B1 from "./components/B1"
+import A1 from "./components/A1";
+import A2 from "./components/A2";
+import B1 from "./components/B1";
 function App() {
-    
     return (
         <div className="bg-palette-50">
             <Header />
