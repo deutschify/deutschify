@@ -12,7 +12,7 @@ const Footer = () => {
     // footer
     return (
         // footer
-        <div className="w-full flex text-center bg-palette-80 text-palette-50 fixed bottom-0">
+        <div className="w-full flex text-center bg-palette-50 text-palette-60 fixed bottom-0">
             <div className="w-3/12">
             <NavLink
                 className=""
@@ -26,18 +26,18 @@ const Footer = () => {
                     alt=""
                 />
                 </NavLink>
-                <div className="flex justify-center m-3 space-x-4 md:justify-start md:text-2xl md:ml-10">
-                    <div className="">
+                <div className="flex justify-center m-3 space-x-4 md:justify-start md:text-2xl md:ml-10 ">
+                    <div className="hover:text-palette-80">
                         <BsFacebook />
                     </div>
-                    <div className="">
+                    <div className="hover:text-palette-80">
                         <BsInstagram />
                     </div>
                 </div>
             </div>
             <div className="w-11/12 p-1 md:w-6/12 md:text-2xl">
                 <NavLink
-                    className="text-palette-50 m-2 p-2"
+                    className="text-palette-60 m-2 p-2 hover:text-palette-80"
                     to="/about-us"
                     element={<AboutUs />}
                 >
@@ -45,7 +45,7 @@ const Footer = () => {
                     About Us{" "}
                 </NavLink>
                 <NavLink
-                    className="text-palette-50 m-2 p-2"
+                    className="text-palette-60 m-2 p-2 hover:text-palette-80"
                     to="/contact-us"
                     element={<ContactUs />}
                 >
@@ -53,7 +53,7 @@ const Footer = () => {
                     Contact Us{" "}
                 </NavLink>
                 <NavLink
-                    className="text-palette-50 m-2 p-2"
+                    className="text-palette-60 m-2 p-2 hover:text-palette-80"
                     to="/rate-us"
                     element={<RateUs />}
                 >

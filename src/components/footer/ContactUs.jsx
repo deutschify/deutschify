@@ -1,7 +1,9 @@
 
 import emailjs from "emailjs-com";
-import { useState } from "react";
+import  { useState } from "react";
 import ContactPopup from "./ContactPopop";
+
+
 
 const ContactUs = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,15 +36,16 @@ const ContactUs = () => {
     };
 
     return (
-        <div className="bg-palette-50 h-max p-4">
-            <h1 className="text-center text-3xl">
+        
+        <div className="bg-palette-50  p-4 ">
+            <h1 className="text-center text-3xl text-palette-40">
                 Wir freuen uns von dir zu hören!
             </h1>
             <h2 className="text-center text-2xl">Euer direkter Draht zu uns</h2>
             <div className="flex justify-center p-10">
                 <form
                     onSubmit={sendEmail}
-                    className="bg-palette-60  md:w-2/4 md:h-full md:p-10 flex justify-center rounded-2xl"
+                    className="bg-palette-60  md:w-2/4 md:h-full md:p-10 flex justify-center rounded-2xl shadow-outer"
                 >
                     <div className=" ">
                         <div className="m-6">
@@ -74,8 +77,8 @@ const ContactUs = () => {
                         <div className="m-6 relative">
                             <input
                                 type="submit"
-                                className="w-96 h-10 p-2 rounded-full bg-palette-70"
-                                value="send message"
+                                className="w-96 h-10 p-2 rounded-full bg-palette-40 text-palette-50 shadow-outer"
+                                value="abschicken"
                                 onClick={togglePopup}
                             />
                             <div className="absolute bottom-40"> 
