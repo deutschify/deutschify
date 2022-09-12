@@ -2,10 +2,13 @@ import React from "react";
 import { useForm, SubmitHandler} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {IUserRegistrationForm} from '../interfaces'
 import axios from 'axios';
+import {IUserLoginForm, IUserRegistrationForm} from '../interfaces'
 
-export const baseUrl = import.meta.env.VITE_BACKEND_URL;
+interface IPageRegistrationProps {
+    baseUrl: string;
+    setCurrentUser: React.Dispatch<React.SetStateAction<IUserLoginForm>>;
+}
 
 
 const schema = yup.object().shape({
@@ -24,7 +27,8 @@ const schema = yup.object().shape({
 
 
 
-const PageRegister = () => {
+const PageRegister = (props: IPageRegistrationProps) => {
+    const {baseUrl, setCurrentUser} = props
     const {register, formState: {errors}, handleSubmit} = useForm<IUserRegistrationForm>({
         mode: "onBlur",
         resolver: yupResolver(schema),
@@ -33,9 +37,8 @@ const PageRegister = () => {
     const onSubmit: SubmitHandler<IUserRegistrationForm> = async(data: IUserRegistrationForm) => {
         const {firstName, lastName, email, password, language, nationality} = data
         
-        console.log(data);
         
-        await axios.post(`${baseUrl}/register`, {
+        const toSend = await axios.post(`${baseUrl}/register`, {
             firstName,
             lastName,
             email,
@@ -45,7 +48,8 @@ const PageRegister = () => {
             safeOriginCode: import.meta.env.VITE_SAFE_ORIGIN_CODE,
         }, 
         { withCredentials: true });
-
+        
+        console.log(toSend);
         console.log(errors)
     };
 
