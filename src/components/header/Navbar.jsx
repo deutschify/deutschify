@@ -43,21 +43,21 @@ const NavBar = () => {
                                         >
                                             <div className="flex flex-col w-60 absolute left-60 text-center">
                                                 <NavLink
-                                                    className="bg-palette-60/75 text-palette-50 hover:text-palette-80"
+                                                    className="bg-palette-60 text-palette-50 hover:text-palette-80"
                                                     to="/A1"
                                                     element={<A1 />}
                                                 >
                                                     A1
                                                 </NavLink>
                                                 <NavLink
-                                                    className="bg-palette-60/75 text-palette-50 hover:text-palette-80"
+                                                    className="bg-palette-60 text-palette-50 hover:text-palette-80"
                                                     to="/A2"
                                                     element={<A2 />}
                                                 >
                                                     A2
                                                 </NavLink>
                                                 <NavLink
-                                                    className="bg-palette-60/75 text-palette-50 hover:text-palette-80"
+                                                    className="bg-palette-60 text-palette-50 hover:text-palette-80"
                                                     to="/B1"
                                                     element={<B1 />}
                                                 >
