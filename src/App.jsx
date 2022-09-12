@@ -14,20 +14,13 @@ import LanguageLevels from "./components/LanguageLevels";
 import Einbuergerungstest from "./components/Einbuergerungstest";
 import Forum from "./components/Forum";
 import PageRegister from "./Pages/PageRegister";
-import Login from "./components/Login";
+import Login from "./Pages/PageLogin";
 import PageNotFound from "./components/PageNotFound";
+import A1 from "./components/A1"
+import A2 from "./components/A2"
+import B1 from "./components/B1"
 function App() {
-    const baseUrl = import.meta.env.VITE_BACKEND_URL;
-    const [currentUser, setCurrentUser] = useState({});
-
-    useEffect(() => {
-        (async () => {
-            const data = (await axios.get(`${baseUrl}/current-user`)).data;
-            const _currentUser = data.currentUser;
-            setCurrentUser(_currentUser);
-        })();
-    }, []);
-
+    
     return (
         <div className="bg-palette-50">
             <Header />
@@ -36,6 +29,9 @@ function App() {
                 <Route path="/home" element={<Homepage />} />
                 <Route path="/dictionary" element={<Dictionary />} />
                 <Route path="/language-levels" element={<LanguageLevels />} />
+                <Route path="/a1" element={<A1 />} />
+                <Route path="/a2" element={<A2 />} />
+                <Route path="/b1" element={<B1 />} />
                 <Route
                     path="/einbuergerungstest/*"
                     element={<Einbuergerungstest />}
