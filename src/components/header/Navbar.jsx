@@ -25,25 +25,26 @@ const NavBar = () => {
                 <div
                     className={
                         (showNav ? "left-20" : "left-full") +
-                        " bg-palette-70/75  fixed left-20 right-0 top-24 bottom-10 z-40 text-palette-50 text-center text-2xl p-10 rounded-bl-3xl rounded-tl-3xl transition-all"
+                        " bg-palette-70/75  fixed left-20 right-0 top-28 bottom-10 z-40 text-palette-50 text-center text-2xl p-10 rounded-bl-3xl rounded-tl-3xl transition-ease-in duration-1000"
                     }
                 >
                     <Nav className="m-2 mt-20">
                         <div className="">
                             <div className="">
                                 <Nav.Menu
-                                    className=""
+                                    className="border-none hover:text-palette-80"
                                     trigger={["click", "hover"]}
                                     title="Übungen"
                                 >
-                                    <div className="bg-palette-80 text-palette-50 w-60 hover:text-palette-60">
+                                   
+                                    <div className="bg-palette-80 text-palette-50 w-60 hover:text-palette-60 rounded-t-lg">
                                         <Nav.Menu
-                                            className="text-center"
+                                            className="text-center appearance-none"
                                             title="Sprachniveau"
                                         >
                                             <div className="flex flex-col w-60 absolute left-60 text-center">
                                                 <NavLink
-                                                    className="bg-palette-60 text-palette-50 hover:text-palette-80"
+                                                    className="bg-palette-60 text-palette-50 hover:text-palette-80 rounded-t-lg"
                                                     to="/A1"
                                                     element={<A1 />}
                                                 >
@@ -57,7 +58,7 @@ const NavBar = () => {
                                                     A2
                                                 </NavLink>
                                                 <NavLink
-                                                    className="bg-palette-60 text-palette-50 hover:text-palette-80"
+                                                    className="bg-palette-60 text-palette-50 hover:text-palette-80 rounded-b-lg"
                                                     to="/B1"
                                                     element={<B1 />}
                                                 >
@@ -67,7 +68,7 @@ const NavBar = () => {
                                         </Nav.Menu>
                                     </div>
                                     <NavLink
-                                        className="flex bg-palette-80 text-palette-50 w-60 hover:text-palette-60"
+                                        className="flex bg-palette-80 text-palette-50 w-60 hover:text-palette-60 rounded-b-lg"
                                         to="/einbuergerungstest"
                                         element={<Einbuergerungstest />}
                                     >
@@ -113,42 +114,42 @@ const NavBar = () => {
                     <div className="flex h-24 mt-6">
                         <div className="p-10 w-80 relative">
                             <Nav.Menu
-                                className="text-2xl"
+                                className="text-2xl border-none hover:text-palette-80"
                                 trigger={["click", "hover"]}
                                 title="Übungen"
-                            >  <div className="bg-palette-80 w-80">
-                                <div className=" text-palette-50 hover:text-palette-60">
-                                    <Nav.Menu
-                                        className="text-center"
-                                        title="Sprachniveau"
-                                    >
-                                        <div className="flex flex-col w-40 absolute left-80">
-                                            <NavLink
-                                                className="bg-palette-70/75 text-palette-50 hover:text-palette-80"
-                                                to="/A1"
-                                                element={<A1 />}
-                                            >
-                                                A1
-                                            </NavLink>
-                                            <NavLink
-                                                className="bg-palette-70/75 text-palette-50 hover:text-palette-80"
-                                                to="/A2"
-                                                element={<A2 />}
-                                            >
-                                                A2
-                                            </NavLink>
-                                            <NavLink
-                                                className="bg-palette-70/75 text-palette-50 hover:text-palette-80"
-                                                to="/B1"
-                                                element={<B1 />}
-                                            >
-                                                B1
-                                            </NavLink>
-                                        </div>
-                                    </Nav.Menu>
-                                </div>
-                              
-                                    {" "}
+                            >
+                                {" "}
+                                <div className="bg-palette-80 w-80 rounded-lg">
+                                    <div className=" text-palette-50 hover:text-palette-60">
+                                        <Nav.Menu
+                                            className="text-center"
+                                            title="Sprachniveau"
+                                        >
+                                            <div className="flex flex-col w-40 absolute left-80">
+                                                <NavLink
+                                                    className="bg-palette-70 text-palette-50 hover:text-palette-80 rounded-t-lg"
+                                                    to="/A1"
+                                                    element={<A1 />}
+                                                >
+                                                    A1
+                                                </NavLink>
+                                                <NavLink
+                                                    className="bg-palette-70 text-palette-50 hover:text-palette-80"
+                                                    to="/A2"
+                                                    element={<A2 />}
+                                                >
+                                                    A2
+                                                </NavLink>
+                                                <NavLink
+                                                    className="bg-palette-70 text-palette-50 hover:text-palette-80 rounded-b-lg"
+                                                    to="/B1"
+                                                    element={<B1 />}
+                                                >
+                                                    B1
+                                                </NavLink>
+                                            </div>
+                                        </Nav.Menu>
+                                    </div>{" "}
                                     <NavLink
                                         className="bg-palette-80 text-palette-50 hover:text-palette-60 flex justify-center"
                                         to="/einbuergerungstest"
@@ -160,7 +161,7 @@ const NavBar = () => {
                             </Nav.Menu>
                         </div>
                         <NavLink
-                            className="p-10 w-80 text-2xl"
+                            className="p-10 w-80 text-2xl hover:text-palette-80"
                             to="/dictionary"
                             element={<Dictionary />}
                         >
@@ -168,7 +169,7 @@ const NavBar = () => {
                         </NavLink>
 
                         <NavLink
-                            className="p-10 text-2xl w-80"
+                            className="p-10 text-2xl w-80 hover:text-palette-80"
                             to="/forum"
                             element={<Forum />}
                         >
