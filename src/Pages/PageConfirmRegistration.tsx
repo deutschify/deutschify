@@ -14,7 +14,7 @@ enum ConfirmStatus {
     succeeded,
 }
 
-export const PageConfirmRegistration = (
+const PageConfirmRegistration = (
     props: IPageConfirmRegistrationProps
 ) => {
     const [confirmStatus, setConfirmStatus] = useState<ConfirmStatus>(
@@ -22,6 +22,8 @@ export const PageConfirmRegistration = (
     );
     const { confirmationCode } = useParams();
     const { baseUrl, setCurrentUser } = props;
+    console.log(baseUrl);
+    
 
     useEffect(() => {
         (async () => {
@@ -31,7 +33,11 @@ export const PageConfirmRegistration = (
                     { confirmationCode },
                     { withCredentials: true }
                 )
+                
             ).data;
+            
+            console.log(data);
+            
             if (data.userWasConfirmed) {
                 setConfirmStatus(ConfirmStatus.succeeded);
             } else {
@@ -39,6 +45,7 @@ export const PageConfirmRegistration = (
             }
         })();
     }, []);
+
     return (
         <>
             {confirmStatus === ConfirmStatus.succeeded && (
@@ -63,3 +70,5 @@ export const PageConfirmRegistration = (
         </>
     );
 };
+
+export default PageConfirmRegistration

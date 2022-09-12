@@ -5,15 +5,19 @@ import * as yup from "yup";
 // import useStore from '../store/store';
 import {IUserLoginForm} from '../interfaces'
 
-
+interface IPageLoginProps {
+	baseUrl: string;
+	setCurrentUser: React.Dispatch<React.SetStateAction<IUserLoginForm>>;
+}
 
 const schema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().min(3).max(12).required(),
 });
 
-const PageLogin = () => {
-
+const PageLogin = (props: IPageLoginProps) => {
+    
+    const { baseUrl, setCurrentUser } = props;
     // const currentUser = useStore(state => state.currentUser);
 
     // useEffect(() => {
