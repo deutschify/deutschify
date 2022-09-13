@@ -39,39 +39,45 @@ const Slides = () => {
     }
 
     return (
-        <div className="hidden md:block">
-            <AiOutlineArrowLeft
-                className="slideshow-left-arrow"
-                onClick={previousSlideHandler}
-            />
-            <AiOutlineArrowRight
-                className="slideshow-right-arrow"
-                onClick={nextSlideHandler}
-            />
-            {sliderData.map((slider, index) => {
-                return (
-                    <div
-                        key={index}
-                        className={
-                            index === currentImage ? "slide active" : "slide"
-                        }
-                    >
-                        {index === currentImage && (
-                            <>
-                                <img
-                                    className="slideshow-images"
-                                    src={slider.slideImage}
-                                    alt="slideshow image"
-                                />
+        <div className="flex justify-center w-full   ">
+            <div className="hidden md:block pt-16 ">
+                <div className="pr-6">
+                    <AiOutlineArrowLeft
+                        className="slideshow-left-arrow"
+                        onClick={previousSlideHandler}
+                    />
+                </div>
+                <AiOutlineArrowRight
+                    className="slideshow-right-arrow"
+                    onClick={nextSlideHandler}
+                />
+                {sliderData.map((slider, index) => {
+                    return (
+                        <div
+                            key={index}
+                            className={
+                                index === currentImage
+                                    ? "slide active"
+                                    : "slide"
+                            }
+                        >
+                            {index === currentImage && (
+                                <>
+                                    <img
+                                        className="border-8 border-black"
+                                        src={slider.slideImage}
+                                        alt="slideshow image"
+                                    />
 
-                                <p className="slideshow-title">
-                                    {slider.title}
-                                </p>
-                            </>
-                        )}
-                    </div>
-                );
-            })}
+                                    <p className="text-center">
+                                        {slider.title}
+                                    </p>
+                                </>
+                            )}
+                        </div>
+                    );
+                })}
+            </div>
         </div>
 
         // mobile  ansicht
