@@ -1,25 +1,26 @@
 import { useState } from "react";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import { NavLink } from "react-router-dom";
 
 const sliderData = [
     {
         slideImage: "../../public/images/deutschify-side.png",
-
+        href: "/language-levels",
         title: "Sprachniveau",
     },
     {
         slideImage: "../../public/images/deutschify-side.png",
-
+        href: "/dictionary",
         title: "Wörterbuch",
     },
     {
         slideImage: "../../public/images/deutschify-side.png",
-
+        href: "/forum",
         title: "Forum",
     },
     {
         slideImage: "../../public/images/deutschify-side.png",
-
+        href: "/einbuergerungstest",
         title: "Einbürgerungstest",
     },
 ];
@@ -39,44 +40,53 @@ const Slides = () => {
     }
 
     return (
-        <div className="flex justify-center w-full   ">
-            <div className="hidden md:block pt-16 ">
-                <div className="pr-6">
-                    <AiOutlineArrowLeft
-                        className="slideshow-left-arrow"
-                        onClick={previousSlideHandler}
-                    />
-                </div>
+        <div className="hidden md:block ">
+            <div className="relative">
+                <AiOutlineArrowLeft
+                    className="slideshow-left-arrow absolute left-48 top-48 text-4xl "
+                    onClick={previousSlideHandler}
+                />
+            </div>
+            <div className="relative">
                 <AiOutlineArrowRight
-                    className="slideshow-right-arrow"
+                    className="slideshow-right-arrow absolute right-48 top-48 text-4xl"
                     onClick={nextSlideHandler}
                 />
-                {sliderData.map((slider, index) => {
-                    return (
-                        <div
-                            key={index}
-                            className={
-                                index === currentImage
-                                    ? "slide active"
-                                    : "slide"
-                            }
-                        >
-                            {index === currentImage && (
-                                <>
-                                    <img
-                                        className="border-8 border-black"
-                                        src={slider.slideImage}
-                                        alt="slideshow image"
-                                    />
-
-                                    <p className="text-center">
-                                        {slider.title}
-                                    </p>
-                                </>
-                            )}
-                        </div>
-                    );
-                })}
+            </div>
+            <div className="mt-6 ml-6 mr-6 border-black border-8 bg-white">
+                <div className="flex justify-center  ">
+                    <div className="hidden md:block pt-16 ">
+                        {sliderData.map((slider, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    className={
+                                        index === currentImage
+                                            ? "slide active"
+                                            : "slide"
+                                    }
+                                >
+                                    {index === currentImage && (
+                                        <>
+                                            <NavLink to={slider.href}>
+                                                <a href={slider.href}>
+                                                    <img
+                                                        className="border-8 border-black"
+                                                        src={slider.slideImage}
+                                                        alt="slideshow image"
+                                                    />
+                                                </a>
+                                            </NavLink>
+                                            <p className="text-center">
+                                                {slider.title}
+                                            </p>
+                                        </>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
             </div>
         </div>
 
