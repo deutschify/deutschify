@@ -9,7 +9,7 @@ const ContactUs = () => {
     const [isOpen, setIsOpen] = useState(false);
 
 
-    function sendEmail(e) {
+    function sendEmail(e:any) {
         e.preventDefault();
 
 
@@ -70,8 +70,8 @@ const ContactUs = () => {
                                 className="w-96 h-60 p-4 rounded-2xl bg-palette-60 shadow-inner"
                                 name="message"
                                 id=""
-                                cols="30"
-                                rows="10"
+                                cols={3}
+                                rows={10}
                                 placeholder="Tippe deine Nachricht hier..."
                             ></textarea>
                         </div>

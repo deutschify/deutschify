@@ -9,7 +9,9 @@ export interface IUserRegistrationForm {
 }
 
 export interface IUserLoginForm {
+    firstName: string;
     email: string;
     password: string;
     accessGroups: string[];
 }
+

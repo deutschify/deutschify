@@ -4,7 +4,7 @@ import A1 from "../A1";
 import A2 from "../A2";
 import B1 from "../B1";
 import Einbuergerungstest from "../Einbuergerungstest";
-import Dictionary from "../Dictionary";
+import Dictionary from "../dictionary/Dictionary";
 import Forum from "../Forum";
 import { BiMenu } from "react-icons/bi";
 import { BiX } from "react-icons/bi";
@@ -14,6 +14,7 @@ const NavBar = () => {
     const [showNav, setShowNav] = useState(false);
     return (
         // Hamburger-Button
+
         <div className="">
             <div className="relative text-5xl flex overflow-hidden items-center justify-center rounded-full w-20 h-20 m-5 bg-palette-80 ring-0 ring-palette-70 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md md:hidden">
                 {showNav ? (
