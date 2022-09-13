@@ -3,7 +3,7 @@ import "../../App.css";
 
 const RateUs = () => {
     return (
-        <div className="flex justify-center h-5/6 items-center md:justify-start md:ml-60">
+        <div className="mt-20 flex justify-center items-center">
         <div className="bg-palette-20 border-4 border-palette-30 p-4 flex justify-center items-center rounded-lg shadow-outer">
 
             <form className="max-w-lg  pt-6 pb-6">
