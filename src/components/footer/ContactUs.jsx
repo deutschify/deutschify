@@ -1,17 +1,16 @@
-
 import emailjs from "emailjs-com";
-import  { useState } from "react";
+import { useState } from "react";
 import ContactPopup from "./ContactPopop";
-
-
 
 const ContactUs = () => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    };
 
-    function sendEmail(e:any) {
+    function sendEmail(e) {
         e.preventDefault();
-
 
         emailjs
             .sendForm(
@@ -29,19 +28,17 @@ const ContactUs = () => {
                 }
             );
         e.target.reset();
+        togglePopup();
     }
 
-    const togglePopup = () => {
-        setIsOpen(!isOpen);
-    };
-
     return (
-        
         <div className="bg-palette-60  p-4 ">
             <h1 className="text-center text-3xl text-palette-50">
                 Wir freuen uns von dir zu hören!
             </h1>
-            <h2 className="text-center text-2xl text-palette-50">Euer direkter Draht zu uns</h2>
+            <h2 className="text-center text-2xl text-palette-50">
+                Euer direkter Draht zu uns
+            </h2>
             <div className="flex justify-center p-10">
                 <form
                     onSubmit={sendEmail}
@@ -50,7 +47,8 @@ const ContactUs = () => {
                     <div className=" ">
                         <div className="m-6 ">
                             <input
-                                type="text" required
+                                type="text"
+                                required
                                 className="w-96 h-10 p-4 rounded-full bg-palette-60 border-4 border-palette-50 shadow-inner "
                                 placeholder="Name"
                                 name="from_name"
@@ -58,7 +56,8 @@ const ContactUs = () => {
                         </div>
                         <div className="m-6">
                             <input
-                                type="email" required
+                                type="email"
+                                required
                                 className="w-96 h-10 p-4 rounded-full bg-palette-60 shadow-inner"
                                 placeholder="Email Adresse"
                                 name="reply_to"
@@ -66,7 +65,8 @@ const ContactUs = () => {
                         </div>
                         <div className="m-6">
                             <textarea
-                            type="text" required
+                                type="text"
+                                required
                                 className="w-96 h-60 p-4 rounded-2xl bg-palette-60 shadow-inner"
                                 name="message"
                                 id=""
@@ -80,9 +80,8 @@ const ContactUs = () => {
                                 type="submit"
                                 className="w-96 h-10 p-2 rounded-full bg-palette-50 text-palette-60 shadow-outer"
                                 value="abschicken"
-                                onClick={togglePopup}
                             />
-                            <div className="absolute bottom-40"> 
+                            <div className="absolute bottom-40">
                                 {isOpen && (
                                     <ContactPopup
                                         content={
@@ -100,7 +99,6 @@ const ContactUs = () => {
                                     />
                                 )}
                             </div>
-
                         </div>
                     </div>
                 </form>
