@@ -1,7 +1,11 @@
 import React from "react";
 
 const Dictionary = () => {
-    return <div>Dictionary</div>;
+    return (
+    <div className="">
+        Wörterbuch
+    </div>
+        )
 };
 
 export default Dictionary;

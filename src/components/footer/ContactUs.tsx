@@ -1,7 +1,9 @@
 
 import emailjs from "emailjs-com";
-import { useState } from "react";
+import  { useState } from "react";
 import ContactPopup from "./ContactPopop";
+
+
 
 const ContactUs = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,36 +36,38 @@ const ContactUs = () => {
     };
 
     return (
-        <div className="bg-palette-50 h-max p-4">
-            <h1 className="text-center text-3xl">
+        
+        <div className="bg-palette-60  p-4 ">
+            <h1 className="text-center text-3xl text-palette-50">
                 Wir freuen uns von dir zu hören!
             </h1>
-            <h2 className="text-center text-2xl">Euer direkter Draht zu uns</h2>
+            <h2 className="text-center text-2xl text-palette-50">Euer direkter Draht zu uns</h2>
             <div className="flex justify-center p-10">
                 <form
                     onSubmit={sendEmail}
-                    className="bg-palette-60  md:w-2/4 md:h-full md:p-10 flex justify-center rounded-2xl"
+                    className="bg-palette-80 border-4 border-palette-50 md:w-2/4 md:h-full md:p-10 flex justify-center rounded-2xl shadow-outer"
                 >
                     <div className=" ">
-                        <div className="m-6">
+                        <div className="m-6 ">
                             <input
-                                type="text"
-                                className="w-96 h-10 p-2 rounded-full"
+                                type="text" required
+                                className="w-96 h-10 p-4 rounded-full bg-palette-60 border-4 border-palette-50 shadow-inner "
                                 placeholder="Name"
                                 name="from_name"
                             />
                         </div>
                         <div className="m-6">
                             <input
-                                type="email"
-                                className="w-96 h-10 p-2 rounded-full"
+                                type="email" required
+                                className="w-96 h-10 p-4 rounded-full bg-palette-60 shadow-inner"
                                 placeholder="Email Adresse"
                                 name="reply_to"
                             />
                         </div>
                         <div className="m-6">
                             <textarea
-                                className="w-96 h-60 p-2 rounded-2xl"
+                            type="text" required
+                                className="w-96 h-60 p-4 rounded-2xl bg-palette-60 shadow-inner"
                                 name="message"
                                 id=""
                                 cols={3}
@@ -74,8 +78,8 @@ const ContactUs = () => {
                         <div className="m-6 relative">
                             <input
                                 type="submit"
-                                className="w-96 h-10 p-2 rounded-full bg-palette-70"
-                                value="send message"
+                                className="w-96 h-10 p-2 rounded-full bg-palette-50 text-palette-60 shadow-outer"
+                                value="abschicken"
                                 onClick={togglePopup}
                             />
                             <div className="absolute bottom-40"> 

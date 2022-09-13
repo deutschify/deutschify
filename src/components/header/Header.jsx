@@ -6,11 +6,11 @@ import Homepage from "../Homepage"
 
 const Header = () => {
     return (
-        <div className="w-full bg-palette-80 text-palette-50 flex">
+        <div className="w-full bg-palette-50 text-palette-60 flex shadow-outer">
             
 
             <NavLink
-                className="text-palette-50 m-2 p-2"
+                className="text-palette-60 m-2 p-2"
                 to="/"
                 element={<Homepage />}
             >
