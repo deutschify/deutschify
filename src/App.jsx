@@ -21,7 +21,7 @@ import A2 from "./components/A2";
 import B1 from "./components/B1";
 function App() {
     return (
-        <div className="bg-palette-60 pb-24 h-max">
+        <div className="bg-palette-60 pb-24 h-max w-screen">
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />
