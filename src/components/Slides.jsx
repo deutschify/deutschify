@@ -43,13 +43,13 @@ const Slides = () => {
         <div className="hidden md:block ">
             <div className="relative">
                 <AiOutlineArrowLeft
-                    className="slideshow-left-arrow absolute left-48 top-48 text-4xl "
+                    className="slideshow-left-arrow absolute left-48 top-48 text-4xl cursor-pointer"
                     onClick={previousSlideHandler}
                 />
             </div>
             <div className="relative">
                 <AiOutlineArrowRight
-                    className="slideshow-right-arrow absolute right-48 top-48 text-4xl"
+                    className="slideshow-right-arrow absolute right-48 top-48 text-4xl cursor-pointer"
                     onClick={nextSlideHandler}
                 />
             </div>
@@ -76,10 +76,10 @@ const Slides = () => {
                                                         alt="slideshow image"
                                                     />
                                                 </a>
+                                                <p className="text-center">
+                                                    {slider.title}
+                                                </p>
                                             </NavLink>
-                                            <p className="text-center">
-                                                {slider.title}
-                                            </p>
                                         </>
                                     )}
                                 </div>
