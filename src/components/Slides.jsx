@@ -71,7 +71,7 @@ const Slides = () => {
                                             <NavLink to={slider.href}>
                                                 <a href={slider.href}>
                                                     <img
-                                                        className="border-8 border-black"
+                                                        className="border-8 border-black "
                                                         src={slider.slideImage}
                                                         alt="slideshow image"
                                                     />
