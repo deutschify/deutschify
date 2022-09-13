@@ -21,7 +21,7 @@ import A2 from "./components/A2";
 import B1 from "./components/B1";
 function App() {
     return (
-        <div className="bg-palette-50">
+        <div className="bg-palette-60 pb-24 h-max">
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />
@@ -31,17 +31,13 @@ function App() {
                 <Route path="/a1" element={<A1 />} />
                 <Route path="/a2" element={<A2 />} />
                 <Route path="/b1" element={<B1 />} />
-                <Route
-                    path="/einbuergerungstest/*"
-                    element={<Einbuergerungstest />}
-                />
+                <Route path="/einbuergerungstest/*" element={<Einbuergerungstest />}/>
                 <Route path="/forum" element={<Forum />} />
                 <Route path="/registration" element={<PageRegister />} />
                 <Route path="/login/*" element={<Login />} />
                 <Route path="/about-us/*" element={<AboutUs />} />
                 <Route path="/contact-us/*" element={<ContactUs />} />
                 <Route path="/rate-us/*" element={<RateUs />} />
-
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
             <Footer />
