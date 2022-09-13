@@ -1,10 +1,14 @@
-import React from "react";
+import Slides from "./Slides";
+import SlidesMobile from "./SlidesMobile";
 
 const Homepage = () => {
     return (
-        <h1 className="text-3xl font-bold underline">
-            Hello world with Tailwind!
-        </h1>
+        <div>
+            {/* tablet and desktop version */}
+            <Slides />
+            {/* component für mobile version */}
+            <SlidesMobile />
+        </div>
     );
 };
 
