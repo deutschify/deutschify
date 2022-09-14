@@ -22,7 +22,7 @@ import A1 from "./components/A1";
 import A2 from "./components/A2";
 import B1 from "./components/B1";
 
-const baseUrl = import.meta.env.VITE_BACKEND_URL;
+export const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 function App() {
     const navigate = useNavigate();
@@ -51,7 +51,7 @@ function App() {
     };
 
     return (
-        <div className="bg-palette-50">
+        <div className="bg-palette-60 pb-24 h-max font-block2 font-bold">
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />
