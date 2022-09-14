@@ -21,17 +21,19 @@ const Footer = () => {
                     />
                 </NavLink>
                 <div className="flex justify-center m-3 space-x-4 md:justify-start md:text-2xl md:ml-10 ">
-                    <a className="hover:text-palette-80"
+                    <a
+                        className="hover:text-palette-80"
                         href="https://www.facebook.com/profile.php?id=100085315394768"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         <BsFacebook />
                     </a>
-                    <a className="hover:text-palette-80"
-                    href="https://www.instagram.com/deutschify.integrationscoach/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    <a
+                        className="hover:text-palette-80"
+                        href="https://www.instagram.com/deutschify.integrationscoach/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <BsInstagram />
                     </a>
