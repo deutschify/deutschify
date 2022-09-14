@@ -42,6 +42,7 @@ const ContactUs = () => {
             <div className="flex justify-center p-10">
                 <form
                     onSubmit={sendEmail}
+
                     className="bg-palette-80 border-4 border-palette-50 md:w-2/4 md:h-full md:p-4 flex justify-center rounded-2xl shadow-outer"
                 >
                     <div className="">
@@ -50,6 +51,7 @@ const ContactUs = () => {
                                 type="text"
                                 required
                                 className="w-96 h-10 p-4 rounded-full bg-palette-60 border-4 border-palette-50 shadow-inner outline-none"
+
                                 placeholder="Name"
                                 name="from_name"
                             />
@@ -58,7 +60,9 @@ const ContactUs = () => {
                             <input
                                 type="email"
                                 required
+
                                 className="w-96 h-10 p-4 rounded-full bg-palette-60 shadow-inner outline-none border-4 border-palette-50"
+
                                 placeholder="Email Adresse"
                                 name="reply_to"
                             />
@@ -67,7 +71,9 @@ const ContactUs = () => {
                             <textarea
                                 type="text"
                                 required
+
                                 className="w-96 h-60 p-4 rounded-2xl bg-palette-60 shadow-inner border-4 border-palette-50 outline-none"
+
                                 name="message"
                                 id=""
                                 cols={3}
@@ -75,6 +81,7 @@ const ContactUs = () => {
                                 placeholder="Tippe deine Nachricht hier..."
                             ></textarea>
                         </div>
+
                         <div className="m-6">
                             <input
                                 type="submit"
@@ -99,6 +106,7 @@ const ContactUs = () => {
                                 />
                             )}
                         </div>
+
                         </div>
                     </div>
                 </form>
