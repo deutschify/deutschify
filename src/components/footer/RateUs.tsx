@@ -16,7 +16,7 @@ const RateUs = () => {
                             {/* Vorname */}
                         </label>
                         <input
-                            className="appearance-none block w-full bg-palette-60 text-palette-50 border-2 border-palette-30  rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 placeholder-palette-50"
+                            className=" block w-full bg-palette-60 text-palette-50 border-2 border-palette-30  rounded-lg py-3 px-4 focus:outline-none   placeholder-palette-50"
                             id="grid-first-name"
                             type="text"
                             placeholder="Gebe hier deinen Vornamen ein..."
