@@ -8,57 +8,55 @@ const Einbuergerungstest = () => {
                 Wähle zuerst dein Bundesland aus
             </h2>
             <div className="bg-palette-50  rounded-xl p-4 flex flex-col items-center justify-center mx-16 my-8 shadow-bs border-4 border-palette-60 md:flex-row md:flex-wrap md:w-11/12 md:justify-center " >
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-annie font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Baden-Württemberg
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-archisDaughter font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Bayern
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-b612 font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Berlin
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-baloo font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Brandenburg
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-comfortaa font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Bremen
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-comingsoon font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Hamburg
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-kalam font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Hessen
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-mali font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Mecklenburg-Vorpommern
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-oregano font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Niedersachsen
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-overlook font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Nordrhein-Westfalen
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-pacifico">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Rheinland-Pfalz
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-pangolin font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Saarland
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-shadows font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Sachsen
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-shortstack font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Sachsen-Anhalt
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-sunshiney font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Schleswig-Holstein
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-nextdoorgirl font-bold">
+                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
                     Thüringen
                 </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-twinklestar font-bold">
-                    Deutschland
-                </div>
+              
 
             </div>
         </div>
