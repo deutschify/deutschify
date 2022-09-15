@@ -5,7 +5,7 @@ import { Route, Routes, NavLink } from "react-router-dom";
 import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
 import RateUs from "./RateUs";
-import Homepage from "../Homepage";
+import Homepage from "../homepage/Homepage";
 
 const Footer = () => {
     // footer
