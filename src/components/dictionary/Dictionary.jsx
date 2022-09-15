@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Image from "../../../public/images/deutschify-bigletter.png";
+import Image from "../../../public/images/dictionary 1.png";
 import  ResultList  from "./ResultList";
 const Dictionary = () => {
   const [value, setValue] = useState("");
@@ -20,8 +20,8 @@ const Dictionary = () => {
   }
 
   return (
-      <div className="  lg:grid grid-cols-2 w-full gap-[15rem] ml-7 ">
-          <div className="container mx-auto px-3 py-8">
+      <div className="    xl:grid grid-cols-2 w-full gap-[15rem] ml-2 ">
+          <div className=" h-100% container mx-auto px-3 py-8">
               <h1 className="text-3xl font-bold  text-white">
                   Simple Dictionary
               </h1>
@@ -79,9 +79,9 @@ const Dictionary = () => {
                   </>
               )}
           </div>
-          <div className="border-2 border-black flex  justify-end items-end ">
-              <div className=''>
-                  <img className="hidden lg:block  ml-[16rem]  " src={Image} alt="" />
+          <div className="flex  justify-end items-center mr-4 mt-40 ">
+              <div className="">
+                  <img className="hidden xl:block    " src={Image} alt="" />
               </div>
           </div>{" "}
       </div>
