@@ -3,7 +3,7 @@ import { Nav } from "rsuite";
 import A1 from "../A1";
 import A2 from "../A2";
 import B1 from "../B1";
-import Einbuergerungstest from "../Einbuergerungstest";
+import Einbuergerungstest from "../orientierung/Einbuergerungstest";
 import Dictionary from "../dictionary/Dictionary";
 import Forum from "../Forum";
 import { BiMenu } from "react-icons/bi";
