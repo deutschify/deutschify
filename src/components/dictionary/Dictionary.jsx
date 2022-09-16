@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { HiArrowNarrowRight, HiArrowNarrowLeft } from "react-icons/hi";
 import Image from "../../../public/images/dictionary 1.png";
 import  ResultList  from "./ResultList";
 const Dictionary = () => {
@@ -29,10 +30,18 @@ const Dictionary = () => {
                   Find definisions for word
               </p>
               <input
-                  className=" md:hidden py-2 px-2 ml-6 w-[6rem]  "
+                  className=" md:hidden py-2 px-2  w-[6rem]  "
                   type="tex  "
                   placeholder="language"
               />
+              <button className=" pl-2 md:hidden">
+                  {" "}
+                  <HiArrowNarrowRight />
+              </button>
+              <button className="  absolute mt-5 md:hidden  ">
+                  {" "}
+                  <HiArrowNarrowLeft />
+              </button>
               <input
                   className="md:hidden py-2 px-2 ml-6 w-[6rem]  "
                   type="text "
@@ -60,6 +69,14 @@ const Dictionary = () => {
                       type="text "
                       placeholder="language"
                   />
+                  <button className="hidden md:block mt-6 pl-4">
+                      {" "}
+                      <HiArrowNarrowRight />
+                  </button>
+                  <button className="hidden md:block ">
+                      {" "}
+                      <HiArrowNarrowLeft />
+                  </button>
                   <input
                       className="hidden md:block py-2 ml-6 w-[6rem]"
                       type="text "
