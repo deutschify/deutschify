@@ -15,7 +15,7 @@ const RateUs = () => {
     //     e.preventDefault();
     //     console.log("before axios");
     //     axios
-    //         .post(url, {
+    //         .post(backend_base_url + "/rate-us", {
     //             firstName: rateUsData.firstName,
     //             lastName: rateUsData.lastName,
     //             feedback: rateUsData.feedback,
@@ -44,7 +44,7 @@ const RateUs = () => {
         const response = await fetch(backend_base_url + "/rate-us", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ rateUsData }),
+            body: JSON.stringify(rateUsData),
         });
         console.log("222");
         if (response.ok) {
