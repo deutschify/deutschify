@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import deutschify from "../../public/images/deutschify.png";
+import deutschify from "../../../public/images/deutschify.png";
 
 const SlidesMobile = () => {
     return (
