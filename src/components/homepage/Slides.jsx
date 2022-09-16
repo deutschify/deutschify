@@ -40,7 +40,7 @@ const Slides = () => {
     }
 
     return (
-        <div className="hidden md:block ">
+        <div className="hidden md:block pt-16">
             <div className="relative">
                 <AiOutlineArrowLeft
                     className="slideshow-left-arrow absolute left-48 top-48 text-4xl cursor-pointer"

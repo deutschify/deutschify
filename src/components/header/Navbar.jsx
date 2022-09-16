@@ -37,7 +37,6 @@ const NavBar = () => {
                                     trigger={["click", "hover"]}
                                     title="Übungen"
                                 >
-                                   
                                     <div className="bg-palette-80 text-palette-50 w-60 hover:text-palette-60 rounded-t-lg">
                                         <Nav.Menu
                                             className="text-center appearance-none"
