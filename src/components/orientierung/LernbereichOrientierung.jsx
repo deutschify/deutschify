@@ -1,6 +1,8 @@
 import { useParams, NavLink } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import LiDExc from "../orientierung/LiDExc";
+import LiDMod from "../orientierung/LiDMod"
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -49,13 +51,15 @@ const Lernbereich = () => {
             </h1>
             <nav className="flex justify-between md:text-2xl">
                 <NavLink
-                    to=""
+                    to="/lernbereich/excercise/:category/*"
+                    element={<LiDExc/>}
                     className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
                 >
                     Zum Übungstest
                 </NavLink>
                 <NavLink
-                    to="/Lernbereich/:category/excercise"
+                    to="/lernbereich/modell/:category/*"
+                    element={<LiDMod/>}
                     className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
                 >
                     Zum Modelltest

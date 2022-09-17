@@ -22,7 +22,8 @@ import A1 from "./components/A1";
 import A2 from "./components/A2";
 import B1 from "./components/B1";
 import Lernbereich from "./components/orientierung/LernbereichOrientierung";
-
+import LiDExc from "./components/orientierung/LiDExc";
+import LiDMod from "./components/orientierung/LiDMod";
 
 export const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -70,6 +71,14 @@ function App() {
                 <Route
                     path="/lernbereich/:category/*"
                     element={<Lernbereich />}
+                />
+                <Route
+                    path="/lernbereich/excercise/:category/*"
+                    element={<LiDExc />}
+                />
+                <Route
+                    path="/lernbereich/modell/:category/*"
+                    element={<LiDMod />}
                 />
                 <Route path="/forum" element={<Forum />} />
                 <Route

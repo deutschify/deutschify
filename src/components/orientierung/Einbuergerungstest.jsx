@@ -18,15 +18,15 @@ const Einbuergerungstest = () => {
 
             <nav className="bg-palette-50  rounded-xl p-4 flex flex-col items-center justify-center mx-16 my-8 shadow-bs border-4 border-palette-60 md:flex-row md:flex-wrap md:w-11/12 md:justify-center ">
                 <NavLink
-                    to="/Lernbereich/baden-wuerttemberg"
-                    element={<Lernbereich />}
+                    to="/lernbereich/baden-wuerttemberg"
+                    element={<l />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
                     Baden-Württemberg
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/bayern"
+                    to="/lernbereich/bayern"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -34,7 +34,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/berlin"
+                    to="/lernbereich/berlin"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -42,7 +42,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/brandenburg"
+                    to="/lernbereich/brandenburg"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -50,7 +50,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/bremen"
+                    to="/lernbereich/bremen"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -58,7 +58,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/hamburg"
+                    to="/lernbereich/hamburg"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -66,7 +66,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/hessen"
+                    to="/lernbereich/hessen"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -74,7 +74,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/mecklenburg-vorpommern"
+                    to="/lernbereich/mecklenburg-vorpommern"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -82,7 +82,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/niedersachsen"
+                    to="/lernbereich/niedersachsen"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -90,7 +90,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/nordrhein-westfalen"
+                    to="/lernbereich/nordrhein-westfalen"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -98,7 +98,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/rheinland-pfalz"
+                    to="/lernbereich/rheinland-pfalz"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -106,7 +106,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/saarland"
+                    to="/lernbereich/saarland"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -114,7 +114,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/sachsen"
+                    to="/lernbereich/sachsen"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -122,7 +122,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/sachsen-anhalt"
+                    to="/lernbereich/sachsen-anhalt"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -130,7 +130,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/schleswig-holstein"
+                    to="/lernbereich/schleswig-holstein"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
@@ -138,7 +138,7 @@ const Einbuergerungstest = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/Lernbereich/thueringen"
+                    to="/lernbereich/thueringen"
                     element={<Lernbereich />}
                     className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
                 >
