@@ -51,7 +51,7 @@ function App() {
     };
 
     return (
-        <div className="bg-palette-60 pb-24 h-max font-block2 font-bold">
+        <div className="bg-palette-60 pb-24 font-block2 font-bold">
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />

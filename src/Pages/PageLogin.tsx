@@ -48,7 +48,7 @@ const PageLogin = (props: IPageLoginProps) => {
     };
 
     return (
-        <div>
+        <div className="flex flex-col justify-center  items-center">
             <h1 className="text-2xl">Welcome to Login</h1>
             <form
                 className="bg-white shadow-md rounded flex-col"
