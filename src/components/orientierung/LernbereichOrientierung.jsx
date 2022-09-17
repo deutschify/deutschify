@@ -6,29 +6,29 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Lernbereich = () => {
 
-        const [query, setQuery] = useState({})
-
+        const [questions, setQuestions] = useState("")
+        // const [imageUrl, setImageUrl] = useState("")
         const { bundesland } = useParams()
-
-        console.log(bundesland);
-
-        // const getQuestion = () => {
-
-        //     (async () => {
-        //         setQuery((await axios.get(`${baseUrl} + "/:bundesland"`)).data);
-        //     })();
-        // }
-
-        const getQuestion = () => {
-            fetch(`${baseUrl}`)
-        }
         
+ 
         useEffect(() => {
-            // getQuestion();
-        }, []);
+            const fetchData = async () => {
+              const response = await fetch(`${baseUrl}/questions/${bundesland}`)
+              const questions = await response.json()
+              setQuestions(questions)
+            }
+            fetchData()
+          })
+
+       
     return ( 
-        <div className=""><h1>Lernbereich { bundesland }</h1>
-       <div className=""></div>
+        <div className=""><h1>Lernbereich { cat }</h1>
+       <div className="">
+           {/* <img src={imageUrl} alt="" /> */}
+              {/*    {imageUrl && setImageUrl(jsonFromDB.image)} */}
+
+         
+       </div>
         </div>
      );
     };
