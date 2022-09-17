@@ -13,7 +13,7 @@ const Lernbereich = () => {
  
         useEffect(() => {
             const fetchData = async () => {
-              const response = await fetch(`${baseUrl}/questions/${bundesland}`)
+              const response = await axios.get(`${baseUrl}/questions${bundesland}`).data
               const questions = await response.json()
               setQuestions(questions)
             }
