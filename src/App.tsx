@@ -23,6 +23,7 @@ import A2 from "./components/A2";
 import B1 from "./components/B1";
 import Lernbereich from "./components/orientierung/LernbereichOrientierung";
 
+
 export const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 function App() {
@@ -67,7 +68,7 @@ function App() {
                     element={<Einbuergerungstest />}
                 />
                 <Route
-                    path="/lernbereich/:bundesland/*"
+                    path="/lernbereich/:category/*"
                     element={<Lernbereich />}
                 />
                 <Route path="/forum" element={<Forum />} />

@@ -3,6 +3,7 @@ import axios from "axios";
 import { baseUrl } from "../../App";
 import Lernbereich from "./LernbereichOrientierung";
 
+
 const Einbuergerungstest = () => {
 
 
@@ -40,50 +41,115 @@ const Einbuergerungstest = () => {
                     Berlin
                 </NavLink>
 
-                {/* <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                <NavLink
+                    to="/Lernbereich/brandenburg"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Brandenburg
-                </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                </NavLink>
+
+                <NavLink
+                    to="/Lernbereich/bremen"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Bremen
-                </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                </NavLink>
+
+                <NavLink
+                    to="/Lernbereich/hamburg"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Hamburg
-                </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                </NavLink>
+
+                <NavLink
+                    to="/Lernbereich/hessen"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Hessen
-                </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                </NavLink>
+
+                <NavLink
+                    to="/Lernbereich/mecklenburg-vorpommern"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Mecklenburg-Vorpommern
-                </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                </NavLink>
+
+                <NavLink
+                    to="/Lernbereich/niedersachsen"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Niedersachsen
-                </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                </NavLink>
+
+                <NavLink
+                    to="/Lernbereich/nordrhein-westfalen"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Nordrhein-Westfalen
-                </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                </NavLink>
+
+                <NavLink
+                    to="/Lernbereich/rheinland-pfalz"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Rheinland-Pfalz
-                </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                </NavLink>
+
+                <NavLink
+                    to="/Lernbereich/saarland"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Saarland
-                </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                </NavLink>
+
+                <NavLink
+                    to="/Lernbereich/sachsen"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Sachsen
-                </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                </NavLink>
+
+                <NavLink
+                    to="/Lernbereich/sachsen-anhalt"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Sachsen-Anhalt
-                </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                </NavLink>
+
+                <NavLink
+                    to="/Lernbereich/schleswig-holstein"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Schleswig-Holstein
-                </div>
-                <div className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold">
+                </NavLink>
+
+                <NavLink
+                    to="/Lernbereich/thueringen"
+                    element={<Lernbereich />}
+                    className="bg-palette-60 w-80 h-20 rounded-xl border-palette-50 border-2 m-2 flex justify-center items-center text-xl text-palette-50 hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 font-block3 font-bold"
+                >
                     Thüringen
-                </div> */}
+                </NavLink>
+
+
+
+                
             </nav>
 
-            {/* <Routes>
-                <Route path="/Lernbereich/:bundesland" element={<Lernbereich />}></Route>
-            </Routes> */}
         </div>
     );
 };

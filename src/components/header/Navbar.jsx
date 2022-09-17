@@ -101,7 +101,7 @@ const NavBar = () => {
                         </div>
                     </div>
                     <div className="">
-                        <div className="bg-palette-80 p-4 mt-24  text-xl rounded-full shadow-outer hover:shadow-inner hover:text-palette-60">
+                        <div className="bg-palette-80 p-4 mt-24  text-xl rounded-full shadow-outer  hover:text-palette-60">
                             Login
                         </div>
                     </div>
@@ -178,12 +178,12 @@ const NavBar = () => {
                         </NavLink>
 
                         <div className="flex items-center m-5">
-                            <div className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:shadow-inner hover:text-palette-50">
+                            <div className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:text-palette-50">
                                 A
                             </div>
                         </div>
                         <div className="flex items-center m-10">
-                            <div className="bg-palette-80 p-4 text-xl py-2 rounded-full hover:shadow-inner hover:text-palette-50">
+                            <div className="bg-palette-80 p-4 text-xl py-2 rounded-full hover:text-palette-50">
                                 Login
                             </div>
                         </div>
