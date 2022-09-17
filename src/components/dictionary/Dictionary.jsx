@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { HiArrowNarrowRight, HiArrowNarrowLeft } from "react-icons/hi";
-import Image from "../../../public/images/dictionary 1.png";
+import Image from "../../../public/images/dictionary1.png";
 import  ResultList  from "./ResultList";
 const Dictionary = () => {
   const [value, setValue] = useState("");
@@ -26,9 +26,7 @@ const Dictionary = () => {
               <h1 className="text-3xl font-bold  text-white">
                   Simple Dictionary
               </h1>
-              <p className=" mt-1 mb-10 text-slate-300 text-lg">
-                  Find definisions for word
-              </p>
+
               <input
                   className=" md:hidden py-2 px-2  w-[6rem]  "
                   type="tex  "
@@ -58,7 +56,7 @@ const Dictionary = () => {
                           onKeyDown={handleInputKeyDown}
                       />
                       <button
-                          className="bg-blue-400 border-l px-4 py-2 text-white"
+                          className="bg-palette-30 border-l px-4 py-2 text-white"
                           onClick={handleSubmit}
                       >
                           Search
@@ -86,9 +84,9 @@ const Dictionary = () => {
 
               {inputValue && (
                   <>
-                      <h3 className="text-gray-50  mt-4">
+                      <h3 className="text-palette-50 mt-4">
                           Result for:{" "}
-                          <span className="text-white font-bold">
+                          <span className="text-palette-50 font-bold">
                               {inputValue}
                           </span>
                       </h3>

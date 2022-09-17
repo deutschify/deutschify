@@ -1,5 +1,5 @@
 import StarRating from "./StarRating";
-import "../../App.css";
+
 
 const RateUs = () => {
     return (

@@ -68,9 +68,9 @@ const ResultList = ({ inputValue }) => {
                                 Synonym:
                             </h3>
                             <Synonym mean={response} />
-                            <h3 className="text-2xl font-bold mt-4">
+                            {/* <h3 className="text-2xl font-bold mt-4">
                                 Antonym:
-                            </h3>
+                            </h3> */}
                             {/* <Antonym mean={response} /> */}
                         </div>
                         {/* <div className="">
