@@ -56,21 +56,22 @@ const ResultList = ({ inputValue }) => {
                 <div >
                     <div >
                         <div>
-                            <h3 className="text-2xl font-bold mt-4">
+                            <h3 className="text-2xl font-bold mt-4 text-center ">
                                 Meaning & Definitions:
                             </h3>
                             <MeanigList mean={response} />
-                            <h3 className="text-2xl font-bold mt-4">
+                            <h3 className="text-2xl font-bold mt-4 text-center ">
                                 Example:
                             </h3>
                             <Example mean={response} />
-                            <h3 className="text-2xl font-bold mt-4">
+                            <h3 className="text-2xl font-bold mt-4 text-center ">
                                 Synonym:
                             </h3>
                             <Synonym mean={response} />
-                            <h3 className="text-2xl font-bold mt-4">
+                            {/* <h3 className="text-2xl font-bold mt-4">
                                 Antonym:
-                            </h3>
+                            </h3> */}
+
                             {/* <Antonym mean={response} /> */}
                         </div>
                         {/* <div className="">

@@ -1,8 +1,15 @@
 import { useState } from "react";
-import Image from "../../../public/images/dictionary 1.png";
+
+
 import ResultList from "./ResultList";
 import { useStore } from "../../store";
 import { Navigate } from "react-router";
+
+
+
+import { HiArrowNarrowRight, HiArrowNarrowLeft } from "react-icons/hi";
+import ImageDictionary from "../../../public/images/dictionary1.png";
+
 
 const Dictionary = () => {
     const [value, setValue] = useState("");
@@ -105,6 +112,7 @@ const Dictionary = () => {
             )}
         </>
     );
+
 };
 
 export default Dictionary;

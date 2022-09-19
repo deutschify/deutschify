@@ -36,7 +36,7 @@ const StarRating = () => {
                     );
                 })}
                 {rating > null && (
-                    <div className="w-full">
+                    <div className="w-full pt-4">
                         {" "}
                         mit {rating} von 5 Sternen bewertet
                     </div>
