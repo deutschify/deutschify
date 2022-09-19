@@ -75,13 +75,13 @@ const NavBar = () => {
                                             </div>
                                         </Nav.Menu>
                                     </div>
-                                    {/* <NavLink
+                                    <NavLink
                                         className="flex bg-palette-80 text-palette-50 w-60 hover:text-palette-60 rounded-b-lg"
                                         to="/einbuergerungstest"
                                         element={<Einbuergerungstest />}
                                     >
                                         Leben in Deutschland
-                                    </NavLink> */}
+                                    </NavLink>
                                 </Nav.Menu>
                             </div>
                             <div className="">
@@ -167,13 +167,13 @@ const NavBar = () => {
                                             </div>
                                         </Nav.Menu>
                                     </div>{" "}
-                                    {/* <NavLink
+                                    <NavLink
                                         className="bg-palette-80 text-palette-50 hover:text-palette-60 flex justify-center"
                                         to="/einbuergerungstest"
                                         element={<Einbuergerungstest />}
                                     >
                                         Leben in Deutschland
-                                    </NavLink> */}
+                                    </NavLink> 
                                 </div>
                             </Nav.Menu>
                         </div>

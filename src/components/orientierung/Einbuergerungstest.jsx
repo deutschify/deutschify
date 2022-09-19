@@ -1,6 +1,6 @@
 import { useParams, Route, Routes, NavLink } from "react-router-dom";
 import axios from "axios";
-import { baseUrl } from "../../App";
+// import { baseUrl } from "../../App";
 import Lernbereich from "./LernbereichOrientierung";
 
 
