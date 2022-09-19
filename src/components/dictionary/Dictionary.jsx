@@ -1,6 +1,8 @@
 import { useState } from "react";
+
 import { HiArrowNarrowRight, HiArrowNarrowLeft } from "react-icons/hi";
 import ImageDictionary from "../../../public/images/dictionary1.png";
+
 import  ResultList  from "./ResultList";
 const Dictionary = () => {
   const [value, setValue] = useState("");
@@ -87,6 +89,7 @@ const Dictionary = () => {
                       <h3 className="text-palette-50 mt-4">
                           Result for:{" "}
                           <span className="text-palette-50 font-bold">
+
                               {inputValue}
                           </span>
                       </h3>
@@ -96,7 +99,9 @@ const Dictionary = () => {
           </div>
           <div className="flex  justify-end items-center mr-4 mt-40 ">
               <div className="">
+
                   <img className="hidden xl:block    " src={ImageDictionary} alt="" />
+
               </div>
           </div>{" "}
       </div>

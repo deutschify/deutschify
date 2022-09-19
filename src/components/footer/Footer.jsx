@@ -1,4 +1,3 @@
-
 import { BsFacebook } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
@@ -6,7 +5,7 @@ import { Route, Routes, NavLink } from "react-router-dom";
 import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
 import RateUs from "./RateUs";
-import Homepage from "../Homepage";
+import Homepage from "../homepage/Homepage";
 
 const Footer = () => {
     // footer
@@ -14,30 +13,27 @@ const Footer = () => {
         // footer
         <div className="w-full flex text-center bg-palette-50 text-palette-60 fixed bottom-0">
             <div className="w-3/12">
-            <NavLink
-                className=""
-                to="/"
-                element={<Homepage />}
-            >
-                <img
-                    src="./images/deutschify-side.png"
-                    className="w-40
-                     m-2"
-                    alt=""
-                />
+                <NavLink className="" to="/" element={<Homepage />}>
+                    <img
+                        src="./images/deutschify-side.png"
+                        className="w-40 m-2"
+                        alt=""
+                    />
                 </NavLink>
                 <div className="flex justify-center m-3 space-x-4 md:justify-start md:text-2xl md:ml-10 ">
-                    <a className="hover:text-palette-80"
+                    <a
+                        className="hover:text-palette-80"
                         href="https://www.facebook.com/profile.php?id=100085315394768"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         <BsFacebook />
                     </a>
-                    <a className="hover:text-palette-80"
-                    href="https://www.instagram.com/deutschify.integrationscoach/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    <a
+                        className="hover:text-palette-80"
+                        href="https://www.instagram.com/deutschify.integrationscoach/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <BsInstagram />
                     </a>
@@ -72,7 +68,6 @@ const Footer = () => {
                 <div className="w-12/12 m-2 flex  justify-center gap-1">
                     deutschify <AiOutlineCopyrightCircle /> 2022
                 </div>
-
             </div>
             {/* Copyright */}
         </div>

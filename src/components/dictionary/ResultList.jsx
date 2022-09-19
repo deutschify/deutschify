@@ -71,6 +71,7 @@ const ResultList = ({ inputValue }) => {
                             {/* <h3 className="text-2xl font-bold mt-4">
                                 Antonym:
                             </h3> */}
+
                             {/* <Antonym mean={response} /> */}
                         </div>
                         {/* <div className="">

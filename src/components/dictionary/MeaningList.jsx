@@ -1,6 +1,7 @@
 
 const MeanigList = ({ mean }) => {
   return (
+
       <div className=" border-4 border-palette-30 rounded-lg shadow-outer ">
           {mean.map((val) =>
               val.meanings.map((means) =>
