@@ -21,34 +21,22 @@ import PageNotFound from "./components/PageNotFound";
 import A1 from "./components/A1";
 import A2 from "./components/A2";
 import B1 from "./components/B1";
-
-export const baseUrl = import.meta.env.VITE_BACKEND_URL;
+import {useStore} from './store'
+import { PageLogout } from "./Pages/PageLogout";
+import {baseUrl} from './store' 
 
 function App() {
     const navigate = useNavigate();
 
-    const [currentUser, setCurrentUser] = useState<IUserLoginForm>({
-        email: "",
-        firstName: "",
-        password: "",
-        accessGroups: [],
-    });
+    const currentUser = useStore((state) => state.currentUser)
+    const loading = useStore((state) => state.loading);
+    const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
 
     useEffect(() => {
-        (async () => {
-            const data = (
-                await axios.get(`${baseUrl}/current-user`, {
-                    withCredentials: true,
-                })
-            ).data;
-            const _currentUser = data.currentUser;
-            setCurrentUser(_currentUser);
-        })();
-    }, []);
-
-    const pageIsLoaded = () => {
-        return currentUser.firstName !== "";
-    };
+      fetchCurrentUser();
+    //   console.log(currentUser);
+    }, [])
+    
 
     return (
         <div className="bg-palette-60 pb-24 h-max font-block2 font-bold">
@@ -71,16 +59,16 @@ function App() {
                     element={
                         <PageRegister
                             baseUrl={baseUrl}
-                            setCurrentUser={setCurrentUser}
+                            // setCurrentUser={setCurrentUser} 
                         />
                     }
                 />
                 <Route
-                    path="/login/*"
+                    path="/login"
                     element={
                         <PageLogin
                             baseUrl={baseUrl}
-                            setCurrentUser={setCurrentUser}
+                            // setCurrentUser={setCurrentUser}
                         />
                     }
                 />
@@ -89,10 +77,18 @@ function App() {
                     element={
                         <PageConfirmRegistration
                             baseUrl={baseUrl}
-                            setCurrentUser={setCurrentUser}
+                            // setCurrentUser={setCurrentUser}
                         />
                     }
                 />
+                {currentUser.accessGroups?.includes('loggedInUsers') && (
+					<Route
+						path="/logout"
+						element={
+							<PageLogout/>
+						}
+					/>
+				 )}
                 <Route path="/about-us/*" element={<AboutUs />} />
                 <Route path="/contact-us/*" element={<ContactUs />} />
                 <Route path="/rate-us/*" element={<RateUs />} />

@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 // import useStore from '../store/store';
-import {IUserLoginForm} from '../interfaces'
+import { IUserLoginForm } from "../interfaces";
+import axios from "axios";
+import { useStore } from "../store";
+import { useNavigate } from "react-router";
 
-interface IPageLoginProps {
-	baseUrl: string;
-	setCurrentUser: React.Dispatch<React.SetStateAction<IUserLoginForm>>;
+export interface IPageLoginProps {
+    baseUrl: string;
+    // setCurrentUser: React.Dispatch<React.SetStateAction<IUserLoginForm>>;
 }
 
 const schema = yup.object().shape({
@@ -16,21 +19,12 @@ const schema = yup.object().shape({
 });
 
 const PageLogin = (props: IPageLoginProps) => {
-    
-    const { baseUrl, setCurrentUser } = props;
-    // const currentUser = useStore(state => state.currentUser);
+    const { baseUrl } = props;
+    const navigate = useNavigate();
+    const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
+    const currentUser = useStore((state) => state.currentUser);
+    // const baseUrl = useStore((state) => state.baseUrl);
 
-    // useEffect(() => {
-    //     (async () => {
-    //         const data = (await axios.get(`${baseUrl}/current-user`)).data;
-    //         console.log(data.currentUser);
-            
-    //         const _currentUser = data.currentUser;
-    //         setCurrentUser(_currentUser);
-            
-    //     })();
-    // }, []);
-    
     const {
         register,
         formState: { errors },
@@ -40,10 +34,34 @@ const PageLogin = (props: IPageLoginProps) => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit: SubmitHandler<IUserLoginForm> = (data: IUserLoginForm) => {
-        console.log(data);
-        console.log(errors);
-        console.log('success');
+    const onSubmit: SubmitHandler<IUserLoginForm> = async (
+        data: IUserLoginForm
+    ) => {
+        const user = (
+            await axios.post(
+                `${baseUrl}/login`,
+                {
+                    email: data.email,
+                    password: data.password,
+                    safeOriginCode: import.meta.env.VITE_SAFE_ORIGIN_CODE,
+                },
+                { withCredentials: true }
+            )
+        ).data;
+        const _currentUser = user.currentUser;
+        console.log({_currentUser});
+        
+        if (_currentUser.email === "anonymousUser") {
+            // errors('bad login');
+            console.log("bad login");
+        } else {
+            fetchCurrentUser()
+            console.log(currentUser);
+            console.log(fetchCurrentUser());
+            // navigate('/home');
+            console.log("success");
+        }
+        // console.log(data);
         
     };
 
@@ -54,7 +72,6 @@ const PageLogin = (props: IPageLoginProps) => {
                 className="bg-white shadow-md rounded flex-col"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                
                 <div>
                     <input
                         defaultValue=""
@@ -71,7 +88,7 @@ const PageLogin = (props: IPageLoginProps) => {
                     />
                     {errors.password && <p>{errors?.password?.message}</p>}
                 </div>
-               
+
                 <div>
                     <input type="submit" value="login" />
                 </div>

@@ -9,8 +9,14 @@ import Forum from "../Forum";
 import { BiMenu } from "react-icons/bi";
 import { BiX } from "react-icons/bi";
 import { Route, Routes, NavLink } from "react-router-dom";
+import { useStore } from "../../store";
+import PageLogin from "../../Pages/PageLogin";
+import PageRegister from "../../Pages/PageRegister";
+import { PageLogout } from "../../Pages/PageLogout";
 
 const NavBar = () => {
+    // const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
+    const currentUser = useStore((state) => state.currentUser);
     const [showNav, setShowNav] = useState(false);
     return (
         // Hamburger-Button
@@ -94,6 +100,15 @@ const NavBar = () => {
                             </div>
                         </div>
                     </Nav>
+                    <Nav className="m-2 mt-20">
+                        <NavLink
+                            className="flex justify-center hover:text-palette-80"
+                            to="/forum"
+                            element={<Forum />}
+                        >
+                            Forum
+                        </NavLink>
+                    </Nav>
                     <div className=" w-20 ">
                         <div className="hidden bg-palette-50 p-4 text-2xl justify-center rounded-full">
                             A
@@ -175,17 +190,40 @@ const NavBar = () => {
                         >
                             Forum
                         </NavLink>
+                        {currentUser.accessGroups?.includes(
+                            "loggedOutUsers"
+                        ) && (
+                            <div className="flex items-center m-10">
+                                <NavLink
+                                    className="flex items-center bg-palette-70 p-4 text-xl rounded hover:shadow-inner hover:text-palette-50 m-5"
+                                    to="/login"
+                                    element={<PageLogin />}
+                                >
+                                    Login
+                                </NavLink>
+                                <NavLink
+                                    className="flex items-center bg-palette-80 p-4 text-xl rounded hover:shadow-inner hover:text-palette-50"
+                                    to="/registration"
+                                    element={<PageRegister />}
+                                >
+                                    Register
+                                </NavLink>
+                            </div>
+                        )}
 
-                        <div className="flex items-center m-5">
+                        
+
+                        {currentUser.accessGroups?.includes(
+                            "loggedInUsers"
+                        ) && (
+                            <PageLogout/>
+                        )}
+
+                        {/* <div className="flex items-center m-5">
                             <div className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:shadow-inner hover:text-palette-50">
                                 A
                             </div>
-                        </div>
-                        <div className="flex items-center m-10">
-                            <div className="bg-palette-80 p-4 text-xl py-2 rounded-full hover:shadow-inner hover:text-palette-50">
-                                Login
-                            </div>
-                        </div>
+                        </div> */}
                     </div>
                 </Nav>
             </div>
