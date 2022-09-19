@@ -18,7 +18,7 @@ export const PageLogout = () => {
 		fetchLoggedOutUser()
 		console.log(currentUser);
 		
-		navigate("/");
+		navigate("/home");
 	}
 	return (
 		<div className="pageLogout flex items-center bg-palette-80 p-4 text-xl rounded hover:shadow-inner hover:text-palette-50">

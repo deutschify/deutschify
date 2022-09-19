@@ -58,7 +58,7 @@ const PageLogin = (props: IPageLoginProps) => {
             fetchCurrentUser()
             console.log(currentUser);
             console.log(fetchCurrentUser());
-            // navigate('/home');
+            navigate('/home');
             console.log("success");
         }
         // console.log(data);

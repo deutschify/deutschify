@@ -5,7 +5,7 @@ import Example from "./Example";
 import MeanigList from "./MeaningList";
 import Synonym from "./Synonym";
 
-axios.defaults.baseURL = "https://api.dictionaryapi.dev/api/v2/entries/en";
+const dictionaryAPI = "https://api.dictionaryapi.dev/api/v2/entries/en";
 
 const ResultList = ({ inputValue }) => {
     const [response, setResponse] = useState(null);
@@ -15,7 +15,7 @@ const ResultList = ({ inputValue }) => {
     const fetchData = async (param) => {
         try {
             setLoading(true);
-            const res = await axios(`/${param}`);
+            const res = await axios(`${dictionaryAPI}/${param}`);
             setResponse(res.data);
             setError(null);
         } catch (err) {
