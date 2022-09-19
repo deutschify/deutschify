@@ -1,9 +1,17 @@
 import StarRating from "./StarRating";
 
+import "../../App.css";
+import { useStore } from "../../store";
+import { Navigate } from "react-router";
+
 
 const RateUs = () => {
+    const currentUser = useStore((state) => state.currentUser);
+
     return (
-        <div className="mt-20 flex justify-center items-center">
+        <>
+        
+            {currentUser.accessGroups?.includes("loggedInUsers") ? (<div className="mt-20 flex justify-center items-center">
             <div className="bg-palette-20 border-4 border-palette-30 p-4 flex justify-center items-center rounded-lg shadow-outer">
                 <form className="max-w-lg  pt-6 pb-6">
                     <div className="flex flex-wrap -mx-3 mb-6">
@@ -67,7 +75,12 @@ const RateUs = () => {
                     </div>
                 </form>
             </div>
-        </div>
+        </div>) : (
+            <>
+            <p>Login inorder to rate us</p>
+            <Navigate replace to="/login" />
+        </>
+        )}</>
     );
 };
 
