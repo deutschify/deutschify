@@ -3,7 +3,9 @@ import { Nav } from "rsuite";
 import A1 from "../A1";
 import A2 from "../A2";
 import B1 from "../B1";
-// import Einbuergerungstest from "../Einbuergerungstest";
+
+import Einbuergerungstest from "../orientierung/Einbuergerungstest";
+
 import Dictionary from "../dictionary/Dictionary";
 import Forum from "../Forum";
 import { BiMenu } from "react-icons/bi";
@@ -115,7 +117,7 @@ const NavBar = () => {
                         </div>
                     </div>
                     <div className="">
-                        <div className="bg-palette-80 p-4 mt-24  text-xl rounded-full shadow-outer hover:shadow-inner hover:text-palette-60">
+                        <div className="bg-palette-80 p-4 mt-24  text-xl rounded-full shadow-outer  hover:text-palette-60">
                             Login
                         </div>
                     </div>
@@ -210,8 +212,7 @@ const NavBar = () => {
                                 </NavLink>
                             </div>
                         )}
-
-                        
+               
 
                         {currentUser.accessGroups?.includes(
                             "loggedInUsers"
@@ -224,6 +225,7 @@ const NavBar = () => {
                                 A
                             </div>
                         </div> */}
+
                     </div>
                 </Nav>
             </div>
