@@ -1,5 +1,8 @@
 import { useState } from "react";
-import Image from "../../../public/images/dictionary 1.png";
+
+import { HiArrowNarrowRight, HiArrowNarrowLeft } from "react-icons/hi";
+import ImageDictionary from "../../../public/images/dictionary1.png";
+
 import  ResultList  from "./ResultList";
 const Dictionary = () => {
   const [value, setValue] = useState("");
@@ -25,14 +28,20 @@ const Dictionary = () => {
               <h1 className="text-3xl font-bold  text-white">
                   Simple Dictionary
               </h1>
-              <p className=" mt-1 mb-10 text-slate-300 text-lg">
-                  Find definisions for word
-              </p>
+
               <input
-                  className=" md:hidden py-2 px-2 ml-6 w-[6rem]  "
+                  className=" md:hidden py-2 px-2  w-[6rem]  "
                   type="tex  "
                   placeholder="language"
               />
+              <button className=" pl-2 md:hidden">
+                  {" "}
+                  <HiArrowNarrowRight />
+              </button>
+              <button className="  absolute mt-5 md:hidden  ">
+                  {" "}
+                  <HiArrowNarrowLeft />
+              </button>
               <input
                   className="md:hidden py-2 px-2 ml-6 w-[6rem]  "
                   type="text "
@@ -49,7 +58,7 @@ const Dictionary = () => {
                           onKeyDown={handleInputKeyDown}
                       />
                       <button
-                          className="bg-blue-400 border-l px-4 py-2 text-white"
+                          className="bg-palette-30 border-l px-4 py-2 text-white"
                           onClick={handleSubmit}
                       >
                           Search
@@ -60,6 +69,14 @@ const Dictionary = () => {
                       type="text "
                       placeholder="language"
                   />
+                  <button className="hidden md:block mt-6 pl-4">
+                      {" "}
+                      <HiArrowNarrowRight />
+                  </button>
+                  <button className="hidden md:block ">
+                      {" "}
+                      <HiArrowNarrowLeft />
+                  </button>
                   <input
                       className="hidden md:block py-2 ml-6 w-[6rem]"
                       type="text "
@@ -69,9 +86,10 @@ const Dictionary = () => {
 
               {inputValue && (
                   <>
-                      <h3 className="text-gray-50  mt-4">
+                      <h3 className="text-palette-50 mt-4">
                           Result for:{" "}
-                          <span className="text-white font-bold">
+                          <span className="text-palette-50 font-bold">
+
                               {inputValue}
                           </span>
                       </h3>
@@ -81,7 +99,9 @@ const Dictionary = () => {
           </div>
           <div className="flex  justify-end items-center mr-4 mt-40 ">
               <div className="">
-                  <img className="hidden xl:block    " src={Image} alt="" />
+
+                  <img className="hidden xl:block    " src={ImageDictionary} alt="" />
+
               </div>
           </div>{" "}
       </div>
