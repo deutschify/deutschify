@@ -73,11 +73,11 @@ function App() {
                     element={<Lernbereich />}
                 />
                 <Route
-                    path="/lernbereich/excercise/:category/*"
+                    path="/lernbereich/:category/excercise/*"
                     element={<LiDExc />}
                 />
                 <Route
-                    path="/lernbereich/modell/:category/*"
+                    path="/lernbereich/:category/modelltest/*"
                     element={<LiDMod />}
                 />
                 <Route path="/forum" element={<Forum />} />
