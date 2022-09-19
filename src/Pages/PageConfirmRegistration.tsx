@@ -5,7 +5,7 @@ import axios from "axios";
 
 interface IPageConfirmRegistrationProps {
     baseUrl: string;
-    setCurrentUser: React.Dispatch<React.SetStateAction<IUserLoginForm>>;
+    // setCurrentUser: React.Dispatch<React.SetStateAction<IUserLoginForm>>;
 }
 
 enum ConfirmStatus {
@@ -21,7 +21,7 @@ const PageConfirmRegistration = (
         ConfirmStatus.unconfirmed
     );
     const { confirmationCode } = useParams();
-    const { baseUrl, setCurrentUser } = props;
+    const { baseUrl } = props;
     console.log(baseUrl);
     
 
