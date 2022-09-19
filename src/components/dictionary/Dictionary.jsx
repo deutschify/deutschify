@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { HiArrowNarrowRight, HiArrowNarrowLeft } from "react-icons/hi";
-import Image from "../../../public/images/dictionary1.png";
+import ImageDictionary from "../../../public/images/dictionary1.png";
 import  ResultList  from "./ResultList";
 const Dictionary = () => {
   const [value, setValue] = useState("");
@@ -96,7 +96,7 @@ const Dictionary = () => {
           </div>
           <div className="flex  justify-end items-center mr-4 mt-40 ">
               <div className="">
-                  <img className="hidden xl:block    " src={Image} alt="" />
+                  <img className="hidden xl:block    " src={ImageDictionary} alt="" />
               </div>
           </div>{" "}
       </div>
