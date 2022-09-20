@@ -1,4 +1,5 @@
 import { useParams, NavLink } from "react-router-dom";
+import {Image} from "cloudinary-react"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import LiDExc from "../orientierung/LiDExc";
@@ -83,7 +84,7 @@ const Lernbereich = () => {
                                 className="bg-palette-50 m-4 p-2 w-9/12 text-left rounded-xl border-2 border-palette-60 "
                             >
                                 <div className="text-palette-60  ">
-                                    {question.number}
+                                    {question.number} | {question.category}
                                 </div>
                                 <div className="text-palette-60 m-2 p-2">
                                     {" "}
@@ -92,6 +93,17 @@ const Lernbereich = () => {
                                     </div>
                                     {question.question}
                                 </div>{" "}
+                                {question.imageURL &&
+                                    <>
+                                        <div className="text-palette-60 m-2 p-2">
+                                            {" "}
+                                            <div className="mb-2 border-b-2 border-palette-60 ">
+                                                image:
+                                            </div>
+                                            <Image cloudName="dsyhfgbli" publicId={`${question.imageURL}`}/>
+                                        </div>{" "}
+                                    </>
+                                }
                                 <div className="text-palette-60 m-2 p-2">
                                     <div className="mb-2 border-b-2 border-palette-60">
                                         Antwort:
