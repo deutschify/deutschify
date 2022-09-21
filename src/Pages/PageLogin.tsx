@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import Image from '../../public/images/login-pic.png'
 // import useStore from '../store/store';
 
 import { IUserLoginForm } from "../interfaces";
