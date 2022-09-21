@@ -30,7 +30,7 @@ import LiDMod from "./components/orientierung/LiDMod";
 import { useStore } from "./store";
 import { PageLogout } from "./Pages/PageLogout";
 import { baseUrl } from "./store";
-
+import PageUserSettings from "./Pages/PageUserSettings";
 
 function App() {
     const navigate = useNavigate();
@@ -59,7 +59,6 @@ function App() {
                 <Route
                     path="/einbuergerungstest/*"
                     element={<Einbuergerungstest />}
-
                 />
                 <Route
                     path="/lernbereich/:category/*"
@@ -73,7 +72,6 @@ function App() {
                     path="/lernbereich/:category/modelltest/*"
                     element={<LiDMod />}
                 />
-
 
                 <Route path="/forum" element={<Forum />} />
 
@@ -93,7 +91,6 @@ function App() {
                             baseUrl={baseUrl}
 
                             // setCurrentUser={setCurrentUser}
-
                         />
                     }
                 />
@@ -107,7 +104,10 @@ function App() {
                     }
                 />
                 {currentUser.accessGroups?.includes("loggedInUsers") && (
-                    <Route path="/logout" element={<PageLogout />} />
+                    <>
+                        <Route path="/logout" element={<PageLogout />} />
+                        <Route path="/:user" element={<PageUserSettings />} />
+                    </>
                 )}
                 <Route path="/about-us/*" element={<AboutUs />} />
                 <Route path="/contact-us/*" element={<ContactUs />} />

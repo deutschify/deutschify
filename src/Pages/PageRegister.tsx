@@ -4,6 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import { IUserLoginForm, IUserRegistrationForm } from "../interfaces";
+import { Routes, Route } from "react-router";
+import { NavLink } from "react-router-dom";
+import PageLogin from "./PageLogin";
 
 interface IPageRegistrationProps {
     baseUrl: string;
@@ -63,7 +66,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
     return (
         <div>
             <h1 className="text-2xl">Welcome to Register</h1>
-            {success ? "go to your Email to verify your account." : ""}
+            {success && <p>"go to your Email to verify your account."</p>  }
             <form
                 className="bg-white shadow-md rounded flex-col"
                 onSubmit={handleSubmit(onSubmit)}
@@ -122,6 +125,17 @@ const PageRegister = (props: IPageRegistrationProps) => {
                     <input type="submit" value="Sign Up" />
                 </div>
             </form>
+            <div className="form-group">
+                    <span className="mx-8">
+                        Already have an Account? 
+                        <span className="line">
+                            <NavLink to="/login" className="text-palette-40 mx-4 underline">Sign In</NavLink>
+                        </span>
+                        <Routes>
+                            <Route path="/login" element={<PageLogin baseUrl="" />} />
+                        </Routes>
+                    </span>
+                </div>
         </div>
     );
 };
