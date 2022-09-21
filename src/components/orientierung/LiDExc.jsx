@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
-import * as qmat from "./qtools/qmat";
+
 import Lernbereich from "./LernbereichOrientierung";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
