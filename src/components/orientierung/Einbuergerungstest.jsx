@@ -9,10 +9,10 @@ const Einbuergerungstest = () => {
 
     return (
         <div className=" bg-palette-80 m-10 shadow-bs border-4 border-palette-80 rounded-xl ">
-            <h1 className="text-center text-2xl m-10 text-palette-50">
+            <h1 className="text-center text-2xl m-10 text-palette-60">
                 Übungen zu "Leben in Deutschland"
             </h1>
-            <h2 className="text-center text-xl text-palette-50">
+            <h2 className="text-center text-xl text-palette-60">
                 Wähle zuerst dein Bundesland aus
             </h2>
 
