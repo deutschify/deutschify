@@ -197,6 +197,9 @@ const PageRegister = (props: IPageRegistrationProps) => {
                             );})}
                                
                             </select>
+                            {errors.language && (
+                                <p>{errors?.language?.message}</p>
+                            )}
                         </div>
                         <div className=" text-center">
                             <select
@@ -223,6 +226,9 @@ const PageRegister = (props: IPageRegistrationProps) => {
                             );
                         })}
                             </select>
+                            {errors.nationality && (
+                                <p>{errors?.nationality?.message}</p>
+                            )}
                         </div>
                         <div className="text-center py-[20px]">
                             <input
