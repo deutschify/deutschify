@@ -58,7 +58,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
             },
             { withCredentials: true }
         );
-        setSuccess(true)
+        setSuccess(true);
         console.log(toSend);
         console.log(errors);
     };
@@ -66,7 +66,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
     return (
         <div>
             <h1 className="text-2xl">Welcome to Register</h1>
-            {success && <p>"go to your Email to verify your account."</p>  }
+            {success && <p>"go to your Email to verify your account."</p>}
             <form
                 className="bg-white shadow-md rounded flex-col"
                 onSubmit={handleSubmit(onSubmit)}
@@ -112,12 +112,22 @@ const PageRegister = (props: IPageRegistrationProps) => {
                     {errors.repeatPassword && <p>Password don't match!</p>}
                 </div>
                 <div>
-                    <select {...register("language")}>
+                    <select
+                        {...register("language")}
+                        defaultValue="Language"
+                        name="language"
+                    >
+                        <option disabled>Language</option>
                         <option value="deutsch">deutsch</option>
                     </select>
                 </div>
                 <div>
-                    <select {...register("nationality")}>
+                    <select
+                        {...register("nationality")}
+                        defaultValue="Nationality"
+                        name="nationality"
+                    >
+                        <option disabled>Nationality</option>
                         <option value="deutsche">Deutsche</option>
                     </select>
                 </div>
@@ -126,16 +136,24 @@ const PageRegister = (props: IPageRegistrationProps) => {
                 </div>
             </form>
             <div className="form-group">
-                    <span className="mx-8">
-                        Already have an Account? 
-                        <span className="line">
-                            <NavLink to="/login" className="text-palette-40 mx-4 underline">Sign In</NavLink>
-                        </span>
-                        <Routes>
-                            <Route path="/login" element={<PageLogin baseUrl="" />} />
-                        </Routes>
+                <span className="mx-8">
+                    Already have an Account?
+                    <span className="line">
+                        <NavLink
+                            to="/login"
+                            className="text-palette-40 mx-4 underline"
+                        >
+                            Sign In
+                        </NavLink>
                     </span>
-                </div>
+                    <Routes>
+                        <Route
+                            path="/login"
+                            element={<PageLogin baseUrl="" />}
+                        />
+                    </Routes>
+                </span>
+            </div>
         </div>
     );
 };

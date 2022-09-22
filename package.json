@@ -24,6 +24,7 @@
         "rsuite": "^5.18.0",
         "sass": "^1.54.8",
         "yup": "^0.32.11",
+        "yup-password": "^0.2.2",
         "zustand": "^4.1.1"
     },
     "devDependencies": {

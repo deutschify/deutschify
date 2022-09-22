@@ -14,7 +14,7 @@ export interface IUserEditForm {
     password: string;
     repeatPassword: string;
     language: string;
-    imageURL: string;
+    imagePublicId: string;
 }
 
 export interface IUserLoginForm {

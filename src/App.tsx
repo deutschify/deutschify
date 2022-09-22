@@ -76,7 +76,7 @@ function App() {
                 <Route path="/forum" element={<Forum />} />
 
                 <Route
-                    path="/registration"
+                    path="/registration/*"
                     element={
                         <PageRegister
                             baseUrl={baseUrl}
@@ -85,7 +85,7 @@ function App() {
                     }
                 />
                 <Route
-                    path="/login"
+                    path="/login/*"
                     element={
                         <PageLogin
                             baseUrl={baseUrl}
