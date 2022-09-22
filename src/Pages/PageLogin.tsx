@@ -27,7 +27,6 @@ const PageLogin = (props: IPageLoginProps) => {
     const navigate = useNavigate();
     const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
     const currentUser = useStore((state) => state.currentUser);
-    const languages = useStore((state) => state.languages);
 
     const {
         register,
@@ -83,7 +82,6 @@ const PageLogin = (props: IPageLoginProps) => {
             <div className=" py-[200px] flex flex-col justify-center items-center ">
                 <div className="">
                     <h1 className="text-center text-2xl pb-3  ">LOGIN</h1>
-                    <h1 className="text-center text-2xl pb-3  ">{languages}</h1>
                     <form
                         className=" flex-col "
                         onSubmit={handleSubmit(onSubmit)}
