@@ -9,6 +9,8 @@
         "reload": "git pull && npm i && npm run build"
     },
     "dependencies": {
+        "@cloudinary/react": "^1.5.0",
+        "@cloudinary/url-gen": "^1.8.6",
         "@hookform/resolvers": "^2.9.7",
         "axios": "^0.27.2",
         "cloudinary-react": "^1.8.1",
@@ -22,6 +24,7 @@
         "rsuite": "^5.18.0",
         "sass": "^1.54.8",
         "yup": "^0.32.11",
+        "yup-password": "^0.2.2",
         "zustand": "^4.1.1"
     },
     "devDependencies": {
