@@ -11,7 +11,7 @@ import { IUserLoginForm } from "./interfaces";
 import Footer from "./components/footer/Footer";
 import Homepage from "./components/homepage/Homepage";
 import Dictionary from "./components/dictionary/Dictionary";
-import LanguageLevels from "./components/LanguageLevels";
+import Sprachniveau from "./components/Sprachniveau";
 
 import Einbuergerungstest from "./components/orientierung/Einbuergerungstest";
 
@@ -52,7 +52,7 @@ function App() {
                 <Route path="/home" element={<Homepage />} />
 
                 <Route path="/dictionary" element={<Dictionary />} />
-                <Route path="/language-levels" element={<LanguageLevels />} />
+                <Route path="/sprachniveau" element={<Sprachniveau />} />
                 <Route path="/a1" element={<A1 />} />
                 <Route path="/a2" element={<A2 />} />
                 <Route path="/b1" element={<B1 />} />

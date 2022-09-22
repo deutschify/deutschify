@@ -10,19 +10,27 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Lernbereich = () => {
     const [questions, setQuestions] = useState([]);
-    const [activePage, setActivePage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [questionsPerPage, setQuestionsPerPage] = useState(10)
     const { category } = useParams();
 
     useEffect(() => {
-        const fetchDataBundesland = async () => {
+        const fetchDataBundesland = async () => { 
+ 
             const response = await fetch(
                 `${baseUrl}/all-questions/${category}`
             );
+            
             const questions = await response.json();
             setQuestions(questions);
+    
         };
         fetchDataBundesland();
     }, []);
+
+   
+
+   
 
     return (
         <div className="border-4 border-palette-50 m-2 p-4 rounded-xl text-center">
@@ -65,6 +73,7 @@ const Lernbereich = () => {
                     </div>
 
                     {questions.map((question, index) => {
+                       
                         return (
                             <div
                                 key={index}
@@ -102,7 +111,7 @@ const Lernbereich = () => {
                         );
                     })}
                 </div>
-                     <Pagination
+                     {/* <Pagination
         prev
         last
         next
@@ -114,7 +123,7 @@ const Lernbereich = () => {
         activePage={activePage}
         onChangePage={setActivePage}
        
-      />
+      /> */}
  
          
             </div>
