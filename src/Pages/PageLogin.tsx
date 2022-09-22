@@ -70,8 +70,8 @@ const PageLogin = (props: IPageLoginProps) => {
 
     return (
 
-        <div className="  md:grid grid-cols-2 min-h-[800px] ">
-            <div className=" hidden md:flex flex-col justify-center items-start w-[700px]">
+        <div  className="  md:grid grid-cols-2 min-h-[800px] ">
+            <  div className=" hidden md:flex flex-col justify-center items-start w-[700px]">
 
                 <div>
                     {" "}
