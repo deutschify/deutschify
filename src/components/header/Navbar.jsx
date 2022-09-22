@@ -15,6 +15,7 @@ import { useStore } from "../../store";
 import PageLogin from "../../Pages/PageLogin";
 import PageRegister from "../../Pages/PageRegister";
 import { PageLogout } from "../../Pages/PageLogout";
+import PageUserSettings from "../../Pages/PageUserSettings";
 
 const NavBar = () => {
     // const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
@@ -217,8 +218,20 @@ const NavBar = () => {
                         {currentUser.accessGroups?.includes(
                             "loggedInUsers"
                         ) && (
+                            <div className="flex items-center m-5">
+                            <NavLink className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:shadow-inner hover:text-palette-50"
+                            to={`/${currentUser.firstName}`} element={<PageUserSettings/>}>
+                                {currentUser.avatar ? <img src={`${currentUser.avatar}`} alt="" /> : <p>{currentUser.firstName[0] }</p>}
+                            </NavLink>
+                            </div>
+                        )}
+                        
+                        {currentUser.accessGroups?.includes(
+                            "loggedInUsers"
+                        ) && (
                             <PageLogout/>
                         )}
+                        
 
                         {/* <div className="flex items-center m-5">
                             <div className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:shadow-inner hover:text-palette-50">
