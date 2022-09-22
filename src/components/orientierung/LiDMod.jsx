@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
-
 import Lernbereich from "./LernbereichOrientierung";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
