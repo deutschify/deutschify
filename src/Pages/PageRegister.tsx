@@ -4,10 +4,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import { IUserLoginForm, IUserRegistrationForm } from "../interfaces";
+
 import { Routes, Route } from "react-router";
 import { NavLink } from "react-router-dom";
 import PageLogin from "./PageLogin";
 import { useStore } from "../store";
+
+import Image from "../../public/images/person-studying-online.png";
 
 interface IPageRegistrationProps {
     baseUrl: string;
@@ -92,61 +95,87 @@ const PageRegister = (props: IPageRegistrationProps) => {
     };
 
     return (
-        <div>
-            <h1 className="text-2xl">Welcome to Register</h1>
-            {success ? (
+        <div className="  md:grid grid-cols-2 min-h-[800px] ">
+            <div className=" hidden md:flex flex-col justify-center items-start w-[700px]">
+
+                <div>
+                    {" "}
+                    <img className=" w-[600px]" src={Image} alt="" />{" "}
+                </div>
+            </div>
+            <div className=" py-[200px] flex flex-col justify-center items-center ">
+                <div>
+
+                    <h1 className="text-center text-2xl pb-3 ">
+                        Welcome to Register
+                    </h1>
+                    {success ? (
                 <p>go to your Email to verify your account.</p>
             ) : (
                 notification
             )}
+                    <form
+                        className=" flex-col"
+                        onSubmit={handleSubmit(onSubmit)}
+                    >
+                        <div className="py-[20px] ">
+                            <input
+                                className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                defaultValue=""
+                                {...register("firstName")}
+                                placeholder="firstName"
+                            />
+                            {errors.firstName && (
+                                <p>{errors?.firstName?.message}</p>
+                            )}
+                        </div>
+                        <div className="py-[20px] ">
+                            <input
+                                className="  w-[20rem] text-palette-50 border-2 border-palette-30  bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                defaultValue=""
+                                {...register("lastName")}
+                                placeholder="lastName"
+                            />
+                            {errors.lastName && (
+                                <p>{errors?.lastName?.message}</p>
+                            )}
+                        </div>
 
-            <form
-                className="bg-white shadow-md rounded flex-col"
-                onSubmit={handleSubmit(onSubmit)}
-            >
-                <div>
-                    <input
-                        defaultValue=""
-                        {...register("firstName")}
-                        placeholder="firstName"
-                    />
-                    {errors.firstName && <p>{errors?.firstName?.message}</p>}
-                </div>
-                <div>
-                    <input
-                        defaultValue=""
-                        {...register("lastName")}
-                        placeholder="lastName"
-                    />
-                    {errors.lastName && <p>{errors?.lastName?.message}</p>}
-                </div>
-                <div>
-                    <input
-                        defaultValue=""
-                        {...register("email")}
-                        placeholder="email"
-                    />
-                    {errors.email && <p>{errors?.email?.message}</p>}
-                </div>
-                <div>
-                    <input
-                        defaultValue=""
-                        {...register("password")}
-                        placeholder="password"
-                    />
-                    {errors.password && <p>{errors?.password?.message}</p>}
-                </div>
-                <div>
-                    <input
-                        placeholder="repeat-password"
-                        defaultValue=""
-                        {...register("repeatPassword")}
-                    />
-                    {errors.repeatPassword && <p>Password don't match!</p>}
-                </div>
-                <div>
-                    <select
-                        {...register("language")}
+                        <div className="py-[20px] ">
+                            <input
+                                className="  w-[20rem] text-palette-50 border-2 border-palette-30  bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                defaultValue=""
+                                {...register("email")}
+                                placeholder="email"
+                            />
+                            {errors.email && <p>{errors?.email?.message}</p>}
+                        </div>
+                        <div className="py-[20px] ">
+                            <input
+                                className="  w-[20rem] text-palette-50 border-2 border-palette-30  bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                defaultValue=""
+                                {...register("password")}
+                                placeholder="password"
+                            />
+                            {errors.password && (
+                                <p>{errors?.password?.message}</p>
+                            )}
+                        </div>
+                        <div className="py-[20px] ">
+                            <input
+                                className="  w-[20rem] text-palette-50 border-2 border-palette-30  bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                placeholder="repeat-password"
+                                defaultValue=""
+                                {...register("repeatPassword")}
+                            />
+                            {errors.repeatPassword && (
+                                <p>Password don't match!</p>
+                            )}
+                        </div>
+                        <div className=" text-center">
+                            <select
+                                className="border-2 border-palette-30   text-center bg-palette-20 rounded-3xl px-5 py-2"
+                                {...register("language")}
                         onChange={(e) =>
                             setValue("language", e.target.value, {
                                 shouldValidate: true,
@@ -154,36 +183,37 @@ const PageRegister = (props: IPageRegistrationProps) => {
                         } // Using setValue
                         defaultValue=""
                         name="language"
-                    >
-                        {languages.map((language: ILanguage) => {
+                            >
+                                {languages.map((language: ILanguage) => {
                             return (
                                 <option
+                                className="bg-palette-60 "
                                     key={language.code}
                                     value={`${language.code}`}
                                 >
                                     {" "}
                                     {language.name}
                                 </option>
-                            );
-                        })}
-                        {/* <option disabled>Language</option>
-                        <option value="deutsch">deutsch</option> */}
-                    </select>
-                </div>
-                <div>
-                    <select 
-                            {...register("nationality")}
-                        onChange={(e) =>
+                            );})}
+                               
+                            </select>
+                        </div>
+                        <div className=" text-center">
+                            <select
+                                className="border-2 border-palette-30   text-center bg-palette-20 rounded-3xl px-5 py-2"
+                                {...register("nationality")}
+                                onChange={(e) =>
                             setValue("nationality", e.target.value, {
                                 shouldValidate: true,
                             })
                         } // Using setValue
                         defaultValue=""
                         name="nationality"
-                    >
-                        {countries.map((country: ICountry) => {
+                            >
+                                {countries.map((country: ICountry) => {
                             return (
                                 <option
+                                className="bg-palette-60 "
                                     key={country.name}
                                     value={`${country.name}`}
                                 >
@@ -192,32 +222,18 @@ const PageRegister = (props: IPageRegistrationProps) => {
                                 </option>
                             );
                         })}
-                        {/* <option disabled>Nationality</option>
-                        <option value="deutsche">Deutsche</option> */}
-                    </select>
+                            </select>
+                        </div>
+                        <div className="text-center py-[20px]">
+                            <input
+                                className="bg-palette-30 px-8 py-2 rounded-3xl "
+                                type="submit"
+                                value="Sign Up"
+                            />
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <input type="submit" value="Sign Up" />
-                </div>
-            </form>
-            <div className="form-group">
-                <span className="mx-8">
-                    Already have an Account?
-                    <span className="line">
-                        <NavLink
-                            to="/login"
-                            className="text-palette-40 mx-4 underline"
-                        >
-                            Sign In
-                        </NavLink>
-                    </span>
-                    <Routes>
-                        <Route
-                            path="/login"
-                            element={<PageLogin baseUrl="" />}
-                        />
-                    </Routes>
-                </span>
+
             </div>
         </div>
     );
