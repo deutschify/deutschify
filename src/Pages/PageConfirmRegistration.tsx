@@ -22,7 +22,6 @@ const PageConfirmRegistration = (
     );
     const { confirmationCode } = useParams();
     const { baseUrl } = props;
-    console.log(baseUrl);
     
 
     useEffect(() => {

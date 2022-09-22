@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -7,10 +7,19 @@ import { IUserLoginForm, IUserRegistrationForm } from "../interfaces";
 import { Routes, Route } from "react-router";
 import { NavLink } from "react-router-dom";
 import PageLogin from "./PageLogin";
+import { useStore } from "../store";
 
 interface IPageRegistrationProps {
     baseUrl: string;
     // setCurrentUser: React.Dispatch<React.SetStateAction<IUserLoginForm>>;
+}
+
+interface ILanguage {
+    code: number;
+    name: string;
+}
+interface ICountry {
+    name: string;
 }
 
 const schema = yup.object().shape({
@@ -25,12 +34,24 @@ const schema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().min(3).max(12).required(),
     repeatPassword: yup.string().oneOf([yup.ref("password"), null]),
+    nationality: yup.string().required("Required"),
+    language: yup.string().required("Required"),
 });
 
 const PageRegister = (props: IPageRegistrationProps) => {
     const [success, setSuccess] = useState(false);
+    const [notification, setNotification] = useState("");
     const { baseUrl } = props;
+    const fetchLanguages = useStore((state) => state.fetchLanguages);
+    const languages = useStore((state) => state.languages);
+    const countries = useStore((state) => state.countries);
+
+    // useEffect(() => {
+    //     fetchLanguages();
+    // }, []);
+
     const {
+        setValue,
         register,
         formState: { errors },
         handleSubmit,
@@ -58,15 +79,27 @@ const PageRegister = (props: IPageRegistrationProps) => {
             },
             { withCredentials: true }
         );
-        setSuccess(true);
-        console.log(toSend);
-        console.log(errors);
+        if (toSend.data.message === "Email is registered!") {
+            setNotification("Account already in use.");
+            console.log(toSend);
+            console.log(errors);
+            console.log(notification);
+        } else {
+            setSuccess(true);
+            console.log(toSend.data.message);
+            // navigate('/login')
+        }
     };
 
     return (
         <div>
             <h1 className="text-2xl">Welcome to Register</h1>
-            {success && <p>"go to your Email to verify your account."</p>}
+            {success ? (
+                <p>go to your Email to verify your account.</p>
+            ) : (
+                notification
+            )}
+
             <form
                 className="bg-white shadow-md rounded flex-col"
                 onSubmit={handleSubmit(onSubmit)}
@@ -114,21 +147,53 @@ const PageRegister = (props: IPageRegistrationProps) => {
                 <div>
                     <select
                         {...register("language")}
-                        defaultValue="Language"
+                        onChange={(e) =>
+                            setValue("language", e.target.value, {
+                                shouldValidate: true,
+                            })
+                        } // Using setValue
+                        defaultValue=""
                         name="language"
                     >
-                        <option disabled>Language</option>
-                        <option value="deutsch">deutsch</option>
+                        {languages.map((language: ILanguage) => {
+                            return (
+                                <option
+                                    key={language.code}
+                                    value={`${language.code}`}
+                                >
+                                    {" "}
+                                    {language.name}
+                                </option>
+                            );
+                        })}
+                        {/* <option disabled>Language</option>
+                        <option value="deutsch">deutsch</option> */}
                     </select>
                 </div>
                 <div>
-                    <select
-                        {...register("nationality")}
-                        defaultValue="Nationality"
+                    <select 
+                            {...register("nationality")}
+                        onChange={(e) =>
+                            setValue("nationality", e.target.value, {
+                                shouldValidate: true,
+                            })
+                        } // Using setValue
+                        defaultValue=""
                         name="nationality"
                     >
-                        <option disabled>Nationality</option>
-                        <option value="deutsche">Deutsche</option>
+                        {countries.map((country: ICountry) => {
+                            return (
+                                <option
+                                    key={country.name}
+                                    value={`${country.name}`}
+                                >
+                                    {" "}
+                                    {country.name.substring(0, 18)}
+                                </option>
+                            );
+                        })}
+                        {/* <option disabled>Nationality</option>
+                        <option value="deutsche">Deutsche</option> */}
                     </select>
                 </div>
                 <div>
@@ -159,3 +224,10 @@ const PageRegister = (props: IPageRegistrationProps) => {
 };
 
 export default PageRegister;
+function setValue(
+    arg0: string,
+    value: string,
+    arg2: { shouldValidate: boolean }
+): void {
+    throw new Error("Function not implemented.");
+}

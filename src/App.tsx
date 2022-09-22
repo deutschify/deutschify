@@ -35,12 +35,16 @@ import PageUserSettings from "./Pages/PageUserSettings";
 function App() {
     const navigate = useNavigate();
 
-    const currentUser = useStore((state) => state.currentUser);
-    const loading = useStore((state) => state.loading);
+    // const loading = useStore((state) => state.loading);
+    const fetchLanguages = useStore((state) => state.fetchLanguages);
     const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
+    const fetchCountries = useStore((state) => state.fetchCountries);
+    const currentUser = useStore((state) => state.currentUser);
 
     useEffect(() => {
+        fetchLanguages();
         fetchCurrentUser();
+        fetchCountries();
         //   console.log(currentUser);
     }, []);
 
