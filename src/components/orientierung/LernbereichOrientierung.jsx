@@ -78,9 +78,9 @@ const Lernbereich = () => {
         .filter((question) => {
             if (searchTerm == "") {
                 return question
-            } else if (question.question.toLowerCase().includes(searchTerm.toLowerCase())) {
+            } else if (question.question.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
                 return question
-            }
+            } 
         })
  
     const pageCount = Math.ceil(questions.length / usersPerPage);
@@ -106,7 +106,7 @@ const Lernbereich = () => {
                     <input
                         className="searchInput"
                         type="text"
-                        placeholder="nach einer bestimmten Frage oder Thema suchen..."
+                        placeholder="Stichwort..."
                         onChange={event => {setSearchTerm(event.target.question)} }
                         
                     />
