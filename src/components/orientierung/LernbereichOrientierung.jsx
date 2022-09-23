@@ -11,6 +11,7 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const Lernbereich = () => {
     const [questions, setQuestions] = useState([]);
     const [questionsPerPage, setQuestionsPerPage] = useState(0);
+    const [searchTerm, setSearchTerm] = useState("");
 
     const { category } = useParams();
 
@@ -25,12 +26,16 @@ const Lernbereich = () => {
 
             const questions = await response.json();
             setQuestions(questions);
+        
         };
         fetchDataBundesland();
     }, []);
 
+    
+//    For Pagination
     const displayQuestions = questions
         .slice(pagesVisited, pagesVisited + usersPerPage)
+        
         .map((question, index) => {
             return (
                 <div
@@ -69,7 +74,15 @@ const Lernbereich = () => {
                     </div>
                 </div>
             );
-        });
+        })
+        .filter((question) => {
+            if (searchTerm == "") {
+                return question
+            } else if (question.question.toLowerCase().includes(searchTerm.toLowerCase())) {
+                return question
+            }
+        })
+ 
     const pageCount = Math.ceil(questions.length / usersPerPage);
     const changePage = ({ selected }) => {
         setQuestionsPerPage(selected);
@@ -89,7 +102,15 @@ const Lernbereich = () => {
                 </NavLink>
                 <div className="p-4">
                     {/* Searchbar für Testfragen */}
-                    <div className=""></div>
+                    <div className="">
+                    <input
+                        className="searchInput"
+                        type="text"
+                        placeholder="nach einer bestimmten Frage oder Thema suchen..."
+                        onChange={event => {setSearchTerm(event.target.question)} }
+                        
+                    />
+                    </div>
                     <div className="text-palette-80">
                         {questions.length} Fragen
                     </div>
