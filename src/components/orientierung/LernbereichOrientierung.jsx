@@ -5,13 +5,16 @@ import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import LiDExc from "../orientierung/LiDExc";
 import LiDMod from "../orientierung/LiDMod";
+import { Circles } from "react-loader-spinner";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Lernbereich = () => {
     const [questions, setQuestions] = useState([]);
     const [questionsPerPage, setQuestionsPerPage] = useState(0);
-    const [searchTerm, setSearchTerm] = useState("");
+    const [query, setQuery] = useState("");
+    // const [searchResult, setSearchResult] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const { category } = useParams();
 
@@ -20,35 +23,35 @@ const Lernbereich = () => {
 
     useEffect(() => {
         const fetchDataBundesland = async () => {
+            setIsLoading(true);
+            
             const response = await fetch(
                 `${baseUrl}/all-questions/${category}`
             );
 
             const questions = await response.json();
             setQuestions(questions);
-        
+            setIsLoading(false);
+            
         };
         fetchDataBundesland();
     }, []);
 
-    
-//    For Pagination
+    //    For Pagination
     const displayQuestions = questions
         .slice(pagesVisited, pagesVisited + usersPerPage)
-        
+
         .map((question, index) => {
             return (
                 <div
                     key={index}
                     className="bg-palette-50 m-4 p-2 w-9/12 text-left rounded-xl border-2 border-palette-60 "
                 >
-                    <div className="text-palette-60  ">
-                        {question.number} | {question.category}
-                    </div>
+                    <div className="text-palette-60  ">{question.number}</div>
                     <div className="text-palette-60 m-2 p-2">
                         {" "}
                         <div className="mb-2 border-b-2 border-palette-60 ">
-                            Frage:
+                            Frage
                         </div>
                         {question.question}
                     </div>{" "}
@@ -56,9 +59,6 @@ const Lernbereich = () => {
                         <>
                             <div className="text-palette-60 m-2 p-2">
                                 {" "}
-                                <div className="mb-2 border-b-2 border-palette-60 ">
-                                    image:
-                                </div>
                                 <Image
                                     cloudName="dsyhfgbli"
                                     publicId={`${question.imageURL}`}
@@ -68,7 +68,7 @@ const Lernbereich = () => {
                     )}
                     <div className="text-palette-60 m-2 p-2">
                         <div className="mb-2 border-b-2 border-palette-60">
-                            Antwort:
+                            Antwort
                         </div>
                         {question.correctAnswer}
                     </div>
@@ -76,13 +76,20 @@ const Lernbereich = () => {
             );
         })
         .filter((question) => {
-            if (searchTerm == "") {
-                return question
-            } else if (question.question.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
-                return question
-            } 
-        })
- 
+            if (query == "") {
+                return question;
+            } else if (
+                question.question.toLowerCase().includes(query.toLowerCase())
+            ) {
+                return question;
+            }
+        });
+
+    // useEffect(() => {
+    //     const result = questions.filter(q => q.question.toLowerCase().include(query.toLowerCase()))
+    //     setSearchResult(result)
+    // }, [questions, query])
+
     const pageCount = Math.ceil(questions.length / usersPerPage);
     const changePage = ({ selected }) => {
         setQuestionsPerPage(selected);
@@ -103,13 +110,14 @@ const Lernbereich = () => {
                 <div className="p-4">
                     {/* Searchbar für Testfragen */}
                     <div className="">
-                    <input
-                        className="searchInput"
-                        type="text"
-                        placeholder="Stichwort..."
-                        onChange={event => {setSearchTerm(event.target.question)} }
-                        
-                    />
+                        <input
+                            className="searchInput"
+                            type="text"
+                            placeholder="Stichwort..."
+                            onChange={(event) => {
+                                setQuery(event.target.question);
+                            }}
+                        />
                     </div>
                     <div className="text-palette-80">
                         {questions.length} Fragen
@@ -126,19 +134,28 @@ const Lernbereich = () => {
             </nav>
             <div className="bg-palette-80 rounded-xl border-4 border-palette-50">
                 <div className=" text-palette-60 p-6">
-                    <div className="flex flex-col items-center"><div className="text-2xl capitalize">
-                        Fragen zu {category}
-                    </div>
-                    {displayQuestions}
+                    <div className="flex flex-col items-center">
+                        <div className="text-2xl capitalize">
+                            Fragen zu {category}
+                        </div>
+                        <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10">{isLoading  ? <Circles color="#2F4858"
+/>  : displayQuestions}  </div>
+                        
                         <ReactPaginate
                             previousLabel={"vorherige"}
                             nextLabel={"nächste"}
                             pageCount={pageCount}
                             onPageChange={changePage}
                             containerClassName={"flex justify-center m-6"}
-                            pageLinkClassName={"p-4 m-2 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"}
-                            previousLinkClassName={"p-4 m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"}
-                            nextLinkClassName={"p-4 m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"}
+                            pageLinkClassName={
+                                "p-4 m-2 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                            }
+                            previousLinkClassName={
+                                "p-4 m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                            }
+                            nextLinkClassName={
+                                "p-4 m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                            }
                             activeClassName={"text-3xl"}
                         />
                     </div>
