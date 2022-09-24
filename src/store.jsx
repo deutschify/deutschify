@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 export const baseUrl= import.meta.env.VITE_BACKEND_URL;
 
 // APIs for getting and translating languages
-const languagesUrl = "https://libretranslate.de/languages";
+const languagesUrl = "https://libretranslate.com/languages";
 const translateUrl = "https://libretranslate.de/translate";
 const countriesUrl = "https://restcountries.com/v2/all?fields=name"
 
