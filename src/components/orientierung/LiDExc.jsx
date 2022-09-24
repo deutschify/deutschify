@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import Lernbereich from "./LernbereichOrientierung";
+import MainMenu from "./MainMenu";
+import Quiz from "./Quiz"
+import EndScreen from "./EndScreen"
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDExc = () => {
     const [questions, setQuestions] = useState([]);
+    const [gameState, setGameState] = useState("menu")
 
     const { category } = useParams();
 
@@ -33,6 +37,9 @@ const LiDExc = () => {
                         Zurück zum Lernbereich
                     </NavLink>
                 </nav>
+                {gameState === "menu" && <MainMenu />}
+                {gameState === "quiz" && <Quiz />}
+                {gameState === "endScreen" && <EndScreen />}
             </div>
         </div>
     );
