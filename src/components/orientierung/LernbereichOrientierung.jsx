@@ -21,26 +21,46 @@ const Lernbereich = () => {
     const usersPerPage = 10;
     const pagesVisited = questionsPerPage * usersPerPage;
 
-    useEffect(() => {
-        const fetchDataBundesland = async () => {
-            setIsLoading(true);
-            
-            const response = await fetch(
-                `${baseUrl}/all-questions/${category}`
-            );
+    const fetchDataBundesland = async () => {
+        setIsLoading(true);
+        
+        const response = await fetch(
+            `${baseUrl}/all-questions/${category}`
+        );
 
-            const questions = await response.json();
-            setQuestions(questions);
-            setIsLoading(false);
-            
-        };
+        const questions = await response.json();
+        setQuestions(questions);
+        setIsLoading(false);
+        // console.log(questions);
+    };
+    useEffect(() => {
+        
         fetchDataBundesland();
     }, []);
 
-    //    For Pagination
-    const displayQuestions = questions
-        .slice(pagesVisited, pagesVisited + usersPerPage)
+    const filteredQuestions =  () => {
+        const filtered = questions?.filter((question) => {
+               if (query.length === 0) {
+                   // console.log(question);
+                   return question;
+               } 
+                if (query.length > 0 &&  question.question?.toLowerCase().includes(query.toLowerCase()))  
+          
+                  { return question}  
+           });
+           console.log(filtered); 
+     
+           return filtered
+       }
+   
+       useEffect(() => {
+         filteredQuestions()
+       
+       }, [query])
 
+    //    For Pagination
+    const displayQuestions = filteredQuestions()
+        .slice(pagesVisited, pagesVisited + usersPerPage)
         .map((question, index) => {
             return (
                 <div
@@ -75,25 +95,12 @@ const Lernbereich = () => {
                 </div>
             );
         })
-        .filter((question) => {
-            if (query == "") {
-                return question;
-            } else if (
-                question.question.toLowerCase().includes(query.toLowerCase())
-            ) {
-                return question;
-            }
-        });
-
-    // useEffect(() => {
-    //     const result = questions.filter(q => q.question.toLowerCase().include(query.toLowerCase()))
-    //     setSearchResult(result)
-    // }, [questions, query])
 
     const pageCount = Math.ceil(questions.length / usersPerPage);
     const changePage = ({ selected }) => {
         setQuestionsPerPage(selected);
     };
+
     return (
         <div className="border-4 border-palette-50 m-2 p-4 rounded-xl text-center">
             <h1 className="text-palette-50 text-2xl">
@@ -115,12 +122,17 @@ const Lernbereich = () => {
                             type="text"
                             placeholder="Stichwort..."
                             onChange={(event) => {
-                                setQuery(event.target.question);
+
+                                setQuery(event.target.value);
+                                
+
                             }}
                         />
                     </div>
                     <div className="text-palette-80">
-                        {questions.length} Fragen
+
+                        {filteredQuestions().length} Fragen
+
                     </div>
                 </div>
 
@@ -135,8 +147,10 @@ const Lernbereich = () => {
             <div className="bg-palette-80 rounded-xl border-4 border-palette-50">
                 <div className=" text-palette-60 p-6">
                     <div className="flex flex-col items-center">
-                        <div className="text-2xl capitalize">
-                            Fragen zu {category}
+
+                        <div className="text-2xl ">
+                            Fragen zu {category.charAt(0).toUpperCase() + category.slice(1)}
+
                         </div>
                         <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10">{isLoading  ? <Circles color="#2F4858"
 />  : displayQuestions}  </div>
