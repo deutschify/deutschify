@@ -11,7 +11,7 @@ import { IUserLoginForm } from "./interfaces";
 import Footer from "./components/footer/Footer";
 import Homepage from "./components/homepage/Homepage";
 import Dictionary from "./components/dictionary/Dictionary";
-import LanguageLevels from "./components/LanguageLevels";
+import Sprachniveau from "./components/Sprachniveau";
 
 import Einbuergerungstest from "./components/orientierung/Einbuergerungstest";
 
@@ -30,17 +30,21 @@ import LiDMod from "./components/orientierung/LiDMod";
 import { useStore } from "./store";
 import { PageLogout } from "./Pages/PageLogout";
 import { baseUrl } from "./store";
-
+import PageUserSettings from "./Pages/PageUserSettings";
 
 function App() {
     const navigate = useNavigate();
 
-    const currentUser = useStore((state) => state.currentUser);
-    const loading = useStore((state) => state.loading);
+    // const loading = useStore((state) => state.loading);
+    const fetchLanguages = useStore((state) => state.fetchLanguages);
     const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
+    const fetchCountries = useStore((state) => state.fetchCountries);
+    const currentUser = useStore((state) => state.currentUser);
 
     useEffect(() => {
+        fetchLanguages();
         fetchCurrentUser();
+        fetchCountries();
         //   console.log(currentUser);
     }, []);
 
@@ -52,14 +56,13 @@ function App() {
                 <Route path="/home" element={<Homepage />} />
 
                 <Route path="/dictionary" element={<Dictionary />} />
-                <Route path="/language-levels" element={<LanguageLevels />} />
+                <Route path="/sprachniveau" element={<Sprachniveau />} />
                 <Route path="/a1" element={<A1 />} />
                 <Route path="/a2" element={<A2 />} />
                 <Route path="/b1" element={<B1 />} />
                 <Route
                     path="/einbuergerungstest/*"
                     element={<Einbuergerungstest />}
-
                 />
                 <Route
                     path="/lernbereich/:category/*"
@@ -74,11 +77,10 @@ function App() {
                     element={<LiDMod />}
                 />
 
-
                 <Route path="/forum" element={<Forum />} />
 
                 <Route
-                    path="/registration"
+                    path="/registration/*"
                     element={
                         <PageRegister
                             baseUrl={baseUrl}
@@ -87,13 +89,12 @@ function App() {
                     }
                 />
                 <Route
-                    path="/login"
+                    path="/login/*"
                     element={
                         <PageLogin
                             baseUrl={baseUrl}
 
                             // setCurrentUser={setCurrentUser}
-
                         />
                     }
                 />
@@ -107,7 +108,10 @@ function App() {
                     }
                 />
                 {currentUser.accessGroups?.includes("loggedInUsers") && (
-                    <Route path="/logout" element={<PageLogout />} />
+                    <>
+                        <Route path="/logout" element={<PageLogout />} />
+                        <Route path="/:user" element={<PageUserSettings />} />
+                    </>
                 )}
                 <Route path="/about-us/*" element={<AboutUs />} />
                 <Route path="/contact-us/*" element={<ContactUs />} />

@@ -3,12 +3,13 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Image from '../../public/images/login-pic.png'
-// import useStore from '../store/store';
 
 import { IUserLoginForm } from "../interfaces";
 import axios from "axios";
 import { useStore } from "../store";
-import { useNavigate } from "react-router";
+import { Route, Routes, useNavigate } from "react-router";
+import PageConfirmRegistration from "./PageConfirmRegistration";
+import { NavLink } from "react-router-dom";
 
 
 export interface IPageLoginProps {
@@ -26,7 +27,6 @@ const PageLogin = (props: IPageLoginProps) => {
     const navigate = useNavigate();
     const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
     const currentUser = useStore((state) => state.currentUser);
-    // const baseUrl = useStore((state) => state.baseUrl);
 
     const {
         register,
@@ -116,6 +116,22 @@ const PageLogin = (props: IPageLoginProps) => {
                         </div>
                     </form>
 
+                    <div className="form-group">
+                        <span className="indent-1 mx-8">
+                            Need an Account? 
+                            <span className="line">
+                                <span className="line">
+                                    <NavLink to="/registration" className="text-palette-40 underline mx-4">Sign Up</NavLink>
+                                </span>
+                                <Routes>
+                                    <Route
+                                        path="/registration"
+                                        element={<PageConfirmRegistration baseUrl="" />}
+                                    />
+                                </Routes>
+                            </span>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
