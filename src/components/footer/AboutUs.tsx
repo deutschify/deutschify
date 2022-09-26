@@ -2,10 +2,11 @@ const AboutUs = () => {
     return (
         <div className="md:grid grid-cols-6 ">
             
-            <img src="../../../images/aboutUs2.png" alt="image" className="hidden md:block md:col-start-1 md:col-end-3 md:row-start-1 mt-36 ml- z-10" />
-            <img src="../../../images/aboutUs3.png" alt="image" className=" hidden md:block md:col-start-5 md:col-end-7 md:row-start-2 z-10 md:ml-8" />
-            <img src="../../../images/aboutUs1.png" alt="image" className="hidden md:block md:col-start-1 md:col-end-3 md:row-start-3 z-10" />
-            <img src="../../../images/aboutUs4.png" alt="image" className="hidden md:block md:col-start-5 md:col-end-7 md:row-start-3 md:mt-80 z-10" />
+            <img src="../../../images/aboutUs2.png" alt="image" className="hidden w-9/12 ml-20 md:block md:col-start-1 md:col-end-3 md:row-start-1 mt-36 ml- z-10" />
+            <img src="../../../images/aboutUs3.png" alt="image" className=" hidden w-9/12  md:block md:col-start-5 md:col-end-7 md:row-start-2 z-10 md:ml-8" />
+            <img src="../../../images/aboutUs1.png" alt="image" className="hidden w-8/12 m-8 md:block md:col-start-1 md:col-end-3 md:row-start-3 z-10" />
+            <img src="../../../images/aboutUs4.png" alt="image" className="hidden w-9/12 md:block md:col-start-5 md:col-end-7 md:row-start-3 md:mt-80 z-10" />
+
             <div className="col-start-2 col-span-4 row-start-1 row-end-4  bg-palette-80  text-palette-60 border-4 border-palette-50 rounded-2xl m-10 flex flex-col items-center">
                 <h1 className=" text-center bg-palette-50  mt-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60">
                     Über uns und unserer Webseite
@@ -140,9 +141,9 @@ const AboutUs = () => {
                     </div>
                     <div className="bg-palette-80 w-10/12 md:w-9/12 my-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60 grid grid-cols-3 items-center">
                         <img
-                            src="../../../public/images/"
+                            src="../../../public/images/omar.jpg"
                             alt="image"
-                            className="w-10/12"
+                            className="w-9/12"
                         />
                         <div className="col-span-2">
                             {" "}
