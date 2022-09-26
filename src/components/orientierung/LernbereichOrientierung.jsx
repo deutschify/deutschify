@@ -34,7 +34,6 @@ const Lernbereich = () => {
         // console.log(questions);
     };
     useEffect(() => {
-        
         fetchDataBundesland();
     }, []);
 
