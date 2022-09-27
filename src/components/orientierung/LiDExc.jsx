@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import Lernbereich from "./LernbereichOrientierung";
+import { MdArrowBackIos } from "react-icons/md";
+import { MdArrowForwardIos } from "react-icons/md";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -17,8 +19,14 @@ const LiDExc = () => {
 
         rawDeutschlandquestions.forEach((rawDeutschlandquestion, index) => {
             const displayQuestion = {
+                number: rawDeutschlandquestion.number,
                 question: rawDeutschlandquestion.question,
-
+                answerA: rawDeutschlandquestion.answerA,
+                answerB: rawDeutschlandquestion.answerB,
+                answerC: rawDeutschlandquestion.answerC,
+                answerD: rawDeutschlandquestion.answerD,
+                correctAnswer: rawDeutschlandquestion.correctAnswer,
+                imageURL: rawDeutschlandquestion.imageURL,
                 current: index === 0,
             };
             _displayQuestions.push(displayQuestion);
@@ -33,40 +41,37 @@ const LiDExc = () => {
         // console.log(displayQuestions);
     }, []);
 
-   
-const goToNextQuestion = () => {
-    let switchNextQuestion = false;
-    for (const displayQuestion of displayQuestions) {
-        // console.log("hallo");
-        if (switchNextQuestion) {
-            displayQuestion.current = true;
-            break;
+    const goToNextQuestion = () => {
+        let switchNextQuestion = false;
+        for (const displayQuestion of displayQuestions) {
+            // console.log("hallo");
+            if (switchNextQuestion) {
+                displayQuestion.current = true;
+                break;
+            }
+            if (displayQuestion.current) {
+                displayQuestion.current = false;
+                switchNextQuestion = true;
+            }
         }
-        if (displayQuestion.current) {
-            displayQuestion.current = false;
-            switchNextQuestion = true;
+
+        if (displayQuestions.filter((m) => m.current).length === 0) {
+            displayQuestions[0].current = true;
+            console.log(displayQuestions);
         }
-    }
-
-    if (displayQuestions.filter((m) => m.current).length === 0) {
-
-        displayQuestions[0].current = true;
-        console.log(displayQuestions);
-    }
-    
-}
+    };
 
     const nextQuestionHandler = () => {
-        goToNextQuestion()
+        goToNextQuestion();
         setDisplayQuestions([...displayQuestions]);
     };
-    
+
     const prevQuestionHandler = () => {
-        displayQuestions.reverse()
-        goToNextQuestion()
-        displayQuestions.reverse()
+        displayQuestions.reverse();
+        goToNextQuestion();
+        displayQuestions.reverse();
         setDisplayQuestions([...displayQuestions]);
-    }
+    };
 
     const canDisplayQuestions = () => {
         // displayQuestions.length > 0 &&
@@ -77,6 +82,19 @@ const goToNextQuestion = () => {
             displayQuestions.filter((m) => m.current).length > 0
         );
     };
+
+// const compareRightAnswerHandler = () => {
+//     if (displayQuestions.answerA === displayQuestions.correctAnswer) {
+//        return console.log('answer A is correct');
+//     } else if (displayQuestions.answerB === displayQuestions.correctAnswer) {
+//       return  console.log('answer B is correct');
+//     } else if (displayQuestions.answerC === displayQuestions.correctAnswer) {
+//         return console.log('answer C is correct');
+//     } else if (displayQuestions.answerD === displayQuestions.correctAnswer) {
+//         return console.log('answer D is correct')
+//     }
+// }
+
     return (
         <div className="">
             Übungssatz {category}
@@ -91,23 +109,85 @@ const goToNextQuestion = () => {
                         Zurück zum Lernbereich
                     </NavLink>
                 </nav>
-                <div className="m-10 p-8 h-80 bg-palette-80 text-palette-60 flex flex-col items-center justify-center border-4 border-palette-50 rounded-xl">
+                <div className="m-6 w-7/12 p-10 h-100 bg-palette-80 text-palette-60 text-xl flex flex-col items-center justify-start border-4 border-palette-50 rounded-xl">
                     {canDisplayQuestions() && (
-                        <>{displayQuestions.find((m) => m.current).question}</>
+                        <>
+                            {" "}
+                            <div className="">
+                                {displayQuestions.find((m) => m.current).number}
+                            </div>
+                            <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 ">
+                                {
+                                    displayQuestions.find((m) => m.current)
+                                        .question
+                                }
+                            </div>
+                            {/* <div className="">{
+                                
+                                    displayQuestions.find((m) => m.current)
+                                        .imageURL && (
+                                            <>
+                                                <div className="">
+                                                    {" "}
+                                                    <Image
+                                                        cloudName="dsyhfgbli"
+                                                        publicId={`${displayQuestions.find((m) => m.current)
+                                                            .imageURL}`}
+                                                    />
+                                                </div>{" "}
+                                            </>
+                                        )
+                                }</div> */}
+                            <div className="">
+                                <button className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50"
+                                // onClick={compareRightAnswerHandler}
+                                >
+                                    {
+                                        displayQuestions.find((m) => m.current)
+                                            .answerA
+                                    }
+                                </button>
+                                <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50">
+                                    {
+                                        displayQuestions.find((m) => m.current)
+                                            .answerB
+                                    }
+                                </div>
+                                <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50">
+                                    {
+                                        displayQuestions.find((m) => m.current)
+                                            .answerC
+                                    }
+                                </div>
+                                <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50">
+                                    {
+                                        displayQuestions.find((m) => m.current)
+                                            .answerD
+                                    }
+                                </div>
+                            </div>
+                        </>
                     )}
-                    <div className="mt-10 flex justify-between  w-full">
+                    <div className="mt-20 flex justify-between  w-full">
                         {" "}
                         <button
-                            className="border-4 border-palette-60 p-4 rounded-xl bg-palette-50"
+                            className="border-4 border-palette-60 w-4/12 p-4 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
                             onClick={prevQuestionHandler}
                         >
-                            vorherige Frage
+                            <div className="flex justify-center flex-unwrap">
+                                {" "}
+                                <MdArrowBackIos className="text-3xl" />
+                                vorherige Frage
+                            </div>
                         </button>
                         <button
-                            className="border-4 border-palette-60 p-4 rounded-xl bg-palette-50"
+                            className="border-4 border-palette-60 p-4 w-4/12 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
                             onClick={nextQuestionHandler}
                         >
-                            nächste Frage
+                            <div className="flex justify-center flex-unwrap">
+                                nächste Frage{" "}
+                                <MdArrowForwardIos className="text-3xl" />{" "}
+                            </div>
                         </button>
                     </div>
                 </div>
