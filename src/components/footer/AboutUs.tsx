@@ -107,7 +107,7 @@ const AboutUs = () => {
                     </div>
                     <div className="bg-palette-80 w-10/12 md:w-9/12 mt-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60 grid grid-cols-3 items-center">
                         <img
-                            src="../../../public/images/"
+                            src="../../../public/images/sali.jpg"
                             alt="image"
                             className="w-10/12"
                         />
@@ -124,7 +124,7 @@ const AboutUs = () => {
                     </div>
                     <div className="bg-palette-80 w-10/12 md:w-9/12 mt-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60 grid grid-cols-3 items-center">
                         <img
-                            src="../../../public/images/"
+                            src="../../../public/images/mezekir.jpg"
                             alt="image"
                             className="w-10/12"
                         />
