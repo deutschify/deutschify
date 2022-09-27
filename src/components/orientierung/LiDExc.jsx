@@ -51,8 +51,10 @@ const LiDExc = () => {
             }
             // console.log();
         }
+        console.log(displayQuestions.filter((m) => m.current).length);
         if (displayQuestions.filter((m) => m.current).length === 0) {
-            displayQuestions[0].current === true;
+
+            displayQuestions[0].current = true;
             console.log(displayQuestions);
         }
         setDisplayQuestions([...displayQuestions]);
