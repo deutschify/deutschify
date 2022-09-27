@@ -17,19 +17,18 @@ const AboutUs = () => {
                     <div className="col-start-2 col-end-6 m-10 bg-palette-50  p-6 border-4 border-palette-60 rounded-xl text-palette-60">
                         Wir sind ein Team von vier sehr schlauen Köpfen, die
                         sich in der Ausbildung bei DCI Digital Career Institute
-                        gefunden haben und im Rahmen des „Final-Projects“ dieses
+                        gefunden und im Rahmen des „Final-Projects“ dieses
                         Projekt ins Leben gerufen haben. Unser Team besteht aus
                         der stylischen, zielorientierten und begnadeten Sali,
                         dem Genie der Webentwicklung und sehr weisem Mezekir.
                         Dem Einstein und begabten Macher Omar und der
-                        hartnäckigen, organisierten und problemlösenden Zubia.
+                        einfallsreichen, organisierten und problemlösenden Zubia.
                         Unser Motto während der Entwicklungsphase war ausser
                         „Zubia, STOP!! Das reicht!!“, „Geht nicht - Gibts
                         nicht!!!“ Uns war keine Idee unmöglich und kein Promlen
                         unlösbar. Hand in Hand und mit gegenseitiger
                         Unterstützung konnten wir in einer lustigen Umgebung
-                        gemeinsam dieses sehr nützliche Werkzeug zum lernen für
-                        die DTZ-Prüfung entwickeln.
+                        gemeinsam dieses sehr nützliche Werkzeug zum lernen der DTZ-Prüfung entwickeln.
                     </div>
 
                     <div className="col-start-1 col-end-5 m-10 bg-palette-50  mt-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60">
