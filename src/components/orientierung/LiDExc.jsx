@@ -6,28 +6,36 @@ import Lernbereich from "./LernbereichOrientierung";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDExc = () => {
-    const [questions, setQuestions] = useState([]);
-    const [currentQuestion, setCurrentQuestion] = useState();
+    const [displayQuestions, setDisplayQuestions] = useState([]);
+    
 
 
     const { category } = useParams();
 
     const fetchDataBundesland = async () => {
         const response = await fetch(`${baseUrl}/all-questions/${category}`);
-        const questions = await response.json();
-        setQuestions(questions);
+        const rawDeutschlandquestions = await response.json();
+        const displayQuestions = [];
+        rawDeutschlandquestions.forEach((rawDeutschlandquestion) => {
+            const displayQuestion = {
+                question:rawDeutschlandquestion.question
+            }
+            displayQuestions.push(displayQuestion);
+        })
+        setDisplayQuestions(displayQuestions);
     };
 
     useEffect(() => {
         fetchDataBundesland();
     }, []);
 
+    
 
   
     return (
         <div className="">
             Übungssatz {category}
-            <div className="">{questions.length} Fragen</div>
+            <div className="">{displayQuestions.length} Fragen</div>
 
             <div className="">
                 {" "}
@@ -40,7 +48,13 @@ const LiDExc = () => {
                     </NavLink>
                 </nav>
                 <div className="m-10 h-80 bg-palette-80 flex flex-col items-center justify-center border-4 border-palette-50 rounded-xl">
-                    {questions.question}
+                    
+                    {displayQuestions.map(displayQuestion => {
+                        return (
+                            <div className="">{displayQuestion.question}</div>
+                        )
+                    })
+                    }
                  
                 </div>
             </div>
