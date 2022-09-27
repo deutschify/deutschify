@@ -19,7 +19,7 @@ const LiDExc = () => {
             const displayQuestion = {
                 question: rawDeutschlandquestion.question,
 
-                current: index === 308,
+                current: index === 0,
             };
             _displayQuestions.push(displayQuestion);
         });
@@ -33,32 +33,40 @@ const LiDExc = () => {
         // console.log(displayQuestions);
     }, []);
 
-    // const prevQuestionHandler = () => {
-    //     setCurrentQuestion(current ===  0 ? -1 : current - 1)
-    // }
+   
+const goToNextQuestion = () => {
+    let switchNextQuestion = false;
+    for (const displayQuestion of displayQuestions) {
+        // console.log("hallo");
+        if (switchNextQuestion) {
+            displayQuestion.current = true;
+            break;
+        }
+        if (displayQuestion.current) {
+            displayQuestion.current = false;
+            switchNextQuestion = true;
+        }
+    }
+
+    if (displayQuestions.filter((m) => m.current).length === 0) {
+
+        displayQuestions[0].current = true;
+        console.log(displayQuestions);
+    }
+    
+}
 
     const nextQuestionHandler = () => {
-        let switchNextQuestion = false;
-        for (const displayQuestion of displayQuestions) {
-            // console.log("hallo");
-            if (switchNextQuestion) {
-                displayQuestion.current = true;
-                break;
-            }
-            if (displayQuestion.current) {
-                displayQuestion.current = false;
-                switchNextQuestion = true;
-            }
-            // console.log();
-        }
-        console.log(displayQuestions.filter((m) => m.current).length);
-        if (displayQuestions.filter((m) => m.current).length === 0) {
-
-            displayQuestions[0].current = true;
-            console.log(displayQuestions);
-        }
+        goToNextQuestion()
         setDisplayQuestions([...displayQuestions]);
     };
+    
+    const prevQuestionHandler = () => {
+        displayQuestions.reverse()
+        goToNextQuestion()
+        displayQuestions.reverse()
+        setDisplayQuestions([...displayQuestions]);
+    }
 
     const canDisplayQuestions = () => {
         // displayQuestions.length > 0 &&
@@ -91,7 +99,7 @@ const LiDExc = () => {
                         {" "}
                         <button
                             className="border-4 border-palette-60 p-4 rounded-xl bg-palette-50"
-                            // onClick={prevQuestionHandler}
+                            onClick={prevQuestionHandler}
                         >
                             vorherige Frage
                         </button>
