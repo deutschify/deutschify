@@ -21,7 +21,6 @@ export const useStore = create((set) => ({
                     withCredentials: true,
                 })
             ).data;
-            // console.log(data.currentUser);
             const user = data.currentUser
             set((state) => {
                 const _state = {...state}
@@ -47,7 +46,6 @@ export const useStore = create((set) => ({
             set((state) => {
                 const _state = {...state}
                 _state.currentUser = user
-                console.log(_state.currentUser);
                 _state.loading = false
                 return _state
             })
