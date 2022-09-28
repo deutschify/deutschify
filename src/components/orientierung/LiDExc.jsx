@@ -32,6 +32,7 @@ const LiDExc = () => {
                 correctAnswer: rawDeutschlandquestion.correctAnswer,
                 imageURL: rawDeutschlandquestion.imageURL,
                 current: index === 0,
+                isAnswered: false,
             };
             _displayQuestions.push(displayQuestion);
         });
@@ -44,6 +45,10 @@ const LiDExc = () => {
         fetchDataBundesland();
         // console.log(displayQuestions);
     }, []);
+
+    const getCurrentQuestion = () => {
+        return displayQuestions.find((m) => m.current);
+    };
 
     const goToNextQuestion = () => {
         let switchNextQuestion = false;
@@ -59,7 +64,7 @@ const LiDExc = () => {
             }
         }
 
-        if (displayQuestions.filter((m) => m.current).length === 0) {
+        if (getCurrentQuestion().length === 0) {
             displayQuestions[0].current = true;
             console.log(displayQuestions);
         }
@@ -88,22 +93,21 @@ const LiDExc = () => {
     };
 
     const rightAnswerHandler = (answer) => {
-        const displayQuestion = displayQuestions.find((m) => m.current)
-        
-        const chosenAnswerText = displayQuestion[answer]
+        const displayQuestion = displayQuestions.find((m) => m.current);
+
+        const chosenAnswerText = displayQuestion[answer];
         console.log(chosenAnswerText);
         if (chosenAnswerText === displayQuestion.correctAnswer) {
             console.log("right");
-            displayQuestion[answer + "ButtonClass"] = "right"
+            displayQuestion[answer + "ButtonClass"] = "right";
             console.log(displayQuestion);
-           
         } else {
             // console.log("wrong");
-            displayQuestion[answer + "ButtonClass"] = "wrong"
-            displayQuestion[displayQuestion.correctAnswer + "ButtonClass"] = "right"
-
+            displayQuestion[answer + "ButtonClass"] = "wrong";
+            displayQuestion[displayQuestion.correctAnswer + "ButtonClass"] =
+                "right";
         }
-         setDisplayQuestions([...displayQuestions]);
+        setDisplayQuestions([...displayQuestions]);
     };
 
     return (
@@ -125,11 +129,11 @@ const LiDExc = () => {
                         <>
                             {" "}
                             <div className="">
-                                {displayQuestions.find((m) => m.current).number}
+                                {getCurrentQuestion().number}
                             </div>
                             <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 ">
                                 {
-                                    displayQuestions.find((m) => m.current)
+                                    getCurrentQuestion()
                                         .question
                                 }
                             </div>
@@ -151,46 +155,74 @@ const LiDExc = () => {
                                 }</div> */}
                             <div className="">
                                 <button
-                                    className={`${displayQuestions.find((m) => m.current).answerAButtonClass}   bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
+                                    className={`${
+                                        getCurrentQuestion()
+                                            .answerAButtonClass
+                                    }   bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
                                         rightAnswerHandler("answerA")
                                     }
+                                    disabled={
+                                        getCurrentQuestion()
+                                            .isAnswered
+                                    }
                                 >
                                     {
-                                        displayQuestions.find((m) => m.current)
+                                        getCurrentQuestion()
                                             .answerA
                                     }
                                 </button>
                                 <button
-                                    className={`${displayQuestions.find((m) => m.current).answerBButtonClass} bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
+                                    className={`${
+                                        getCurrentQuestion()
+                                            .answerBButtonClass
+                                    } bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
                                         rightAnswerHandler("answerB")
                                     }
+                                    disabled={
+                                        getCurrentQuestion()
+                                            .isAnswered
+                                    }
                                 >
                                     {
-                                        displayQuestions.find((m) => m.current)
+                                        getCurrentQuestion()
                                             .answerB
                                     }
                                 </button>
                                 <button
-                                    className={`${displayQuestions.find((m) => m.current).answerCButtonClass} bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
+                                    className={`${
+                                        getCurrentQuestion()
+                                            .answerCButtonClass
+                                    } bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
                                         rightAnswerHandler("answerC")
                                     }
+                                    disabled={
+                                        getCurrentQuestion()
+                                            .isAnswered
+                                    }
                                 >
                                     {
-                                        displayQuestions.find((m) => m.current)
+                                        getCurrentQuestion()
                                             .answerC
                                     }
                                 </button>
                                 <button
-                                    className={`${displayQuestions.find((m) => m.current).answerDButtonClass} bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
+                                    className={`${
+                                        getCurrentQuestion()
+                                            .answerDButtonClass
+                                    } bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
                                         rightAnswerHandler("answerD")
                                     }
+                                    disabled={
+                                        getCurrentQuestion()
+                                            .isAnswered
+                                    }
                                 >
                                     {
-                                        displayQuestions.find((m) => m.current)
+                                        getCurrentQuestion()
                                             .answerD
                                     }
                                 </button>
