@@ -79,9 +79,8 @@ function App() {
                     element={<LiDMod />}
                 />
 
-                <Route path="/forum" element={<Forum />} />
-                <Route path="/forum/news-feed/all" element={<NewsFeed />} />
-                <Route path="/forum/my-posts" element={<MyPosts />} />
+                <Route path="/forum/*" element={<Forum />} />
+                
 
                 <Route
                     path="/registration/*"
@@ -115,6 +114,8 @@ function App() {
                     <>
                         <Route path="/logout" element={<PageLogout />} />
                         <Route path="/:user" element={<PageUserSettings />} />
+                        <Route path="/forum/news-feed/all" element={<NewsFeed />} />
+                <Route path="/forum/my-posts" element={<MyPosts />} />
                     </>
                 )}
                 <Route path="/about-us/*" element={<AboutUs />} />
