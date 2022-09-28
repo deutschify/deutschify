@@ -83,17 +83,11 @@ const LiDExc = () => {
         );
     };
 
-// const compareRightAnswerHandler = () => {
-//     if (displayQuestions.answerA === displayQuestions.correctAnswer) {
-//        return console.log('answer A is correct');
-//     } else if (displayQuestions.answerB === displayQuestions.correctAnswer) {
-//       return  console.log('answer B is correct');
-//     } else if (displayQuestions.answerC === displayQuestions.correctAnswer) {
-//         return console.log('answer C is correct');
-//     } else if (displayQuestions.answerD === displayQuestions.correctAnswer) {
-//         return console.log('answer D is correct')
-//     }
-// }
+    const rightAnswerHandler = (answer) => {
+        const displayQuestion = displayQuestions.find((m) => m.current)
+        console.log(displayQuestion, answer);
+        
+    };
 
     return (
         <div className="">
@@ -139,32 +133,50 @@ const LiDExc = () => {
                                         )
                                 }</div> */}
                             <div className="">
-                                <button className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50"
-                                // onClick={compareRightAnswerHandler}
+                                <button
+                                    className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50"
+                                    onClick={() =>
+                                        rightAnswerHandler("answerA")
+                                    }
                                 >
                                     {
                                         displayQuestions.find((m) => m.current)
                                             .answerA
                                     }
                                 </button>
-                                <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50">
+                                <button
+                                    className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50"
+                                    onClick={() =>
+                                        rightAnswerHandler("answerB")
+                                    }
+                                >
                                     {
                                         displayQuestions.find((m) => m.current)
                                             .answerB
                                     }
-                                </div>
-                                <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50">
+                                </button>
+                                <button
+                                    className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50"
+                                    onClick={() =>
+                                        rightAnswerHandler("answerC")
+                                    }
+                                >
                                     {
                                         displayQuestions.find((m) => m.current)
                                             .answerC
                                     }
-                                </div>
-                                <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50">
+                                </button>
+                                <button
+                                    className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50"
+                                    onClick={() =>
+                                        rightAnswerHandler("answerD")
+                                    }
+                                >
                                     {
                                         displayQuestions.find((m) => m.current)
                                             .answerD
                                     }
-                                </div>
+                                </button>
                             </div>
                         </>
                     )}
