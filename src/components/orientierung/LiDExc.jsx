@@ -3,7 +3,7 @@ import { useParams, NavLink } from "react-router-dom";
 import Lernbereich from "./LernbereichOrientierung";
 import { MdArrowBackIos } from "react-icons/md";
 import { MdArrowForwardIos } from "react-icons/md";
-
+import "../../App.css";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDExc = () => {
@@ -25,6 +25,10 @@ const LiDExc = () => {
                 answerB: rawDeutschlandquestion.answerB,
                 answerC: rawDeutschlandquestion.answerC,
                 answerD: rawDeutschlandquestion.answerD,
+                answerAButtonClass: "normal",
+                answerBButtonClass: "normal",
+                answerCButtonClass: "normal",
+                answerDButtonClass: "normal",
                 correctAnswer: rawDeutschlandquestion.correctAnswer,
                 imageURL: rawDeutschlandquestion.imageURL,
                 current: index === 0,
@@ -85,8 +89,21 @@ const LiDExc = () => {
 
     const rightAnswerHandler = (answer) => {
         const displayQuestion = displayQuestions.find((m) => m.current)
-        console.log(displayQuestion, answer);
         
+        const chosenAnswerText = displayQuestion[answer]
+        console.log(chosenAnswerText);
+        if (chosenAnswerText === displayQuestion.correctAnswer) {
+            console.log("right");
+            displayQuestion[answer + "ButtonClass"] = "right"
+            console.log(displayQuestion);
+           
+        } else {
+            // console.log("wrong");
+            displayQuestion[answer + "ButtonClass"] = "wrong"
+            displayQuestion[displayQuestion.correctAnswer + "ButtonClass"] = "right"
+
+        }
+         setDisplayQuestions([...displayQuestions]);
     };
 
     return (
@@ -134,7 +151,7 @@ const LiDExc = () => {
                                 }</div> */}
                             <div className="">
                                 <button
-                                    className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50"
+                                    className={`${displayQuestions.find((m) => m.current).answerAButtonClass}   bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
                                         rightAnswerHandler("answerA")
                                     }
@@ -145,7 +162,7 @@ const LiDExc = () => {
                                     }
                                 </button>
                                 <button
-                                    className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50"
+                                    className={`${displayQuestions.find((m) => m.current).answerBButtonClass} bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
                                         rightAnswerHandler("answerB")
                                     }
@@ -156,7 +173,7 @@ const LiDExc = () => {
                                     }
                                 </button>
                                 <button
-                                    className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50"
+                                    className={`${displayQuestions.find((m) => m.current).answerCButtonClass} bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
                                         rightAnswerHandler("answerC")
                                     }
@@ -167,7 +184,7 @@ const LiDExc = () => {
                                     }
                                 </button>
                                 <button
-                                    className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50"
+                                    className={`${displayQuestions.find((m) => m.current).answerDButtonClass} bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
                                         rightAnswerHandler("answerD")
                                     }
