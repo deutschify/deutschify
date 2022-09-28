@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -8,14 +9,14 @@ YupPassword(yup);
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { thumbnail } from "@cloudinary/url-gen/actions/resize";
-import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
 import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
 import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
 
 import axios from "axios";
-import {BiImageAdd} from 'react-icons/bi'
+import { BiImageAdd } from "react-icons/bi";
 import { IUserEditForm } from "../interfaces";
 import { baseUrl, useStore } from "../store";
+import { ILanguage } from "./PageRegister";
 
 const schema = yup.object().shape({
     firstName: yup
@@ -31,28 +32,29 @@ const schema = yup.object().shape({
         then: yup.string().password(),
     }),
     repeatPassword: yup.string().oneOf([yup.ref("password"), null]),
-    imagePublicId: yup
-        .mixed()
-        .test("type", "it should be of jpeg or png format", (value) => {
-            return (value && value[0]?.type === "image/jpeg") || "image/png";
-        }),
-    // .test("fileSize", "The file is too large", (value) => {
-    //     return value && value[0]?.size < 1800000;
-    // })
+    imagePublicId: yup.mixed(),
 });
 
 const PageUserSettings = () => {
+    const [previewSource, setPreviewSource] = useState("");
+    const [selectedImage, setSelectedImage] = useState([]);
+    const navigate = useNavigate();
+
     const {
+        setValue,
         register,
         formState: { errors },
         handleSubmit,
         watch,
+        reset,
     } = useForm<IUserEditForm>({
         mode: "onBlur",
         resolver: yupResolver(schema),
     });
     const password = watch("password");
     const currentUser = useStore((state) => state.currentUser);
+    const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
+    const languages = useStore((state) => state.languages);
 
     // Create a Cloudinary instance and set your cloud name.
     const cld = new Cloudinary({
@@ -62,18 +64,86 @@ const PageUserSettings = () => {
     });
 
     // cld.image returns a CloudinaryImage with the configuration set.
-    const myImage = cld.image(currentUser.imagePublicId);
-    myImage
-        .resize(
-            thumbnail().width(150).height(150).gravity(focusOn(FocusOn.face()))
-        );
+    const myImage = cld.image(`users-profile-img/${currentUser.imagePublicId}`);
+    myImage.resize(
+        thumbnail().width(150).height(150).gravity(focusOn(FocusOn.face()))
+    );
 
+    const previewFile = (e:any) => {
+        const file = e.target.files;
+        setSelectedImage(file)
+        console.log(selectedImage);
+        if (file) {
+            setPreviewSource(URL.createObjectURL(file[0]));
+        }
+    };
+
+    const uploadImage = async (files: string | (string | Blob)[]) => {
+        const formData = new FormData();
+        formData.append("file", selectedImage[0]);
+        formData.append("upload_preset", "di60eyhz");
+        formData.append("folder", "users-profile-img");
+        if (selectedImage.length===0) {
+            return "";
+        }
+        const res = await axios
+            .post(
+                "https://api.cloudinary.com/v1_1/dsyhfgbli/image/upload",
+                formData
+            )
+            .then((response) => {
+                const public_id = response.data.public_id.split("/");
+                console.log(public_id[1]);
+                return public_id[1];
+            });
+
+        return res;
+    };
+
+    type Valuable<T> = {
+        [K in keyof T as T[K] extends null | undefined | object
+            ? never
+            : K]: T[K];
+    };
+    function getValuable<
+        // eslint-disable-next-line @typescript-eslint/ban-types
+        T extends {},
+        V = Valuable<T>
+    >(obj: T): V {
+        return Object.fromEntries(
+            Object.entries(obj).filter(
+                ([, v]) =>
+                    !(
+                        (typeof v === "string" && !v.length) ||
+                        v === null ||
+                        typeof v === "undefined" ||
+                        (typeof v === "object" && !Object.keys(v).length)
+                    )
+            )
+        ) as V;
+    }
     const onSubmit: SubmitHandler<IUserEditForm> = async (
         data: IUserEditForm
     ) => {
         const { firstName, lastName, password, imagePublicId, language } = data;
-        // const sendRequest = await axios.post(`${baseUrl}/${currentUser.username}`)
-        console.log(data);
+        console.log(imagePublicId);        
+        uploadImage(imagePublicId)
+            .then((response) => {
+                const newData = { ...data, imagePublicId: response };
+                console.log(newData);
+
+                const dataToSend = getValuable(newData);
+
+                console.log({ dataToSend });
+                axios.put(`${baseUrl}/update/${currentUser._id}`, {
+                    dataToSend,
+                });
+            })
+            .then(() => {
+                reset();
+                setPreviewSource("");
+                fetchCurrentUser();
+            });
     };
 
     return (
@@ -81,7 +151,20 @@ const PageUserSettings = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <div className="relative h-40 w-40">
-                        <AdvancedImage cldImg={myImage} className="rounded-full absolute"/>
+                        {previewSource ? (
+                            <img
+                                className="rounded-full absolute"
+                                id="showImg"
+                                src={previewSource}
+                                alt="chosen"
+                                style={{ height: "150px", width: "150px" }}
+                            />
+                        ) : (
+                            <AdvancedImage
+                                cldImg={myImage}
+                                className="rounded-full absolute"
+                            />
+                        )}
                         <div className="absolute bottom-0 right-0">
                             <input
                                 id="avatar"
@@ -89,8 +172,16 @@ const PageUserSettings = () => {
                                 {...register("imagePublicId")}
                                 accept=".jpeg, .jpg, .png, .svg"
                                 hidden
+                                onChange={previewFile}
                             />
-                            <label htmlFor="avatar"><BiImageAdd size='50px' style={{color:'blue'}}/></label>
+
+                            <label htmlFor="avatar">
+                                <BiImageAdd
+                                    className="cursor-pointer"
+                                    size="50px"
+                                    style={{ color: "blue" }}
+                                />
+                            </label>
                         </div>
                         {errors.imagePublicId && (
                             <p>{errors.imagePublicId?.message}</p>
@@ -107,6 +198,7 @@ const PageUserSettings = () => {
                     <div>
                         <h4>change your name</h4>
                         <input
+                            className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                             defaultValue=""
                             {...register("firstName")}
                             placeholder="firstName"
@@ -117,6 +209,7 @@ const PageUserSettings = () => {
                     </div>
                     <div>
                         <input
+                            className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                             defaultValue=""
                             {...register("lastName")}
                             placeholder="lastName"
@@ -130,6 +223,7 @@ const PageUserSettings = () => {
                             <h4>change Password</h4>
                         </div>
                         <input
+                            className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                             defaultValue={password}
                             {...register("password")}
                             placeholder="password"
@@ -139,6 +233,7 @@ const PageUserSettings = () => {
                     {password && (
                         <div>
                             <input
+                                className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 placeholder="repeat-password"
                                 defaultValue=""
                                 {...register("repeatPassword")}
@@ -155,16 +250,42 @@ const PageUserSettings = () => {
                     </div>
                     <div>
                         <select
+                            className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                             {...register("language")}
+                            onChange={(e) =>
+                                setValue("language", e.target.value, {
+                                    shouldValidate: true,
+                                })
+                            }
                             defaultValue={currentUser.language}
                         >
-                            <option disabled>Language</option>
-                            <option value="deutsch">deutsch</option>
+                            {languages.map((language: ILanguage) => {
+                                return (
+                                    <option
+                                        className="bg-palette-60 "
+                                        key={language.code}
+                                        value={`${language.name}`}
+                                    >
+                                        {" "}
+                                        {language.name}
+                                    </option>
+                                );
+                            })}
                         </select>
                     </div>
                 </div>
                 <div>
                     <input type="submit" value="Save" />
+                </div>
+                <div>
+                    <button
+                        onClick={() => {
+                            navigate("/home");
+                        }}
+                        type="reset"
+                    >
+                        cancel
+                    </button>
                 </div>
             </form>
         </div>
