@@ -2,6 +2,7 @@ import { CgMoreVerticalAlt } from "react-icons/cg";
 import { FaThumbsUp } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { format } from "timeago.js";
 
 const Post = ({ post }) => {
     const backend_base_url = "http://localhost:8000";
@@ -26,7 +27,7 @@ const Post = ({ post }) => {
             console.log("222");
         };
         fetchUser();
-    }, []);
+    }, [post.userId]);
 
     //to handle the like button
     const likeHandler = () => {
@@ -55,9 +56,14 @@ const Post = ({ post }) => {
                 <div className="potTop flex items-center justify-between">
                     <div className="postTopLeft flex items-center">
                         <span className="postUserName text-sm ml-2.5 text-palette-80 pt-2">
-                            {user.firstName} {user.lastName}
+                            <p>
+                                {" "}
+                                {user.firstName} {user.lastName}
+                            </p>
                         </span>
-                        <span className="postDate text-xs ml-3">vor 1 tag</span>
+                        <span className="postDate text-xs ml-5 pt-2">
+                            <p>{format(post.createdAt)}</p>
+                        </span>
                     </div>
 
                     <div className="postTopRight">
