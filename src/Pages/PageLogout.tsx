@@ -16,8 +16,6 @@ export const PageLogout = () => {
 
 	const handleLogoutButton = () => {
 		fetchLoggedOutUser()
-		console.log(currentUser);
-		
 		navigate("/home");
 	}
 	return (
