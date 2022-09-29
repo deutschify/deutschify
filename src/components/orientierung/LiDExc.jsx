@@ -8,7 +8,7 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDExc = () => {
     const [displayQuestions, setDisplayQuestions] = useState([]);
-
+    
     const { category } = useParams();
 
     const fetchDataBundesland = async () => {
@@ -33,17 +33,16 @@ const LiDExc = () => {
                 imageURL: rawDeutschlandquestion.imageURL,
                 current: index === 0,
                 isAnswered: false,
+                
             };
             _displayQuestions.push(displayQuestion);
         });
-        // console.log(_displayQuestions.find());
 
         setDisplayQuestions(_displayQuestions);
     };
 
     useEffect(() => {
         fetchDataBundesland();
-        // console.log(displayQuestions);
     }, []);
 
     const getCurrentQuestion = () => {
@@ -53,8 +52,7 @@ const LiDExc = () => {
     const goToNextQuestion = () => {
         let switchNextQuestion = false;
         for (const displayQuestion of displayQuestions) {
-            // console.log("hallo");
-            if (switchNextQuestion) {
+            if (switchNextQuestion && !displayQuestion.isAnswered) {
                 displayQuestion.current = true;
                 break;
             }
@@ -75,12 +73,12 @@ const LiDExc = () => {
         setDisplayQuestions([...displayQuestions]);
     };
 
-    const prevQuestionHandler = () => {
-        displayQuestions.reverse();
-        goToNextQuestion();
-        displayQuestions.reverse();
-        setDisplayQuestions([...displayQuestions]);
-    };
+    // const prevQuestionHandler = () => {
+    //     displayQuestions.reverse();
+    //     goToNextQuestion();
+    //     displayQuestions.reverse();
+    //     setDisplayQuestions([...displayQuestions]);
+    // };
 
     const canDisplayQuestions = () => {
         // displayQuestions.length > 0 &&
@@ -92,7 +90,7 @@ const LiDExc = () => {
         );
     };
 
-    const rightAnswerHandler = (answer) => {
+    const rightAnswerHandler = (answer, count) => {
         const displayQuestion = displayQuestions.find((m) => m.current);
 
         const chosenAnswerText = displayQuestion[answer];
@@ -101,13 +99,17 @@ const LiDExc = () => {
             console.log("right");
             displayQuestion[answer + "ButtonClass"] = "right";
             console.log(displayQuestion);
+            // const questionsToAsk = displayQuestions.splice(displayQuestion.isAnswered)
+            // console.log(displayQuestions);
+
+
         } else {
             // console.log("wrong");
             displayQuestion[answer + "ButtonClass"] = "wrong";
             displayQuestion[displayQuestion.correctAnswer + "ButtonClass"] =
                 "right";
-        }
-        setDisplayQuestions([...displayQuestions]);
+            displayQuestion.isAnswered = true;
+        }        setDisplayQuestions([...displayQuestions]);
     };
 
     return (
@@ -116,7 +118,7 @@ const LiDExc = () => {
             <div className="">{displayQuestions.length} Fragen</div>
             <div className="">
                 {" "}
-                <nav className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-3/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80">
+                <nav className="bg-palette-50 p-4 m-4 text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-2/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80">
                     <NavLink
                         to={`/lernbereich/${category}`}
                         element={<Lernbereich />}
@@ -124,7 +126,7 @@ const LiDExc = () => {
                         Zurück zum Lernbereich
                     </NavLink>
                 </nav>
-                <div className="m-6 w-7/12 p-10 h-100 bg-palette-80 text-palette-60 text-xl flex flex-col items-center justify-start border-4 border-palette-50 rounded-xl">
+                <div className="m-6 w-7/12 p-10 h-100 bg-palette-80 text-palette-60 text-xl flex flex-col items-center justify-center border-4 border-palette-50 rounded-xl">
                     {canDisplayQuestions() && (
                         <>
                             {" "}
@@ -132,10 +134,7 @@ const LiDExc = () => {
                                 {getCurrentQuestion().number}
                             </div>
                             <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 ">
-                                {
-                                    getCurrentQuestion()
-                                        .question
-                                }
+                                {getCurrentQuestion().question}
                             </div>
                             {/* <div className="">{
                                 
@@ -153,85 +152,57 @@ const LiDExc = () => {
                                             </>
                                         )
                                 }</div> */}
-                            <div className="">
+                            <div className="flex flex-col items-center w-full m-20">
                                 <button
                                     className={`${
-                                        getCurrentQuestion()
-                                            .answerAButtonClass
-                                    }   bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
+                                        getCurrentQuestion().answerAButtonClass
+                                    } w-6/12   bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
                                         rightAnswerHandler("answerA")
                                     }
-                                    disabled={
-                                        getCurrentQuestion()
-                                            .isAnswered
-                                    }
+                                    disabled={getCurrentQuestion().isAnswered}
                                 >
-                                    {
-                                        getCurrentQuestion()
-                                            .answerA
-                                    }
+                                    {getCurrentQuestion().answerA}
                                 </button>
                                 <button
                                     className={`${
-                                        getCurrentQuestion()
-                                            .answerBButtonClass
-                                    } bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
+                                        getCurrentQuestion().answerBButtonClass
+                                    } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
                                         rightAnswerHandler("answerB")
                                     }
-                                    disabled={
-                                        getCurrentQuestion()
-                                            .isAnswered
-                                    }
+                                    disabled={getCurrentQuestion().isAnswered}
                                 >
-                                    {
-                                        getCurrentQuestion()
-                                            .answerB
-                                    }
+                                    {getCurrentQuestion().answerB}
                                 </button>
                                 <button
                                     className={`${
-                                        getCurrentQuestion()
-                                            .answerCButtonClass
-                                    } bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
+                                        getCurrentQuestion().answerCButtonClass
+                                    } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
                                         rightAnswerHandler("answerC")
                                     }
-                                    disabled={
-                                        getCurrentQuestion()
-                                            .isAnswered
-                                    }
+                                    disabled={getCurrentQuestion().isAnswered}
                                 >
-                                    {
-                                        getCurrentQuestion()
-                                            .answerC
-                                    }
+                                    {getCurrentQuestion().answerC}
                                 </button>
                                 <button
                                     className={`${
-                                        getCurrentQuestion()
-                                            .answerDButtonClass
-                                    } bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
+                                        getCurrentQuestion().answerDButtonClass
+                                    } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
                                         rightAnswerHandler("answerD")
                                     }
-                                    disabled={
-                                        getCurrentQuestion()
-                                            .isAnswered
-                                    }
+                                    disabled={getCurrentQuestion().isAnswered}
                                 >
-                                    {
-                                        getCurrentQuestion()
-                                            .answerD
-                                    }
+                                    {getCurrentQuestion().answerD}
                                 </button>
                             </div>
                         </>
                     )}
-                    <div className="mt-20 flex justify-between  w-full">
+                    <div className="mt-20 flex justify-end  w-full">
                         {" "}
-                        <button
+                        {/* <button
                             className="border-4 border-palette-60 w-4/12 p-4 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
                             onClick={prevQuestionHandler}
                         >
@@ -240,7 +211,7 @@ const LiDExc = () => {
                                 <MdArrowBackIos className="text-3xl" />
                                 vorherige Frage
                             </div>
-                        </button>
+                        </button> */}
                         <button
                             className="border-4 border-palette-60 p-4 w-4/12 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
                             onClick={nextQuestionHandler}
@@ -250,6 +221,7 @@ const LiDExc = () => {
                                 <MdArrowForwardIos className="text-3xl" />{" "}
                             </div>
                         </button>
+                      
                     </div>
                 </div>
             </div>
