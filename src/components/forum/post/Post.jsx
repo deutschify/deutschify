@@ -1,12 +1,34 @@
 import { CgMoreVerticalAlt } from "react-icons/cg";
 import { FaThumbsUp } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-const Post = () => {
-    const [like, setLike] = useState(0);
+const Post = ({ post }) => {
+    const backend_base_url = "http://localhost:8000";
+
+    const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLiked] = useState(false);
     const [likeColor, setLikeColor] = useState("");
+    const [user, setUser] = useState({});
+    //fetching the user data to show the user name BUT from the posts collection
+    useEffect(() => {
+        const fetchUser = async () => {
+            console.log(post);
+            console.log("000");
+            const response = await axios.get(
+                backend_base_url + `/users/${post.userId}`
+            );
+            console.log("0101");
+            console.log(response);
+            console.log("111");
+            setUser(response.data);
+            console.log(response);
+            console.log("222");
+        };
+        fetchUser();
+    }, []);
 
+    //to handle the like button
     const likeHandler = () => {
         // setLike(
         //     isLiked
@@ -32,16 +54,19 @@ const Post = () => {
             <div className="postWrapper p-2.5 ">
                 <div className="potTop flex items-center justify-between">
                     <div className="postTopLeft flex items-center">
-                        <span className="postUserName text-sm ml-2.5">
-                            User Name
+                        <span className="postUserName text-sm ml-2.5 text-palette-80 pt-2">
+                            {user.firstName} {user.lastName}
                         </span>
                         <span className="postDate text-xs ml-3">vor 1 tag</span>
                     </div>
+
                     <div className="postTopRight">
                         {/* vertical options */}
                         <CgMoreVerticalAlt className="" />
                     </div>
                 </div>
+                <hr className="m-5  border-1 border-palette-40 " />
+
                 <div className="postCenter mt-5 mb-5">
                     <span className="postText">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.

@@ -27,17 +27,9 @@ const NewsFeed = () => {
             <div className="feedWrapper flex flex-col justify-center items-center pt-8 pb-6 ">
                 <Share />
                 {posts.map((p) => (
-                    <Post key={p.id} post={p} />
+                    <Post key={p._id} post={p} />
                 ))}
             </div>
-
-            {/* <main className="newsFeed">
-                {posts.length ? (
-                    <Feed posts={posts} />
-                ) : (
-                    <p className="noParagraph p-2"> No posts to display</p>
-                )}
-            </main> */}
         </div>
     );
 };
