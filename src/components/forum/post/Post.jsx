@@ -93,7 +93,7 @@ const Post = ({ post }) => {
                     </span>
                     <img
                         className="postImage mt-5 w-full max-h-96 object-contain"
-                        src="../../../../public/images/deutschifyLogo.png"
+                        src={post.img}
                         alt="image"
                     />
                 </div>
