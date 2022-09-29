@@ -14,17 +14,10 @@ const Post = ({ post }) => {
     //fetching the user data to show the user name BUT from the posts collection
     useEffect(() => {
         const fetchUser = async () => {
-            console.log(post);
-            console.log("000");
             const response = await axios.get(
                 backend_base_url + `/users/${post.userId}`
             );
-            console.log("0101");
-            console.log(response);
-            console.log("111");
             setUser(response.data);
-            console.log(response);
-            console.log("222");
         };
         fetchUser();
     }, [post.userId]);
