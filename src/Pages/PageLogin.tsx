@@ -59,10 +59,8 @@ const PageLogin = (props: IPageLoginProps) => {
             console.log("bad login");
         } else {
             fetchCurrentUser()
-            console.log(currentUser);
-            console.log(fetchCurrentUser());
+            // console.log(currentUser);
             navigate('/home');
-            console.log("success");
         }
         // console.log(data);
         

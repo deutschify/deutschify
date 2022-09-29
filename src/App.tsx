@@ -15,7 +15,7 @@ import Sprachniveau from "./components/Sprachniveau";
 
 import Einbuergerungstest from "./components/orientierung/Einbuergerungstest";
 
-import Forum from "./components/Forum";
+import Forum from "./components/forum/Forum";
 import PageRegister from "./Pages/PageRegister";
 import PageConfirmRegistration from "./Pages/PageConfirmRegistration";
 import PageLogin from "./Pages/PageLogin";
@@ -31,6 +31,8 @@ import { useStore } from "./store";
 import { PageLogout } from "./Pages/PageLogout";
 import { baseUrl } from "./store";
 import PageUserSettings from "./Pages/PageUserSettings";
+import NewsFeed from "./components/forum/news-feed/NewsFeed";
+import MyPosts from "./components/forum/MyPosts";
 
 function App() {
     const navigate = useNavigate();
@@ -77,7 +79,8 @@ function App() {
                     element={<LiDMod />}
                 />
 
-                <Route path="/forum" element={<Forum />} />
+                <Route path="/forum/*" element={<Forum />} />
+                
 
                 <Route
                     path="/registration/*"
@@ -111,6 +114,8 @@ function App() {
                     <>
                         <Route path="/logout" element={<PageLogout />} />
                         <Route path="/:user" element={<PageUserSettings />} />
+                        <Route path="/forum/news-feed/all" element={<NewsFeed />} />
+                <Route path="/forum/my-posts" element={<MyPosts />} />
                     </>
                 )}
                 <Route path="/about-us/*" element={<AboutUs />} />

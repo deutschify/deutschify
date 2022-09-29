@@ -17,7 +17,7 @@ interface IPageRegistrationProps {
     // setCurrentUser: React.Dispatch<React.SetStateAction<IUserLoginForm>>;
 }
 
-interface ILanguage {
+export interface ILanguage {
     code: number;
     name: string;
 }
