@@ -1,12 +1,28 @@
 import { CgMoreVerticalAlt } from "react-icons/cg";
 import { FaThumbsUp } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { format } from "timeago.js";
 
-const Post = () => {
-    const [like, setLike] = useState(0);
+const Post = ({ post }) => {
+    const backend_base_url = "http://localhost:8000";
+
+    const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLiked] = useState(false);
     const [likeColor, setLikeColor] = useState("");
+    const [user, setUser] = useState({});
+    //fetching the user data to show the user name BUT from the posts collection
+    useEffect(() => {
+        const fetchUser = async () => {
+            const response = await axios.get(
+                backend_base_url + `/users/${post.userId}`
+            );
+            setUser(response.data);
+        };
+        fetchUser();
+    }, [post.userId]);
 
+    //to handle the like button
     const likeHandler = () => {
         // setLike(
         //     isLiked
@@ -32,16 +48,24 @@ const Post = () => {
             <div className="postWrapper p-2.5 ">
                 <div className="potTop flex items-center justify-between">
                     <div className="postTopLeft flex items-center">
-                        <span className="postUserName text-sm ml-2.5">
-                            User Name
+                        <span className="postUserName text-sm ml-2.5 text-palette-80 pt-2">
+                            <p>
+                                {" "}
+                                {user.firstName} {user.lastName}
+                            </p>
                         </span>
-                        <span className="postDate text-xs ml-3">vor 1 tag</span>
+                        <span className="postDate text-xs ml-5 pt-2">
+                            <p>{format(post.createdAt)}</p>
+                        </span>
                     </div>
+
                     <div className="postTopRight">
                         {/* vertical options */}
                         <CgMoreVerticalAlt className="" />
                     </div>
                 </div>
+                <hr className="m-5  border-1 border-palette-40 " />
+
                 <div className="postCenter mt-5 mb-5">
                     <span className="postText">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -68,7 +92,7 @@ const Post = () => {
                     </span>
                     <img
                         className="postImage mt-5 w-full max-h-96 object-contain"
-                        src="../../../../public/images/deutschifyLogo.png"
+                        src={post.img}
                         alt="image"
                     />
                 </div>
