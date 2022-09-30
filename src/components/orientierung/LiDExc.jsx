@@ -8,7 +8,7 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDExc = () => {
     const [displayQuestions, setDisplayQuestions] = useState([]);
-    const [rightAnswerCounter, setRightAnswerCounter] = useState(0);
+    // const [rightAnswerCounter, setRightAnswerCounter] = useState(0);
 
     const { category } = useParams();
 
@@ -99,10 +99,7 @@ const LiDExc = () => {
         if (chosenAnswerText === displayQuestion.correctAnswer) {
             console.log("right");
             displayQuestion[answer + "ButtonClass"] = "right";
-            const countRightAnswer = () => {
-                setRightAnswerCounter((count) => count + 1);    
-                    console.log(countRightAnswer);
-            };
+        
     
 
             console.log(displayQuestion);
@@ -115,7 +112,7 @@ const LiDExc = () => {
                 "right";
             displayQuestion.isAnswered = true;
         }
-        countRightAnswer()
+       
         setDisplayQuestions([...displayQuestions]);
     };
 
@@ -165,7 +162,7 @@ const LiDExc = () => {
                                         getCurrentQuestion().answerAButtonClass
                                     } w-6/12   bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
-                                        {rightAnswerHandler("answerA"); {countRightAnswer()}
+                                        {rightAnswerHandler("answerA")
                                     }}
                                     disabled={getCurrentQuestion().isAnswered}
                                 >
@@ -176,7 +173,7 @@ const LiDExc = () => {
                                         getCurrentQuestion().answerBButtonClass
                                     } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
-                                        {rightAnswerHandler("answerB"); {countRightAnswer()}
+                                        {rightAnswerHandler("answerB")
                                     }}
                                     disabled={getCurrentQuestion().isAnswered}
                                 >
@@ -187,7 +184,7 @@ const LiDExc = () => {
                                         getCurrentQuestion().answerCButtonClass
                                     } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
-                                        {rightAnswerHandler("answerC"); {countRightAnswer()}
+                                        {rightAnswerHandler("answerC")
                                     }}
                                     // disabled={getCurrentQuestion().isAnswered}
                                 >
@@ -198,7 +195,7 @@ const LiDExc = () => {
                                         getCurrentQuestion().answerDButtonClass
                                     } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
-                                        {rightAnswerHandler("answerD"); {countRightAnswer()}
+                                        {rightAnswerHandler("answerD")
                                     }}
                                     disabled={getCurrentQuestion().isAnswered}
                                 >
@@ -230,7 +227,7 @@ const LiDExc = () => {
                         </button>
                      
                     </div>   
-                    <div className="">{rightAnswerCounter}</div>
+                   
                 </div>
             </div>
         </div>
