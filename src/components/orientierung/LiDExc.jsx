@@ -8,7 +8,8 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDExc = () => {
     const [displayQuestions, setDisplayQuestions] = useState([]);
-    
+    const [rightAnswerCounter, setRightAnswerCounter] = useState(0);
+
     const { category } = useParams();
 
     const fetchDataBundesland = async () => {
@@ -33,7 +34,7 @@ const LiDExc = () => {
                 imageURL: rawDeutschlandquestion.imageURL,
                 current: index === 0,
                 isAnswered: false,
-                
+              
             };
             _displayQuestions.push(displayQuestion);
         });
@@ -98,18 +99,24 @@ const LiDExc = () => {
         if (chosenAnswerText === displayQuestion.correctAnswer) {
             console.log("right");
             displayQuestion[answer + "ButtonClass"] = "right";
+            const countRightAnswer = () => {
+                setRightAnswerCounter((count) => count + 1);    
+                    console.log(countRightAnswer);
+            };
+    
+
             console.log(displayQuestion);
             // const questionsToAsk = displayQuestions.splice(displayQuestion.isAnswered)
             // console.log(displayQuestions);
-
-
         } else {
             // console.log("wrong");
             displayQuestion[answer + "ButtonClass"] = "wrong";
             displayQuestion[displayQuestion.correctAnswer + "ButtonClass"] =
                 "right";
             displayQuestion.isAnswered = true;
-        }        setDisplayQuestions([...displayQuestions]);
+        }
+        countRightAnswer()
+        setDisplayQuestions([...displayQuestions]);
     };
 
     return (
@@ -158,8 +165,8 @@ const LiDExc = () => {
                                         getCurrentQuestion().answerAButtonClass
                                     } w-6/12   bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
-                                        rightAnswerHandler("answerA")
-                                    }
+                                        {rightAnswerHandler("answerA"); {countRightAnswer()}
+                                    }}
                                     disabled={getCurrentQuestion().isAnswered}
                                 >
                                     {getCurrentQuestion().answerA}
@@ -169,8 +176,8 @@ const LiDExc = () => {
                                         getCurrentQuestion().answerBButtonClass
                                     } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
-                                        rightAnswerHandler("answerB")
-                                    }
+                                        {rightAnswerHandler("answerB"); {countRightAnswer()}
+                                    }}
                                     disabled={getCurrentQuestion().isAnswered}
                                 >
                                     {getCurrentQuestion().answerB}
@@ -180,9 +187,9 @@ const LiDExc = () => {
                                         getCurrentQuestion().answerCButtonClass
                                     } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
-                                        rightAnswerHandler("answerC")
-                                    }
-                                    disabled={getCurrentQuestion().isAnswered}
+                                        {rightAnswerHandler("answerC"); {countRightAnswer()}
+                                    }}
+                                    // disabled={getCurrentQuestion().isAnswered}
                                 >
                                     {getCurrentQuestion().answerC}
                                 </button>
@@ -191,11 +198,11 @@ const LiDExc = () => {
                                         getCurrentQuestion().answerDButtonClass
                                     } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
                                     onClick={() =>
-                                        rightAnswerHandler("answerD")
-                                    }
+                                        {rightAnswerHandler("answerD"); {countRightAnswer()}
+                                    }}
                                     disabled={getCurrentQuestion().isAnswered}
                                 >
-                                    {getCurrentQuestion().answerD}
+                                    {getCurrentQuestion().answerD} 
                                 </button>
                             </div>
                         </>
@@ -221,8 +228,9 @@ const LiDExc = () => {
                                 <MdArrowForwardIos className="text-3xl" />{" "}
                             </div>
                         </button>
-                      
-                    </div>
+                     
+                    </div>   
+                    <div className="">{rightAnswerCounter}</div>
                 </div>
             </div>
         </div>
