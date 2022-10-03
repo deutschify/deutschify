@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+
 const B1 = () => {
     const dragItem = useRef();
     const dragOverItem = useRef();
@@ -9,6 +10,7 @@ const B1 = () => {
         "Item 4",
         "Item 5",
         "Item 6",
+        "Item 7",
     ]);
 
     const dragStart = (e, position) => {
@@ -34,13 +36,8 @@ const B1 = () => {
         <>
             {list &&
                 list.map((item, index) => (
-                    <div
-                        style={{
-                            backgroundColor: "lightblue",
-                            margin: "20px 25%",
-                            textAlign: "center",
-                            fontSize: "40px",
-                        }}
+                    <div className="flex justify-center  align-center bg-palette-80 p-2   "
+                        
                         onDragStart={(e) => dragStart(e, index)}
                         onDragEnter={(e) => dragEnter(e, index)}
                         onDragEnd={drop}
