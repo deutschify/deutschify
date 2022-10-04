@@ -82,7 +82,7 @@ const Post = ({ post }) => {
                 <hr className="m-5  border-1 border-palette-40 " />
 
                 <div className="postCenter mt-5 mb-5">
-                    <span className="postText">{post.desc}</span>
+                    <span className="postText m-12">{post.desc}</span>
                     <img
                         className="postImage mt-5 w-full max-h-96 object-contain"
                         src={post.img}
