@@ -11,6 +11,11 @@ const Post = ({ post }) => {
     const [isLiked, setIsLiked] = useState(false);
     const [likeColor, setLikeColor] = useState("");
     const [user, setUser] = useState({});
+
+    useEffect(() => {
+        setIsLiked(post.likes.includes(`/users/${post.userId}`));
+    }, [`/users/${post.userId}`, post.likes]);
+
     //fetching the user data to show the user name BUT from the posts collection
     useEffect(() => {
         const fetchUser = async () => {
@@ -18,18 +23,24 @@ const Post = ({ post }) => {
                 backend_base_url + `/users/${post.userId}`
             );
             setUser(response.data);
+            console.log(response.data);
         };
         fetchUser();
     }, [post.userId]);
 
+    //like functionality
+
     //to handle the like button
     const likeHandler = () => {
-        // setLike(
-        //     isLiked
-        //         ? like - 1 + setLikeColor("")
-        //         : like + 1 + setLikeColor("red")
-        // );
+        try {
+            axios.put(backend_base_url + `/posts/${post._id}/like`, {
+                userId: post.userId,
+            });
+            console.log(post._id);
+            console.log(post.userId);
+        } catch (error) {}
 
+        let _like = like;
         if (isLiked) {
             let _like = like - 1;
             setLikeColor("");
@@ -39,6 +50,10 @@ const Post = ({ post }) => {
             setLikeColor("blue");
             setLike(_like);
         }
+
+        //----------------------------------------------------------------
+
+        // setLike(isLiked ? like - 1 : like + 1);
 
         setIsLiked(!isLiked);
     };
@@ -54,11 +69,11 @@ const Post = ({ post }) => {
                                 {user.firstName} {user.lastName}
                             </p>
                         </span>
+
                         <span className="postDate text-xs ml-5 pt-2">
                             <p>{format(post.createdAt)}</p>
                         </span>
                     </div>
-
                     <div className="postTopRight">
                         {/* vertical options */}
                         <CgMoreVerticalAlt className="" />
