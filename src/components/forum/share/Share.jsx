@@ -1,21 +1,30 @@
 import { MdPermMedia } from "react-icons/md";
 import { useState, useEffect } from "react";
-
 import axios from "axios";
+
+import { useStore } from "../../../store";
 
 const share = () => {
     const backend_base_url = "http://localhost:8000";
-    const [user, setUser] = useState({});
+    // const [user, setUser] = useState({});
+
+    const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
+    const currentUser = useStore((state) => state.currentUser);
+
+    useEffect(() => {
+        fetchCurrentUser();
+        console.log(currentUser);
+    }, []);
 
     useEffect(() => {
         const fetchUser = async () => {
             const response = await axios.get(
-                backend_base_url + `/users/632480f0438a3681229a89d4`
+                backend_base_url + `/users/${currentUser._id}`
             );
-            // const userName = response.data.firstName;
+            const userName = response.data.firstName;
             // console.log(userName);
             // setUser(userName);
-            setUser(response.data.firstName);
+            // setUser(userName);
         };
         fetchUser();
     }, []);
@@ -26,7 +35,7 @@ const share = () => {
                 <div className="shareTop flex items-center break-words">
                     <input
                         className="shareInput outline-none w-4/5 rounded-xl ml-8 pl-2 h-12 break-words "
-                        placeholder={`Stell us eine Frage, ${user} ...`}
+                        placeholder={`Stell us eine Frage, ${currentUser.firstName} ...`}
                     />
                 </div>
                 <hr className="shareHr m-5 border-2 border-palette-40 " />

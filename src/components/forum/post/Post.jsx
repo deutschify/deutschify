@@ -23,7 +23,7 @@ const Post = ({ post }) => {
                 backend_base_url + `/users/${post.userId}`
             );
             setUser(response.data);
-            console.log(response.data);
+            // console.log(response.data);
         };
         fetchUser();
     }, [post.userId]);
