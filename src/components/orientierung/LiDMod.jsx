@@ -9,15 +9,37 @@ const LiDMod = () => {
 
     const { category } = useParams();
 
-    const fetchDataBundesland = async () => {
+    const fetchDataForModelltest = async () => {
         const response = await fetch(`${baseUrl}/all-questions/${category}`);
-        const questions = await response.json();
-        setQuestions(questions);
+        const questionsDB = await response.json();
+        const bundesland = questionsDB.filter((question) => {
+        return question.category === category
+           
+        })
+        // const randomQuestion = bundesland[Math.floor(Math.random() * 4)];
+        let randomQuestion = [...bundesland].sort(() => 0.5 - Math.random()).slice(0, 3);
+        // console.log(randomQuestion);
+        const randomDeutschland = questionsDB.filter((question) => {
+            return question.category === "deutschland"
+            })
+            const randomDeutschlandQuestions = [...randomDeutschland].sort(() => 0.5 - Math.random()).slice(0, 30);
+           randomQuestion = [...randomQuestion, ...randomDeutschlandQuestions]
+        setQuestions(randomQuestion);
+        
+        //  console.log(questions);
+        console.log({randomDeutschlandQuestions})
+        console.log(randomQuestion);
     };
 
     useEffect(() => {
-        fetchDataBundesland();
+        fetchDataForModelltest();
     }, []);
+
+   const modelltestQuestions = questions.map((qu, index) => 
+        <div className="" key={index}>
+            {qu.number}<br/>
+            {qu.question}</div>
+   )
 
     return (
         <div className="">
@@ -32,6 +54,9 @@ const LiDMod = () => {
                         Zurück zum Lernbereich
                     </NavLink>
                 </nav>
+            </div>
+            <div className="">
+{modelltestQuestions}
             </div>
         </div>
     );

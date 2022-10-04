@@ -34,10 +34,11 @@ const Lernbereich = () => {
         // console.log(questions);
     };
     useEffect(() => {
-        
         fetchDataBundesland();
     }, []);
 
+
+    // Searchbar for all questions
     const filteredQuestions =  () => {
         const filtered = questions?.filter((question) => {
                if (query.length === 0) {
