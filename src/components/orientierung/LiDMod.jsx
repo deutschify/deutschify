@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import Lernbereich from "./LernbereichOrientierung";
-import Timer from "./Timer";
+
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDMod = () => {
     const [questions, setQuestions] = useState([]);
     const [isTesting, setIsTesting] = useState(false);
-
-    const [showFinalResults, setShowFinalResults] = useState(false);
-    const [score, setScore] = useState(0);
 
     const { category } = useParams();
 
@@ -46,23 +43,13 @@ const LiDMod = () => {
         fetchDataForModelltest();
     }, []);
 
-    //     const rightAnswerHandler = (answer, count) => {
-    //         const displayQuestion = questions.find((m) => m.current);
-
-    //         const chosenAnswerText = displayQuestion[answer];
-    //         console.log(chosenAnswerText);
-    //         if (chosenAnswerText === displayQuestion.correctAnswer) {
-    //             console.log("right");
-    //             // displayQuestion[answer + "ButtonClass"] = "right";
-    //     }
-    // }
 
     const handleStartTest = () => {
         setIsTesting(true);
         setTimeout(() => {
             setIsTesting(false);
             console.log("Time over");
-        }, 3000 );
+        }, 1000 * 60 * 60);
     };
 
     const handleClickedAnswer = (qu, answer) => {
@@ -75,17 +62,15 @@ const LiDMod = () => {
             Modelltest {category}
             <div className="">{questions.length} Fragen</div>
             <div className="">
-                <nav className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-3/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80">
+                <nav className="m-10">
                     <NavLink
                         to={`/lernbereich/${category}`}
-                        element={<Lernbereich />}
+                        element={<Lernbereich />}className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-3/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
                     >
                         Zurück zum Lernbereich
                     </NavLink>
                 </nav>
-                {/* <div className="">
-                    Timer: <Timer max={3600000} />
-                </div> */}
+               
                 <div className="flex justify-center">
                     {" "}
                     {!isTesting && (

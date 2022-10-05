@@ -60,7 +60,6 @@ const LiDExc = () => {
     // const myImage = cld.image(`deutschify/${imageURL}`);
 
     const getCurrentQuestion = () => {
-        
         return displayQuestions.find((m) => m.current);
     };
 
@@ -138,14 +137,16 @@ const LiDExc = () => {
             <div className="">{displayQuestions.length} Fragen</div>
             <div className="">
                 {" "}
-                <nav className="bg-palette-50 p-4 m-4 h-max text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-2/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80">
+                <nav className="m-10">
                     <NavLink
                         to={`/lernbereich/${category}`}
                         element={<Lernbereich />}
+                        className="bg-palette-50 p-4 m-4 h-max text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-2/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
                     >
                         Zurück zum Lernbereich
                     </NavLink>
                 </nav>
+                <div className="flex justify-center">
                 <div className="m-6 w-7/12 p-10 h-100 bg-palette-80 text-palette-60 text-xl flex flex-col items-center justify-center border-4 border-palette-50 rounded-xl">
                     {canDisplayQuestions() && (
                         <>
@@ -157,7 +158,8 @@ const LiDExc = () => {
                                 {getCurrentQuestion().question}
                             </div>
                             <div className="">
-                                {typeof getCurrentQuestion().imageURL === 'string' && (
+                                {typeof getCurrentQuestion().imageURL ===
+                                    "string" && (
                                     <AdvancedImage
                                         cldImg={getCurrentQuestion().imageURL}
                                     />
@@ -234,6 +236,7 @@ const LiDExc = () => {
                             </div>
                         </>
                     )}
+                </div>
                 </div>
             </div>
         </div>
