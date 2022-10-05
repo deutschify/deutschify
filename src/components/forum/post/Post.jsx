@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
 
+import { useStore } from "../../../store";
+
 const Post = ({ post }) => {
     const backend_base_url = "http://localhost:8000";
 
@@ -12,9 +14,19 @@ const Post = ({ post }) => {
     const [likeColor, setLikeColor] = useState("");
     const [user, setUser] = useState({});
 
+    //fetching the current user
+    const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
+    const currentUser = useStore((state) => state.currentUser);
+
     useEffect(() => {
-        setIsLiked(post.likes.includes(`/users/${post.userId}`));
-    }, [`/users/${post.userId}`, post.likes]);
+        fetchCurrentUser();
+        // console.log(currentUser);
+        // console.log(currentUser._id);
+    }, []);
+
+    useEffect(() => {
+        setIsLiked(post.likes.includes(`/users/${currentUser._id}`));
+    }, [`/users/${currentUser._id}`, post.likes]);
 
     //fetching the user data to show the user name BUT from the posts collection
     useEffect(() => {
@@ -34,7 +46,7 @@ const Post = ({ post }) => {
     const likeHandler = () => {
         try {
             axios.put(backend_base_url + `/posts/${post._id}/like`, {
-                userId: post.userId,
+                userId: currentUser._id,
             });
             console.log(post._id);
             console.log(post.userId);
@@ -76,7 +88,9 @@ const Post = ({ post }) => {
                     </div>
                     <div className="postTopRight">
                         {/* vertical options */}
-                        <CgMoreVerticalAlt className="" />
+                        {post.userId === currentUser._id && (
+                            <CgMoreVerticalAlt className="verticalOptions cursor-pointer" />
+                        )}
                     </div>
                 </div>
                 <hr className="m-5  border-1 border-palette-40 " />
