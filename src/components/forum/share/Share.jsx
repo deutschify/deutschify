@@ -1,4 +1,5 @@
-import { MdPermMedia } from "react-icons/md";
+import { MdPermMedia, MdCancel } from "react-icons/md";
+
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
@@ -15,7 +16,7 @@ const share = () => {
     //useRef for th share input box
     const desc = useRef();
     //useState for the onChange event
-    const [file, setFiles] = useState(null);
+    const [file, setFile] = useState(null);
 
     //to submit a post
 
@@ -51,7 +52,7 @@ const share = () => {
     }, []);
 
     return (
-        <div className="share w-1/2  h-44 rounded-xl shadow-outer mb-5">
+        <div className="share w-1/2   rounded-xl shadow-outer mb-5">
             <div className="shareWrapper p-2.5 ">
                 <div className="shareTop flex items-center break-words">
                     <input
@@ -61,6 +62,19 @@ const share = () => {
                     />
                 </div>
                 <hr className="shareHr m-5 border-2 border-palette-40 " />
+                {file && (
+                    <div className="shareImgContainer pr-4 pb-2 pl-4 relative">
+                        <img
+                            className="shareImg  object-cover w-full	 "
+                            src={URL.createObjectURL(file)}
+                            alt=""
+                        />
+                        <MdCancel
+                            className="shareCancelImg cursor-pointer absolute top-1 right-5 text-4xl "
+                            onClick={() => setFile(null)}
+                        />
+                    </div>
+                )}
                 <form
                     className="shareBottom flex items-center justify-between"
                     onSubmit={submitPostHandler}
@@ -76,7 +90,7 @@ const share = () => {
                                 id="file"
                                 type="file"
                                 accept=".png, .jpg, .jpeg"
-                                onChange={(e) => setFiles(e.target.files[0])}
+                                onChange={(e) => setFile(e.target.files[0])}
                             />
                             <span className="shareOptionText m-3 text-sm">
                                 Fotos oder Videos
