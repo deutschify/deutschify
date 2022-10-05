@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import DropDownMenu from "./DropDownMenu";
@@ -11,9 +11,19 @@ import { useStore } from "../../store";
 
 const Forum = () => {
     const [search, setSearches] = useState("");
+    const [searchResult, setSearchResult] = useState([]);
+
     const currentUser = useStore((state) => state.currentUser);
 
-    const [searchResult, setSearchResult] = useState([]);
+    //useEffect for the search bar
+
+    // useEffect(() => {
+    //     const filteredResults = posts.filter((post) =>
+    //         post.desc.toLowerCase().includes(search.toLowerCase())
+    //     );
+    //     setSearchResult(filteredResults);
+    // }, [posts, search]);
+
     return (
         <>
             {currentUser.accessGroups?.includes("loggedInUsers") ? (
