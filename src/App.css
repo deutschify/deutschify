@@ -11,3 +11,6 @@ background-color: #DD9E93 !important;
 
 
 }
+.directionBtn:disabled{
+    opacity: 0.5 !important;
+}
