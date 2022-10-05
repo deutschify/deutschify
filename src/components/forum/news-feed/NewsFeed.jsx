@@ -15,7 +15,14 @@ const NewsFeed = () => {
             const response = await axios.get(
                 backend_base_url + "/posts/news-feed/all"
             );
-            setPosts(response.data);
+            //to get the posts sorted
+            setPosts(
+                response.data.sort((post1, post2) => {
+                    return (
+                        new Date(post2.createdAt) - new Date(post1.createdAt)
+                    );
+                })
+            );
         };
         fetchPosts();
     }, []);

@@ -11,6 +11,11 @@ const Post = ({ post }) => {
     const [isLiked, setIsLiked] = useState(false);
     const [likeColor, setLikeColor] = useState("");
     const [user, setUser] = useState({});
+
+    useEffect(() => {
+        setIsLiked(post.likes.includes(`/users/${post.userId}`));
+    }, [`/users/${post.userId}`, post.likes]);
+
     //fetching the user data to show the user name BUT from the posts collection
     useEffect(() => {
         const fetchUser = async () => {
@@ -18,18 +23,24 @@ const Post = ({ post }) => {
                 backend_base_url + `/users/${post.userId}`
             );
             setUser(response.data);
+            // console.log(response.data);
         };
         fetchUser();
     }, [post.userId]);
 
+    //like functionality
+
     //to handle the like button
     const likeHandler = () => {
-        // setLike(
-        //     isLiked
-        //         ? like - 1 + setLikeColor("")
-        //         : like + 1 + setLikeColor("red")
-        // );
+        try {
+            axios.put(backend_base_url + `/posts/${post._id}/like`, {
+                userId: post.userId,
+            });
+            console.log(post._id);
+            console.log(post.userId);
+        } catch (error) {}
 
+        let _like = like;
         if (isLiked) {
             let _like = like - 1;
             setLikeColor("");
@@ -39,6 +50,10 @@ const Post = ({ post }) => {
             setLikeColor("blue");
             setLike(_like);
         }
+
+        //----------------------------------------------------------------
+
+        // setLike(isLiked ? like - 1 : like + 1);
 
         setIsLiked(!isLiked);
     };
@@ -54,11 +69,11 @@ const Post = ({ post }) => {
                                 {user.firstName} {user.lastName}
                             </p>
                         </span>
+
                         <span className="postDate text-xs ml-5 pt-2">
                             <p>{format(post.createdAt)}</p>
                         </span>
                     </div>
-
                     <div className="postTopRight">
                         {/* vertical options */}
                         <CgMoreVerticalAlt className="" />
@@ -67,29 +82,7 @@ const Post = ({ post }) => {
                 <hr className="m-5  border-1 border-palette-40 " />
 
                 <div className="postCenter mt-5 mb-5">
-                    <span className="postText">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Saepe distinctio, delectus corporis pariatur consectetur
-                        in iste atque veniam expedita ad, esse, tempora sed
-                        velit consequatur. Voluptas ab autem exercitationem
-                        error. Est, odit vel rerum maiores ipsam doloremque
-                        soluta incidunt. At qui reiciendis architecto. Similique
-                        vitae ipsa minima, quisquam vel qui tenetur aliquam nam
-                        nesciunt, alias animi beatae inventore, quos suscipit.
-                        Laboriosam sequi minus vero officia rem aut quam
-                        perspiciatis facere unde autem tempora, illum quisquam
-                        maiores nihil illo sit pariatur sapiente necessitatibus
-                        consequatur culpa! Hic unde optio consequuntur culpa
-                        qui! Non incidunt soluta culpa facere expedita fuga
-                        perspiciatis ad ipsum, explicabo accusantium adipisci
-                        ipsa in doloribus vero laborum quas doloremque
-                        cupiditate, enim, modi voluptates aspernatur dolor.
-                        Similique non odit earum? Excepturi ipsum minima
-                        praesentium eum modi similique laudantium vero iusto
-                        fugit, ducimus dolorem fugiat corrupti libero, sapiente
-                        eaque suscipit et? Odio, tempore. Asperiores aperiam,
-                        illo atque nesciunt similique dolores unde.
-                    </span>
+                    <span className="postText m-12">{post.desc}</span>
                     <img
                         className="postImage mt-5 w-full max-h-96 object-contain"
                         src={post.img}
