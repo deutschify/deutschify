@@ -18,6 +18,11 @@ const LiDExc = () => {
         },
     });
 
+    const fetchImage = (publicId) => {
+        const myImg = cld.image(`deutschify/${publicId}`)
+        return myImg
+    }
+
     const { category } = useParams();
 
     const fetchDataBundesland = async () => {
@@ -39,9 +44,10 @@ const LiDExc = () => {
                 answerCButtonClass: "normal",
                 answerDButtonClass: "normal",
                 correctAnswer: rawDeutschlandquestion.correctAnswer,
-                imageURL: cld.image(
-                    `deutschify/${rawDeutschlandquestion.imageURL}`
-                ),
+                // imageURL: cld.image(
+                //     `deutschify/${rawDeutschlandquestion.imageURL}`
+                // ),
+                imageURL: rawDeutschlandquestion.imageURL,
                 current: index === 0,
                 isAnswered: false,
                 isFirst: index === 0,
@@ -60,7 +66,6 @@ const LiDExc = () => {
     // const myImage = cld.image(`deutschify/${imageURL}`);
 
     const getCurrentQuestion = () => {
-        
         return displayQuestions.find((m) => m.current);
     };
 
@@ -157,9 +162,9 @@ const LiDExc = () => {
                                 {getCurrentQuestion().question}
                             </div>
                             <div className="">
-                                {typeof getCurrentQuestion().imageURL === 'string' && (
+                                {getCurrentQuestion().imageURL&& (
                                     <AdvancedImage
-                                        cldImg={getCurrentQuestion().imageURL}
+                                        cldImg={fetchImage(getCurrentQuestion().imageURL)}
                                     />
                                 )}
                             </div>
