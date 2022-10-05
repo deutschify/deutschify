@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import Lernbereich from "./LernbereichOrientierung";
-
+import { AdvancedImage } from "@cloudinary/react";
+import { Cloudinary } from "@cloudinary/url-gen";
 
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
@@ -12,6 +13,17 @@ const LiDMod = () => {
 
 
     const { category } = useParams();
+
+    const cld = new Cloudinary({
+        cloud: {
+            cloudName: "dsyhfgbli",
+        },
+    });
+
+    const fetchImage = (publicId) => {
+        const myImg = cld.image(`deutschify/${publicId}`);
+        return myImg;
+    };
 
     const fetchDataForModelltest = async () => {
         const response = await fetch(`${baseUrl}/all-questions/${category}`);
@@ -113,6 +125,15 @@ const LiDMod = () => {
                                     <div className="bg-palette-50 border-4 border-palette-60 rounded-xl m-8 p-4">
                                         {qu.question}
                                     </div>
+                                    <div className="">
+                                    {qu.imageURL && (
+                                        <AdvancedImage
+                                            cldImg={fetchImage(
+                                                qu.imageURL
+                                            )}
+                                        />
+                                    )}
+                                </div>
                                     <div className="flex flex-col items-center">
                                         {" "}
                                         <div
