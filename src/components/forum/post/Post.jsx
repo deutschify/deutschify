@@ -69,7 +69,6 @@ const Post = ({ post }) => {
 
         setIsLiked(!isLiked);
     };
-
     return (
         <div className="post w-1/2 rounded-xl shadow-outer mt-7 mb-7 ">
             <div className="postWrapper p-2.5 ">
@@ -97,12 +96,16 @@ const Post = ({ post }) => {
 
                 <div className="postCenter mt-5 mb-5">
                     <span className="postText m-12">{post.desc}</span>
-                    <img
-                        className="postImage mt-5 w-full max-h-96 object-contain"
-                        src={post.img}
-                        alt="image"
-                    />
+
+                    {post.img !== undefined && (
+                        <img
+                            className="postImage mt-5 w-full max-h-96 object-contain"
+                            src={post.img}
+                            alt="image"
+                        />
+                    )}
                 </div>
+
                 <div className="postBottom flex items-center justify-between">
                     <div className="postBottomLeft flex items-center">
                         {/* this is an img in the tutorial */}
