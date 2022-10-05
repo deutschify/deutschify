@@ -4,11 +4,19 @@ import Lernbereich from "./LernbereichOrientierung";
 import { MdArrowBackIos } from "react-icons/md";
 import { MdArrowForwardIos } from "react-icons/md";
 import "../../App.css";
+import { AdvancedImage } from "@cloudinary/react";
+import { Cloudinary } from "@cloudinary/url-gen";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDExc = () => {
     const [displayQuestions, setDisplayQuestions] = useState([]);
     // const [rightAnswerCounter, setRightAnswerCounter] = useState(0);
+
+    const cld = new Cloudinary({
+        cloud: {
+            cloudName: "dsyhfgbli",
+        },
+    });
 
     const { category } = useParams();
 
@@ -31,7 +39,9 @@ const LiDExc = () => {
                 answerCButtonClass: "normal",
                 answerDButtonClass: "normal",
                 correctAnswer: rawDeutschlandquestion.correctAnswer,
-                imageURL: rawDeutschlandquestion.imageURL,
+                imageURL: cld.image(
+                    `deutschify/${rawDeutschlandquestion.imageURL}`
+                ),
                 current: index === 0,
                 isAnswered: false,
                 isFirst: index === 0,
@@ -47,7 +57,10 @@ const LiDExc = () => {
         fetchDataBundesland();
     }, []);
 
+    // const myImage = cld.image(`deutschify/${imageURL}`);
+
     const getCurrentQuestion = () => {
+        
         return displayQuestions.find((m) => m.current);
     };
 
@@ -125,7 +138,7 @@ const LiDExc = () => {
             <div className="">{displayQuestions.length} Fragen</div>
             <div className="">
                 {" "}
-                <nav className="bg-palette-50 p-4 m-4 text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-2/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80">
+                <nav className="bg-palette-50 p-4 m-4 h-max text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-2/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80">
                     <NavLink
                         to={`/lernbereich/${category}`}
                         element={<Lernbereich />}
@@ -143,22 +156,13 @@ const LiDExc = () => {
                             <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 ">
                                 {getCurrentQuestion().question}
                             </div>
-                            {/* <div className="">{
-                                
-                                    displayQuestions.find((m) => m.current)
-                                        .imageURL && (
-                                            <>
-                                                <div className="">
-                                                    {" "}
-                                                    <Image
-                                                        cloudName="dsyhfgbli"
-                                                        publicId={`${displayQuestions.find((m) => m.current)
-                                                            .imageURL}`}
-                                                    />
-                                                </div>{" "}
-                                            </>
-                                        )
-                                }</div> */}
+                            <div className="">
+                                {typeof getCurrentQuestion().imageURL === 'string' && (
+                                    <AdvancedImage
+                                        cldImg={getCurrentQuestion().imageURL}
+                                    />
+                                )}
+                            </div>
                             <div className="flex flex-col items-center w-full m-20">
                                 <button
                                     className={`${
@@ -205,7 +209,7 @@ const LiDExc = () => {
                                     {getCurrentQuestion().answerD}
                                 </button>
                             </div>
-                            <div className="mt-20 flex justify-end  w-full">
+                            <div className="mt-20 flex justify-around   w-full">
                                 {" "}
                                 <button
                                     className="directionBtn border-4 border-palette-60 w-4/12 p-4 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
