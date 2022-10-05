@@ -27,8 +27,7 @@ const Forum = () => {
                             path="/forum/news-feed/all"
                             element={<NewsFeed />}
                         />
-                        <Route path="/forum/new-post" element={<NewPost />} />
-                        <Route path="/forum/my-post" element={<MyPosts />} />
+                        <Route path="/forum/my-posts" element={<MyPosts />} />
                     </Routes>
                     {/* <AboutForum /> */}
                 </div>

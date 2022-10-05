@@ -1,4 +1,3 @@
-import { CgMoreVerticalAlt } from "react-icons/cg";
 import { FaThumbsUp } from "react-icons/fa";
 import { RiDeleteBinLine, RiEditLine } from "react-icons/ri";
 import { useState, useEffect } from "react";
@@ -7,8 +6,6 @@ import { format } from "timeago.js";
 
 import { useStore } from "../../../store";
 
-import { Dropdown } from "rsuite";
-
 const Post = ({ post }) => {
     const backend_base_url = "http://localhost:8000";
 
@@ -16,7 +13,6 @@ const Post = ({ post }) => {
     const [isLiked, setIsLiked] = useState(false);
     const [likeColor, setLikeColor] = useState("");
     const [user, setUser] = useState({});
-    const [dropDownMenu, setDropDownMenu] = useState("");
 
     //fetching the current user
     const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
@@ -74,6 +70,25 @@ const Post = ({ post }) => {
         setIsLiked(!isLiked);
     };
 
+    //Delete Handler
+
+    const deleteIconHandler = async () => {
+        console.log(post._id);
+        console.log();
+        console.log(currentUser._id);
+
+        try {
+            await axios.delete(backend_base_url + `/posts/${post._id}`, {
+                data: {
+                    userId: currentUser._id,
+                },
+            });
+            window.location.reload();
+        } catch (error) {
+            console.log(`Error ${error.message}`);
+        }
+    };
+
     return (
         <div className="post w-1/2 rounded-xl shadow-outer mt-7 mb-7 ">
             <div className="postWrapper p-2.5 ">
@@ -94,7 +109,11 @@ const Post = ({ post }) => {
                         {/* vertical options */}
                         {post.userId === currentUser._id && (
                             <>
-                                <RiDeleteBinLine className="verticalOptions cursor-pointer mr-2" />
+                                <RiDeleteBinLine
+                                    className="verticalOptions cursor-pointer mr-2"
+                                    title="Delete"
+                                    onClick={deleteIconHandler}
+                                />
 
                                 <RiEditLine className="verticalOptions cursor-pointer " />
                             </>
