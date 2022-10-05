@@ -4,11 +4,19 @@ import Lernbereich from "./LernbereichOrientierung";
 import { MdArrowBackIos } from "react-icons/md";
 import { MdArrowForwardIos } from "react-icons/md";
 import "../../App.css";
+import { AdvancedImage } from "@cloudinary/react";
+import { Cloudinary } from "@cloudinary/url-gen";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDExc = () => {
     const [displayQuestions, setDisplayQuestions] = useState([]);
     // const [rightAnswerCounter, setRightAnswerCounter] = useState(0);
+
+    const cld = new Cloudinary({
+        cloud: {
+            cloudName: "dsyhfgbli",
+        },
+    });
 
     const { category } = useParams();
 
@@ -31,10 +39,13 @@ const LiDExc = () => {
                 answerCButtonClass: "normal",
                 answerDButtonClass: "normal",
                 correctAnswer: rawDeutschlandquestion.correctAnswer,
-                imageURL: rawDeutschlandquestion.imageURL,
+                imageURL: cld.image(
+                    `deutschify/${rawDeutschlandquestion.imageURL}`
+                ),
                 current: index === 0,
                 isAnswered: false,
-              
+                isFirst: index === 0,
+                isLast: index === rawDeutschlandquestion.length - 1,
             };
             _displayQuestions.push(displayQuestion);
         });
@@ -46,21 +57,28 @@ const LiDExc = () => {
         fetchDataBundesland();
     }, []);
 
+    // const myImage = cld.image(`deutschify/${imageURL}`);
+
     const getCurrentQuestion = () => {
+        
         return displayQuestions.find((m) => m.current);
     };
 
     const goToNextQuestion = () => {
         let switchNextQuestion = false;
+        let index = 0;
         for (const displayQuestion of displayQuestions) {
             if (switchNextQuestion && !displayQuestion.isAnswered) {
                 displayQuestion.current = true;
                 break;
             }
             if (displayQuestion.current) {
-                displayQuestion.current = false;
-                switchNextQuestion = true;
+                if (index < displayQuestions.length - 1) {
+                    displayQuestion.current = false;
+                    switchNextQuestion = true;
+                }
             }
+            index++;
         }
 
         if (getCurrentQuestion().length === 0) {
@@ -74,12 +92,12 @@ const LiDExc = () => {
         setDisplayQuestions([...displayQuestions]);
     };
 
-    // const prevQuestionHandler = () => {
-    //     displayQuestions.reverse();
-    //     goToNextQuestion();
-    //     displayQuestions.reverse();
-    //     setDisplayQuestions([...displayQuestions]);
-    // };
+    const prevQuestionHandler = () => {
+        displayQuestions.reverse();
+        goToNextQuestion();
+        displayQuestions.reverse();
+        setDisplayQuestions([...displayQuestions]);
+    };
 
     const canDisplayQuestions = () => {
         // displayQuestions.length > 0 &&
@@ -99,8 +117,6 @@ const LiDExc = () => {
         if (chosenAnswerText === displayQuestion.correctAnswer) {
             console.log("right");
             displayQuestion[answer + "ButtonClass"] = "right";
-        
-    
 
             console.log(displayQuestion);
             // const questionsToAsk = displayQuestions.splice(displayQuestion.isAnswered)
@@ -112,7 +128,7 @@ const LiDExc = () => {
                 "right";
             displayQuestion.isAnswered = true;
         }
-       
+
         setDisplayQuestions([...displayQuestions]);
     };
 
@@ -122,7 +138,7 @@ const LiDExc = () => {
             <div className="">{displayQuestions.length} Fragen</div>
             <div className="">
                 {" "}
-                <nav className="bg-palette-50 p-4 m-4 text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-2/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80">
+                <nav className="bg-palette-50 p-4 m-4 h-max text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-2/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80">
                     <NavLink
                         to={`/lernbereich/${category}`}
                         element={<Lernbereich />}
@@ -140,29 +156,20 @@ const LiDExc = () => {
                             <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 ">
                                 {getCurrentQuestion().question}
                             </div>
-                            {/* <div className="">{
-                                
-                                    displayQuestions.find((m) => m.current)
-                                        .imageURL && (
-                                            <>
-                                                <div className="">
-                                                    {" "}
-                                                    <Image
-                                                        cloudName="dsyhfgbli"
-                                                        publicId={`${displayQuestions.find((m) => m.current)
-                                                            .imageURL}`}
-                                                    />
-                                                </div>{" "}
-                                            </>
-                                        )
-                                }</div> */}
+                            <div className="">
+                                {typeof getCurrentQuestion().imageURL === 'string' && (
+                                    <AdvancedImage
+                                        cldImg={getCurrentQuestion().imageURL}
+                                    />
+                                )}
+                            </div>
                             <div className="flex flex-col items-center w-full m-20">
                                 <button
                                     className={`${
                                         getCurrentQuestion().answerAButtonClass
                                     } w-6/12   bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
-                                    onClick={() =>
-                                        {rightAnswerHandler("answerA")
+                                    onClick={() => {
+                                        rightAnswerHandler("answerA");
                                     }}
                                     disabled={getCurrentQuestion().isAnswered}
                                 >
@@ -172,8 +179,8 @@ const LiDExc = () => {
                                     className={`${
                                         getCurrentQuestion().answerBButtonClass
                                     } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
-                                    onClick={() =>
-                                        {rightAnswerHandler("answerB")
+                                    onClick={() => {
+                                        rightAnswerHandler("answerB");
                                     }}
                                     disabled={getCurrentQuestion().isAnswered}
                                 >
@@ -183,8 +190,8 @@ const LiDExc = () => {
                                     className={`${
                                         getCurrentQuestion().answerCButtonClass
                                     } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
-                                    onClick={() =>
-                                        {rightAnswerHandler("answerC")
+                                    onClick={() => {
+                                        rightAnswerHandler("answerC");
                                     }}
                                     // disabled={getCurrentQuestion().isAnswered}
                                 >
@@ -194,40 +201,39 @@ const LiDExc = () => {
                                     className={`${
                                         getCurrentQuestion().answerDButtonClass
                                     } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
-                                    onClick={() =>
-                                        {rightAnswerHandler("answerD")
+                                    onClick={() => {
+                                        rightAnswerHandler("answerD");
                                     }}
                                     disabled={getCurrentQuestion().isAnswered}
                                 >
-                                    {getCurrentQuestion().answerD} 
+                                    {getCurrentQuestion().answerD}
+                                </button>
+                            </div>
+                            <div className="mt-20 flex justify-around   w-full">
+                                {" "}
+                                <button
+                                    className="directionBtn border-4 border-palette-60 w-4/12 p-4 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
+                                    onClick={prevQuestionHandler}
+                                    disabled={getCurrentQuestion().isFirst}
+                                >
+                                    <div className="flex justify-center flex-unwrap">
+                                        {" "}
+                                        <MdArrowBackIos className="text-3xl" />
+                                        vorherige Frage
+                                    </div>
+                                </button>
+                                <button
+                                    className="directionBtn border-4 border-palette-60 p-4 w-4/12 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
+                                    onClick={nextQuestionHandler}
+                                >
+                                    <div className="flex justify-center flex-unwrap">
+                                        nächste Frage{" "}
+                                        <MdArrowForwardIos className="text-3xl" />{" "}
+                                    </div>
                                 </button>
                             </div>
                         </>
                     )}
-                    <div className="mt-20 flex justify-end  w-full">
-                        {" "}
-                        {/* <button
-                            className="border-4 border-palette-60 w-4/12 p-4 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
-                            onClick={prevQuestionHandler}
-                        >
-                            <div className="flex justify-center flex-unwrap">
-                                {" "}
-                                <MdArrowBackIos className="text-3xl" />
-                                vorherige Frage
-                            </div>
-                        </button> */}
-                        <button
-                            className="border-4 border-palette-60 p-4 w-4/12 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
-                            onClick={nextQuestionHandler}
-                        >
-                            <div className="flex justify-center flex-unwrap">
-                                nächste Frage{" "}
-                                <MdArrowForwardIos className="text-3xl" />{" "}
-                            </div>
-                        </button>
-                     
-                    </div>   
-                   
                 </div>
             </div>
         </div>
