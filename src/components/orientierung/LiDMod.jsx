@@ -3,11 +3,13 @@ import { useParams, NavLink } from "react-router-dom";
 import Lernbereich from "./LernbereichOrientierung";
 
 
+
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDMod = () => {
     const [questions, setQuestions] = useState([]);
     const [isTesting, setIsTesting] = useState(false);
+
 
     const { category } = useParams();
 
@@ -44,12 +46,15 @@ const LiDMod = () => {
     }, []);
 
 
+
     const handleStartTest = () => {
         setIsTesting(true);
         setTimeout(() => {
             setIsTesting(false);
             console.log("Time over");
+
         }, 1000 * 60 * 60);
+
     };
 
     const handleClickedAnswer = (qu, answer) => {
@@ -70,7 +75,7 @@ const LiDMod = () => {
                         Zurück zum Lernbereich
                     </NavLink>
                 </nav>
-               
+
                 <div className="flex justify-center">
                     {" "}
                     {!isTesting && (

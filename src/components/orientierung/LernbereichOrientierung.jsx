@@ -1,5 +1,7 @@
 import { useParams, NavLink } from "react-router-dom";
-import { Image } from "cloudinary-react";
+import { AdvancedImage } from "@cloudinary/react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import {thumbnail} from "@cloudinary/url-gen/actions/resize";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
@@ -16,6 +18,18 @@ const Lernbereich = () => {
     // const [searchResult, setSearchResult] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
+    // Create a Cloudinary instance and set your cloud name.
+    const cld = new Cloudinary({
+        cloud: {
+            cloudName: "dsyhfgbli",
+        },
+    });
+
+    const fetchImage = (publicId) => {
+        const myImg = cld.image(`deutschify/${publicId}`)
+        return myImg
+    }
+
     const { category } = useParams();
 
     const usersPerPage = 10;
@@ -23,10 +37,8 @@ const Lernbereich = () => {
 
     const fetchDataBundesland = async () => {
         setIsLoading(true);
-        
-        const response = await fetch(
-            `${baseUrl}/all-questions/${category}`
-        );
+
+        const response = await fetch(`${baseUrl}/all-questions/${category}`);
 
         const questions = await response.json();
         setQuestions(questions);
@@ -37,27 +49,26 @@ const Lernbereich = () => {
         fetchDataBundesland();
     }, []);
 
-
     // Searchbar for all questions
-    const filteredQuestions =  () => {
+    const filteredQuestions = () => {
         const filtered = questions?.filter((question) => {
-               if (query.length === 0) {
-                   // console.log(question);
-                   return question;
-               } 
-                if (query.length > 0 &&  question.question?.toLowerCase().includes(query.toLowerCase()))  
-          
-                  { return question}  
-           });
-           console.log(filtered); 
-     
-           return filtered
-       }
-   
-       useEffect(() => {
-         filteredQuestions()
-       
-       }, [query])
+            if (query.length === 0) {
+                // console.log(question);
+                return question;
+            }
+            if (
+                query.length > 0 &&
+                question.question?.toLowerCase().includes(query.toLowerCase())
+            ) {
+                return question;
+            }
+        });
+        return filtered;
+    };
+
+    useEffect(() => {
+        filteredQuestions();
+    }, [query]);
 
     //    For Pagination
     const displayQuestions = filteredQuestions()
@@ -80,9 +91,9 @@ const Lernbereich = () => {
                         <>
                             <div className="text-palette-60 m-2 p-2">
                                 {" "}
-                                <Image
-                                    cloudName="dsyhfgbli"
-                                    publicId={`${question.imageURL}`}
+                                <AdvancedImage
+                                    cldImg={fetchImage(question.imageURL)}
+                                    // publicId={`${question.imageURL}`}
                                 />
                             </div>{" "}
                         </>
@@ -95,7 +106,7 @@ const Lernbereich = () => {
                     </div>
                 </div>
             );
-        })
+        });
 
     const pageCount = Math.ceil(questions.length / usersPerPage);
     const changePage = ({ selected }) => {
@@ -123,17 +134,12 @@ const Lernbereich = () => {
                             type="text"
                             placeholder="Stichwort..."
                             onChange={(event) => {
-
                                 setQuery(event.target.value);
-                                
-
                             }}
                         />
                     </div>
                     <div className="text-palette-80">
-
                         {filteredQuestions().length} Fragen
-
                     </div>
                 </div>
 
@@ -148,14 +154,19 @@ const Lernbereich = () => {
             <div className="bg-palette-80 rounded-xl border-4 border-palette-50">
                 <div className=" text-palette-60 p-6">
                     <div className="flex flex-col items-center">
-
                         <div className="text-2xl ">
-                            Fragen zu {category.charAt(0).toUpperCase() + category.slice(1)}
-
+                            Fragen zu{" "}
+                            {category.charAt(0).toUpperCase() +
+                                category.slice(1)}
                         </div>
-                        <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10">{isLoading  ? <Circles color="#2F4858"
-/>  : displayQuestions}  </div>
-                        
+                        <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10">
+                            {isLoading ? (
+                                <Circles color="#2F4858" />
+                            ) : (
+                                displayQuestions
+                            )}{" "}
+                        </div>
+
                         <ReactPaginate
                             previousLabel={"vorherige"}
                             nextLabel={"nächste"}
