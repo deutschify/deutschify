@@ -15,15 +15,6 @@ const Forum = () => {
 
     const currentUser = useStore((state) => state.currentUser);
 
-    //useEffect for the search bar
-
-    // useEffect(() => {
-    //     const filteredResults = posts.filter((post) =>
-    //         post.desc.toLowerCase().includes(search.toLowerCase())
-    //     );
-    //     setSearchResult(filteredResults);
-    // }, [posts, search]);
-
     return (
         <>
             {currentUser.accessGroups?.includes("loggedInUsers") ? (
