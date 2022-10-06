@@ -112,11 +112,11 @@ const NavBar = () => {
                             Forum
                         </NavLink>
                     </Nav>
-                    <div className=" w-20 ">
+                    {/* <div className=" w-20 ">
                         <div className="hidden bg-palette-50 p-4 text-2xl justify-center rounded-full">
                             A
                         </div>
-                    </div>
+                    </div> */}
                     <div className="">
                         <div className="bg-palette-80 p-4 mt-24  text-xl rounded-full shadow-outer  hover:text-palette-60">
                             Login
@@ -143,23 +143,23 @@ const NavBar = () => {
                                             className="text-center"
                                             title="Sprachniveau"
                                         >
-                                            <div className="flex flex-col w-40 absolute left-80">
+                                            <div className="flex flex-col w-48 absolute left-40">
                                                 <NavLink
-                                                    className="bg-palette-70 text-palette-50 hover:text-palette-80 rounded-t-lg"
+                                                    className="bg-palette-70/75 text-palette-50 hover:text-palette-80 rounded-t-lg"
                                                     to="/A1"
                                                     element={<A1 />}
                                                 >
                                                     A1
                                                 </NavLink>
                                                 <NavLink
-                                                    className="bg-palette-70 text-palette-50 hover:text-palette-80"
+                                                    className="bg-palette-70/75 text-palette-50 hover:text-palette-80"
                                                     to="/A2"
                                                     element={<A2 />}
                                                 >
                                                     A2
                                                 </NavLink>
                                                 <NavLink
-                                                    className="bg-palette-70 text-palette-50 hover:text-palette-80 rounded-b-lg"
+                                                    className="bg-palette-70/75 text-palette-50 hover:text-palette-80 rounded-b-lg"
                                                     to="/B1"
                                                     element={<B1 />}
                                                 >
@@ -198,14 +198,14 @@ const NavBar = () => {
                         ) && (
                             <div className="flex items-center m-10">
                                 <NavLink
-                                    className="flex items-center bg-palette-70 p-4 text-xl rounded hover:shadow-inner hover:text-palette-50 m-5"
+                                    className="flex items-center bg-palette-70 p-4 text-xl rounded-xl hover:shadow-inner hover:text-palette-50 m-5"
                                     to="/login"
                                     element={<PageLogin />}
                                 >
                                     Login
                                 </NavLink>
                                 <NavLink
-                                    className="flex items-center bg-palette-80 p-4 text-xl rounded hover:shadow-inner hover:text-palette-50"
+                                    className="flex items-center bg-palette-80 p-4 text-xl rounded-xl hover:shadow-inner hover:text-palette-50"
                                     to="/registration"
                                     element={<PageRegister />}
                                 >

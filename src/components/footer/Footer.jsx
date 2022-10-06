@@ -11,7 +11,7 @@ const Footer = () => {
     // footer
     return (
         // footer
-        <div className="w-full flex text-center bg-palette-50 text-palette-60 fixed bottom-0 z-20">
+        <div className="w-full flex text-center bg-palette-50 text-palette-60 fixed bottom-0 z-20 shadow-outer">
             <div className="w-3/12">
                 <NavLink className="" to="/" element={<Homepage />}>
                     <img

@@ -53,7 +53,6 @@ const Lernbereich = () => {
     const filteredQuestions = () => {
         const filtered = questions?.filter((question) => {
             if (query.length === 0) {
-                // console.log(question);
                 return question;
             }
             if (
@@ -77,9 +76,9 @@ const Lernbereich = () => {
             return (
                 <div
                     key={index}
-                    className="bg-palette-50 m-4 p-2 w-9/12 text-left rounded-xl border-2 border-palette-60 "
+                    className="bg-palette-50 m-4 p-2 w-9/12 text-left rounded-xl border-4 border-palette-80 shadow-outer"
                 >
-                    <div className="text-palette-60  ">{question.number}</div>
+                    <div className="text-palette-60">{question.number}</div>
                     <div className="text-palette-60 m-2 p-2">
                         {" "}
                         <div className="mb-2 border-b-2 border-palette-60 ">
@@ -89,9 +88,9 @@ const Lernbereich = () => {
                     </div>{" "}
                     {question.imageURL && (
                         <>
-                            <div className="text-palette-60 m-2 p-2">
+                            <div className="text-palette-60 m-2 p-2 flex justify-center">
                                 {" "}
-                                <AdvancedImage
+                                <AdvancedImage className="bg-palette-60 rounded-xl border-4 border-palette-80"
                                     cldImg={fetchImage(question.imageURL)}
                                     // publicId={`${question.imageURL}`}
                                 />
@@ -114,23 +113,25 @@ const Lernbereich = () => {
     };
 
     return (
-        <div className="border-4 border-palette-50 m-2 p-4 rounded-xl text-center">
+        <div className="border-4 border-palette-50 m-2 p-4 rounded-xl text-center shadow-inner">
             <h1 className="text-palette-50 text-2xl">
                 Bereite dich auf den "Leben in Deutschland - Test" vor
             </h1>
-            <nav className="flex justify-between md:text-2xl">
+            <nav className="flex justify-between items-center md:text-2xl">
                 <NavLink
                     to={`/lernbereich/${category}/excercise`}
                     element={<LiDExc />}
-                    className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
+                    className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
                 >
                     Zum Übungstest
                 </NavLink>
-                <div className="p-4">
-                    {/* Searchbar für Testfragen */}
+                
+                {/* Searchbar für Testfragen */}
+                <div className="w-3/12 bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 shadow-outer">
+                
                     <div className="">
                         <input
-                            className="searchInput"
+                            className="searchInput h-10 bg-palette-60 rounded-3xl p-6 text-palette-50 placeholder:text-palette-50/75 border-4 border-palette-80 shadow-inner"
                             type="text"
                             placeholder="Stichwort..."
                             onChange={(event) => {
@@ -138,15 +139,15 @@ const Lernbereich = () => {
                             }}
                         />
                     </div>
-                    <div className="text-palette-80">
+                    {/* <div className="text-palette-80">
                         {filteredQuestions().length} Fragen
-                    </div>
+                    </div> */}
                 </div>
 
                 <NavLink
                     to={`/lernbereich/${category}/modelltest`}
                     element={<LiDMod />}
-                    className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
+                    className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
                 >
                     Zum Modelltest
                 </NavLink>
@@ -154,12 +155,12 @@ const Lernbereich = () => {
             <div className="bg-palette-80 rounded-xl border-4 border-palette-50">
                 <div className=" text-palette-60 p-6">
                     <div className="flex flex-col items-center">
-                        <div className="text-2xl ">
-                            Fragen zu{" "}
+                        <div className="text-2xl p-6">
+                            Hier haben wir alle Fragen zu Deutschland und {" "}
                             {category.charAt(0).toUpperCase() +
-                                category.slice(1)}
+                                category.slice(1)} für dich
                         </div>
-                        <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10">
+                        <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10 shadow-inner">
                             {isLoading ? (
                                 <Circles color="#2F4858" />
                             ) : (
