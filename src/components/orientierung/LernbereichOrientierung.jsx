@@ -102,7 +102,7 @@ const Lernbereich = () => {
                         <div className="mb-2 border-b-2 border-palette-60">
                             Antwort
                         </div>
-                        {question.correctAnswer}
+                        {question.correctAnswer in question ? question[question.correctAnswer] : question.correctAnswer}
                     </div>
                 </div>
             );
