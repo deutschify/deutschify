@@ -1,7 +1,7 @@
 import { useParams, NavLink } from "react-router-dom";
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
-import {thumbnail} from "@cloudinary/url-gen/actions/resize";
+import { thumbnail } from "@cloudinary/url-gen/actions/resize";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
@@ -26,9 +26,9 @@ const Lernbereich = () => {
     });
 
     const fetchImage = (publicId) => {
-        const myImg = cld.image(`deutschify/${publicId}`)
-        return myImg
-    }
+        const myImg = cld.image(`deutschify/${publicId}`);
+        return myImg;
+    };
 
     const { category } = useParams();
 
@@ -90,7 +90,8 @@ const Lernbereich = () => {
                         <>
                             <div className="text-palette-60 m-2 p-2 flex justify-center">
                                 {" "}
-                                <AdvancedImage className="bg-palette-60 rounded-xl border-4 border-palette-80"
+                                <AdvancedImage
+                                    className="bg-palette-60 rounded-xl border-4 border-palette-80"
                                     cldImg={fetchImage(question.imageURL)}
                                     // publicId={`${question.imageURL}`}
                                 />
@@ -101,7 +102,9 @@ const Lernbereich = () => {
                         <div className="mb-2 border-b-2 border-palette-60">
                             Antwort
                         </div>
-                        {question.correctAnswer in question ? question[question.correctAnswer] : question.correctAnswer}
+                        {question.correctAnswer in question
+                            ? question[question.correctAnswer]
+                            : question.correctAnswer}
                     </div>
                 </div>
             );
@@ -113,7 +116,7 @@ const Lernbereich = () => {
     };
 
     return (
-        <div className="border-4 border-palette-50 m-2 p-4 rounded-xl text-center shadow-inner">
+        <div className="border-4 border-palette-50 m-2 p-4 rounded-xl text-center shadow-inner relative">
             <h1 className="text-palette-50 text-2xl">
                 Bereite dich auf den "Leben in Deutschland - Test" vor
             </h1>
@@ -125,10 +128,9 @@ const Lernbereich = () => {
                 >
                     Zum Übungstest
                 </NavLink>
-                
+
                 {/* Searchbar für Testfragen */}
                 <div className="w-3/12 bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 shadow-outer">
-                
                     <div className="">
                         <input
                             className="searchInput h-10 bg-palette-60 rounded-3xl p-6 text-palette-50 placeholder:text-palette-50/75 border-4 border-palette-80 shadow-inner"
@@ -152,14 +154,30 @@ const Lernbereich = () => {
                     Zum Modelltest
                 </NavLink>
             </nav>
-            <div className="bg-palette-80 rounded-xl border-4 border-palette-50">
-                <div className=" text-palette-60 p-6">
+            <div className="bg-palette-80 rounded-xl border-4 border-palette-50 shadow-outer h-full relative">
+                {" "}
+                <div className="text-palette-60 p-6 w-full">
+                    <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute  left-20 top-96  shadow-inner">
+                        <img src="../../../images/illus/study1.png" alt="" />
+                    </div>{" "}
+                    <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute top-2/4 right-20   shadow-inner">
+                        <img src="../../../images/illus/study2.png" alt="" />
+                    </div>
+                    <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute  left-20 top-3/4  shadow-inner">
+                        <img src="../../../images/illus/study3.png" alt="" />
+                    </div>{" "}
+                    <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute top-2/4 right-20   shadow-inner">
+                        <img src="../../../images/illus/study2.png" alt="" />
+                    </div>
+
                     <div className="flex flex-col items-center">
                         <div className="text-2xl p-6">
-                            Hier haben wir alle Fragen zu Deutschland und {" "}
+                            Hier haben wir alle Fragen zu Deutschland und{" "}
                             {category.charAt(0).toUpperCase() +
-                                category.slice(1)} für dich
+                                category.slice(1)}{" "}
+                            für dich
                         </div>
+
                         <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10 shadow-inner">
                             {isLoading ? (
                                 <Circles color="#2F4858" />
