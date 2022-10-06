@@ -19,9 +19,9 @@ const LiDExc = () => {
     });
 
     const fetchImage = (publicId) => {
-        const myImg = cld.image(`deutschify/${publicId}`)
-        return myImg
-    }
+        const myImg = cld.image(`deutschify/${publicId}`);
+        return myImg;
+    };
 
     const { category } = useParams();
 
@@ -44,6 +44,7 @@ const LiDExc = () => {
                 answerCButtonClass: "normal",
                 answerDButtonClass: "normal",
                 correctAnswer: rawDeutschlandquestion.correctAnswer,
+
                 // imageURL: cld.image(
                 //     `deutschify/${rawDeutschlandquestion.imageURL}`
                 // ),
@@ -143,102 +144,117 @@ const LiDExc = () => {
             <div className="">{displayQuestions.length} Fragen</div>
             <div className="">
                 {" "}
-                <nav className="bg-palette-50 p-4 m-4 h-max text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-2/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80">
+                <nav className="m-10">
                     <NavLink
                         to={`/lernbereich/${category}`}
                         element={<Lernbereich />}
+                        className="bg-palette-50 p-4 m-4 h-max text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-2/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
                     >
                         Zurück zum Lernbereich
                     </NavLink>
                 </nav>
-                <div className="m-6 w-7/12 p-10 h-100 bg-palette-80 text-palette-60 text-xl flex flex-col items-center justify-center border-4 border-palette-50 rounded-xl">
-                    {canDisplayQuestions() && (
-                        <>
-                            {" "}
-                            <div className="">
-                                {getCurrentQuestion().number}
-                            </div>
-                            <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 ">
-                                {getCurrentQuestion().question}
-                            </div>
-                            <div className="">
-                                {getCurrentQuestion().imageURL&& (
-                                    <AdvancedImage
-                                        cldImg={fetchImage(getCurrentQuestion().imageURL)}
-                                    />
-                                )}
-                            </div>
-                            <div className="flex flex-col items-center w-full m-20">
-                                <button
-                                    className={`${
-                                        getCurrentQuestion().answerAButtonClass
-                                    } w-6/12   bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
-                                    onClick={() => {
-                                        rightAnswerHandler("answerA");
-                                    }}
-                                    disabled={getCurrentQuestion().isAnswered}
-                                >
-                                    {getCurrentQuestion().answerA}
-                                </button>
-                                <button
-                                    className={`${
-                                        getCurrentQuestion().answerBButtonClass
-                                    } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
-                                    onClick={() => {
-                                        rightAnswerHandler("answerB");
-                                    }}
-                                    disabled={getCurrentQuestion().isAnswered}
-                                >
-                                    {getCurrentQuestion().answerB}
-                                </button>
-                                <button
-                                    className={`${
-                                        getCurrentQuestion().answerCButtonClass
-                                    } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
-                                    onClick={() => {
-                                        rightAnswerHandler("answerC");
-                                    }}
-                                    // disabled={getCurrentQuestion().isAnswered}
-                                >
-                                    {getCurrentQuestion().answerC}
-                                </button>
-                                <button
-                                    className={`${
-                                        getCurrentQuestion().answerDButtonClass
-                                    } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
-                                    onClick={() => {
-                                        rightAnswerHandler("answerD");
-                                    }}
-                                    disabled={getCurrentQuestion().isAnswered}
-                                >
-                                    {getCurrentQuestion().answerD}
-                                </button>
-                            </div>
-                            <div className="mt-20 flex justify-around   w-full">
+                <div className="flex justify-center">
+                    <div className="m-6 w-7/12 p-10 h-100 bg-palette-80 text-palette-60 text-xl flex flex-col items-center justify-center border-4 border-palette-50 rounded-xl">
+                        {canDisplayQuestions() && (
+                            <>
                                 {" "}
-                                <button
-                                    className="directionBtn border-4 border-palette-60 w-4/12 p-4 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
-                                    onClick={prevQuestionHandler}
-                                    disabled={getCurrentQuestion().isFirst}
-                                >
-                                    <div className="flex justify-center flex-unwrap">
-                                        {" "}
-                                        <MdArrowBackIos className="text-3xl" />
-                                        vorherige Frage
-                                    </div>
-                                </button>
-                                <button
-                                    className="directionBtn border-4 border-palette-60 p-4 w-4/12 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
-                                    onClick={nextQuestionHandler}
-                                >
-                                    <div className="flex justify-center flex-unwrap">
-                                        nächste Frage{" "}
-                                        <MdArrowForwardIos className="text-3xl" />{" "}
-                                    </div>
-                                </button>
-                            </div>
-                        </>
-                    )}
+                                <div className="">
+                                    {getCurrentQuestion().number}
+                                </div>
+                                <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 ">
+                                    {getCurrentQuestion().question}
+                                </div>
+                                <div className="">
+                                    {getCurrentQuestion().imageURL && (
+                                        <AdvancedImage
+                                            cldImg={fetchImage(
+                                                getCurrentQuestion().imageURL
+                                            )}
+                                        />
+                                    )}
+                                </div>
+                                <div className="flex flex-col items-center w-full m-20">
+                                    <button
+                                        className={`${
+                                            getCurrentQuestion()
+                                                .answerAButtonClass
+                                        } w-6/12   bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
+                                        onClick={() => {
+                                            rightAnswerHandler("answerA");
+                                        }}
+                                        disabled={
+                                            getCurrentQuestion().isAnswered
+                                        }
+                                    >
+                                        {getCurrentQuestion().answerA}
+                                    </button>
+                                    <button
+                                        className={`${
+                                            getCurrentQuestion()
+                                                .answerBButtonClass
+                                        } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
+                                        onClick={() => {
+                                            rightAnswerHandler("answerB");
+                                        }}
+                                        disabled={
+                                            getCurrentQuestion().isAnswered
+                                        }
+                                    >
+                                        {getCurrentQuestion().answerB}
+                                    </button>
+                                    <button
+                                        className={`${
+                                            getCurrentQuestion()
+                                                .answerCButtonClass
+                                        } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
+                                        onClick={() => {
+                                            rightAnswerHandler("answerC");
+                                        }}
+                                        // disabled={getCurrentQuestion().isAnswered}
+                                    >
+                                        {getCurrentQuestion().answerC}
+                                    </button>
+                                    <button
+                                        className={`${
+                                            getCurrentQuestion()
+                                                .answerDButtonClass
+                                        } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50`}
+                                        onClick={() => {
+                                            rightAnswerHandler("answerD");
+                                        }}
+                                        disabled={
+                                            getCurrentQuestion().isAnswered
+                                        }
+                                    >
+                                        {getCurrentQuestion().answerD}
+                                    </button>
+                                </div>
+                                <div className="mt-20 flex justify-around   w-full">
+                                    {" "}
+                                    <button
+                                        className="directionBtn border-4 border-palette-60 w-4/12 p-4 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
+                                        onClick={prevQuestionHandler}
+                                        disabled={getCurrentQuestion().isFirst}
+                                    >
+                                        <div className="flex justify-center flex-unwrap">
+                                            {" "}
+                                            <MdArrowBackIos className="text-3xl" />
+                                            vorherige Frage
+                                        </div>
+                                    </button>
+                                    <button
+                                        className="directionBtn border-4 border-palette-60 p-4 w-4/12 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80"
+                                        onClick={nextQuestionHandler}
+                                    >
+                                        <div className="flex justify-center flex-unwrap">
+                                            nächste Frage{" "}
+                                            <MdArrowForwardIos className="text-3xl" />{" "}
+                                        </div>
+                                    </button>
+                                </div>
+                            </>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
