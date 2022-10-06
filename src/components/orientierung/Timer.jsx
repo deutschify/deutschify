@@ -23,7 +23,7 @@ const getTimeMinutes = (time) => ((time % hourSeconds) / minuteSeconds) | 0;
 
 export default function App() {
   const startTime = Date.now() / 1000; // use UNIX timestamp in seconds
-  const endTime = startTime + hourSeconds; // use UNIX timestamp in seconds
+  const endTime = startTime + 2000; // use UNIX timestamp in seconds
   const remainingTime = endTime - startTime;
 
 
@@ -32,6 +32,8 @@ export default function App() {
       <CountdownCircleTimer
         {...timerProps}
         colors="#2F4858"
+        stroke="#FDF0D5"
+        trailColor="#FDF0D5"
         // colors="#FDF0D5"
         
         duration={hourSeconds}
