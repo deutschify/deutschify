@@ -81,16 +81,15 @@ const LiDMod = () => {
     useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }, []);
+
+    const handelSubmitBtn = (qu) => {
+        if (qu.chosenAnswer === qu.correctAnswer) {
+            console.log(qu.correctAnswer);
+        } else {
+            console.log("falsche Antwort");
+        }
+    };
     
-    const submitHandler = (qu) => {
-        
-      if  (qu.chosenAnswer === qu.correctAnswer) {
-          console.log(qu.correctAnswer);
-      } else {
-          console.log("falsche Antwort");
-      }
-      
-    }
     return (
         <div className="">
             Modelltest {category}
@@ -159,12 +158,12 @@ const LiDMod = () => {
                             >
                                 <CgCloseO />
                             </div>
-                            
                         </div>
                         {questions.map((qu, index) => (
+                            
                             <div className="flex justify-center" key={index}>
                                 <div className=" bg-palette-80 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
-                                   {/* <div className="text-palette-60">{qu.index}</div> */}
+                                    <div className="index text-palette-60">{index + 1}</div>
                                     <div className="bg-palette-50 border-4 border-palette-60 rounded-xl m-8 p-4">
                                         {qu.question}
                                     </div>
@@ -237,15 +236,20 @@ const LiDMod = () => {
                                         >
                                             {qu.answerD}
                                         </div>
-                                        <button className="" onClick={submitHandler}>send</button>
+                                        {/* <button className="" onClick={handelSubmitBtn}>send</button> */}
                                     </div>
                                 </div>
                             </div>
                         ))}
-                        <div className="flex justify-center"><div className="bg-palette-50 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-80 rounded-xl hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80" onClick={submitHandler}>Testbogen absenden</div></div>
-                        
+                        <div className="flex justify-center">
+                            <button
+                                className="bg-palette-50 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-80 rounded-xl hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
+                                onClick={handelSubmitBtn}
+                            >
+                                Testbogen absenden
+                            </button>
+                        </div>
                     </div>
-                    
                 )}
             </div>
         </div>
