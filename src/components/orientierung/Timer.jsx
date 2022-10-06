@@ -1,49 +1,51 @@
-import { useEffect, useState } from "react";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import "../../App.css"
 
-function Timer({max}){
-    const [counter, setCounter] = useState(max);
+const minuteSeconds = 60;
+const hourSeconds = 3600;
 
-    useEffect(() =>{
-        if(counter > 0){
-            setTimeout(()=>setCounter(counter - 1), 1000);
-        }
-    },[counter]);
+const timerProps = {
+  isPlaying: true,
+  size: 110,
+  strokeWidth: 10,
+  };
 
-    return(
-        <span>
-            {counter}
-        </span>
-    )
+const renderTime = (dimension, time) => {
+  return (
+    <div className="time-wrapper">
+      <div className="time">{time}</div>
+      <div>{dimension}</div>
+    </div>
+  );
+};
+
+const getTimeMinutes = (time) => ((time % hourSeconds) / minuteSeconds) | 0;
+
+export default function App() {
+  const startTime = Date.now() / 1000; // use UNIX timestamp in seconds
+  const endTime = startTime + hourSeconds; // use UNIX timestamp in seconds
+  const remainingTime = endTime - startTime;
+
+
+  return (
+    <div className="App">
+      <CountdownCircleTimer
+        {...timerProps}
+        colors="#2F4858"
+        // colors="#FDF0D5"
+        
+        duration={hourSeconds}
+        initialRemainingTime={remainingTime}
+        onComplete={(totalElapsedTime) => ({
+          shouldRepeat: remainingTime - totalElapsedTime > minuteSeconds
+        })}
+      >
+        {({ elapsedTime, color }) => (
+          <span style={{ color }}>
+            {renderTime("Minuten", getTimeMinutes(hourSeconds - elapsedTime))}
+          </span>
+        )}
+      </CountdownCircleTimer>
+          </div>
+  );
 }
-
-export default Timer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import {useEffect, useState} from 'react'
-
-// function Timer() {
-//   const [counter, setCounter] = useState(60);
-
-//   useEffect(() => {
-//     if(counter > 0) {
-//       setTimeout(() => setCounter(counter - 1),1000 * 60 * 60)
-//     }
-//   }, [counter])
-//   return (
-//    <span>{counter}</span>
-//   )
-// }
-
-// export default Timer
-

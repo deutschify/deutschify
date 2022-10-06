@@ -3,14 +3,15 @@ import { useParams, NavLink } from "react-router-dom";
 import Lernbereich from "./LernbereichOrientierung";
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
-
+import { CgArrowUpO } from "react-icons/cg";
+import { CgCloseO } from "react-icons/cg";
+import Timer from "./Timer";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDMod = () => {
     const [questions, setQuestions] = useState([]);
     const [isTesting, setIsTesting] = useState(false);
-
 
     const { category } = useParams();
 
@@ -57,32 +58,49 @@ const LiDMod = () => {
         fetchDataForModelltest();
     }, []);
 
-
-
     const handleStartTest = () => {
         setIsTesting(true);
         setTimeout(() => {
             setIsTesting(false);
-            console.log("Time over");
-
         }, 1000 * 60 * 60);
-
     };
+    // const togglePopup = () => {
+    //     setIsTesting(!isTesting);
+    // };
 
     const handleClickedAnswer = (qu, answer) => {
         qu.chosenAnswer = answer;
         setQuestions([...questions]);
         console.log(qu.chosenAnswer);
     };
+
+    const cancelHandler = () => {
+        setIsTesting(false);
+    };
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }, []);
+    
+    const submitHandler = (qu) => {
+        
+      if  (qu.chosenAnswer === qu.correctAnswer) {
+          console.log(qu.correctAnswer);
+      } else {
+          console.log("falsche Antwort");
+      }
+      
+    }
     return (
         <div className="">
             Modelltest {category}
             <div className="">{questions.length} Fragen</div>
             <div className="">
-                <nav className="m-10">
+                <nav className="m-10 flex justify-end">
                     <NavLink
                         to={`/lernbereich/${category}`}
-                        element={<Lernbereich />}className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-3/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
+                        element={<Lernbereich />}
+                        className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-3/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
                     >
                         Zurück zum Lernbereich
                     </NavLink>
@@ -118,22 +136,45 @@ const LiDMod = () => {
             <div className="flex justify-center">
                 {isTesting && (
                     <div className="">
+                        <div className="flex flex-col items-center fixed left-0 top-56 w-1/12 h-max bg-palette-80 text-palette-50 border-t-4 border-r-4 border-b-4 border-palette-50 rounded-tr-xl rounded-br-xl">
+                            <div className="timer stroke-palette-80 m-4">
+                                <Timer />
+                            </div>
+
+                            <div
+                                className="text-8xl m-2"
+                                onClick={() => {
+                                    window.scrollTo({
+                                        top: 0,
+                                        left: 0,
+                                        behavior: "smooth",
+                                    });
+                                }}
+                            >
+                                <CgArrowUpO />
+                            </div>
+                            <div
+                                className="text-7xl m-2 "
+                                onClick={cancelHandler}
+                            >
+                                <CgCloseO />
+                            </div>
+                            
+                        </div>
                         {questions.map((qu, index) => (
                             <div className="flex justify-center" key={index}>
                                 <div className=" bg-palette-80 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
-                                    {" "}
+                                   {/* <div className="text-palette-60">{qu.index}</div> */}
                                     <div className="bg-palette-50 border-4 border-palette-60 rounded-xl m-8 p-4">
                                         {qu.question}
                                     </div>
                                     <div className="">
-                                    {qu.imageURL && (
-                                        <AdvancedImage
-                                            cldImg={fetchImage(
-                                                qu.imageURL
-                                            )}
-                                        />
-                                    )}
-                                </div>
+                                        {qu.imageURL && (
+                                            <AdvancedImage
+                                                cldImg={fetchImage(qu.imageURL)}
+                                            />
+                                        )}
+                                    </div>
                                     <div className="flex flex-col items-center">
                                         {" "}
                                         <div
@@ -142,10 +183,12 @@ const LiDMod = () => {
                                                     ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4"
                                                     : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4"
                                             }
-                                            onClick={() => handleClickedAnswer(
-                                                qu,
-                                                "answerA"
-                                            )}
+                                            onClick={() =>
+                                                handleClickedAnswer(
+                                                    qu,
+                                                    "answerA"
+                                                )
+                                            }
                                         >
                                             {qu.answerA}
                                         </div>
@@ -155,10 +198,12 @@ const LiDMod = () => {
                                                     ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4"
                                                     : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4"
                                             }
-                                            onClick={() => handleClickedAnswer(
-                                                qu,
-                                                "answerB"
-                                            )}
+                                            onClick={() =>
+                                                handleClickedAnswer(
+                                                    qu,
+                                                    "answerB"
+                                                )
+                                            }
                                         >
                                             {qu.answerB}
                                         </div>
@@ -168,10 +213,12 @@ const LiDMod = () => {
                                                     ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4"
                                                     : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4"
                                             }
-                                            onClick={() => handleClickedAnswer(
-                                                qu,
-                                                "answerC"
-                                            )}
+                                            onClick={() =>
+                                                handleClickedAnswer(
+                                                    qu,
+                                                    "answerC"
+                                                )
+                                            }
                                         >
                                             {qu.answerC}
                                         </div>
@@ -181,18 +228,24 @@ const LiDMod = () => {
                                                     ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4"
                                                     : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4"
                                             }
-                                            onClick={() => handleClickedAnswer(
-                                                qu,
-                                                "answerD"
-                                            )}
+                                            onClick={() =>
+                                                handleClickedAnswer(
+                                                    qu,
+                                                    "answerD"
+                                                )
+                                            }
                                         >
                                             {qu.answerD}
                                         </div>
+                                        <button className="" onClick={submitHandler}>send</button>
                                     </div>
                                 </div>
                             </div>
                         ))}
+                        <div className="flex justify-center"><div className="bg-palette-50 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-80 rounded-xl hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80" onClick={submitHandler}>Testbogen absenden</div></div>
+                        
                     </div>
+                    
                 )}
             </div>
         </div>
