@@ -38,25 +38,26 @@ const share = () => {
         // console.log(currentUser._id);
     }, []);
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            const response = await axios.get(
-                backend_base_url + `/users/${currentUser._id}`
-            );
-            const userName = response.data.firstName;
-            // console.log(userName);
-            // setUser(userName);
-            // setUser(userName);
-        };
-        fetchUser();
-    }, []);
+    //after fetching the currentUser I dont think we need this anymore!
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         const response = await axios.get(
+    //             backend_base_url + `/users/${currentUser._id}`
+    //         );
+    //         const userName = response.data.firstName;
+    //         // console.log(userName);
+    //         // setUser(userName);
+    //         // setUser(userName);
+    //     };
+    //     fetchUser();
+    // }, []);
 
     return (
         <div className="share w-1/2   rounded-xl shadow-outer mb-5">
             <div className="shareWrapper p-2.5 ">
                 <div className="shareTop flex items-center break-words">
-                    <input
-                        className="shareInput outline-none w-4/5 rounded-xl ml-8 pl-2 h-12 break-words "
+                    <textarea
+                        className="shareInput inline-block outline-none w-4/5 rounded-xl ml-8 pl-2  break-words pt-5 border-0 border-solid h-16 resize-none"
                         placeholder={`Stell us eine Frage, ${currentUser.firstName} ...`}
                         ref={desc}
                     />
