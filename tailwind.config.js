@@ -26,8 +26,8 @@ theme: {
 
             },
             boxShadow: {
-                outer: "-2px -2px 24px 0px rgba(92,83,92,1)",
-                inner: "inset 7px 10px 18px -1px rgba(92,87,92,1)",
+                outer: "10px 10px 14px -2px rgba(0,0,0,0.75);",
+                inner: "inset 10px 10px 14px -2px rgba(0,0,0,0.75);",
             },
              fontFamily: {
             block1: "Architects Daughter",

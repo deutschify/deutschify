@@ -15,7 +15,6 @@ const Lernbereich = () => {
     const [questions, setQuestions] = useState([]);
     const [questionsPerPage, setQuestionsPerPage] = useState(0);
     const [query, setQuery] = useState("");
-    // const [searchResult, setSearchResult] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     // Create a Cloudinary instance and set your cloud name.
@@ -43,7 +42,6 @@ const Lernbereich = () => {
         const questions = await response.json();
         setQuestions(questions);
         setIsLoading(false);
-        // console.log(questions);
     };
     useEffect(() => {
         fetchDataBundesland();
@@ -56,12 +54,30 @@ const Lernbereich = () => {
                 return question;
             }
             if (
-                query.length > 0 &&
-                question.question?.toLowerCase().includes(query.toLowerCase())
+                (query.length > 0 &&
+                    question.question
+                        ?.toLowerCase()
+                        .includes(query.toLowerCase()),
+                // question.correctAnswer in question
+                //     ? question[question.correctAnswer]
+                //     : question.correctAnswer
+                //           .toLowerCase()
+                //           .includes(query.toLowerCase()),
+                question.answerA?.toLowerCase().includes(query.toLowerCase()),
+                question.answerB?.toLowerCase().includes(query.toLowerCase()),
+                question.answerC?.toLowerCase().includes(query.toLowerCase()),
+                question.answerD?.toLowerCase().includes(query.toLowerCase()),
+                question.explanation
+                    ?.toLowerCase()
+                    .includes(query.toLowerCase()))
             ) {
                 return question;
             }
+            if (question.number.includes(query)) {
+                return question;
+            }
         });
+
         return filtered;
     };
 
@@ -69,8 +85,10 @@ const Lernbereich = () => {
         filteredQuestions();
     }, [query]);
 
+    const filteredResults = filteredQuestions();
+
     //    For Pagination
-    const displayQuestions = filteredQuestions()
+    const displayQuestions = filteredResults
         .slice(pagesVisited, pagesVisited + usersPerPage)
         .map((question, index) => {
             return (
@@ -106,6 +124,14 @@ const Lernbereich = () => {
                             ? question[question.correctAnswer]
                             : question.correctAnswer}
                     </div>
+                    {question.explanation !== "" && (
+                        <div className="text-palette-60 m-2 p-2">
+                            <div className="mb-2 border-b-2 border-palette-60">
+                                Erklärung
+                            </div>
+                            {question.explanation}
+                        </div>
+                    )}
                 </div>
             );
         });
@@ -116,7 +142,7 @@ const Lernbereich = () => {
     };
 
     return (
-        <div className="border-4 border-palette-50 m-2 p-4 rounded-xl text-center shadow-inner relative">
+        <div className="border-4 border-palette-50 m-8 p-4 rounded-xl text-center shadow-inner relative">
             <h1 className="text-palette-50 text-2xl">
                 Bereite dich auf den "Leben in Deutschland - Test" vor
             </h1>
@@ -154,37 +180,43 @@ const Lernbereich = () => {
                     Zum Modelltest
                 </NavLink>
             </nav>
-            <div className="bg-palette-80 rounded-xl border-4 border-palette-50 shadow-outer h-full relative">
-                {" "}
-                <div className="text-palette-60 p-6 w-full">
-                    <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute  left-20 top-96  shadow-inner">
-                        <img src="../../../images/illus/study1.png" alt="" />
-                    </div>{" "}
-                    <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute top-2/4 right-20   shadow-inner">
-                        <img src="../../../images/illus/study2.png" alt="" />
-                    </div>
-                    <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute  left-20 top-3/4  shadow-inner">
-                        <img src="../../../images/illus/study3.png" alt="" />
-                    </div>{" "}
-                    <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute top-2/4 right-20   shadow-inner">
-                        <img src="../../../images/illus/study2.png" alt="" />
-                    </div>
-
-                    <div className="flex flex-col items-center">
-                        <div className="text-2xl p-6">
-                            Hier haben wir alle Fragen zu Deutschland und{" "}
-                            {category.charAt(0).toUpperCase() +
-                                category.slice(1)}{" "}
-                            für dich
+            <div className="text-2xl p-6 text-palette-50">
+                            {!query
+                                ? `Hier haben wir alle ${
+                                      questions.length
+                                  } Fragen zu Deutschland und
+                            ${
+                                category.charAt(0).toUpperCase() +
+                                category.slice(1)
+                            }
+                                 für dich`
+                                : `Wir haben zu deiner Anfrage ${filteredResults.length} Übereinstimmungen gefunden`}{" "}
                         </div>
 
-                        <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10 shadow-inner">
+            <div className="bg-palette-80 rounded-xl border-4  border-palette-50 shadow-outer h-full m-10 p-10">
+                {" "}
+                <div className="text-palette-60 p-6 w-full -mt-28 relative">
+                    <div className="bg-palette-40 w-3/12 border-4 border-palette-60 rounded-xl sticky left top-2/4 left-40 shadow-inner">
+                        <img src="../../../images/illus/study1.png" alt="" />
+                    </div>{" "}
+                    
+                    {/* <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute  left-20 top-3/4  shadow-inner">
+                        <img src="../../../images/illus/study3.png" alt="" />
+                    </div>{" "} */}
+                    {/* <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute top-2/4 right-20   shadow-inner">
+                        <img src="../../../images/illus/study2.png" alt="" />
+                    </div> */}
+                    <div className="flex flex-col items-center -mt-56">
+                      
+<div className="flex justify-end mr-40">   <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10 shadow-inner">
                             {isLoading ? (
                                 <Circles color="#2F4858" />
                             ) : (
                                 displayQuestions
                             )}{" "}
-                        </div>
+                        </div></div>
+                     
+                      
 
                         <ReactPaginate
                             previousLabel={"vorherige"}
