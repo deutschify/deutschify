@@ -88,5 +88,7 @@ export const useStore = create((set) => ({
         } catch (error) {
             set(() => ({ loading: false }));
         }
-    }
+    },
+    result: "", 
+    setResult: ((result) => set({result}))
 }));

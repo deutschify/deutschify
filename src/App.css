@@ -14,3 +14,7 @@ background-color: #DD9E93 !important;
 .directionBtn:disabled{
     display: none !important;
 }
+
+.App {
+    stroke: green !important;
+}

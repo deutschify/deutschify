@@ -33,6 +33,7 @@ import { baseUrl } from "./store";
 import PageUserSettings from "./Pages/PageUserSettings";
 import NewsFeed from "./components/forum/news-feed/NewsFeed";
 import MyPosts from "./components/forum/MyPosts";
+import ResultLidMod from "./components/orientierung/ResultLidMod";
 import PostEdit from "./components/forum/post/PostEdit";
 
 function App() {
@@ -78,6 +79,10 @@ function App() {
                 <Route
                     path="/lernbereich/:category/modelltest/*"
                     element={<LiDMod />}
+                />
+                <Route
+                    path="/lernbereich/:category/modelltest/result/"
+                    element={<ResultLidMod />}
                 />
 
                 <Route path="/forum/*" element={<Forum />} />
