@@ -3,7 +3,6 @@ import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import DropDownMenu from "./DropDownMenu";
 import NewsFeed from "./news-feed/NewsFeed";
-import NewPost from "./NewPost";
 import MyPosts from "./MyPosts";
 import NavForum from "./NavForum";
 import AboutForum from "./AboutForum";

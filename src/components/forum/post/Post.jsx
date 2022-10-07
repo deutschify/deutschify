@@ -126,7 +126,6 @@ const Post = ({ post }) => {
                                     title="Delete"
                                     onClick={deleteIconHandler}
                                 />
-
                                 <RiEditLine
                                     className="verticalOptions cursor-pointer "
                                     title="Edit"
