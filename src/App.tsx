@@ -33,6 +33,7 @@ import { baseUrl } from "./store";
 import PageUserSettings from "./Pages/PageUserSettings";
 import NewsFeed from "./components/forum/news-feed/NewsFeed";
 import MyPosts from "./components/forum/MyPosts";
+import PostEdit from "./components/forum/post/PostEdit";
 
 function App() {
     const navigate = useNavigate();
@@ -117,6 +118,10 @@ function App() {
                             element={<NewsFeed />}
                         />{" "}
                         <Route path="/forum/my-posts" element={<MyPosts />} />{" "}
+                        <Route
+                            path="/forum/post/edit/:id"
+                            element={<PostEdit />}
+                        />
                     </>
                 )}
                 {currentUser.accessGroups?.includes("loggedInUsers") && (
