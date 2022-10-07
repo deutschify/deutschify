@@ -54,7 +54,7 @@ function App() {
     }, []);
 
     return (
-        <div className="w-max h-max bg-palette-60 pb-24 font-block2 font-bold md:w-screen">
+        <div className="w-full h-full bg-palette-60 pb-24 font-block2 font-bold md:w-screen shadow-inner">
             <Header />
             <Routes>
                 <Route path="/" element={<Navigate to="/home" replace />} />
