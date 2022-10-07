@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const sliderData = [
     {
-        slideImage: "../../public/images/deutschify-side.png",
+        slideImage: "../../images/dictionary1.png",
         href: "/language-levels",
         title: "Sprachniveau",
     },
