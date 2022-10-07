@@ -6,6 +6,8 @@ import { format } from "timeago.js";
 
 import { useStore } from "../../../store";
 
+import { useNavigate } from "react-router-dom";
+
 const Post = ({ post }) => {
     const backend_base_url = "http://localhost:8000";
 
@@ -13,6 +15,21 @@ const Post = ({ post }) => {
     const [isLiked, setIsLiked] = useState(false);
     const [likeColor, setLikeColor] = useState("");
     const [user, setUser] = useState({});
+
+    //trying to navigate the edit btn onClick
+
+    const navigate = useNavigate();
+
+    const editNavigatorHandler = () => {
+        navigate(`/forum/post/edit/${post._id}`, {
+            state: {
+                id: post._id,
+                description: post.desc,
+                userId: post.userId,
+                post: post,
+            },
+        });
+    };
 
     //fetching the current user
     const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
@@ -89,18 +106,6 @@ const Post = ({ post }) => {
         }
     };
 
-    // Edit Handler
-    const editIconHandler = async () => {
-        try {
-            await axios.put(backend_base_url + `/posts/${post._id}`, {
-                userId: currentUser._id,
-                desc: "e.target.value",
-            });
-        } catch (error) {
-            console.log(`Error ${error.message}`);
-        }
-    };
-
     return (
         <div className="post w-1/2 rounded-xl shadow-outer mt-7 mb-7 ">
             <div className="postWrapper p-2.5 ">
@@ -129,7 +134,7 @@ const Post = ({ post }) => {
                                 <RiEditLine
                                     className="verticalOptions cursor-pointer "
                                     title="Edit"
-                                    onClick={editIconHandler}
+                                    onClick={editNavigatorHandler}
                                 />
                             </>
                         )}
