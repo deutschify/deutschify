@@ -13,8 +13,8 @@ const Header = () => {
                 element={<Homepage />}
             >
                 <img
-                    src="./images/deutschify.png"
-                    className="w-32 p-2 "
+                    src="./images/deutschify-smallletter.png"
+                    className="w-28 p-2 "
                     alt=""
                 />
             </NavLink>

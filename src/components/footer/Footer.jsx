@@ -15,20 +15,20 @@ const Footer = () => {
             <div className="w-3/12">
                 <NavLink className="" to="/" element={<Homepage />}>
                     <img
-                        src="./images/deutschify-side.png"
+                        src="./images/deutschify-smallletter-side.png"
                         className="w-40 m-2"
                         alt=""
                     />
                 </NavLink>
             </div>
-            <div className="w-11/12 p-1 md:w-6/12 md:text-xl">
+            <div className="w-11/12 m-2 md:w-6/12 md:text-lg">
                 <NavLink
                     className="text-palette-60 m-2 p-2 hover:text-palette-80"
                     to="/about-us"
                     element={<AboutUs />}
                 >
                     {" "}
-                    About Us{" "}
+                    über uns{" "}
                 </NavLink>
                 <NavLink
                     className="text-palette-60 m-2 p-2 hover:text-palette-80"
@@ -36,7 +36,7 @@ const Footer = () => {
                     element={<ContactUs />}
                 >
                     {" "}
-                    Contact Us{" "}
+                    kontaktier' uns{" "}
                 </NavLink>
                 <NavLink
                     className="text-palette-60 m-2 p-2 hover:text-palette-80"
@@ -44,7 +44,7 @@ const Footer = () => {
                     element={<RateUs />}
                 >
                     {" "}
-                    Rate Us{" "}
+                    bewerte uns{" "}
                 </NavLink>
 
                 <div className=" w-full m-2 flex justify-center gap-1">

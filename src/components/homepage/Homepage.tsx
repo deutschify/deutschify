@@ -13,7 +13,7 @@ const Homepage = () => {
                 {/* component für mobile version */}
                 <SlidesMobile />
             </div>
-            <div className="m-10 p-10 w-10/12  border-8 border-palette-50 rounded-xl flex justify-center bg-palette-80 shadow-outer">
+            <div className="w-10/12 border-8 border-palette-50 rounded-xl flex justify-center bg-palette-80 shadow-outer">
                 {" "}
                 {/* component für feedback boxes  DESKTOP VERSION */}
                 <FeedbackBoxes />
