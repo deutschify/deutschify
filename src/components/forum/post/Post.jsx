@@ -107,16 +107,16 @@ const Post = ({ post }) => {
     };
 
     // Edit Handler
-    const editIconHandler = async () => {
-        try {
-            await axios.put(backend_base_url + `/posts/${post._id}`, {
-                userId: currentUser._id,
-                desc: "e.target.value",
-            });
-        } catch (error) {
-            console.log(`Error ${error.message}`);
-        }
-    };
+    // const editIconHandler = async () => {
+    //     try {
+    //         await axios.put(backend_base_url + `/posts/${post._id}`, {
+    //             userId: currentUser._id,
+    //             desc: "e.target.value",
+    //         });
+    //     } catch (error) {
+    //         console.log(`Error ${error.message}`);
+    //     }
+    // };
 
     return (
         <div className="post w-1/2 rounded-xl shadow-outer mt-7 mb-7 ">
