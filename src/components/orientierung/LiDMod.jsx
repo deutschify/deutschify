@@ -8,16 +8,20 @@ import { CgCloseO } from "react-icons/cg";
 import Timer from "./Timer";
 import TimeoutPopup from "./TimeoutPopup";
 import { useStore } from "../../store";
-import ResultLidMod from "./ResultLidMod";
+// import ResultLidMod from "./ResultLidMod";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDMod = () => {
-    const [questions, setQuestions] = useState([]);
+    const [isClicked, setIsClicked] = useState(false);
     const [isTesting, setIsTesting] = useState(false);
     const [timePopup, setTimePopup] = useState(false);
     const result = useStore((state) => state.result);
     const setResult = useStore((state) => state.setResult);
+    const fetchDataForModelltest = useStore(
+        (state) => state.fetchDataForModelltest
+    );
+    const questions = useStore((state) => state.questions);
 
     const navigate = useNavigate();
 
@@ -34,45 +38,17 @@ const LiDMod = () => {
         return myImg;
     };
 
-    const fetchDataForModelltest = async () => {
-        const response = await fetch(`${baseUrl}/all-questions/${category}`);
-        const questionsDB = await response.json();
-        const bundesland = questionsDB.filter((question) => {
-            return question.category === category;
-        });
-        // const qu = bundesland[Math.floor(Math.random() * 4)];
-        let randomQuestions = [...bundesland]
-            .sort(() => 0.5 - Math.random())
-            .slice(0, 3);
-        // console.log(randomQuestion);
-        const randomDeutschland = questionsDB.filter((question) => {
-            return question.category === "deutschland";
-        });
-        const randomDeutschlandQuestions = [...randomDeutschland]
-            .sort(() => 0.5 - Math.random())
-            .slice(0, 30);
-        randomQuestions = [...randomQuestions, ...randomDeutschlandQuestions];
-        randomQuestions.forEach((randomQuestion) => {
-            randomQuestion.scores = 0;
-            randomQuestion.chosenAnswer = "";
-        });
-        setQuestions(randomQuestions);
-
-        console.log(questions);
-        // console.log({ randomDeutschlandQuestions });
-        // console.log(randomQuestion);
-    };
-
     useEffect(() => {
-        fetchDataForModelltest();
+        fetchDataForModelltest(category)
     }, []);
 
     const togglePopup = () => {
-        console.log("Zeit um");
+        setTimePopup(true)
     };
 
     const handleStartTest = () => {
         setIsTesting(true);
+        fetchDataForModelltest(category);
         setTimeout(() => {
             setIsTesting(false);
             setTimePopup(true);
@@ -80,14 +56,20 @@ const LiDMod = () => {
         setTimePopup(false);
     };
 
+    const clicked = () => {
+        setIsClicked(clicked => !clicked)
+    }
+
     const handleClickedAnswer = (qu, answer) => {
+        // const key = Object.keys(qu).find(key => qu[key] === answer)
         qu.chosenAnswer = answer;
-        setQuestions([...questions]);
-        console.log(qu.chosenAnswer);
+        [...questions, qu.chosenAnswer];
+        clicked()
     };
 
     const cancelHandler = () => {
         setIsTesting(false);
+        questions.splice(0, questions.length);
     };
 
     useEffect(() => {
@@ -120,7 +102,8 @@ const LiDMod = () => {
             );
             console.log(result);
         }
-        navigate(`/lernbereich/${category}/modelltest/result/`);
+        // console.log(questions);
+        navigate(`/lernbereich/${category}/modelltest/result`);
     };
 
     return (
@@ -216,7 +199,7 @@ const LiDMod = () => {
                                 </div> */}
                             </div>
                         </div>
-                        {questions.map((qu, index) => (
+                        {/* {questions.map((qu, index) => (
                             <div className="flex justify-center" key={index}>
                                 <div className=" bg-palette-80 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
                                     <div className="index text-palette-60">
@@ -237,8 +220,8 @@ const LiDMod = () => {
                                         <div
                                             className={
                                                 qu.chosenAnswer !== "answerA"
-                                                    ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4"
-                                                    : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4"
+                                                    ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
+                                                    : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
                                             }
                                             onClick={() =>
                                                 handleClickedAnswer(
@@ -252,8 +235,8 @@ const LiDMod = () => {
                                         <div
                                             className={
                                                 qu.chosenAnswer !== "answerB"
-                                                    ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4"
-                                                    : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4"
+                                                    ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
+                                                    : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
                                             }
                                             onClick={() =>
                                                 handleClickedAnswer(
@@ -267,8 +250,8 @@ const LiDMod = () => {
                                         <div
                                             className={
                                                 qu.chosenAnswer !== "answerC"
-                                                    ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4"
-                                                    : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4"
+                                                    ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
+                                                    : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
                                             }
                                             onClick={() =>
                                                 handleClickedAnswer(
@@ -282,8 +265,8 @@ const LiDMod = () => {
                                         <div
                                             className={
                                                 qu.chosenAnswer !== "answerD"
-                                                    ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4"
-                                                    : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4"
+                                                    ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
+                                                    : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
                                             }
                                             onClick={() =>
                                                 handleClickedAnswer(
@@ -294,16 +277,56 @@ const LiDMod = () => {
                                         >
                                             {qu.answerD}
                                         </div>
-                                        <button
-                                            className=""
-                                            onClick={() => handelSubmitBtn(qu)}
-                                        >
-                                            send
-                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        ))}
+                        ))} */}
+                        {questions.map((qu, index) => (
+                <div className="flex justify-center" key={index}>
+                    <div className=" bg-palette-80 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
+                        <div className="index text-palette-60">{index + 1}</div>
+                        <div className="bg-palette-50 border-4 border-palette-60 rounded-xl m-8 p-4">
+                            {qu.question}
+                        </div>
+                        <div className="">
+                            {qu.imageURL && (
+                                <AdvancedImage
+                                    cldImg={fetchImage(qu.imageURL)}
+                                />
+                            )}
+                        </div>
+                        <div className="flex flex-col items-center">
+                            {Object.values(
+                                Object.fromEntries(
+                                    Object.entries(qu).filter(([key]) =>
+                                        key.includes("answer")
+                                    )
+                                )
+                            ).map((choice, i) => {
+                                return (
+                                    <div
+                                        onClick={() =>
+                                                handleClickedAnswer(
+                                                    qu,
+                                                    Object.keys(qu).find(key => qu[key] === choice)
+                                                )
+                                            }
+                                        className={
+                                            `border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 cursor-pointer ${Object.keys(qu).find(key => qu[key] === choice) !== qu.chosenAnswer
+                                            // !isClicked
+                                                ? "bg-palette-50"
+                                                : "bg-palette-40"}`
+                                        }
+                                        key={i}
+                                    >
+                                        {choice} 
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+            ))}
                         <div className="flex justify-center">
                             <button
                                 className="bg-palette-50 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-80 rounded-xl hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
@@ -312,7 +335,6 @@ const LiDMod = () => {
                                 Testbogen absenden
                             </button>
                         </div>
-                        {result && <ResultLidMod questions={questions} />}
                     </div>
                 )}
             </div>

@@ -1,6 +1,6 @@
 import create from "zustand";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { useParams } from "react-router-dom";
 
 export const baseUrl= import.meta.env.VITE_BACKEND_URL;
 
@@ -90,5 +90,34 @@ export const useStore = create((set) => ({
         }
     },
     result: "", 
-    setResult: ((result) => set({result}))
+    setResult: ((result) => set({result})),
+    questions: [], 
+    fetchDataForModelltest: async (category) => {
+        const response = await fetch(`${baseUrl}/all-questions/${category}`);
+        const questionsDB = await response.json();
+        const bundesland = questionsDB.filter((question) => {
+            return question.category === category;
+        });
+        // const qu = bundesland[Math.floor(Math.random() * 4)];
+        let randomQuestions = [...bundesland]
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 3);
+        // console.log(randomQuestion);
+        const randomDeutschland = questionsDB.filter((question) => {
+            return question.category === "deutschland";
+        });
+        const randomDeutschlandQuestions = [...randomDeutschland]
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 30);
+        randomQuestions = [...randomQuestions, ...randomDeutschlandQuestions];
+        randomQuestions.forEach((randomQuestion) => {
+            randomQuestion.scores = 0;
+            randomQuestion.chosenAnswer = "";
+        });
+        set((state) => {
+            const _state = {...state}
+            _state.questions = randomQuestions
+            return _state
+        })
+    }
 }));
