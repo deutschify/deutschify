@@ -139,9 +139,9 @@ const NavBar = () => {
                                     <div className=" text-palette-50 hover:text-palette-60">
                                         <Nav.Menu
                                             className="text-center"
-                                            title="Sprachniveau"
+                                            title="Sprachkurs"
                                         >
-                                            <div className="flex flex-col w-48 absolute left-40">
+                                            <div className="flex flex-col w-40 absolute left-40">
                                                 <NavLink
                                                     className="bg-palette-70/75 text-palette-50 hover:text-palette-80 rounded-t-lg"
                                                     to="/A1"
@@ -171,13 +171,13 @@ const NavBar = () => {
                                         to="/einbuergerungstest"
                                         element={<Einbuergerungstest />}
                                     >
-                                        Leben in Deutschland
+                                        Orientierungskurs
                                     </NavLink> 
                                 </div>
                             </Nav.Menu>
                         </div>
                         <NavLink
-                            className="p-10 w-80 text-2xl hover:text-palette-80"
+                            className="py-10 px-4 mr-28 text-2xl hover:text-palette-80"
                             to="/dictionary"
                             element={<Dictionary />}
                         >
@@ -185,7 +185,7 @@ const NavBar = () => {
                         </NavLink>
 
                         <NavLink
-                            className="p-10 text-2xl w-80 hover:text-palette-80"
+                            className="py-10 px-4 text-2xl hover:text-palette-80"
                             to="/forum"
                             element={<Forum />}
                         >

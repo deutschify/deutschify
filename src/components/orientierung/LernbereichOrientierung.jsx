@@ -159,7 +159,7 @@ const Lernbereich = () => {
                 <div className="w-3/12 bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 shadow-outer">
                     <div className="">
                         <input
-                            className="searchInput h-10 bg-palette-60 rounded-3xl p-6 text-palette-50 placeholder:text-palette-50/75 border-4 border-palette-80 shadow-inner"
+                            className="searchInput h-10 bg-palette-60 rounded-3xl p-6 text-palette-50 placeholder:text-palette-50/75 border-4 border-palette-80 shadow-inner focus:outline-none"
                             type="text"
                             placeholder="Stichwort..."
                             onChange={(event) => {
@@ -181,25 +181,24 @@ const Lernbereich = () => {
                 </NavLink>
             </nav>
             <div className="text-2xl p-6 text-palette-50">
-                            {!query
-                                ? `Hier haben wir alle ${
-                                      questions.length
-                                  } Fragen zu Deutschland und
+                {!query
+                    ? `Hier haben wir alle ${
+                          questions.length
+                      } Fragen zu Deutschland und
                             ${
                                 category.charAt(0).toUpperCase() +
                                 category.slice(1)
                             }
                                  für dich`
-                                : `Wir haben zu deiner Anfrage ${filteredResults.length} Übereinstimmungen gefunden`}{" "}
-                        </div>
+                    : `Wir haben zu deiner Anfrage ${filteredResults.length} Übereinstimmungen gefunden`}{" "}
+            </div>
 
-            <div className="bg-palette-80 rounded-xl border-4  border-palette-50 shadow-outer h-full m-10 p-10">
+            <div className="bg-palette-80 rounded-xl border-4  border-palette-50 shadow-outer h-full m-10 -mt-4 p-10">
                 {" "}
                 <div className="text-palette-60 p-6 w-full -mt-28 relative">
                     <div className="bg-palette-40 w-3/12 border-4 border-palette-60 rounded-xl sticky left top-2/4 left-40 shadow-inner">
                         <img src="../../../images/illus/study1.png" alt="" />
                     </div>{" "}
-                    
                     {/* <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute  left-20 top-3/4  shadow-inner">
                         <img src="../../../images/illus/study3.png" alt="" />
                     </div>{" "} */}
@@ -207,16 +206,16 @@ const Lernbereich = () => {
                         <img src="../../../images/illus/study2.png" alt="" />
                     </div> */}
                     <div className="flex flex-col items-center -mt-56">
-                      
-<div className="flex justify-end mr-40">   <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10 shadow-inner">
-                            {isLoading ? (
-                                <Circles color="#2F4858" />
-                            ) : (
-                                displayQuestions
-                            )}{" "}
-                        </div></div>
-                     
-                      
+                        <div className="flex justify-end mr-40">
+                            {" "}
+                            <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10 shadow-inner">
+                                {isLoading ? (
+                                    <Circles color="#2F4858" />
+                                ) : (
+                                    displayQuestions
+                                )}{" "}
+                            </div>
+                        </div>
 
                         <ReactPaginate
                             previousLabel={"vorherige"}

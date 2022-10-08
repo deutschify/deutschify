@@ -2,16 +2,19 @@ import { useParams, Route, Routes, NavLink } from "react-router-dom";
 import axios from "axios";
 // import { baseUrl } from "../../App";
 import Lernbereich from "./LernbereichOrientierung";
+import "../../App.css";
 
 
 const Einbuergerungstest = () => {
 
 
     return (
-        <div className=" bg-palette-80 m-10 shadow-bs border-4 border-palette-80 rounded-xl shadow-outer">
-            <h1 className="text-center text-2xl m-10 text-palette-60">
-                Übungen zu "Leben in Deutschland"
+        <div className=" bg-palette-80 m-10 shadow-bs border-4 border-palette-50 rounded-xl shadow-outer">
+            <h1 className="title text-center text-5xl m-10 text-palette-60 font-block1">
+                Übungen zum Orientierungskurs <br/>
+                
             </h1>
+            <h3 className="text-center text-xl m-10 text-palette-60">Bereite dich hier auf den Einbürgerungstest vor!</h3>
             <h2 className="text-center text-xl text-palette-60">
                 Wähle zuerst dein Bundesland aus
             </h2>
