@@ -3,11 +3,11 @@ import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import DropDownMenu from "./DropDownMenu";
 import NewsFeed from "./news-feed/NewsFeed";
-import NewPost from "./NewPost";
 import MyPosts from "./MyPosts";
 import NavForum from "./NavForum";
 import AboutForum from "./AboutForum";
 import { useStore } from "../../store";
+import PostEdit from "./post/PostEdit";
 
 const Forum = () => {
     const [search, setSearches] = useState("");
@@ -28,6 +28,10 @@ const Forum = () => {
                             element={<NewsFeed />}
                         />
                         <Route path="/forum/my-posts" element={<MyPosts />} />
+                        <Route
+                            path="/forum/post/edit/:id"
+                            element={<PostEdit />}
+                        />
                     </Routes>
                     {/* <AboutForum /> */}
                 </div>
