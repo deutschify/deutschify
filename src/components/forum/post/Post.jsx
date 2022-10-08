@@ -15,6 +15,8 @@ const Post = ({ post }) => {
     const [isLiked, setIsLiked] = useState(false);
     const [likeColor, setLikeColor] = useState("");
     const [user, setUser] = useState({});
+    const [postedDate, setPostedDate] = useState(format(post.createdAt));
+    const [postUpdated, setPostUpdated] = useState(format(post.updatedAt));
 
     //trying to navigate the edit btn onClick
 
@@ -121,6 +123,11 @@ const Post = ({ post }) => {
                         <span className="postDate text-xs ml-5 pt-2">
                             <p>{format(post.createdAt)}</p>
                         </span>
+                        {postUpdated !== postedDate && (
+                            <span className="postDate text-xxs ml-5 pt-3">
+                                <p>bearbeitet</p>
+                            </span>
+                        )}
                     </div>
                     <div className="postTopRight flex items-center ">
                         {/* vertical options */}
