@@ -5,15 +5,15 @@ import FeedbackBoxesMobile from "./FeedbackBoxesMobile";
 
 const Homepage = () => {
     return (
-        <div className="w-full h-full flex flex-col items-center">
-            <div className="sliderField m-10 p-4 w-10/12 h-full border-8 border-palette-50 rounded-xl flex justify-center bg-palette-80 shadow-outer">
+        <div className="flex flex-col items-center">
+            <div className="sliderField md:m-10 md:p-4 md:w-10/12 md:h-full md:border-8 md:border-palette-50 md:rounded-xl md:flex md:justify-center md:bg-palette-80 md:shadow-outer">
                 
                 {/* tablet and desktop version */}
                 <Slides />
                 {/* component für mobile version */}
                 <SlidesMobile />
             </div>
-            <div className="w-10/12 border-8 border-palette-50 rounded-xl flex justify-center bg-palette-80 shadow-outer">
+            <div className="flex m-10 md:w-10/12 md:border-8 md:border-palette-50 md:rounded-xl md:flex md:justify-center md:bg-palette-80 md:shadow-outer">
                 {" "}
                 {/* component für feedback boxes  DESKTOP VERSION */}
                 <FeedbackBoxes />

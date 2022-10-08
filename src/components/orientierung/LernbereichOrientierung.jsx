@@ -96,10 +96,10 @@ const Lernbereich = () => {
                     key={index}
                     className="bg-palette-50 m-4 p-2 w-9/12 text-left rounded-xl border-4 border-palette-80 shadow-outer"
                 >
-                    <div className="text-palette-60">{question.number}</div>
+                    <div className="text-xl text-palette-60 flex items-center justify-center  px-1 border-2 bg-palette-50 border-palette-80 w-1/12 rounded-full">{question.number}</div>
                     <div className="text-palette-60 m-2 p-2">
                         {" "}
-                        <div className="mb-2 border-b-2 border-palette-60 ">
+                        <div className="mb-2 border-b-2 border-palette-80 ">
                             Frage
                         </div>
                         {question.question}
@@ -117,7 +117,7 @@ const Lernbereich = () => {
                         </>
                     )}
                     <div className="text-palette-60 m-2 p-2">
-                        <div className="mb-2 border-b-2 border-palette-60">
+                        <div className="mb-2 border-b-2 border-palette-80">
                             Antwort
                         </div>
                         {question.correctAnswer in question
@@ -126,7 +126,7 @@ const Lernbereich = () => {
                     </div>
                     {question.explanation !== "" && (
                         <div className="text-palette-60 m-2 p-2">
-                            <div className="mb-2 border-b-2 border-palette-60">
+                            <div className="mb-2 border-b-2 border-palette-80">
                                 Erklärung
                             </div>
                             {question.explanation}
@@ -144,7 +144,7 @@ const Lernbereich = () => {
     return (
         <div className="border-4 border-palette-50 m-8 p-4 rounded-xl text-center shadow-inner relative">
             <h1 className="text-palette-50 text-2xl">
-                Bereite dich auf den "Leben in Deutschland - Test" vor
+                Bereite dich auf den Orientierungstest vor
             </h1>
             <nav className="flex justify-between items-center md:text-2xl">
                 <NavLink

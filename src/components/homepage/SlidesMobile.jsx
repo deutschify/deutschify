@@ -1,63 +1,82 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import deutschify from "../../../public/images/deutschify.png";
+// import deutschify from "../../../public/images/deutschify.png";
+import ImgDictionary from "../../../public/images/slide-dictionary.png";
+import ImgForum from "../../../public/images/slide-forum.png";
+import ImgSprachkurs from "../../../public/images/slide-sprachkurs.png";
+import ImgOrientierungskurs from "../../../public/images/slide-orientierungskurs.png";
 
 const SlidesMobile = () => {
     return (
-        <div className="md:hidden grid gap-4 justify-items-center pt-4 pb-4 ">
-            <div>
-                {/* dictionary */}1
-                <NavLink to="/dictionary" className="dictionary">
-                    {" "}
-                    <a href="/dictionary">
-                        {" "}
-                        <img
-                            src={deutschify}
-                            alt="dictionary"
-                            title="dictionary"
-                        />
-                    </a>
+        <div className="h-full overflow-auto scrollbar-hide md:hidden grid gap-4 justify-items-center m-4">
+
+                           {/* dictionary */}
+            <div className="bg-palette-80 w-11/12 border-8 border-palette-50 rounded-xl">
+             
+                <NavLink
+                    to="/dictionary"
+                    className="dictionary w-full flex justify-center"
+                >
+        
+                
+                    <img
+                        src={ImgDictionary}
+                        alt="Wörterbuch"
+                        title="dictionary"
+                        className="w-10/12 m-4 border-4 border-palette-60 rounded-xl"
+                    />
+             
                 </NavLink>
             </div>
-            <div>
-                {/* language-levels */}2
-                <NavLink to="/language-levels" className="language-levels">
-                    {" "}
-                    <a href="/language-levels">
-                        {" "}
-                        <img
-                            src={deutschify}
-                            alt="language-levels"
-                            title="language-levels"
-                        />
-                    </a>
+            <div className="bg-palette-80 w-11/12 border-8 border-palette-50 rounded-xl">
+              
+                <NavLink
+                    to="/language-levels"
+                    className="sprachkurs w-full flex justify-center"
+                >
+      
+                    <img
+                        src={ImgSprachkurs}
+                        alt="language-levels"
+                        title="language-levels"
+                        className="w-10/12 m-4 border-4 border-palette-60 rounded-xl"
+                    />
+                    {/* </a> */}
                 </NavLink>
             </div>
-            <div>
-                {/* einbürgerungstest */}3
+
+            {/* einbürgerungstest */}
+            <div className="bg-palette-80 w-11/12 border-8 border-palette-50 rounded-xl">
                 <NavLink
                     to="/einbuergerungstest"
-                    className="einbuergerungstest"
+                    className="einbuergerungstest w-full flex justify-center"
                 >
                     {" "}
-                    <a href="/einbuergerungstest">
-                        {" "}
-                        <img
-                            src={deutschify}
-                            alt="einbuergerungstest"
-                            title="einbuergerungstest"
-                        />
-                    </a>
+                    {/* <a href="/einbuergerungstest"> */}{" "}
+                    <img
+                        src={ImgOrientierungskurs}
+                        alt="einbuergerungstest"
+                        title="einbuergerungstest"
+                        className="w-10/12 m-4 border-4 border-palette-60 rounded-xl"
+                    />
+                    {/* </a> */}
                 </NavLink>
             </div>
-            <div>
-                {/* forum */}4
-                <NavLink to="/forum" className="forum">
+            <div className="bg-palette-80 w-11/12 border-8 border-palette-50 rounded-xl">
+                {/* forum */}
+                <NavLink
+                    to="/forum"
+                    className="forum w-full flex justify-center"
+                >
                     {" "}
-                    <a href="/forum">
-                        {" "}
-                        <img src={deutschify} alt="forum" title="forum" />
-                    </a>
+                    {/* <a href="/forum"> */}{" "}
+                    <img
+                        src={ImgForum}
+                        alt="forum"
+                        title="forum"
+                        className="w-10/12 m-4 border-4 border-palette-60 rounded-xl"
+                    />
+                    {/* </a> */}
                 </NavLink>
             </div>
         </div>

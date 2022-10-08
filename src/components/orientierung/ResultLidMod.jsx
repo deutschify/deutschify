@@ -30,17 +30,18 @@ function ResultLidMod() {
             {questions.map((qu, index) => (
                 <div className="flex justify-center" key={index}>
                     <div className=" bg-palette-80 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
-                        <div className="index text-palette-60">{index + 1}</div>
+                        <div className="text-xl text-palette-60 flex justify-center p-1 border-4 bg-palette-50 border-palette-60 w-1/12 rounded-full">{index + 1}</div>
                         <div className="bg-palette-50 border-4 border-palette-60 rounded-xl m-8 p-4">
                             {qu.question}
                         </div>
-                        <div className="">
+                        <div className="flex justify-center"> <div className="bg-palette-60 border-palette-50  w-max rounded-xl">
                             {qu.imageURL && (
                                 <AdvancedImage
                                     cldImg={fetchImage(qu.imageURL)}
                                 />
                             )}
-                        </div>
+                        </div></div>
+                       
                         <div className="flex flex-col items-center">
                             {Object.values(
                                 Object.fromEntries(
@@ -58,13 +59,13 @@ function ResultLidMod() {
                                             Object.keys(qu).find(
                                                 (key) => qu[key] === choice
                                             ) === qu.correctAnswer
-                                                ? "bg-palette-40"
+                                                ? "bg-palette-30"
                                                 : ""
                                         } ${
                                             Object.keys(qu).find(
                                                 (key) => qu[key] === choice
                                             ) === qu.correctAnswer
-                                                ? "bg-palette-40"
+                                                ? "bg-palette-30"
                                                 : ""
                                         }${
                                             Object.keys(qu).find(

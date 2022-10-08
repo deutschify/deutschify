@@ -1,7 +1,7 @@
 import { useState } from "react";
 // import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
-
+import "../../App.css";
 import { NavLink } from "react-router-dom";
 
 const sliderData = [
@@ -42,22 +42,22 @@ const Slides = () => {
     }
 
     return (
-        <div className=" w-6/12 h-10/12 hidden md:block bg-palette-50 p-6 border-4 border-palette-60 rounded-xl shadow-outer text-palette-60">
-             <div className="relative">
+        <div className="w-7/12 h-10/12 hidden md:block bg-palette-50 p-6 border-4 border-palette-60 rounded-xl shadow-outer text-palette-60">
+            <div className="relative">
                 <MdArrowBackIos
-                    className="slideshow-left-arrow absolute -left-80 top-48 text-4xl cursor-pointer"
+                    className="slideshow-left-arrow absolute -left-80 top-48 text-7xl text-palette-60/25 cursor-pointer"
                     onClick={previousSlideHandler}
                 />
             </div>
             <div className="relative">
                 <MdArrowForwardIos
-                    className="slideshow-right-arrow absolute -right-80 top-48 text-4xl cursor-pointer"
+                    className="slideshow-right-arrow absolute -right-80 top-48 text-7xl text-palette-60/25 cursor-pointer"
                     onClick={nextSlideHandler}
                 />
-            </div> 
+            </div>
             <div className="">
                 <div className="">
-                    <div className="flex justify-center">
+                    <div className="flex justify-center ">
                         {sliderData.map((slider, index) => {
                             return (
                                 <div
@@ -66,22 +66,23 @@ const Slides = () => {
                                         index === currentImage
                                             ? "slide active"
                                             : "slide"
-                                    } 
+                                    }
                                 >
                                     {index === currentImage && (
                                         <>
-                                            <NavLink to={slider.href}> 
-                                            <p className="text-center font-block1 text-4xl p-2">
+                                            <NavLink
+                                                to={slider.href}
+                                                className="flex flex-col items-center flex-nowrap"
+                                            >
+                                                <p className="singleSlideTitle text-center font-block1 text-5xl p-2">
                                                     {slider.title}
                                                 </p>
-                                                <a href={slider.href}>
-                                                    <img
-                                                        className="rounded-xl border-4 border-palette-80 bg-palette-60 shadow-outer"
-                                                        src={slider.slideImage}
-                                                        alt="slideshow image"
-                                                    />
-                                                </a>
-                                               
+
+                                                <img
+                                                    className="rounded-xl border-4 border-palette-80 bg-palette-60 shadow-outer"
+                                                    src={slider.slideImage}
+                                                    alt="slideshow image"
+                                                />
                                             </NavLink>
                                         </>
                                     )}
