@@ -41,10 +41,10 @@ function App() {
     const navigate = useNavigate();
 
     // const loading = useStore((state) => state.loading);
-    const fetchLanguages = useStore((state) => state.fetchLanguages);
-    const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
-    const fetchCountries = useStore((state) => state.fetchCountries);
-    const currentUser = useStore((state) => state.currentUser);
+    const fetchLanguages = useStore((state: { fetchLanguages: any; }) => state.fetchLanguages);
+    const fetchCurrentUser = useStore((state: { fetchCurrentUser: any; }) => state.fetchCurrentUser);
+    const fetchCountries = useStore((state: { fetchCountries: any; }) => state.fetchCountries);
+    const currentUser = useStore((state: { currentUser: any; }) => state.currentUser);
 
     useEffect(() => {
         fetchLanguages();
@@ -82,7 +82,7 @@ function App() {
                     element={<LiDMod />}
                 />
                 <Route
-                    path="/lernbereich/:category/modelltest/result/"
+                    path="/lernbereich/:category/modelltest/result"
                     element={<ResultLidMod />}
                 />
                 <Route path="/forum/*" element={<Forum />} />

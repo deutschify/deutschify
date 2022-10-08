@@ -9,7 +9,6 @@ module.exports = {
                 //
                 //     30: "#6A9AB8",
                 // 40: "#99C1B9",
-
                 //     50: "#2F4858",
                 //     60: "#FDF0D5",
                 //     70: "#DD9E93",
@@ -34,6 +33,14 @@ module.exports = {
                 block1: "Architects Daughter",
                 block2: "Comfortaa",
                 block3: "Short Stack",
+            },
+            fontFamily: {
+                block1: "Architects Daughter",
+                block2: "Comfortaa",
+                block3: "Short Stack",
+            },
+            fontSize: {
+                xxs: "0.65rem",
             },
         },
     },
