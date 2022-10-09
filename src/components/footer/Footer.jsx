@@ -6,6 +6,7 @@ import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
 import RateUs from "./RateUs";
 import Homepage from "../homepage/Homepage";
+import LogoSide from "../../../public/images/deutschify-smallletter-side.png"
 
 const Footer = () => {
     // footer
@@ -15,7 +16,7 @@ const Footer = () => {
             <div className="w-3/12">
                 <NavLink className="" to="/" element={<Homepage />}>
                     <img
-                        src="./images/deutschify-smallletter-side.png"
+                        src={LogoSide}
                         className="w-40 m-2"
                         alt=""
                     />

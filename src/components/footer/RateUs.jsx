@@ -59,7 +59,7 @@ const RateUs = () => {
 
     return (
         <div className="mt-20 flex justify-center items-center">
-            <div className="bg-palette-20 border-4 border-palette-30 p-4 flex justify-center items-center rounded-lg shadow-outer">
+            <div className="w-60 bg-palette-80 border-4 p-4 flex justify-center items-center rounded-xl shadow-outer ">
                 <form
                     onSubmit={(e) => handleSubmit(e)}
                     className="max-w-lg  pt-6 pb-6"

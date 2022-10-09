@@ -3,11 +3,22 @@ import { useState } from "react";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 import "../../App.css";
 import { NavLink } from "react-router-dom";
+// import ImgSprachkurs from "../../../public/images/deutschify-smallletter.png"
+// import ImgDictionary from "../../../public/images/deutschify-smallletter.png"
+// import ImgForum from "../../../public/images/deutschify-smallletter.png"
+// import ImgOrientierungskurs from "../../../public/images/deutschify-smallletter.png"
+// import ImgMainLogo from "../../../public/images/deutschify-smallletter.png"
+
 
 const sliderData = [
     {
+        slideImage: "../../images/mainpage.png",
+        href: "/",
+        title: "Willkommen bei deutschify",
+    },
+    {
         slideImage: "../../images/illus/sprachkurs1.png",
-        href: "/language-levels",
+        href: "/sprachniveau",
         title: "Übungen zum Sprachkurs",
     },
     {
@@ -79,10 +90,11 @@ const Slides = () => {
                                                 </p>
 
                                                 <img
-                                                    className="rounded-xl border-4 border-palette-80 bg-palette-60 shadow-outer"
+                                                    className="rounded-xl border-4 border-palette-80 bg-palette-60 shadow-outer p-2"
                                                     src={slider.slideImage}
                                                     alt="slideshow image"
                                                 />
+                                            
                                             </NavLink>
                                         </>
                                     )}

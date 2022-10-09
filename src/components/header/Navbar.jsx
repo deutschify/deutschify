@@ -33,7 +33,7 @@ const NavBar = () => {
                 <div
                     className={
                         (showNav ? "left-20" : "left-full") +
-                        " bg-palette-70/75  fixed left-20 right-0 top-28 bottom-10 z-40 text-palette-50 text-center text-2xl p-10 rounded-bl-3xl rounded-tl-3xl transition-ease-in duration-1000"
+                        " bg-palette-40/75  fixed left-20 right-0 top-28 bottom-10 z-40 text-palette-50 text-center text-2xl p-10 rounded-bl-3xl rounded-tl-3xl transition-ease-in duration-1000"
                     }
                 >
                     <Nav className="m-2 mt-20">
@@ -101,22 +101,12 @@ const NavBar = () => {
                             </div>
                         </div>
                     </Nav>
-                    <Nav className="m-2 mt-20">
-                        <NavLink
-                            className="flex justify-center hover:text-palette-80"
-                            to="/forum"
-                            element={<Forum />}
-                        >
-                            Forum
-                        </NavLink>
-                    </Nav>
-                    {/* <div className=" w-20 ">
-                        <div className="hidden bg-palette-50 p-4 text-2xl justify-center rounded-full">
-                            A
-                        </div>
-                    </div> */}
+
                     <div className="">
-                        <div className="bg-palette-80 p-4 mt-24  text-xl rounded-full shadow-outer  hover:text-palette-60">
+                        <div className="bg-palette-70 p-4 mt-24  text-xl rounded-full shadow-outer  hover:text-palette-60">
+                            Registration
+                        </div>
+                        <div className="bg-palette-80 p-4 mt-4  text-xl rounded-full shadow-outer  hover:text-palette-60">
                             Login
                         </div>
                     </div>
@@ -172,7 +162,7 @@ const NavBar = () => {
                                         element={<Einbuergerungstest />}
                                     >
                                         Orientierungskurs
-                                    </NavLink> 
+                                    </NavLink>
                                 </div>
                             </Nav.Menu>
                         </div>
@@ -194,16 +184,16 @@ const NavBar = () => {
                         {currentUser.accessGroups?.includes(
                             "loggedOutUsers"
                         ) && (
-                            <div className="flex items-center m-10">
+                            <div className="flex items-center ml-40">
                                 <NavLink
-                                    className="flex items-center bg-palette-70 p-4 text-xl rounded-xl hover:shadow-inner hover:text-palette-50 m-5"
+                                    className="w-40 text-center border-4 border-palette-60 bg-palette-70 p-4 text-xl rounded-xl shadow-outer hover:shadow-inner hover:text-palette-50 m-5"
                                     to="/login"
                                     element={<PageLogin />}
                                 >
                                     Login
                                 </NavLink>
                                 <NavLink
-                                    className="flex items-center bg-palette-80 p-4 text-xl rounded-xl hover:shadow-inner hover:text-palette-50"
+                                    className="w-40 text-center bg-palette-80 border-4 border-palette-60 p-4 text-xl rounded-xl hover:shadow-inner hover:text-palette-50 shadow-outer"
                                     to="/registration"
                                     element={<PageRegister />}
                                 >
@@ -211,32 +201,31 @@ const NavBar = () => {
                                 </NavLink>
                             </div>
                         )}
-               
 
                         {currentUser.accessGroups?.includes(
                             "loggedInUsers"
                         ) && (
                             <div className="flex items-center m-5">
-                            <NavLink className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:shadow-inner hover:text-palette-50"
-                            to={`/${currentUser.firstName}`} element={<PageUserSettings/>}>
-                                {currentUser.avatar ? <img src={`${currentUser.avatar}`} alt="" /> : <p>{currentUser.firstName[0] }</p>}
-                            </NavLink>
+                                <NavLink
+                                    className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:shadow-inner hover:text-palette-50"
+                                    to={`/${currentUser.firstName}`}
+                                    element={<PageUserSettings />}
+                                >
+                                    {currentUser.avatar ? (
+                                        <img
+                                            src={`${currentUser.avatar}`}
+                                            alt=""
+                                        />
+                                    ) : (
+                                        <p>{currentUser.firstName[0]}</p>
+                                    )}
+                                </NavLink>
                             </div>
                         )}
-                        
+
                         {currentUser.accessGroups?.includes(
                             "loggedInUsers"
-                        ) && (
-                            <PageLogout/>
-                        )}
-                        
-
-                        {/* <div className="flex items-center m-5">
-                            <div className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:shadow-inner hover:text-palette-50">
-                                A
-                            </div>
-                        </div> */}
-
+                        ) && <PageLogout />}
                     </div>
                 </Nav>
             </div>

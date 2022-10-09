@@ -25,8 +25,8 @@ const StarRating = () => {
                                 size={30}
                                 color={
                                     ratingValue <= (hover || rating)
-                                        ? "#5C7A75"
-                                        : "#99C1B9"
+                                        ? "#2F4858"
+                                        : "#FDF0D5"
                                 }
                                 className="cursor-pointer flex flex-col"
                                 onMouseEnter={() => setHover(ratingValue)}
