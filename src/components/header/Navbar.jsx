@@ -3,7 +3,7 @@ import { Nav } from "rsuite";
 import Sprachkurs from "../sprachkurs/Sprachkurs";
 import A1 from "../sprachkurs/A1";
 import A2 from "../sprachkurs/A2";
-import B1 from "../sprachkurs/B1";
+import B1 from "../sprachkurs/SchreibenB1";
 import Einbuergerungstest from "../orientierung/Einbuergerungstest";
 import Dictionary from "../dictionary/Dictionary";
 import Forum from "../Forum";
@@ -58,21 +58,21 @@ const NavBar = () => {
                                                 <div className="flex flex-col w-40 absolute left-96 text-center bg-palette-60/75 rounded-xl border-2 border-palette-50 p-4">
                                                     <NavLink
                                                         className="text-palette-50 hover:text-palette-80 rounded-t-lg"
-                                                        to="/A1"
+                                                        to="/sprachkurs/a1"
                                                         element={<A1 />}
                                                     >
                                                         A1
                                                     </NavLink>
                                                     <NavLink
                                                         className=" text-palette-50 hover:text-palette-80"
-                                                        to="/A2"
+                                                        to="/sprachkurs/a2"
                                                         element={<A2 />}
                                                     >
                                                         A2
                                                     </NavLink>
                                                     <NavLink
                                                         className=" text-palette-50 hover:text-palette-80 rounded-b-lg"
-                                                        to="/B1"
+                                                        to="/sprachkurs/b1"
                                                         element={<B1 />}
                                                     >
                                                         B1
