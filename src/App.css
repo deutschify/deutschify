@@ -15,6 +15,55 @@ background-color: #DD9E93 !important;
     display: none !important;
 }
 
-.App {
-    stroke: green !important;
+.sliderField {
+    height: 600px !important;
 }
+
+.title{
+    -webkit-text-stroke: 2px #2F4858 !important;
+    
+}
+.singleSlideTitle{
+    -webkit-text-stroke: 2px #BC4B51 !important;
+}
+
+.slider{
+    animation: slide 3s infinite;
+}
+
+@keyframes slide{
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-100%);
+    }
+    55%{
+        transform: translateX(-200%);
+    }
+    75%{
+        transform: translateX(-200%);
+    }
+    80%{
+        transform: translateX(-300%);
+    }
+    100%{
+        transform: translateX(-300%);
+    }
+}
+
+
+.slideshowDot.active {
+    background-color: #6a0dad;
+  }
+  
+
+  /* .active{
+    border-bottom: 3px solid #2F4858;
+  } */

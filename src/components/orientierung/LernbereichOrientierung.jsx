@@ -1,7 +1,7 @@
 import { useParams, NavLink } from "react-router-dom";
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
-import {thumbnail} from "@cloudinary/url-gen/actions/resize";
+import { thumbnail } from "@cloudinary/url-gen/actions/resize";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
@@ -15,7 +15,6 @@ const Lernbereich = () => {
     const [questions, setQuestions] = useState([]);
     const [questionsPerPage, setQuestionsPerPage] = useState(0);
     const [query, setQuery] = useState("");
-    // const [searchResult, setSearchResult] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     // Create a Cloudinary instance and set your cloud name.
@@ -26,9 +25,9 @@ const Lernbereich = () => {
     });
 
     const fetchImage = (publicId) => {
-        const myImg = cld.image(`deutschify/${publicId}`)
-        return myImg
-    }
+        const myImg = cld.image(`deutschify/${publicId}`);
+        return myImg;
+    };
 
     const { category } = useParams();
 
@@ -43,7 +42,6 @@ const Lernbereich = () => {
         const questions = await response.json();
         setQuestions(questions);
         setIsLoading(false);
-        // console.log(questions);
     };
     useEffect(() => {
         fetchDataBundesland();
@@ -53,16 +51,33 @@ const Lernbereich = () => {
     const filteredQuestions = () => {
         const filtered = questions?.filter((question) => {
             if (query.length === 0) {
-                // console.log(question);
                 return question;
             }
             if (
-                query.length > 0 &&
-                question.question?.toLowerCase().includes(query.toLowerCase())
+                (query.length > 0 &&
+                    question.question
+                        ?.toLowerCase()
+                        .includes(query.toLowerCase()),
+                // question.correctAnswer in question
+                //     ? question[question.correctAnswer]
+                //     : question.correctAnswer
+                //           .toLowerCase()
+                //           .includes(query.toLowerCase()),
+                question.answerA?.toLowerCase().includes(query.toLowerCase()),
+                question.answerB?.toLowerCase().includes(query.toLowerCase()),
+                question.answerC?.toLowerCase().includes(query.toLowerCase()),
+                question.answerD?.toLowerCase().includes(query.toLowerCase()),
+                question.explanation
+                    ?.toLowerCase()
+                    .includes(query.toLowerCase()))
             ) {
                 return question;
             }
+            if (question.number.includes(query)) {
+                return question;
+            }
         });
+
         return filtered;
     };
 
@@ -70,28 +85,31 @@ const Lernbereich = () => {
         filteredQuestions();
     }, [query]);
 
+    const filteredResults = filteredQuestions();
+
     //    For Pagination
-    const displayQuestions = filteredQuestions()
+    const displayQuestions = filteredResults
         .slice(pagesVisited, pagesVisited + usersPerPage)
         .map((question, index) => {
             return (
                 <div
                     key={index}
-                    className="bg-palette-50 m-4 p-2 w-9/12 text-left rounded-xl border-2 border-palette-60 "
+                    className="bg-palette-50 m-4 p-2 w-9/12 text-left rounded-xl border-4 border-palette-80 shadow-outer"
                 >
-                    <div className="text-palette-60  ">{question.number}</div>
+                    <div className="text-xl text-palette-60 flex items-center justify-center  px-1 border-2 bg-palette-50 border-palette-80 w-1/12 rounded-full">{question.number}</div>
                     <div className="text-palette-60 m-2 p-2">
                         {" "}
-                        <div className="mb-2 border-b-2 border-palette-60 ">
+                        <div className="mb-2 border-b-2 border-palette-80 ">
                             Frage
                         </div>
                         {question.question}
                     </div>{" "}
                     {question.imageURL && (
                         <>
-                            <div className="text-palette-60 m-2 p-2">
+                            <div className="text-palette-60 m-2 p-2 flex justify-center">
                                 {" "}
                                 <AdvancedImage
+                                    className="bg-palette-60 rounded-xl border-4 border-palette-80"
                                     cldImg={fetchImage(question.imageURL)}
                                     // publicId={`${question.imageURL}`}
                                 />
@@ -99,11 +117,21 @@ const Lernbereich = () => {
                         </>
                     )}
                     <div className="text-palette-60 m-2 p-2">
-                        <div className="mb-2 border-b-2 border-palette-60">
+                        <div className="mb-2 border-b-2 border-palette-80">
                             Antwort
                         </div>
-                        {question.correctAnswer}
+                        {question.correctAnswer in question
+                            ? question[question.correctAnswer]
+                            : question.correctAnswer}
                     </div>
+                    {question.explanation !== "" && (
+                        <div className="text-palette-60 m-2 p-2">
+                            <div className="mb-2 border-b-2 border-palette-80">
+                                Erklärung
+                            </div>
+                            {question.explanation}
+                        </div>
+                    )}
                 </div>
             );
         });
@@ -114,23 +142,24 @@ const Lernbereich = () => {
     };
 
     return (
-        <div className="border-4 border-palette-50 m-2 p-4 rounded-xl text-center">
+        <div className="border-4 border-palette-50 m-8 p-4 rounded-xl text-center shadow-inner relative">
             <h1 className="text-palette-50 text-2xl">
-                Bereite dich auf den "Leben in Deutschland - Test" vor
+                Bereite dich auf den Orientierungstest vor
             </h1>
-            <nav className="flex justify-between md:text-2xl">
+            <nav className="flex justify-between items-center md:text-2xl">
                 <NavLink
                     to={`/lernbereich/${category}/excercise`}
                     element={<LiDExc />}
-                    className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
+                    className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
                 >
                     Zum Übungstest
                 </NavLink>
-                <div className="p-4">
-                    {/* Searchbar für Testfragen */}
+
+                {/* Searchbar für Testfragen */}
+                <div className="w-3/12 bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 shadow-outer">
                     <div className="">
                         <input
-                            className="searchInput"
+                            className="searchInput h-10 bg-palette-60 rounded-3xl p-6 text-palette-50 placeholder:text-palette-50/75 border-4 border-palette-80 shadow-inner focus:outline-none"
                             type="text"
                             placeholder="Stichwort..."
                             onChange={(event) => {
@@ -138,33 +167,54 @@ const Lernbereich = () => {
                             }}
                         />
                     </div>
-                    <div className="text-palette-80">
+                    {/* <div className="text-palette-80">
                         {filteredQuestions().length} Fragen
-                    </div>
+                    </div> */}
                 </div>
 
                 <NavLink
                     to={`/lernbereich/${category}/modelltest`}
                     element={<LiDMod />}
-                    className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
+                    className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
                 >
                     Zum Modelltest
                 </NavLink>
             </nav>
-            <div className="bg-palette-80 rounded-xl border-4 border-palette-50">
-                <div className=" text-palette-60 p-6">
-                    <div className="flex flex-col items-center">
-                        <div className="text-2xl ">
-                            Fragen zu{" "}
-                            {category.charAt(0).toUpperCase() +
-                                category.slice(1)}
-                        </div>
-                        <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10">
-                            {isLoading ? (
-                                <Circles color="#2F4858" />
-                            ) : (
-                                displayQuestions
-                            )}{" "}
+            <div className="text-2xl p-6 text-palette-50">
+                {!query
+                    ? `Hier haben wir alle ${
+                          questions.length
+                      } Fragen zu Deutschland und
+                            ${
+                                category.charAt(0).toUpperCase() +
+                                category.slice(1)
+                            }
+                                 für dich`
+                    : `Wir haben zu deiner Anfrage ${filteredResults.length} Übereinstimmungen gefunden`}{" "}
+            </div>
+
+            <div className="bg-palette-80 rounded-xl border-4  border-palette-50 shadow-outer h-full m-10 -mt-4 p-10">
+                {" "}
+                <div className="text-palette-60 p-6 w-full -mt-28 relative">
+                    <div className="bg-palette-40 w-3/12 border-4 border-palette-60 rounded-xl sticky left top-2/4 left-40 shadow-inner">
+                        <img src="../../../images/illus/study1.png" alt="" />
+                    </div>{" "}
+                    {/* <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute  left-20 top-3/4  shadow-inner">
+                        <img src="../../../images/illus/study3.png" alt="" />
+                    </div>{" "} */}
+                    {/* <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute top-2/4 right-20   shadow-inner">
+                        <img src="../../../images/illus/study2.png" alt="" />
+                    </div> */}
+                    <div className="flex flex-col items-center -mt-56">
+                        <div className="flex justify-end mr-40">
+                            {" "}
+                            <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10 shadow-inner">
+                                {isLoading ? (
+                                    <Circles color="#2F4858" />
+                                ) : (
+                                    displayQuestions
+                                )}{" "}
+                            </div>
                         </div>
 
                         <ReactPaginate

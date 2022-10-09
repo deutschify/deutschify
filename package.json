@@ -25,6 +25,7 @@
         "react-router-dom": "^6.3.0",
         "rsuite": "^5.18.0",
         "sass": "^1.54.8",
+        "tailwind-scrollbar-hide": "^1.1.7",
         "timeago.js": "^4.0.2",
         "yup": "^0.32.11",
         "yup-password": "^0.2.2",

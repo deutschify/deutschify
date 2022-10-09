@@ -1,26 +1,33 @@
-import React from "react";
+
 
 const FeedbackBoxes = () => {
     return (
-        <div className="hidden md:grid pb-48 pt-48">
-            <div className="  grid grid-cols-3 gap-x-8 gap-y-4 justify-center justify-items-center   ">
+        <div className="hidden md:grid py-10">
+            <div className="  grid grid-cols-5 gap-x-8 gap-y-4 justify-center justify-items-center   ">
                 <div
-                    className="w-48 h-64
-  border-box border-black border-2 border-2 rounded-lg shadow-outer"
+                    className="w-48 h-64 border-palette-60 border-4 p-4 bg-palette-50 text-palette-60 rounded-xl shadow-outer"
                 >
-                    1
+                    Ich habe mit Hilfe dieser Webseite meinen Einbürgerungstest bestanden
                 </div>
                 <div
-                    className="w-48 h-64
- border-box border-black border-2 border-2 rounded-lg shadow-outer"
+                    className="w-48 h-64 border-palette-60 border-4 p-4 bg-palette-50 text-palette-60 rounded-xl shadow-outer"
                 >
-                    2
+                    Ich kann mich sehr gut auf meine b1 Prüfung vorbereiten
                 </div>
                 <div
-                    className="w-48 h-64
- border-box border-black border-2 border-2 rounded-lg shadow-outer"
+                   className="w-48 h-64 border-palette-60 border-4 p-4 bg-palette-50 text-palette-60 rounded-xl shadow-outer"
                 >
-                    3
+                    Es macht mir spaß!
+                </div>
+                <div
+                    className="w-48 h-64 border-palette-60 border-4 p-4 bg-palette-50 text-palette-60 rounded-xl shadow-outer"
+                >
+                    Alles Top!
+                </div>
+                <div
+                    className="w-48 h-64 border-palette-60 border-4 p-4 bg-palette-50 text-palette-60 rounded-xl shadow-outer"
+                >
+                    Ich lerne viel schneller
                 </div>
             </div>
         </div>

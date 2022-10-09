@@ -1,19 +1,36 @@
+import { BsLinkedin } from "react-icons/bs";
+import { ImXing } from "react-icons/im";
+
 const AboutUs = () => {
     return (
-        <div className="md:grid grid-cols-6 ">
-            
-            <img src="../../../images/aboutUs2.png" alt="image" className="hidden w-9/12 ml-20 md:block md:col-start-1 md:col-end-3 md:row-start-1 mt-36 ml- z-10" />
-            <img src="../../../images/aboutUs3.png" alt="image" className=" hidden w-9/12  md:block md:col-start-5 md:col-end-7 md:row-start-2 z-10 md:ml-8" />
-            <img src="../../../images/aboutUs1.png" alt="image" className="hidden w-8/12 m-8 md:block md:col-start-1 md:col-end-3 md:row-start-3 z-10" />
-            <img src="../../../images/aboutUs4.png" alt="image" className="hidden w-9/12 md:block md:col-start-5 md:col-end-7 md:row-start-3 md:mt-80 z-10" />
+        <div className="md:grid grid-cols-6">
+            <img
+                src="../../../images/aboutUs2.png"
+                alt="image"
+                className="hidden w-9/12 ml-20 md:block md:col-start-1 md:col-end-3 md:row-start-1 mt-36 ml- z-10 bg-palette-40 border-8 border-palette-60 rounded-xl"
+            />
+            <img
+                src="../../../images/aboutUs3.png"
+                alt="image"
+                className=" hidden w-9/12  md:block md:col-start-5 md:col-end-7 md:row-start-2 z-10 md:ml-8 bg-palette-40 border-8 border-palette-60 rounded-xl"
+            />
+            <img
+                src="../../../images/aboutUs1.png"
+                alt="image"
+                className="hidden w-8/12 m-8 md:block md:col-start-1 md:col-end-3 md:row-start-3 z-10 bg-palette-40 border-8 border-palette-60 rounded-xl"
+            />
+            <img
+                src="../../../images/aboutUs4.png"
+                alt="image"
+                className="hidden w-9/12 md:block md:col-start-5 md:col-end-7 md:row-start-3 md:mt-80 z-10 bg-palette-40 border-8 border-palette-60 rounded-xl md:ml-10"
+            />
 
             <div className="col-start-2 col-span-4 row-start-1 row-end-4  bg-palette-80  text-palette-60 border-4 border-palette-50 rounded-2xl m-10 flex flex-col items-center">
                 <h1 className=" text-center bg-palette-50  mt-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60">
                     Über uns und unserer Webseite
                 </h1>
-                
+
                 <div className="md:grid grid-col-6">
-        
                     <div className="col-start-2 col-end-6 m-10 bg-palette-50  p-6 border-4 border-palette-60 rounded-xl text-palette-60">
                         Wir sind ein Team von vier sehr schlauen Köpfen, die
                         sich in der Ausbildung bei DCI Digital Career Institute
@@ -22,13 +39,14 @@ const AboutUs = () => {
                         der stylischen, zielorientierten und begnadeten Sali,
                         dem Genie der Webentwicklung und sehr weisem Mezekir.
                         Dem Einstein und begabten Macher Omar und der
-                        einfallsreichen, organisierten und problemlösenden Zubia.
-                        Unser Motto während der Entwicklungsphase war ausser
-                        „Zubia, STOP!! Das reicht!!“, „Geht nicht - Gibts
+                        einfallsreichen, organisierten und problemlösenden
+                        Zubia. Unser Motto während der Entwicklungsphase war
+                        ausser „Zubia, STOP!! Das reicht!!“, „Geht nicht - Gibts
                         nicht!!!“ Uns war keine Idee unmöglich und kein Promlen
                         unlösbar. Hand in Hand und mit gegenseitiger
                         Unterstützung konnten wir in einer lustigen Umgebung
-                        gemeinsam dieses sehr nützliche Werkzeug zum lernen der DTZ-Prüfung entwickeln.
+                        gemeinsam dieses sehr nützliche Werkzeug zum lernen der
+                        DTZ-Prüfung entwickeln.
                     </div>
 
                     <div className="col-start-1 col-end-5 m-10 bg-palette-50  mt-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60">
@@ -86,8 +104,6 @@ const AboutUs = () => {
                 <div className="border-4 border-palette-60 bg-palette-50 rounded-xl md:w-9/12 my-10 flex flex-col items-center m-10">
                     <p className="mt-6">Das sind wir</p> {/* zubia */}
                     <div className="bg-palette-80 w-10/12 md:w-9/12 mZ-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60 grid grid-cols-3 items-center">
-
-                       
                         <img
                             src="../../../public/images/imgZubi.png"
                             alt="image"
@@ -102,22 +118,35 @@ const AboutUs = () => {
                                 HTML, CSS, SASS, Tailwind, Javascript, React JS,
                                 Node JS, Express JS, MongoDB, Typescript
                             </div>
+                            <div className="flex text-2xl  p-2 mt-10">
+                                <a href="https://www.linkedin.com/in/zubia-rashid-05ba3621b/" target="_blanked">
+                                    <BsLinkedin className="mr-4 hover:text-palette-50" />
+                                </a>
+                                <a href="https://www.xing.com/profile/Zubia_Rashid/cv" target="_blanked">
+                                    <ImXing className="hover:text-palette-50" />
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div className="bg-palette-80 w-10/12 md:w-9/12 mt-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60 grid grid-cols-3 items-center">
                         <img
-                            src="../../../public/images/sali.jpg"
+                            src="../../../public/images/omar.jpg"
                             alt="image"
-                            className="w-10/12"
+                            className="w-9/12"
                         />
                         <div className="col-span-2">
                             {" "}
                             <div className="border-b-2 border-palette-60 mb-4">
-                 Sali Taymour
+                                Omar Rajla Tabaa
                             </div>
                             <div className="">
-                                HTML, CSS, Javascript, React JS,
-                                Node JS, 
+                                HTML, CSS, SASS, Tailwind, Javascript, react JS,
+                                Node JS, Express JS, MongoDB, Typescript
+                            </div>
+                            <div className="flex text-2xl  p-2 mt-10">
+                                <a href="https://www.linkedin.com/in/omar-tabaa-rajla-269bab125/" target="_blanked">
+                                    <BsLinkedin className="mr-4 hover:text-palette-50" />
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -140,18 +169,17 @@ const AboutUs = () => {
                     </div>
                     <div className="bg-palette-80 w-10/12 md:w-9/12 my-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60 grid grid-cols-3 items-center">
                         <img
-                            src="../../../public/images/omar.jpg"
+                            src="../../../public/images/sali.jpg"
                             alt="image"
-                            className="w-9/12"
+                            className="w-10/12"
                         />
                         <div className="col-span-2">
                             {" "}
                             <div className="border-b-2 border-palette-60 mb-4">
-                                Omar Rajla Tabaa
+                                Sali Taymour
                             </div>
                             <div className="">
-                                HTML, CSS, SASS, Tailwind, Javascript, react JS,
-                                Node JS, Express JS, MongoDB, Typescript
+                                HTML, CSS, Javascript, React JS, Node JS,
                             </div>
                         </div>
                     </div>

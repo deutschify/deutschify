@@ -108,14 +108,14 @@ const LiDMod = () => {
 
     return (
         <div className="">
-            Modelltest {category}
-            <div className="">{questions.length} Fragen</div>
+            {/* Modelltest {category}
+            <div className="">{questions.length} Fragen</div> */}
             <div className="">
                 <nav className="m-10 flex justify-end">
                     <NavLink
                         to={`/lernbereich/${category}`}
                         element={<Lernbereich />}
-                        className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-3/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
+                        className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-3/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
                     >
                         Zurück zum Lernbereich
                     </NavLink>
@@ -124,7 +124,7 @@ const LiDMod = () => {
                 <div className="flex justify-center">
                     {" "}
                     {!isTesting && (
-                        <div className="bg-palette-80 w-6/12 flex flex-col items-center justify-center text-palette-60 border-4 border-palette-50 rounded-xl p-4">
+                        <div className="bg-palette-80 w-6/12 flex flex-col items-center justify-center text-palette-60 border-4 border-palette-50 rounded-xl p-4 shadow-outer">
                             <h1 className="text-4xl p-4 border-b-4 border-palette-50">
                                 Willkommen zum Modelltest
                             </h1>
@@ -139,7 +139,7 @@ const LiDMod = () => {
                                 </li>
                             </ul>
                             <button
-                                className="m-8 bg-palette-50 p-6 border-4 border-palette-60 rounded-3xl w-2/6 text-2xl"
+                                className="m-8 bg-palette-50 p-6 border-4 border-palette-60 rounded-3xl w-2/6 text-2xl shadow-outer"
                                 onClick={handleStartTest}
                             >
                                 Starte den Test
@@ -149,13 +149,13 @@ const LiDMod = () => {
                 </div>
             </div>
             <div className="flex justify-center">
-                <div className="relative">
-                    <div className="absolute">
+                <div className="">
+                    <div className="mt-20">
                         {timePopup && (
                             <TimeoutPopup
                                 content={
                                     <>
-                                        <p>
+                                        <p className="shadow-outer">
                                             Die Zeit ist leider abgelaufen.
                                             Versuche es erneut!
                                         </p>
@@ -168,7 +168,7 @@ const LiDMod = () => {
                 </div>
                 {isTesting && (
                     <div className="">
-                        <div className="flex flex-col items-center fixed left-0 top-56 w-1/12 h-max bg-palette-80 text-palette-50 border-t-4 border-r-4 border-b-4 border-palette-50 rounded-tr-xl rounded-br-xl">
+                        <div className="flex flex-col items-center fixed left-0 top-56 w-1/12 h-max bg-palette-80 text-palette-50 border-t-4 border-r-4 border-b-4 border-palette-50 rounded-tr-xl rounded-br-xl shadow-outer">
                             <div className="timer stroke-palette-80 m-4">
                                 <Timer />
                             </div>
@@ -201,17 +201,18 @@ const LiDMod = () => {
                         </div>
                         {/* {questions.map((qu, index) => (
                             <div className="flex justify-center" key={index}>
-                                <div className=" bg-palette-80 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
+                                <div className=" bg-palette-80 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl shadow-outer">
                                     <div className="index text-palette-60">
                                         {index + 1}
                                     </div>
-                                    <div className="bg-palette-50 border-4 border-palette-60 rounded-xl m-8 p-4">
+                                    <div className="bg-palette-50 border-4 border-palette-60 rounded-xl m-8 p-4 shadow-outer">
                                         {qu.question}
                                     </div>
-                                    <div className="">
+                                    <div className="flex justify-center">
                                         {qu.imageURL && (
                                             <AdvancedImage
                                                 cldImg={fetchImage(qu.imageURL)}
+                                                className="bg-palette-60 rounded-xl  border-4 border-palette-50"
                                             />
                                         )}
                                     </div>
@@ -220,6 +221,8 @@ const LiDMod = () => {
                                         <div
                                             className={
                                                 qu.chosenAnswer !== "answerA"
+                                                    ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 shadow-outer"
+                                                    : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4 shadow-outer"
                                                     ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
                                                     : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
                                             }
@@ -235,6 +238,8 @@ const LiDMod = () => {
                                         <div
                                             className={
                                                 qu.chosenAnswer !== "answerB"
+                                                    ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 shadow-outer"
+                                                    : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4 shadow-outer"
                                                     ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
                                                     : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
                                             }
@@ -250,6 +255,8 @@ const LiDMod = () => {
                                         <div
                                             className={
                                                 qu.chosenAnswer !== "answerC"
+                                                    ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 shadow-outer"
+                                                    : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4 shadow-outer"
                                                     ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
                                                     : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
                                             }
@@ -265,6 +272,8 @@ const LiDMod = () => {
                                         <div
                                             className={
                                                 qu.chosenAnswer !== "answerD"
+                                                    ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 shadow-outer"
+                                                    : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4 shadow-outer"
                                                     ? "bg-palette-50 border-4 border-palette-60 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
                                                     : "bg-palette-40 border-4 border-palette-50 text-palette-50 rounded-xl w-4/6 m-6 p-4 cursor-pointer"
                                             }
@@ -277,6 +286,7 @@ const LiDMod = () => {
                                         >
                                             {qu.answerD}
                                         </div>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -329,7 +339,7 @@ const LiDMod = () => {
             ))}
                         <div className="flex justify-center">
                             <button
-                                className="bg-palette-50 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-80 rounded-xl hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80"
+                                className="bg-palette-50 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-80 rounded-xl hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
                                 onClick={handelSubmitBtn}
                             >
                                 Testbogen absenden

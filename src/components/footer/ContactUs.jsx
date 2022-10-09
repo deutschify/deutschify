@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useStore } from "../../store";
 import { Navigate } from "react-router";
 import ContactPopup from "./ContactPopop";
+import ContactA from "../../../public/images/illus/contact1.png"
+import ContactB from "../../../public/images/illus/contact2.png"
 
 const ContactUs = () => {
     const currentUser = useStore((state) => state.currentUser);
@@ -42,9 +44,10 @@ const ContactUs = () => {
                         Wir freuen uns von dir zu hören!
                     </h1>
                     <h2 className="text-center text-2xl text-palette-50">
-                        Euer direkter Draht zu uns
+                        Dein direkter Draht zu uns
                     </h2>
-                    <div className="flex justify-center p-10">
+                    <div className="flex justify-center p-10 relative">
+                        <img src={ContactA} alt="contact us" className="hidden md:block bg-palette-50 w-80 h-60 absolute left-60 rounded-xl bottom-72 border-8 border-palette-60 "/>
                         <form
                             onSubmit={sendEmail}
                             className="bg-palette-80 border-4 border-palette-50 md:w-2/4 md:h-full md:p-4 flex justify-center rounded-2xl shadow-outer"
@@ -54,7 +57,7 @@ const ContactUs = () => {
                                     <input
                                         type="text"
                                         required
-                                        className="w-96 h-10 p-4 rounded-full bg-palette-60 border-4 border-palette-50 shadow-inner outline-none"
+                                        className="w-96 h-10 p-5 rounded-xl bg-palette-60 border-4 border-palette-50 shadow-inner outline-none placeholder:text-palette-50/75"
                                         placeholder="Name"
                                         name="from_name"
                                     />
@@ -63,7 +66,7 @@ const ContactUs = () => {
                                     <input
                                         type="email"
                                         required
-                                        className="w-96 h-10 p-4 rounded-full bg-palette-60 shadow-inner outline-none border-4 border-palette-50"
+                                        className="w-96 h-10 p-5 rounded-xl bg-palette-60 shadow-inner outline-none border-4 border-palette-50 placeholder:text-palette-50/75"
                                         placeholder="Email Adresse"
                                         name="reply_to"
                                     />
@@ -72,19 +75,19 @@ const ContactUs = () => {
                                     <textarea
                                         type="text"
                                         required
-                                        className="w-96 h-60 p-4 rounded-2xl bg-palette-60 shadow-inner border-4 border-palette-50 outline-none"
+                                        className="w-96 h-60 p-4 rounded-xl bg-palette-60 shadow-inner border-4 border-palette-50 outline-none placeholder:text-palette-50/75"
                                         name="message"
                                         id=""
                                         cols={3}
                                         rows={10}
-                                        placeholder="Tippe deine Nachricht hier..."
+                                        placeholder="Tippe deine Nachricht hier... "
                                     ></textarea>
                                 </div>
 
                                 <div className="m-6">
                                     <input
                                         type="submit"
-                                        className="w-96 h-10 rounded-full bg-palette-50 text-palette-60 shadow-outer hover:bg-palette-60 hover:text-palette-50 hover:border-4 border-palette-50 hover:box-border active:shadow-inner"
+                                        className="w-96 h-10 border-4 border-palette-60 rounded-xl bg-palette-50 text-palette-60 shadow-outer hover:bg-palette-60 hover:text-palette-50 hover:border-4 border-palette-50 hover:box-border active:shadow-inner"
                                         value="abschicken"
                                     />
                                 </div>
@@ -112,6 +115,7 @@ const ContactUs = () => {
                                 </div>
                             </div>
                         </form>
+                        <img src={ContactB} alt="contact us" className="hidden md:block bg-palette-40 w-80 h-60 absolute right-60 bottom-24 border-8 border-palette-60 rounded-xl" />
                     </div>
                 </div>
             ) : (

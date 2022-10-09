@@ -68,18 +68,18 @@ const PageLogin = (props: IPageLoginProps) => {
 
     return (
 
-        <div  className="  md:grid grid-cols-2 min-h-[800px] ">
-            <  div className=" hidden md:flex flex-col justify-center items-start w-[700px]">
+        <div  className="md:grid grid-cols-2 min-h-[800px]">
+            <  div className="hidden md:flex flex-col justify-center items-start w-[700px]">
 
                 <div>
                     {" "}
-                    <img className=" w-[600px]" src={Image} alt="" />{" "}
+                    <img className="w-[600px]" src={Image} alt="" />{" "}
                 </div>
 
             </div>
-            <div className=" py-[200px] flex flex-col justify-center items-center ">
+            <div className=" py-[200px] flex flex-col justify-center items-center">
                 <div className="">
-                    <h1 className="text-center text-2xl pb-3  ">LOGIN</h1>
+                    <h1 className="text-center text-2xl pb-3">LOGIN</h1>
                     <form
                         className=" flex-col "
                         onSubmit={handleSubmit(onSubmit)}
