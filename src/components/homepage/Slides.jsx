@@ -1,27 +1,40 @@
 import { useState } from "react";
-import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+// import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import "../../App.css";
 import { NavLink } from "react-router-dom";
+// import ImgSprachkurs from "../../../public/images/deutschify-smallletter.png"
+// import ImgDictionary from "../../../public/images/deutschify-smallletter.png"
+// import ImgForum from "../../../public/images/deutschify-smallletter.png"
+// import ImgOrientierungskurs from "../../../public/images/deutschify-smallletter.png"
+// import ImgMainLogo from "../../../public/images/deutschify-smallletter.png"
+
 
 const sliderData = [
     {
-        slideImage: "../../public/images/deutschify-side.png",
-        href: "/language-levels",
-        title: "Sprachniveau",
+        slideImage: "../../images/mainpage.png",
+        href: "/",
+        title: "Willkommen bei deutschify",
     },
     {
-        slideImage: "../../public/images/deutschify-side.png",
+        slideImage: "../../images/illus/sprachkurs1.png",
+        href: "/sprachniveau",
+        title: "Übungen zum Sprachkurs",
+    },
+    {
+        slideImage: "../../images/dictionary1.png",
         href: "/dictionary",
         title: "Wörterbuch",
     },
     {
-        slideImage: "../../public/images/deutschify-side.png",
+        slideImage: "../../images/illus/forum2.png",
         href: "/forum",
         title: "Forum",
     },
     {
-        slideImage: "../../public/images/deutschify-side.png",
+        slideImage: "../../images/illus/orientierungskurs1.png",
         href: "/einbuergerungstest",
-        title: "Einbürgerungstest",
+        title: "Übungen zum Orientierungskurs",
     },
 ];
 
@@ -40,22 +53,22 @@ const Slides = () => {
     }
 
     return (
-        <div className="hidden md:block pt-16">
+        <div className="w-7/12 h-10/12 hidden md:block bg-palette-50 p-6 border-4 border-palette-60 rounded-xl shadow-outer text-palette-60">
             <div className="relative">
-                <AiOutlineArrowLeft
-                    className="slideshow-left-arrow absolute left-48 top-48 text-4xl cursor-pointer"
+                <MdArrowBackIos
+                    className="slideshow-left-arrow absolute -left-80 top-48 text-7xl text-palette-60/25 cursor-pointer"
                     onClick={previousSlideHandler}
                 />
             </div>
             <div className="relative">
-                <AiOutlineArrowRight
-                    className="slideshow-right-arrow absolute right-48 top-48 text-4xl cursor-pointer"
+                <MdArrowForwardIos
+                    className="slideshow-right-arrow absolute -right-80 top-48 text-7xl text-palette-60/25 cursor-pointer"
                     onClick={nextSlideHandler}
                 />
             </div>
-            <div className="mt-6 ml-6 mr-6 border-black border-8 bg-white">
-                <div className="flex justify-center  ">
-                    <div className="hidden md:block pt-16 ">
+            <div className="">
+                <div className="">
+                    <div className="flex justify-center ">
                         {sliderData.map((slider, index) => {
                             return (
                                 <div
@@ -68,17 +81,20 @@ const Slides = () => {
                                 >
                                     {index === currentImage && (
                                         <>
-                                            <NavLink to={slider.href}>
-                                                <a href={slider.href}>
-                                                    <img
-                                                        className="border-8 border-black "
-                                                        src={slider.slideImage}
-                                                        alt="slideshow image"
-                                                    />
-                                                </a>
-                                                <p className="text-center">
+                                            <NavLink
+                                                to={slider.href}
+                                                className="flex flex-col items-center flex-nowrap"
+                                            >
+                                                <p className="singleSlideTitle text-center font-block1 text-5xl p-2">
                                                     {slider.title}
                                                 </p>
+
+                                                <img
+                                                    className="rounded-xl border-4 border-palette-80 bg-palette-60 shadow-outer p-2"
+                                                    src={slider.slideImage}
+                                                    alt="slideshow image"
+                                                />
+                                            
                                             </NavLink>
                                         </>
                                     )}

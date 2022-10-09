@@ -36,6 +36,7 @@ import MyPosts from "./components/forum/MyPosts";
 import ResultLidMod from "./components/orientierung/ResultLidMod";
 import PostEdit from "./components/forum/post/PostEdit";
 
+
 function App() {
     const navigate = useNavigate();
 
@@ -53,7 +54,7 @@ function App() {
     }, []);
 
     return (
-        <div className="bg-palette-60 pb-24 font-block2 font-bold">
+        <div className="w-full h-full bg-palette-60 pb-24 font-block2 font-bold md:w-screen shadow-inner">
             <Header />
             <Routes>
                 <Route path="/" element={<Navigate to="/home" replace />} />
@@ -84,7 +85,6 @@ function App() {
                     path="/lernbereich/:category/modelltest/result"
                     element={<ResultLidMod />}
                 />
-
                 <Route path="/forum/*" element={<Forum />} />
 
                 <Route

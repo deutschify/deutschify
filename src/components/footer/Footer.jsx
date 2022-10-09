@@ -6,47 +6,30 @@ import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
 import RateUs from "./RateUs";
 import Homepage from "../homepage/Homepage";
+import LogoSide from "../../../public/images/deutschify-smallletter-side.png"
 
 const Footer = () => {
     // footer
     return (
         // footer
-        <div className="w-full flex text-center bg-palette-50 text-palette-60 fixed bottom-0 z-20">
+        <div className="w-full flex items-center text-center bg-palette-50 text-palette-60 fixed bottom-0 z-20 shadow-outer">
             <div className="w-3/12">
                 <NavLink className="" to="/" element={<Homepage />}>
                     <img
-                        src="./images/deutschify-side.png"
+                        src={LogoSide}
                         className="w-40 m-2"
                         alt=""
                     />
                 </NavLink>
-                <div className="flex justify-center m-3 space-x-4 md:justify-start md:text-2xl md:ml-10 ">
-                    <a
-                        className="hover:text-palette-80"
-                        href="https://www.facebook.com/profile.php?id=100085315394768"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <BsFacebook />
-                    </a>
-                    <a
-                        className="hover:text-palette-80"
-                        href="https://www.instagram.com/deutschify.integrationscoach/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <BsInstagram />
-                    </a>
-                </div>
             </div>
-            <div className="w-11/12 p-1 md:w-6/12 md:text-2xl">
+            <div className="w-11/12 m-2 md:w-6/12 md:text-lg">
                 <NavLink
                     className="text-palette-60 m-2 p-2 hover:text-palette-80"
                     to="/about-us"
                     element={<AboutUs />}
                 >
                     {" "}
-                    About Us{" "}
+                    über uns{" "}
                 </NavLink>
                 <NavLink
                     className="text-palette-60 m-2 p-2 hover:text-palette-80"
@@ -54,7 +37,7 @@ const Footer = () => {
                     element={<ContactUs />}
                 >
                     {" "}
-                    Contact Us{" "}
+                    kontaktier' uns{" "}
                 </NavLink>
                 <NavLink
                     className="text-palette-60 m-2 p-2 hover:text-palette-80"
@@ -62,14 +45,31 @@ const Footer = () => {
                     element={<RateUs />}
                 >
                     {" "}
-                    Rate Us{" "}
+                    bewerte uns{" "}
                 </NavLink>
 
-                <div className="w-12/12 m-2 flex  justify-center gap-1">
+                <div className=" w-full m-2 flex justify-center gap-1">
                     deutschify <AiOutlineCopyrightCircle /> 2022
                 </div>
+            </div>{" "}
+            <div className="flex items-center mx-4 w-3/12 space-x-4 md:justify-end md:text-2xl">
+                <a
+                    className="hover:text-palette-80"
+                    href="https://www.facebook.com/profile.php?id=100085315394768"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <BsFacebook />
+                </a>
+                <a
+                    className="hover:text-palette-80"
+                    href="https://www.instagram.com/deutschify.integrationscoach/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <BsInstagram />
+                </a>
             </div>
-            {/* Copyright */}
         </div>
     );
 };
