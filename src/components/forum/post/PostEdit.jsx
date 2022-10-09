@@ -47,8 +47,15 @@ const PostEdit = () => {
                     ></textarea>
                 </div>
                 <div className="editSubmitBtn">
-                    <button className="editBtn border-8" type="submit">
-                        Edit Post
+                    <button className="editBtn border-8 mr-2" type="submit">
+                        Post bearbeiten
+                    </button>
+                    <button
+                        className="editCancelBtn border-8"
+                        onClick={() => navigate("/forum/news-feed/all")}
+                    >
+                        {" "}
+                        Abbrechen
                     </button>
                 </div>
             </form>
