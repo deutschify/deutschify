@@ -1,8 +1,8 @@
 import { Nav } from "rsuite";
-import Sprachniveau from "../Sprachniveau";
-import A1 from "../A1";
-import A2 from "../A2";
-import B1 from "../B1";
+import Sprachkurs from "../sprachkurs/Sprachkurs";
+import A1 from "../sprachkurs/A1";
+import A2 from "../sprachkurs/A2";
+import B1 from "../sprachkurs/B1";
 import Einbuergerungstest from "../orientierung/Einbuergerungstest";
 import Dictionary from "../dictionary/Dictionary";
 import Forum from "../Forum";
@@ -32,8 +32,8 @@ function NavbarDesktop() {
                                     <div className=" text-palette-50 hover:text-palette-60 pb-4 ">
                                     <NavLink
                                             className=""
-                                            to="/sprachniveau"
-                                            element={<Sprachniveau />}
+                                            to="/sprachkurs"
+                                            element={<Sprachkurs />}
                                         > <Nav.Menu
                                             className="text-center "
                                             title="Sprachkurs"

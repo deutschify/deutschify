@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Nav } from "rsuite";
-import Sprachniveau from "../Sprachniveau";
-import A1 from "../A1";
-import A2 from "../A2";
-import B1 from "../B1";
+import Sprachkurs from "../sprachkurs/Sprachkurs";
+import A1 from "../sprachkurs/A1";
+import A2 from "../sprachkurs/A2";
+import B1 from "../sprachkurs/B1";
 import Einbuergerungstest from "../orientierung/Einbuergerungstest";
 import Dictionary from "../dictionary/Dictionary";
 import Forum from "../Forum";
@@ -48,8 +48,8 @@ const NavBar = () => {
                                     <div className="bg-palette-80 text-palette-50 w-80 hover:text-palette-60 border-l-2 border-t-2 border-r-2 border-palette-50 rounded-t-xl p-4">
                                         <NavLink
                                             className=""
-                                            to="/sprachniveau"
-                                            element={<Sprachniveau />}
+                                            to="/sprachkurs"
+                                            element={<Sprachkurs />}
                                         >
                                             <Nav.Menu
                                                 className="text-center appearance-none rounded-xl "

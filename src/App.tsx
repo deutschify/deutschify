@@ -11,22 +11,19 @@ import { IUserLoginForm } from "./interfaces";
 import Footer from "./components/footer/Footer";
 import Homepage from "./components/homepage/Homepage";
 import Dictionary from "./components/dictionary/Dictionary";
-import Sprachniveau from "./components/Sprachniveau";
-
+import Sprachkurs from "./components/sprachkurs/Sprachkurs";
 import Einbuergerungstest from "./components/orientierung/Einbuergerungstest";
-
 import Forum from "./components/forum/Forum";
 import PageRegister from "./Pages/PageRegister";
 import PageConfirmRegistration from "./Pages/PageConfirmRegistration";
 import PageLogin from "./Pages/PageLogin";
 import PageNotFound from "./components/PageNotFound";
-import A1 from "./components/A1";
-import A2 from "./components/A2";
-import B1 from "./components/B1";
+import A1 from "./components/sprachkurs/A1";
+import A2 from "./components/sprachkurs/A2";
+import B1 from "./components/sprachkurs/B1";
 import Lernbereich from "./components/orientierung/LernbereichOrientierung";
 import LiDExc from "./components/orientierung/LiDExc";
 import LiDMod from "./components/orientierung/LiDMod";
-
 import { useStore } from "./store";
 import { PageLogout } from "./Pages/PageLogout";
 import { baseUrl } from "./store";
@@ -61,7 +58,7 @@ function App() {
                 <Route path="/home" element={<Homepage />} />
 
                 <Route path="/dictionary" element={<Dictionary />} />
-                <Route path="/sprachniveau" element={<Sprachniveau />} />
+                <Route path="/sprachkurs" element={<Sprachkurs />} />
                 <Route path="/a1" element={<A1 />} />
                 <Route path="/a2" element={<A2 />} />
                 <Route path="/b1" element={<B1 />} />
