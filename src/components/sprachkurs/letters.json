@@ -1,6 +1,6 @@
  [
     {
-        "title": "information",
+        "title": "Beschwerde",
         "id":"1",
         "items": [
             "Sehr geehrte Damen und Herren,",
@@ -29,16 +29,16 @@
         ]
     },
     {
-        "title": "Beschwerde",
+        "title": "Entschuldigen",
         "id": "3",
         "items": [
-            "Item 1",
-            "zubia 2",
-            "Item 3",
-            "Item 4",
-            "Item 5",
-            "Item 6",
-            "Item 7"
+            "Sehr geehrte Frau Brandt,",
+            "hiermit möchte ich das Fernbleiben meines Sohnes Martin entschuldigen. Er konnte heute nicht in den Unterricht kommen, weil er über das Wochenende an Grippe erkrankt ist.",
+            "Wir waren heute am Vormittag auch beim Arzt, der meint, dass Martin bis Ende dieser Woche zu Hause bleiben soll. Herr Dr. Brenner hat mir eine Krankschreibung mitgegeben.",
+            "Trotzdem möchte Martin auch in dieser Woche seine Hausaufgaben machen. Können Sie mich bitte darüber informieren, welche Aufgaben zu erledigen sind und wie er sich am besten auf den Test nächste Woche vorbereiten kann?",
+            "Vielen Dank im Voraus!",
+            "Mit freundlichen Grüßen"
+        
         ]
     },
 
