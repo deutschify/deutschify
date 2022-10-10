@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from "react";
-
+import NavB1 from "./NavB1";
 const Schreiben = () => {
     const dragItem = useRef();
     const dragOverItem = useRef();
@@ -35,6 +35,7 @@ const Schreiben = () => {
     };
   return (
       <div>
+        <NavB1/>
           <>
               {list &&
                   list.map((item, index) => (

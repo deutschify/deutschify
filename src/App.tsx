@@ -22,7 +22,7 @@ import PageLogin from "./Pages/PageLogin";
 import PageNotFound from "./components/PageNotFound";
 import A1 from "./components/A1";
 import A2 from "./components/A2";
-import B1 from "./components/B1";
+import B1 from "./components/b1/B1";
 import Lernbereich from "./components/orientierung/LernbereichOrientierung";
 import LiDExc from "./components/orientierung/LiDExc";
 import LiDMod from "./components/orientierung/LiDMod";
@@ -33,6 +33,10 @@ import { baseUrl } from "./store";
 import PageUserSettings from "./Pages/PageUserSettings";
 import NewsFeed from "./components/forum/news-feed/NewsFeed";
 import MyPosts from "./components/forum/MyPosts";
+import Schreiben from "./components/b1/Schreiben";
+import Hoeren from "./components/b1/Hoeren";
+import Lesen from "./components/b1/Lesen";
+
 
 function App() {
     const navigate = useNavigate();
@@ -62,6 +66,10 @@ function App() {
                 <Route path="/a1" element={<A1 />} />
                 <Route path="/a2" element={<A2 />} />
                 <Route path="/b1" element={<B1 />} />
+                <Route path="/b1/hoeren" element={<Hoeren />} />
+                <Route path="/b1/schreiben" element={<Schreiben />} />
+                <Route path="/b1/lesen" element={<Lesen />} />
+
                 <Route
                     path="/einbuergerungstest/*"
                     element={<Einbuergerungstest />}
@@ -80,7 +88,6 @@ function App() {
                 />
 
                 <Route path="/forum/*" element={<Forum />} />
-                
 
                 <Route
                     path="/registration/*"
@@ -114,8 +121,11 @@ function App() {
                     <>
                         <Route path="/logout" element={<PageLogout />} />
                         <Route path="/:user" element={<PageUserSettings />} />
-                        <Route path="/forum/news-feed/all" element={<NewsFeed />} />
-                <Route path="/forum/my-posts" element={<MyPosts />} />
+                        <Route
+                            path="/forum/news-feed/all"
+                            element={<NewsFeed />}
+                        />
+                        <Route path="/forum/my-posts" element={<MyPosts />} />
                     </>
                 )}
                 <Route path="/about-us/*" element={<AboutUs />} />

@@ -2,7 +2,7 @@ import React from "react";
 import {NavLink } from "react-router-dom";
 import A1 from "./A1";
 import A2 from "./A2";
-import B1 from "./B1";
+import B1 from "./b1/B1";
 
 const Sprachniveau = () => {
     return (
