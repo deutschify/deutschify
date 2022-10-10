@@ -33,7 +33,7 @@ const SchreibenB1 = () => {
         setshowlist(true), setshowdiv(title);
     };
     useEffect(() => {
-        console.log(letters);
+        console.log(_letters);
     });
 
     return (
