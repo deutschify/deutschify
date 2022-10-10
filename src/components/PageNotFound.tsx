@@ -2,7 +2,7 @@ import ImgPageNotFound from "../../public/images/illus/pageNotFound.png";
 
 const PageNotFound = () => {
     return (
-        <div className="bg-palette-80 m-6 border-4 border-palette-50 rounded-xl flex justify-center items-center">
+        <div className="h-screen bg-palette-80 m-6 border-4 border-palette-50 rounded-xl flex justify-center items-center">
             <div className="text-palette-60 text-center font-block1 text-4xl m-6 flex flex-col items-center">
                 {" "}
                 Die Seite wurde nicht gefunden

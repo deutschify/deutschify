@@ -45,7 +45,7 @@ const NavBar = () => {
                                     trigger={["click", "hover"]}
                                     title="Übungen"
                                 >
-                                    <div className="bg-palette-80 text-palette-50 w-80 hover:text-palette-60 border-l-2 border-t-2 border-r-2 border-palette-50 rounded-t-xl p-4">
+                                    <div className="bg-palette-80 text-palette-50 w-80  hover:text-palette-60 border-l-2 border-t-2 border-r-2 border-palette-50 rounded-t-xl p-4 -ml-20">
                                         <NavLink
                                             className=""
                                             to="/sprachkurs"
@@ -55,7 +55,7 @@ const NavBar = () => {
                                                 className="text-center appearance-none rounded-xl "
                                                 title="Sprachkurs"
                                             >
-                                                <div className="flex flex-col w-40 absolute left-96 text-center bg-palette-60/75 rounded-xl border-2 border-palette-50 p-4">
+                                                <div className="flex flex-col w-40 absolute left-96 text-center bg-palette-60/75 rounded-xl border-2 border-palette-50 p-4 -ml-20">
                                                     <NavLink
                                                         className="text-palette-50 hover:text-palette-80 rounded-t-lg"
                                                         to="/sprachkurs/a1"
@@ -82,7 +82,7 @@ const NavBar = () => {
                                         </NavLink>
                                     </div>
                                     <NavLink
-                                        className="flex justify-center border-r-2 border-b-2 border-l-2 border-palette-50 bg-palette-80 text-palette-50 w-80  hover:text-palette-60 rounded-b-xl pb-4"
+                                        className="flex justify-center border-r-2 border-b-2 border-l-2 border-palette-50 bg-palette-80 text-palette-50 w-80  hover:text-palette-60 rounded-b-xl pb-4 -ml-20"
                                         to="/einbuergerungstest"
                                         element={<Einbuergerungstest />}
                                     >

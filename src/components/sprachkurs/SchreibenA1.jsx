@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 function SchreibenA1() {
     const navigate = useNavigate();
     return (
-        <div className="bg-palette-80 m-6 border-4 border-palette-50 rounded-xl flex justify-center items-center">
+        <div className="bg-palette-80 m-6 border-4 border-palette-50 rounded-xl md:flex justify-center items-center">
             <button
                 onClick={() => navigate(-1)}
-                className="bg-palette-50 p-6 text-palette-60 border-4 border-palette-60 rounded-xl text-xl absolute top-48 left-16"
+                className="bg-palette-60 text-palette-80 border-palette-80 md:bg-palette-50 p-1 md:p-6 md:text-palette-60 border-4 md:border-palette-60 rounded-full h-20 md:rounded-xl text-xl absolute left-14 top-48 md:left-16"
             >
                 zurück
             </button>

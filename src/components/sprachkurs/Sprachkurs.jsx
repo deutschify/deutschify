@@ -19,12 +19,12 @@ const Sprachkurs = () => {
                     Wähle zunächst dein Sprachniveau aus
                 </div>
             </div>
-            <div className="flex">
+            <div className="flex flex-col md:flex-row items-center">
                 <div className="bg-palette-40 w-80 m-10 border-4 border-palette-60 rounded-xl">
                     <img src={ImgSprachkursA} alt="" className="" />
                 </div>
 
-                <nav className="flex justify-center m-10">
+                <nav className="md:flex justify-center m-10">
                     <div className="bg-palette-50 w-60 h-40 border-4 border-palette-60 rounded-xl m-10">
                         {" "}
                         <NavLink

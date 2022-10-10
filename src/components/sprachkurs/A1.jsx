@@ -15,7 +15,8 @@ const A1 = () => {
             <div className="bg-palette-80 border-4 border-palette-50 rounded-xl m-10 text-center md:flex md:justify-center">
             <button
                 onClick={() => navigate(-1)}
-                className="bg-palette-50 p-6 text-palette-60 border-4 border-palette-60 rounded-xl text-xl absolute top-48 left-16"
+                className="bg-palette-50 p-1 md:p-6 text-palette-60 border-4 border-palette-60 rounded-full h-20 md:rounded-xl text-xl absolute left-14 top-56 md:top-48 md:left-16"
+                // className="buttons"
             >
                 zurück
             </button>
