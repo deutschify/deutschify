@@ -25,8 +25,18 @@ function ResultLidMod() {
     }, []);
 
     return (
-        <div>
-            <div className={`${result.includes("nicht")  ? "bg-palette-70" : "bg-palette-30"}`}>{result}</div>
+        <div className="w">
+            <div
+                className={
+                    `${
+                        result.includes("nicht")
+                            ? "bg-palette-70"
+                            : "bg-palette-30"
+                    } ` + "border-4 border-palette-50 w-10/12 h-80 "
+                }
+            >
+                {result}
+            </div>
             {questions.map((qu, index) => (
                 <div className="flex justify-center" key={index}>
                     <div className=" bg-palette-80 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
