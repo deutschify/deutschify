@@ -7,6 +7,8 @@ import { format } from "timeago.js";
 import { useStore } from "../../../store";
 
 import { useNavigate } from "react-router-dom";
+import Comments from "../comments/Comments";
+import Comment from "../comments/Comment";
 
 const Post = ({ post }) => {
     const backend_base_url = "http://localhost:8000";
@@ -17,6 +19,7 @@ const Post = ({ post }) => {
     const [user, setUser] = useState({});
     const [postedDate, setPostedDate] = useState(format(post.createdAt));
     const [postUpdated, setPostUpdated] = useState(format(post.updatedAt));
+    const [showBox, setShowBox] = useState(false);
 
     //trying to navigate the edit btn onClick
 
@@ -108,6 +111,12 @@ const Post = ({ post }) => {
         }
     };
 
+    //Comment Handler
+
+    const commentFieldHandler = () => {
+        return setShowBox((show) => !show);
+    };
+
     return (
         <div className="post w-1/2 rounded-xl shadow-outer mt-7 mb-7 ">
             <div className="postWrapper p-2.5 ">
@@ -174,9 +183,18 @@ const Post = ({ post }) => {
                         </span>
                     </div>
                     <div className="postBottomRight">
-                        <span className="postCommentText cursor-pointer text-sm mr-2.5">
-                            2 Kommentare
+                        <span
+                            className="postCommentText cursor-pointer text-sm mr-2.5"
+                            onClick={() => commentFieldHandler()}
+                        >
+                            kommentare
                         </span>
+                        {showBox && (
+                            <>
+                                <Comment post={post} />
+                                <Comments currentUser={currentUser} />
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
