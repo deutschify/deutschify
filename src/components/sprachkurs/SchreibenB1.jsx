@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-const B1 = () => {
+const SchreibenB1 = () => {
     const dragItem = useRef();
     const dragOverItem = useRef();
     const [list, setList] = useState([
@@ -51,4 +51,4 @@ const B1 = () => {
     );
 };
 
-export default B1;
+export default SchreibenB1;

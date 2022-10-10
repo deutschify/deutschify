@@ -31,14 +31,14 @@ const SlidesMobile = () => {
             <div className="bg-palette-80 w-11/12 border-8 border-palette-50 rounded-xl">
               
                 <NavLink
-                    to="/language-levels"
+                    to="/sprachkurs"
                     className="sprachkurs w-full flex justify-center"
                 >
       
                     <img
                         src={ImgSprachkurs}
                         alt="language-levels"
-                        title="language-levels"
+                        title="Sprachkurs"
                         className="w-10/12 m-4 border-4 border-palette-60 rounded-xl"
                     />
                     {/* </a> */}

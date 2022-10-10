@@ -1,8 +1,8 @@
 import { Nav } from "rsuite";
-import Sprachniveau from "../Sprachniveau";
-import A1 from "../A1";
-import A2 from "../A2";
-import B1 from "../B1";
+import Sprachkurs from "../sprachkurs/Sprachkurs";
+import A1 from "../sprachkurs/A1";
+import A2 from "../sprachkurs/A2";
+import B1 from "../sprachkurs/SchreibenB1";
 import Einbuergerungstest from "../orientierung/Einbuergerungstest";
 import Dictionary from "../dictionary/Dictionary";
 import Forum from "../Forum";
@@ -32,8 +32,8 @@ function NavbarDesktop() {
                                     <div className=" text-palette-50 hover:text-palette-60 pb-4 ">
                                     <NavLink
                                             className=""
-                                            to="/sprachniveau"
-                                            element={<Sprachniveau />}
+                                            to="/sprachkurs"
+                                            element={<Sprachkurs />}
                                         > <Nav.Menu
                                             className="text-center "
                                             title="Sprachkurs"
@@ -41,21 +41,21 @@ function NavbarDesktop() {
                                             <div className="flex flex-col w-40 absolute left-48 border-2 border-palette-60 rounded-xl p-4 bg-palette-70 transition duration-500 ease-in">
                                                 <NavLink
                                                     className=" text-palette-50 hover:text-palette-60"
-                                                    to="/A1"
+                                                    to="/sprachkurs/a1"
                                                     element={<A1 />}
                                                 >
                                                     A1
                                                 </NavLink>
                                                 <NavLink
                                                     className="text-palette-50 hover:text-palette-60 p-4"
-                                                    to="/A2"
+                                                    to="//sprachkurs/a2"
                                                     element={<A2 />}
                                                 >
                                                     A2
                                                 </NavLink>
                                                 <NavLink
                                                     className="text-palette-50 hover:text-palette-0"
-                                                    to="/B1"
+                                                    to="/sprachkurs/b1"
                                                     element={<B1 />}
                                                 >
                                                     B1

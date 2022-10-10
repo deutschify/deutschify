@@ -96,7 +96,7 @@ const Lernbereich = () => {
                     key={index}
                     className="bg-palette-50 m-4 p-2 w-9/12 text-left rounded-xl border-4 border-palette-80 shadow-outer"
                 >
-                    <div className="text-xl text-palette-60 flex items-center justify-center  px-1 border-2 bg-palette-50 border-palette-80 w-1/12 rounded-full">{question.number}</div>
+                    <div className=" text-xl text-palette-60 flex items-center justify-center  px-1 border-2 bg-palette-50 border-palette-80 w-1/12 rounded-full">{question.number}</div>
                     <div className="text-palette-60 m-2 p-2">
                         {" "}
                         <div className="mb-2 border-b-2 border-palette-80 ">
