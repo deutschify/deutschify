@@ -86,19 +86,20 @@ const LiDMod = () => {
         console.log(resultScore);
         if (resultScore < 15) {
             setResult(
-                `Du hast den Test mit ${resultScore} leider nicht bestanden`
+                `Du hast den Test mit ${resultScore} richtigen Antworten leider nicht bestanden`
             );
             console.log(result);
         } else if (resultScore >= 15 && resultScore < 17) {
             setResult(
                 `Du hast den Integrationstest bestanden, dir fehlen aber ${
                     17 - resultScore
-                } Punkte für den Einbürgerungstest`
+                } richtige Antworten um den Einbürgerungstest zu bestehen`
             );
             console.log(result);
         } else {
             setResult(
-                `Du hast ${resultScore} richtige Antworten. Du hast dein Einbürgerungstest bestanden.`
+                `Du hast ${resultScore} richtige Antworten. 
+                 Du hast den Einbürgerungstest bestanden.`
             );
             console.log(result);
         }
@@ -293,15 +294,16 @@ const LiDMod = () => {
                         ))} */}
                         {questions.map((qu, index) => (
                 <div className="flex justify-center" key={index}>
-                    <div className=" bg-palette-80 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
-                        <div className="index text-palette-60">{index + 1}</div>
+                    <div className=" bg-palette-80 m-4 w-8/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
+                        <div className="index text-palette-60 bg-palette-50 border-4 border-palette-60 w-16 text-xl rounded-full p-4">{index + 1}</div>
                         <div className="bg-palette-50 border-4 border-palette-60 rounded-xl m-8 p-4">
                             {qu.question}
                         </div>
-                        <div className="">
+                        <div className="flex justify-center">
                             {qu.imageURL && (
                                 <AdvancedImage
                                     cldImg={fetchImage(qu.imageURL)}
+                                    className="bg-palette-60 border-palette-50  w-max rounded-xl"
                                 />
                             )}
                         </div>
