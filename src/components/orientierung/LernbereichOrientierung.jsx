@@ -217,17 +217,17 @@ const Lernbereich = () => {
                             nextLabel={"nächste"}
                             pageCount={pageCount}
                             onPageChange={changePage}
-                            containerClassName={"flex justify-center m-6"}
+                            containerClassName={"flex justify-end md:m-6 m-4 w-full -mr-1 md:mr-40 text-sm"}
                             pageLinkClassName={
-                                "p-4 m-2 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                "md:p-4 p-2  border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
                             }
                             previousLinkClassName={
-                                "p-4 m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
                             }
                             nextLinkClassName={
-                                "p-4 m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
                             }
-                            activeClassName={"text-3xl"}
+                            activeClassName={"text-sm text-palette-50"}
                         />
                     </div>
                 </div>

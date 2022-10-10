@@ -116,7 +116,7 @@ const LiDMod = () => {
                     <NavLink
                         to={`/lernbereich/${category}`}
                         element={<Lernbereich />}
-                        className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-3/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
+                        className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 text-xl w-full text-center md:w-3/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
                     >
                         Zurück zum Lernbereich
                     </NavLink>
@@ -125,13 +125,13 @@ const LiDMod = () => {
                 <div className="flex justify-center">
                     {" "}
                     {!isTesting && (
-                        <div className="bg-palette-80 w-6/12 flex flex-col items-center justify-center text-palette-60 border-4 border-palette-50 rounded-xl p-4 shadow-outer">
-                            <h1 className="text-4xl p-4 border-b-4 border-palette-50">
+                        <div className="bg-palette-80 w-11/12  md:w-6/12 flex flex-col items-center justify-center text-palette-60 border-4 border-palette-50 rounded-xl p-4 shadow-outer">
+                            <h1 className="text-4xl p-4 border-b-4 border-palette-50 text-center">
                                 Willkommen zum Modelltest
                             </h1>
                             <h2 className="text-2xl p-4">Prüfe dein Wissen</h2>
                             <h3 className="w-full text-xl">Anweisungen:</h3>
-                            <ul className="list-disc text-lg">
+                            <ul className="list-disc text-lg pl-10">
                                 <li>Antworte alle 33 Fragen</li>
                                 <li>Du hast 60 Minuten Zeit</li>
                                 <li>
@@ -140,7 +140,7 @@ const LiDMod = () => {
                                 </li>
                             </ul>
                             <button
-                                className="m-8 bg-palette-50 p-6 border-4 border-palette-60 rounded-3xl w-2/6 text-2xl shadow-outer"
+                                className="m-8 bg-palette-50 p-6 border-4 border-palette-60 rounded-3xl md:w-2/6 text-2xl shadow-outer"
                                 onClick={handleStartTest}
                             >
                                 Starte den Test
@@ -169,7 +169,7 @@ const LiDMod = () => {
                 </div>
                 {isTesting && (
                     <div className="">
-                        <div className="flex flex-col items-center fixed left-0 top-56 w-1/12 h-max bg-palette-80 text-palette-50 border-t-4 border-r-4 border-b-4 border-palette-50 rounded-tr-xl rounded-br-xl shadow-outer">
+                        <div className="flex flex-col items-center fixed left-0 md:top-56 md:w-1/12 h-max bg-palette-80 text-palette-50 border-t-4 border-r-4 border-b-4 border-palette-50 rounded-tr-xl rounded-br-xl shadow-outer">
                             <div className="timer stroke-palette-80 m-4">
                                 <Timer />
                             </div>
@@ -293,8 +293,8 @@ const LiDMod = () => {
                             </div>
                         ))} */}
                         {questions.map((qu, index) => (
-                <div className="flex justify-center" key={index}>
-                    <div className=" bg-palette-80 m-4 w-8/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
+                <div className="flex justify-end md:justify-center" key={index}>
+                    <div className="bg-palette-80 m-4 w-8/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
                         <div className="index text-palette-60 bg-palette-50 border-4 border-palette-60 w-16 text-xl rounded-full p-4">{index + 1}</div>
                         <div className="bg-palette-50 border-4 border-palette-60 rounded-xl m-8 p-4">
                             {qu.question}
