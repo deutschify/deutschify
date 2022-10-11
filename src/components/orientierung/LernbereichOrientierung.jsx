@@ -146,17 +146,17 @@ const Lernbereich = () => {
             <h1 className="text-palette-50 text-2xl">
                 Bereite dich auf den Orientierungstest vor
             </h1>
-            <nav className="flex justify-between items-center md:text-2xl">
+            <nav className="flex flex-col md:flex-row justify-between items-center md:text-2xl">
                 <NavLink
                     to={`/lernbereich/${category}/excercise`}
                     element={<LiDExc />}
-                    className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
+                    className="w-80 bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
                 >
                     Zum Übungstest
                 </NavLink>
 
                 {/* Searchbar für Testfragen */}
-                <div className="w-3/12 bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 shadow-outer">
+                <div className="w-80 bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 shadow-outer">
                     <div className="">
                         <input
                             className="searchInput h-10 bg-palette-60 rounded-3xl p-6 text-palette-50 placeholder:text-palette-50/75 border-4 border-palette-80 shadow-inner focus:outline-none"
@@ -175,7 +175,7 @@ const Lernbereich = () => {
                 <NavLink
                     to={`/lernbereich/${category}/modelltest`}
                     element={<LiDMod />}
-                    className="bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
+                    className="w-80 bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
                 >
                     Zum Modelltest
                 </NavLink>
@@ -193,22 +193,17 @@ const Lernbereich = () => {
                     : `Wir haben zu deiner Anfrage ${filteredResults.length} Übereinstimmungen gefunden`}{" "}
             </div>
 
-            <div className="bg-palette-80 rounded-xl border-4  border-palette-50 shadow-outer h-full m-10 -mt-4 p-10">
+            <div className="bg-palette-80 rounded-xl border-4  border-palette-50 shadow-outer h-full ms:m-10 -mt-4 p-10">
                 {" "}
-                <div className="text-palette-60 p-6 w-full -mt-28 relative">
-                    <div className="bg-palette-40 w-3/12 border-4 border-palette-60 rounded-xl sticky left top-2/4 left-40 shadow-inner">
+                <div className="text-palette-60 md:p-6 w-full md:-mt-28 md:relative">
+                    <div className="hidden md:block bg-palette-40 w-3/12 border-4 border-palette-60 rounded-xl sticky left top-2/4 left-40 shadow-inner">
                         <img src="../../../images/illus/study1.png" alt="" />
                     </div>{" "}
-                    {/* <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute  left-20 top-3/4  shadow-inner">
-                        <img src="../../../images/illus/study3.png" alt="" />
-                    </div>{" "} */}
-                    {/* <div className="bg-palette-40 w-80 border-4 border-palette-60 rounded-xl absolute top-2/4 right-20   shadow-inner">
-                        <img src="../../../images/illus/study2.png" alt="" />
-                    </div> */}
-                    <div className="flex flex-col items-center -mt-56">
-                        <div className="flex justify-end mr-40">
+        
+                    <div className="w-full flex flex-col items-center md:-mt-56">
+                        <div className="w-full flex md:justify-end md:mr-40">
                             {" "}
-                            <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-6/12  p-10 shadow-inner">
+                            <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-full md:w-6/12  md:p-10 shadow-inner">
                                 {isLoading ? (
                                     <Circles color="#2F4858" />
                                 ) : (
@@ -222,17 +217,17 @@ const Lernbereich = () => {
                             nextLabel={"nächste"}
                             pageCount={pageCount}
                             onPageChange={changePage}
-                            containerClassName={"flex justify-center m-6"}
+                            containerClassName={"flex justify-end md:m-6 m-4 w-full -mr-1 md:mr-40 text-sm"}
                             pageLinkClassName={
-                                "p-4 m-2 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                "md:p-4 p-2  border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
                             }
                             previousLinkClassName={
-                                "p-4 m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
                             }
                             nextLinkClassName={
-                                "p-4 m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
                             }
-                            activeClassName={"text-3xl"}
+                            activeClassName={"text-sm text-palette-50"}
                         />
                     </div>
                 </div>

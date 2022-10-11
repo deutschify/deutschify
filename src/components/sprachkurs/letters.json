@@ -1,5 +1,6 @@
  [
     {
+
         "title": "Beschwerde",
         "id":"1",
         "items": [
@@ -38,11 +39,11 @@
             "Trotzdem möchte Martin auch in dieser Woche seine Hausaufgaben machen. Können Sie mich bitte darüber informieren, welche Aufgaben zu erledigen sind und wie er sich am besten auf den Test nächste Woche vorbereiten kann?",
             "Vielen Dank im Voraus!",
             "Mit freundlichen Grüßen"
-        
-        ]
+            ]
     },
 
     {
+
         "title": "Anfrage",
         "id": "4",
         "items": [
@@ -52,7 +53,6 @@
             "Außerdem möchte Ich mit Ihnen einen Termin für ein persönliches Beratungsgespräch vereinbaren. Wären Sie mit nächsten Dienstag, dem 18. 11. um 15, 30 einverstanden?",
             "Ich freue mich auf Ihre Antwort.",
             "Mit freundlichen Grüßen"
-           
         ]
     }
 ]

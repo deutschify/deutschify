@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+
+import React, { useEffect,useState, useRef } from "react";
+
 import _letters from "./letters.json";
 console.log(_letters);
 const SchreibenB1 = () => {
@@ -32,6 +34,7 @@ const SchreibenB1 = () => {
 
         setshowlist(true), setshowdiv(title);
     };
+
     useEffect(() => {
         console.log(_letters);
     });
@@ -83,6 +86,7 @@ const SchreibenB1 = () => {
                     );
                 })}
             </div>
+
         </>
     );
 };

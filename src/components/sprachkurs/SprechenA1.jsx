@@ -7,7 +7,7 @@ function SprechenA1() {
         <div className="bg-palette-80 m-6 border-4 border-palette-50 rounded-xl md:flex justify-center items-center">
             <button
                 onClick={() => navigate(-1)}
-                className="bg-palette-60 text-palette-80 border-palette-80 md:bg-palette-50 p-1 md:p-6 md:text-palette-60 border-4 md:border-palette-60 rounded-full h-20 md:rounded-xl text-xl absolute left-14 top-52 md:top-48 md:left-16"
+                className="bg-palette-60 text-palette-80 border-palette-50 md:bg-palette-50 p-1 md:p-6 md:text-palette-60 border-4 md:border-palette-60 rounded-full h-20 md:rounded-xl text-xl absolute left-10 bottom-60 md:top-48 md:left-16"
             >
                 zurück
             </button>

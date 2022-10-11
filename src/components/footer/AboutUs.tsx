@@ -3,7 +3,7 @@ import { ImXing } from "react-icons/im";
 
 const AboutUs = () => {
     return (
-        <div className="md:grid grid-cols-6">
+        <div className=" md:grid grid-cols-6">
             <img
                 src="../../../images/aboutUs2.png"
                 alt="image"

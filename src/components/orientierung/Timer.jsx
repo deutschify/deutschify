@@ -42,7 +42,7 @@ export default function App() {
         })}
       >
         {({ elapsedTime, color }) => (
-          <span style={{ color }}>
+          <span style={{ color: "#FDF0D5" }}>
             {renderTime("Minuten", getTimeMinutes(hourSeconds - elapsedTime))}
           </span>
         )}
