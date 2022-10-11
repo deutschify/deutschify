@@ -220,7 +220,7 @@ const LiDExc = () => {
                                         onClick={() => {
                                             rightAnswerHandler("answerC");
                                         }}
-                                        // disabled={getCurrentQuestion().isAnswered}
+                                         disabled={getCurrentQuestion().isAnswered}
                                     >
                                         {getCurrentQuestion().answerC}
                                     </button>
