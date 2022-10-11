@@ -118,17 +118,17 @@ export const useStore = create((set) => ({
             return _state;
         });
     },
-    posts: [],
+    postIds: [],
     fetchPosts: async () => {
         set(() => ({ loading: true }));
         try {
             const data = (await axios.get(`${baseUrl}/posts/news-feed/all`))
                 .data;
             //console.log(data);
-
+            const ids = data.map((i) => i._id);
             set((state) => {
                 const _state = { ...state };
-                _state.posts = data;
+                _state.postIds = ids;
                 return _state;
             });
         } catch (error) {

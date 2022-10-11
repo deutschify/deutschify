@@ -192,7 +192,7 @@ const Post = ({ post }) => {
                         {showBox && (
                             <>
                                 <Comment post={post} />
-                                <Comments currentUser={currentUser} />
+                                <Comments />
                             </>
                         )}
                     </div>

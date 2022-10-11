@@ -8,23 +8,32 @@ const Comment = () => {
     const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
     const currentUser = useStore((state) => state.currentUser);
     const fetchPosts = useStore((state) => state.fetchPosts);
-    const posts = useStore((state) => state.posts);
+    const postIds = useStore((state) => state.postIds);
+    const [id, setId] = useState("");
+    const [comments, setComments] = useState();
 
     useEffect(() => {
         fetchCurrentUser();
         fetchPosts();
         // console.log(currentUser._id);
-        // console.log(fetchPosts);
-        console.log(posts);
+        //console.log(fetchPosts);
+        //console.log(postIds);
     }, []);
+    let _id = [];
+    _id = postIds.map((id) => id);
+    console.log(..._id);
+    //setId(..._id);
+    //console.log(postID);
+    // const _postID = _id.slice(0, 25);
+    // console.log(_postID, "postID");
 
-    // const [comments, setComments] = useState([]);
+    // const idPost = _postID;
     // console.log(comments);
-
+    //console.log(id);
     // useEffect(() => {
     //     const fetchComments = async () => {
     //         const response = await axios.get(
-    //             backend_base_url + `/posts/comments/${post._id}`
+    //             backend_base_url + `/posts/comments/${postID}`
     //         );
     //         //to get the posts sorted
     //         // setPosts(
@@ -40,7 +49,14 @@ const Comment = () => {
 
     // console.log(comments.length);
 
-    return <div>Comment</div>;
+    return (
+        <div>
+            comment{/* <div>{fetchingIds()}</div> */}
+            {/* {postIds.map((id) => (
+                <div>{id}</div>
+            ))} */}
+        </div>
+    );
 };
 
 export default Comment;
