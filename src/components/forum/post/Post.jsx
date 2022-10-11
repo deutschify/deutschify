@@ -172,10 +172,10 @@ const Post = ({ post }) => {
                         />
                     )}
                 </div>
+                <hr className="m-5  border-1 border-palette-40 " />
 
-                <div className="postBottom flex items-center justify-between">
-                    <div className="postBottomLeft flex items-center">
-                        {/* this is an img in the tutorial */}
+                <div className="postBottom flex items-center">
+                    {/* <div className="postBottomLeft flex items-center">
                         <FaThumbsUp
                             className="likeIcon mr-2.5 w-6 h-6 cursor-pointer ml-2.5 "
                             onClick={likeHandler}
@@ -184,23 +184,33 @@ const Post = ({ post }) => {
                         <span className="postLikeCounter pt-2 text-sm ">
                             {like} People liked this
                         </span>
-                    </div>
-                    <div className="postBottomRight">
+                    </div> */}
+
+                    <div className="postBottomRight w-full">
                         <span
-                            className="postCommentText cursor-pointer text-sm mr-2.5"
+                            className="postCommentText cursor-pointer text-sm   "
                             onClick={() => commentFieldHandler()}
                         >
-                            {post.comments.length} Kommentare
+                            <span className="Kommentare ">
+                                {" "}
+                                {post.comments.length} Kommentare
+                            </span>
                         </span>
                         {showBox && (
                             <>
                                 {/* <Comment post={post} /> 
                                 <Comments /> */}
-                                <div className="commentArea flex justify-start">
+                                <div className="commentArea flex-col space-y-3 ">
                                     {post.comments.map((c) => (
-                                        <div className="singleCommentField">
+                                        <div className="singleCommentField p-4 border-2 border-palette-80 rounded-xl shadow ">
                                             {" "}
-                                            {c.comment}
+                                            <div className="flex justify-between">
+                                                <span> {c.comment} </span>
+                                                <span>
+                                                    {" "}
+                                                    {format(c.createdAt)}
+                                                </span>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
