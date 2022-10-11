@@ -1,15 +1,16 @@
  [
     {
-        "title": "information",
+
+        "title": "Beschwerde",
         "id":"1",
         "items": [
-            "Item 1",
-            "sali 2",
-            "Item 3",
-            "Item 4",
-            "Item 5",
-            "Item 6",
-            "Item 7"
+            "Sehr geehrte Damen und Herren,",
+            "vor einem Monat habe ich bei Ihnen eine Waschmaschine Marke WM 1200 RS bestellt. Jetzt ist sie kaputt, deshalb schreibe ich Ihnen.",
+            " Ich habe dieses Modell gekauft, weil es im Angebot war. Ich war am Anfang sehr zufrieden, aber jetzt bin ich enttäuscht.",
+            "Das Gerät startet nicht, obwohl die Lampe leuchtet. Ich würde gern das Gerät umtauschen. Könnten Sie bitte die kaputte Waschmaschine abholen und eine neue bringen?",
+            "Ich wäre auch mit einer Reparatur einverstanden, aber der Techniker soll zu uns kommen.",
+            "Über eine schnelle Antwort würde ich mich sehr freuen.",
+            "Mit freundlichen Grüßen"
         ]
     },
 
@@ -17,40 +18,41 @@
         "title": "Eiladung",
         "id": "2",
         "items": [
-            "Item 1",
-            "Item 2",
-            "Item 3",
+            "Sehr geehrter {name}, ",
+            "Es ist eine Weile her! Ich hoffe dir gehts gut.",
+            "ch würde Sie gerne zu einer Geburtstagsfeier für meine Tochter {name} nächsten Samstag, {date}, einladen.",
             "meziker 4",
-            "Item 5",
-            "Item 6",
-            "Item 7"
+            " Wir werden kein Nein als Antwort akzeptieren, versprochen! Wenn Sie eine Mitfahrgelegenheit benötigen,",
+            "holt Jeanine Sie gerne ab. Teilen Sie ihr einfach Ihre Adresse mit und sie wird Sie dort treffen.",
+            "Ich hoffe sehr, dass Sie es schaffen. Es wäre toll, dich wiederzusehen.",
+            "Beste, {Name des Absenders}"
+           
         ]
     },
     {
-        "title": "Beschwerde",
+        "title": "Entschuldigen",
         "id": "3",
         "items": [
-            "Item 1",
-            "zubia 2",
-            "Item 3",
-            "Item 4",
-            "Item 5",
-            "Item 6",
-            "Item 7"
-        ]
+            "Sehr geehrte Frau Brandt,",
+            "hiermit möchte ich das Fernbleiben meines Sohnes Martin entschuldigen. Er konnte heute nicht in den Unterricht kommen, weil er über das Wochenende an Grippe erkrankt ist.",
+            "Wir waren heute am Vormittag auch beim Arzt, der meint, dass Martin bis Ende dieser Woche zu Hause bleiben soll. Herr Dr. Brenner hat mir eine Krankschreibung mitgegeben.",
+            "Trotzdem möchte Martin auch in dieser Woche seine Hausaufgaben machen. Können Sie mich bitte darüber informieren, welche Aufgaben zu erledigen sind und wie er sich am besten auf den Test nächste Woche vorbereiten kann?",
+            "Vielen Dank im Voraus!",
+            "Mit freundlichen Grüßen"
+            ]
     },
 
     {
-        "title": "Email",
+
+        "title": "Anfrage",
         "id": "4",
         "items": [
-            "Item 1",
-            "Item 2",
-            "Item 3",
-            "Item 4",
-            "Item 5",
-            "Item 6",
-            "Item 7"
+            "Sehr geehrter Herr Hofer,",
+            "ich schreibe Ihnen, weil ich bei Ihrer Bank ein Girokonto habe. Da ich in zwei Wochen nach London fliege, würde ich gern zusätzlich zu meiner EC- Karte eine Visa- Kreditkarte beantragen.",
+            "Könnten Sie mir bitte mitteilen, wie hoch die Jahreskosten für eine Kreditkarte betragen?",
+            "Außerdem möchte Ich mit Ihnen einen Termin für ein persönliches Beratungsgespräch vereinbaren. Wären Sie mit nächsten Dienstag, dem 18. 11. um 15, 30 einverstanden?",
+            "Ich freue mich auf Ihre Antwort.",
+            "Mit freundlichen Grüßen"
         ]
     }
 ]
