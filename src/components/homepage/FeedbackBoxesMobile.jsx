@@ -58,7 +58,7 @@ const FeedbackBoxesMobile = () => {
     return (
         <div className="md:hidden">
             {" "}
-            <div className="w-96  h-72 flex items-center justify-center  bg-palette-50 border-4 border-palette-80 rounded-xl">
+            {/* <div className="w-96  h-72 flex items-center justify-center  bg-palette-50 border-4 border-palette-80 rounded-xl">
                 <div className="slideshow w-52 h-60  overflow-hidden ">
                     <div
                         className="slideshowSlider whitespace-nowrap transition ease-in-out 2s"
@@ -89,7 +89,7 @@ const FeedbackBoxesMobile = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };
