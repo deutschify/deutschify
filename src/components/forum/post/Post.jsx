@@ -1,6 +1,6 @@
 import { FaThumbsUp } from "react-icons/fa";
 import { RiDeleteBinLine, RiEditLine } from "react-icons/ri";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
 
@@ -21,12 +21,16 @@ const Post = ({ post }) => {
     const [postedDate, setPostedDate] = useState(format(post.createdAt));
     const [postUpdated, setPostUpdated] = useState(format(post.updatedAt));
     // const [commentDate, setCommentDate] = useState(
-    //     format(post.comments.comment.createdAt)
+    //     format(post.comments.createdAt)
     // );
+
     // const [commentUpdated, setCommentUpdated] = useState(
     //     format(post.comments.comment.updatedAt)
     // );
     const [showBox, setShowBox] = useState(false);
+
+    //useRev to add a new comment
+    const comment = useRef();
 
     //trying to navigate the edit btn onClick
 
@@ -137,14 +141,31 @@ const Post = ({ post }) => {
         }
     };
 
-    //Comment Handler
+    //Comment field Handler
 
     const commentFieldHandler = () => {
         return setShowBox((show) => !show);
     };
 
+    //Comment Submit Handler
+
+    const submitCommentHandler = async (e) => {
+        e.preventDefault();
+        const newComment = {
+            userId: currentUser._id,
+            comment: comment.current.value,
+        };
+        try {
+            await axios.post(
+                backend_base_url + `/posts/${post._id}/comment`,
+                newComment
+            );
+            window.location.reload();
+        } catch (error) {}
+    };
+
     return (
-        <div className="post w-1/2 rounded-xl shadow-outer mt-7 mb-7 ">
+        <div className="post w-1/2 rounded-xl shadow-outer mt-7 mb-7 bg-palette-50">
             <div className="postWrapper p-2.5 ">
                 <div className="postTop flex items-center justify-between">
                     <div className="postTopLeft flex items-center">
@@ -264,13 +285,28 @@ const Post = ({ post }) => {
                                         ))}
                                     </div>
                                 </>
-                                <form className="commentForm mt-5 flex-col p-4 border-2 border-palette-80 rounded-xl shadow">
-                                    <textarea className="commentFormTextarea w-full rounded-xl resize-none outline-none p-2 bg-palette-70"></textarea>
+                                <form
+                                    className="commentForm mt-5 flex-col p-4 border-2 border-palette-80 rounded-xl shadow"
+                                    onSubmit={submitCommentHandler}
+                                >
+                                    <textarea
+                                        className="commentFormTextarea w-full rounded-xl resize-none outline-none p-2 bg-palette-70"
+                                        placeholder="Kommentieren..."
+                                        ref={comment}
+                                    ></textarea>
                                     <div className="commentFormBtns mt-2"></div>
-                                    <button className="commentBtn outline-none p-1.5 rounded-md bg-palette-40 mr-5">
+                                    <button
+                                        className="commentBtn outline-none p-1.5 rounded-md bg-palette-40 mr-5"
+                                        type="submit"
+                                    >
                                         Kommentieren
                                     </button>
-                                    <button className="Abbrechen outline-none p-1.5 rounded-md bg-palette-40 mr-5">
+                                    <button
+                                        className="Abbrechen outline-none p-1.5 rounded-md bg-palette-40 mr-5"
+                                        onClick={() =>
+                                            navigate(`/forum/news-feed/all`)
+                                        }
+                                    >
                                         {" "}
                                         Abbrechen
                                     </button>
