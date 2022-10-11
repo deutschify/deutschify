@@ -62,6 +62,9 @@ const Post = ({ post }) => {
         fetchUser();
     }, [post.userId]);
 
+    // const displayedComments = post.comments.map((c) => c.comment);
+    // console.log(displayedComments);
+
     //like functionality
 
     //to handle the like button
@@ -187,12 +190,20 @@ const Post = ({ post }) => {
                             className="postCommentText cursor-pointer text-sm mr-2.5"
                             onClick={() => commentFieldHandler()}
                         >
-                            kommentare
+                            {post.comments.length} Kommentare
                         </span>
                         {showBox && (
                             <>
-                                <Comment post={post} />
-                                <Comments />
+                                {/* <Comment post={post} /> 
+                                <Comments /> */}
+                                <div className="commentArea flex justify-start">
+                                    {post.comments.map((c) => (
+                                        <div className="singleCommentField">
+                                            {" "}
+                                            {c.comment}
+                                        </div>
+                                    ))}
+                                </div>
                             </>
                         )}
                     </div>
