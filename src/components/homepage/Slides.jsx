@@ -18,7 +18,7 @@ const sliderData = [
     },
     {
         slideImage: "../../images/illus/sprachkurs1.png",
-        href: "/sprachniveau",
+        href: "/sprachkurs",
         title: "Übungen zum Sprachkurs",
     },
     {

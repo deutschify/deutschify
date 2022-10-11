@@ -11,22 +11,31 @@ import { IUserLoginForm } from "./interfaces";
 import Footer from "./components/footer/Footer";
 import Homepage from "./components/homepage/Homepage";
 import Dictionary from "./components/dictionary/Dictionary";
-import Sprachniveau from "./components/Sprachniveau";
-
+import Sprachkurs from "./components/sprachkurs/Sprachkurs";
 import Einbuergerungstest from "./components/orientierung/Einbuergerungstest";
-
 import Forum from "./components/forum/Forum";
 import PageRegister from "./Pages/PageRegister";
 import PageConfirmRegistration from "./Pages/PageConfirmRegistration";
 import PageLogin from "./Pages/PageLogin";
 import PageNotFound from "./components/PageNotFound";
-import A1 from "./components/A1";
-import A2 from "./components/A2";
-import B1 from "./components/B1";
+import A1 from "./components/sprachkurs/A1";
+import SchreibenA1 from "./components/sprachkurs/SchreibenA1";
+import LesenA1 from "./components/sprachkurs/LesenA1";
+import HoerenA1 from "./components/sprachkurs/HoerenA1";
+import SprechenA1 from "./components/sprachkurs/SprechenA1";
+import A2 from "./components/sprachkurs/A2";
+import SchreibenA2 from "./components/sprachkurs/SchreibenA2";
+import LesenA2 from "./components/sprachkurs/LesenA2";
+import HoerenA2 from "./components/sprachkurs/HoerenA2";
+import SprechenA2 from "./components/sprachkurs/SprechenA2";
+import B1 from "./components/sprachkurs/B1";
+import SchreibenB1 from "./components/sprachkurs/SchreibenB1";
+import LesenB1 from "./components/sprachkurs/LesenB1";
+import HoerenB1 from "./components/sprachkurs/HoerenB1";
+import SprechenB1 from "./components/sprachkurs/SprechenB1";
 import Lernbereich from "./components/orientierung/LernbereichOrientierung";
 import LiDExc from "./components/orientierung/LiDExc";
 import LiDMod from "./components/orientierung/LiDMod";
-
 import { useStore } from "./store";
 import { PageLogout } from "./Pages/PageLogout";
 import { baseUrl } from "./store";
@@ -36,15 +45,22 @@ import MyPosts from "./components/forum/MyPosts";
 import ResultLidMod from "./components/orientierung/ResultLidMod";
 import PostEdit from "./components/forum/post/PostEdit";
 
-
 function App() {
     const navigate = useNavigate();
 
     // const loading = useStore((state) => state.loading);
-    const fetchLanguages = useStore((state: { fetchLanguages: any; }) => state.fetchLanguages);
-    const fetchCurrentUser = useStore((state: { fetchCurrentUser: any; }) => state.fetchCurrentUser);
-    const fetchCountries = useStore((state: { fetchCountries: any; }) => state.fetchCountries);
-    const currentUser = useStore((state: { currentUser: any; }) => state.currentUser);
+    const fetchLanguages = useStore(
+        (state: { fetchLanguages: any }) => state.fetchLanguages
+    );
+    const fetchCurrentUser = useStore(
+        (state: { fetchCurrentUser: any }) => state.fetchCurrentUser
+    );
+    const fetchCountries = useStore(
+        (state: { fetchCountries: any }) => state.fetchCountries
+    );
+    const currentUser = useStore(
+        (state: { currentUser: any }) => state.currentUser
+    );
 
     useEffect(() => {
         fetchLanguages();
@@ -61,10 +77,31 @@ function App() {
                 <Route path="/home" element={<Homepage />} />
 
                 <Route path="/dictionary" element={<Dictionary />} />
-                <Route path="/sprachniveau" element={<Sprachniveau />} />
-                <Route path="/a1" element={<A1 />} />
-                <Route path="/a2" element={<A2 />} />
-                <Route path="/b1" element={<B1 />} />
+                <Route path="/sprachkurs" element={<Sprachkurs />} />
+                <Route path="/sprachkurs/a1" element={<A1 />} />
+                <Route
+                    path="/sprachkurs/a1/schriftlicher-Ausdruck"
+                    element={<SchreibenA1 />}
+                />
+                <Route path="/sprachkurs/a1/leseverstehen" element={<LesenA1 />} />
+                <Route path="/sprachkurs/a1/hoerverstehen" element={<HoerenA1 />} />
+                <Route path="/sprachkurs/a1/sprachbausteine" element={<SprechenA1 />} />
+                <Route path="/sprachkurs/a2" element={<A2 />} />
+                <Route
+                    path="/sprachkurs/a2/schriftlicher-Ausdruck"
+                    element={<SchreibenA2 />}
+                />
+                <Route path="/sprachkurs/a2/leseverstehen" element={<LesenA2 />} />
+                <Route path="/sprachkurs/a2/hoerverstehen" element={<HoerenA2 />} />
+                <Route path="/sprachkurs/a2/sprachbausteine" element={<SprechenA2 />} />
+                <Route path="/sprachkurs/b1" element={<B1 />} />
+                <Route
+                    path="/sprachkurs/b1/schriftlicher-Ausdruck"
+                    element={<SchreibenB1 />}
+                />
+                <Route path="/sprachkurs/b1/leseverstehen" element={<LesenB1 />} />
+                <Route path="/sprachkurs/b1/hoerverstehen" element={<HoerenB1 />} />
+                <Route path="/sprachkurs/b1/sprachbausteine" element={<SprechenB1 />} />
                 <Route
                     path="/einbuergerungstest/*"
                     element={<Einbuergerungstest />}

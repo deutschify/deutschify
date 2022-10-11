@@ -3,10 +3,10 @@ import { NavLink } from "react-router-dom";
 import A1 from "./A1";
 import A2 from "./A2";
 import B1 from "./B1";
-import SprachkursA from "../../public/images/illus/sprachkurs2.png";
-import SprachkursB from "../../public/images/illus/sprachkurs3.png";
+import ImgSprachkursA from "../../../public/images/illus/sprachkurs2.png";
+import ImgSprachkursB from "../../../public/images/illus/sprachkurs3.png";
 
-const Sprachniveau = () => {
+const Sprachkurs = () => {
     return (
         <div className=" bg-palette-80 m-10 shadow-bs border-4 border-palette-50 rounded-xl shadow-outer">
             <div className="">
@@ -19,16 +19,16 @@ const Sprachniveau = () => {
                     Wähle zunächst dein Sprachniveau aus
                 </div>
             </div>
-            <div className="flex">
+            <div className="flex flex-col md:flex-row items-center">
                 <div className="bg-palette-40 w-80 m-10 border-4 border-palette-60 rounded-xl">
-                    <img src={SprachkursA} alt="" className="" />
+                    <img src={ImgSprachkursA} alt="" className="" />
                 </div>
 
-                <nav className="flex justify-center m-10">
+                <nav className="md:flex justify-center m-10">
                     <div className="bg-palette-50 w-60 h-40 border-4 border-palette-60 rounded-xl m-10">
                         {" "}
                         <NavLink
-                            to="/sprachniveau/A1"
+                            to="/sprachkurs/A1"
                             element={<A1 />}
                             className="h-full text-palette-60 text-5xl flex items-center justify-center"
                         >
@@ -38,7 +38,7 @@ const Sprachniveau = () => {
                     <div className="bg-palette-50 w-60 h-40 border-4 border-palette-60 rounded-xl m-10">
                         {" "}
                         <NavLink
-                            to="/sprachniveau/A2"
+                            to="/sprachkurs/A2"
                             element={<A2 />}
                             className="h-full text-palette-60 text-5xl flex items-center justify-center"
                         >
@@ -48,7 +48,7 @@ const Sprachniveau = () => {
                     <div className="bg-palette-50 w-60 h-40 border-4 border-palette-60 rounded-xl m-10">
                         {" "}
                         <NavLink
-                            to="/sprachniveau/B1"
+                            to="/sprachkurs/B1"
                             element={<B1 />}
                             className="h-full text-palette-60 text-5xl flex items-center justify-center"
                         >
@@ -57,11 +57,11 @@ const Sprachniveau = () => {
                     </div>
                 </nav>
                 <div className="bg-palette-40 w-80 m-10 border-4 border-palette-60 rounded-xl">
-                    <img src={SprachkursB} alt="" className="mt-4" />
+                    <img src={ImgSprachkursB} alt="" className="mt-4" />
                 </div>
             </div>
         </div>
     );
 };
 
-export default Sprachniveau;
+export default Sprachkurs;

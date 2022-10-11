@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
+import axios from "axios";
 import Lernbereich from "./LernbereichOrientierung";
 import { MdArrowBackIos } from "react-icons/md";
 import { MdArrowForwardIos } from "react-icons/md";
@@ -30,6 +31,7 @@ const LiDExc = () => {
         const rawDeutschlandquestions = await response.json();
         // console.log(rawDeutschlandquestions);
         const _displayQuestions = [];
+        
 
         rawDeutschlandquestions.forEach((rawDeutschlandquestion, index) => {
             const displayQuestion = {
@@ -117,13 +119,13 @@ const LiDExc = () => {
 
     const rightAnswerHandler = (answer, count) => {
         const displayQuestion = displayQuestions.find((m) => m.current);
-
+        // let answeredQuestions = [];
         const chosenAnswerText = displayQuestion[answer];
         console.log(chosenAnswerText);
         if (chosenAnswerText === displayQuestion.correctAnswer) {
             console.log("right");
             displayQuestion[answer + "ButtonClass"] = "right";
-
+            // answeredQuestions = [...answeredQuestions, displayQuestion.number]
             console.log(displayQuestion);
             // const questionsToAsk = displayQuestions.splice(displayQuestion.isAnswered)
             // console.log(displayQuestions);
@@ -136,6 +138,8 @@ const LiDExc = () => {
         }
 
         setDisplayQuestions([...displayQuestions]);
+        // console.log(answeredQuestions);
+    //    await axios.post(`${baseUrl}}/current-user`, answeredQuestions)
     };
 
     return (
