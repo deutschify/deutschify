@@ -53,7 +53,7 @@ const Slides = () => {
     }
 
     return (
-        <div className="w-7/12 h-10/12 hidden md:block bg-palette-50 p-6 border-4 border-palette-60 rounded-xl shadow-outer text-palette-60">
+        <div className="slider w-7/12 h-10/12 hidden md:block bg-palette-50 p-6 border-4 border-palette-60 rounded-xl shadow-outer text-palette-60">
             <div className="relative">
                 <MdArrowBackIos
                     className="slideshow-left-arrow absolute -left-80 top-48 text-7xl text-palette-60/25 cursor-pointer"
