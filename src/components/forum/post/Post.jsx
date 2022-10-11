@@ -17,8 +17,15 @@ const Post = ({ post }) => {
     const [isLiked, setIsLiked] = useState(false);
     const [likeColor, setLikeColor] = useState("");
     const [user, setUser] = useState({});
+    const [commentOwner, setCommentOwner] = useState({});
     const [postedDate, setPostedDate] = useState(format(post.createdAt));
     const [postUpdated, setPostUpdated] = useState(format(post.updatedAt));
+    // const [commentDate, setCommentDate] = useState(
+    //     format(post.comments.comment.createdAt)
+    // );
+    // const [commentUpdated, setCommentUpdated] = useState(
+    //     format(post.comments.comment.updatedAt)
+    // );
     const [showBox, setShowBox] = useState(false);
 
     //trying to navigate the edit btn onClick
@@ -62,8 +69,24 @@ const Post = ({ post }) => {
         fetchUser();
     }, [post.userId]);
 
-    // const displayedComments = post.comments.map((c) => c.comment);
-    // console.log(displayedComments);
+    //fetching the comment Owner
+
+    // ((((((((((((((( for (const i of post.comments) {
+    //                      return (commentUserId = i.userId);
+    //                              }
+    //                          console.log(commentUserId);
+    //                          post.comments.forEach((i) => console.log(i.userId));
+    //                              useEffect(() => {
+    //                                    const fetchCommentOwner = async () => {
+    //                                        const response = await axios.get(
+    //                                           backend_base_url +
+    //                                           `/posts/comments/${post.comments.map((i) => i.userId)}`
+    //                                                                   );
+    //                                              setCommentOwner(response.data);
+    //                                          console.log(response.data, "commentOwner");
+    //                                               };
+    //                                                        fetchCommentOwner();
+    //                                                       }, [i.userId]); ))))))))))))))))
 
     //like functionality
 
@@ -98,9 +121,9 @@ const Post = ({ post }) => {
     //Delete Handler
 
     const deleteIconHandler = async () => {
-        console.log(post._id);
-        console.log();
-        console.log(currentUser._id);
+        // console.log(post._id);
+        // console.log();
+        // console.log(currentUser._id);
 
         try {
             await axios.delete(backend_base_url + `/posts/${post._id}`, {
@@ -196,25 +219,63 @@ const Post = ({ post }) => {
                                 {post.comments.length} Kommentare
                             </span>
                         </span>
+
                         {showBox && (
-                            <>
-                                {/* <Comment post={post} /> 
+                            <div className="commentsSection mt-2.5">
+                                <>
+                                    {/* <Comment post={post} /> 
                                 <Comments /> */}
-                                <div className="commentArea flex-col space-y-3 ">
-                                    {post.comments.map((c) => (
-                                        <div className="singleCommentField p-4 border-2 border-palette-80 rounded-xl shadow ">
-                                            {" "}
-                                            <div className="flex justify-between">
-                                                <span> {c.comment} </span>
-                                                <span>
-                                                    {" "}
-                                                    {format(c.createdAt)}
-                                                </span>
+                                    <div className="commentArea flex-col space-y-3 ">
+                                        {post.comments.map((c, index) => (
+                                            <div
+                                                className="singleCommentField p-4 border-2 border-palette-80 rounded-xl shadow "
+                                                key={index}
+                                            >
+                                                {" "}
+                                                <div className="flex justify-between ">
+                                                    <div className="commentOwner ">
+                                                        <span className=" text-xs text-palette-80 ">
+                                                            {" "}
+                                                            {
+                                                                user.firstName
+                                                            }{" "}
+                                                            {""}
+                                                            {user.lastName}:
+                                                        </span>{" "}
+                                                    </div>
+                                                    <div className="commentAndDate  ">
+                                                        <span className="commentSpan">
+                                                            {" "}
+                                                            {c.comment}{" "}
+                                                            <span className="commentDate ml-16 text-xxs">
+                                                                {" "}
+                                                                {format(
+                                                                    c.createdAt
+                                                                )}
+                                                            </span>{" "}
+                                                        </span>
+                                                    </div>
+                                                    <div className="flex gap-2 ">
+                                                        <RiDeleteBinLine />
+                                                        <RiEditLine />
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </>
+                                        ))}
+                                    </div>
+                                </>
+                                <form className="commentForm mt-5 flex-col p-4 border-2 border-palette-80 rounded-xl shadow">
+                                    <textarea className="commentFormTextarea w-full rounded-xl resize-none outline-none p-2 bg-palette-70"></textarea>
+                                    <div className="commentFormBtns mt-2"></div>
+                                    <button className="commentBtn outline-none p-1.5 rounded-md bg-palette-40 mr-5">
+                                        Kommentieren
+                                    </button>
+                                    <button className="Abbrechen outline-none p-1.5 rounded-md bg-palette-40 mr-5">
+                                        {" "}
+                                        Abbrechen
+                                    </button>
+                                </form>
+                            </div>
                         )}
                     </div>
                 </div>
