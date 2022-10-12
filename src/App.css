@@ -1,14 +1,11 @@
 .right {
-    background-color: #ABC4A8 !important;
-   
+    background-color: #abc4a8 !important;
 }
 
 .wrong {
-background-color: #DD9E93 !important;
-
-
+    background-color: #dd9e93 !important;
 }
-.directionBtn:disabled{
+.directionBtn:disabled {
     display: none !important;
 }
 
@@ -16,12 +13,18 @@ background-color: #DD9E93 !important;
     height: 600px !important;
 }
 
-.title{
-    -webkit-text-stroke: 2px #2F4858 !important;
-    
+.title {
+    -webkit-text-stroke: 1px #2f4858 !important;
 }
-.singleSlideTitle{
-    -webkit-text-stroke: 2px #BC4B51 !important;
+
+@media only screen and (min-width: 768px) {
+    .title {
+        -webkit-text-stroke: 1px #2f4858 !important;
+    }
+}
+
+.singleSlideTitle {
+    -webkit-text-stroke: 2px #bc4b51 !important;
 }
 
 /* .slider{
@@ -61,6 +64,6 @@ background-color: #DD9E93 !important;
   }
    */
 
-  /* .active{
+/* .active{
     border-bottom: 3px solid #2F4858;
   } */
