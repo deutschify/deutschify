@@ -6,6 +6,7 @@
 
 
 @layer components {
+
     .cover {
         @apply bg-palette-80 border-4 border-palette-50 rounded-xl shadow-outer
     }
@@ -25,5 +26,6 @@
     .btn{
         @apply bg-palette-50 text-palette-60 rounded-xl border-4 border-palette-80  hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer
     }
+
 
 }
