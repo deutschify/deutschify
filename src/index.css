@@ -5,15 +5,8 @@
 @tailwind utilities;
 
 
-/* @layer components {
-    .buttons {
-        background-color: theme('colors.palette.50');
-        color: theme('colors.palette.60');
-        width: 
-     
-        border: theme('border.4', 'colors.palette.60', 'border.solid')
-
-
-
+@layer components {
+    .coaster {
+        @apply 
     }
-} */
+}
