@@ -165,8 +165,8 @@ const Post = ({ post }) => {
     };
 
     return (
-        <div className=" w-1/2 flex justify-center items-center ">
-            <div className="post w-1/2 rounded-xl shadow-outer mt-7 mb-7 bg-palette-50">
+        <div className=" cover mt-5 mb-5 w-1/2 flex justify-center items-center ">
+            <div className="post w-4/5  mt-7 mb-7 coaster">
                 <div className="postWrapper p-2.5 ">
                     <div className="postTop flex items-center justify-between">
                         <div className="postTopLeft flex items-center">
@@ -243,14 +243,15 @@ const Post = ({ post }) => {
                             </span>
 
                             {showBox && (
-                                <div className="commentsSection mt-2.5">
+                                <div className="commentsSection mt-2.5 ">
                                     <>
                                         {/* <Comment post={post} /> 
                                 <Comments /> */}
-                                        <div className="commentArea flex-col space-y-3 ">
+                                        <div className="commentArea flex-col  space-y-3 ">
                                             {post.comments.map((c, index) => (
                                                 <div
-                                                    className="singleCommentField p-4 border-2 border-palette-80 rounded-xl shadow "
+                                                    className="singleCommentField input p-4 border-2 
+                                                    "
                                                     key={index}
                                                 >
                                                     {" "}
@@ -294,7 +295,7 @@ const Post = ({ post }) => {
                                         onSubmit={submitCommentHandler}
                                     >
                                         <textarea
-                                            className="commentFormTextarea w-full rounded-xl resize-none outline-none p-2 bg-palette-70"
+                                            className="commentFormTextarea w-full  resize-none outline-none p-2 bg-palette-70"
                                             placeholder="Kommentieren..."
                                             ref={comment}
                                         ></textarea>

@@ -53,7 +53,7 @@ const share = () => {
     // }, []);
 
     return (
-        <div className="bg-palette-80 w-1/2 flex justify-center items-center  rounded-xl border-4 border-palette-50 shadow-outer">
+        <div className="bg-palette-80 w-1/2 flex justify-center items-center mb-7 rounded-xl border-4 border-palette-50 shadow-outer">
             <div className="share w-4/5   rounded-xl shadow-outer mb-5 mt-5 bg-palette-50">
                 <div className="shareWrapper p-2.5 border-4 border-palette-60 rounded-xl text-palette-60 ">
                     <div className="shareTop flex items-center break-words">
