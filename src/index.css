@@ -6,7 +6,26 @@
 
 
 @layer components {
-    .coaster {
-        @apply 
+
+    .cover {
+        @apply bg-palette-80 border-4 border-palette-50 rounded-xl shadow-outer
     }
+    
+    .coaster{
+        @apply bg-palette-50 text-palette-60 border-4 border-palette-60 rounded-xl shadow-outer
+    }
+    
+    .imgFrame{
+        @apply bg-palette-40 border-4 border-palette-60 rounded-xl
+    }
+
+    .input{
+        @apply bg-palette-60 rounded-3xl text-palette-50 placeholder:text-palette-50/75 border-4 border-palette-80 shadow-inner focus:outline-none
+    }
+
+    .btn{
+        @apply bg-palette-50 text-palette-60 rounded-xl border-4 border-palette-80  hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer
+    }
+
+
 }
