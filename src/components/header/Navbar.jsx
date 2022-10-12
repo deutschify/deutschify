@@ -23,7 +23,7 @@ const NavBar = () => {
     const currentUser = useStore((state) => state.currentUser);
     const [showNav, setShowNav] = useState(false);
     return (
-        <div className="flex justify-end">
+        <div className="flex justify-end h-full">
             <div className="w-full relative text-5xl flex overflow-auto items-center justify-center rounded-full w-20 h-20 m-5 bg-palette-80 ring-0 ring-palette-70 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md md:hidden">
                 {showNav ? (
                     <BiX onClick={() => setShowNav(!showNav)} className="" />
@@ -32,89 +32,18 @@ const NavBar = () => {
                 )}
                 <div
                     className={
-                         (showNav ? "left-20" : "left-full") +
+                         (showNav ? "left-10" : "left-full") +
                         " bg-palette-40/75 fixed right-0 top-28 bottom-10 z-40 text-palette-50 flex justify-center text-center text-2xl rounded-bl-3xl rounded-tl-3xl transition-ease-in duration-1000"
                     }
                     onClick={() => setShowNav(!showNav)}
                 >
-                    <Nav className="">
-                        {/* <nav className="">
-                            <NavLink
-                            className="flex justify-center hover:text-palette-80 h-40"
-                            to="/sprachkurs"
-                            element={<Sprachkurs />}
-                            >
-
+                        <nav className="">
+                            <NavLink>
+                                Sprachkurs
                             </NavLink>
-                        </nav> */}
-                        <div className="">
-                            <div className="">
-                                <Nav.Menu
-                                    className="border-none hover:text-palette-80 mt-20 h-40"
-                                    trigger={["click", "hover"]}
-                                    title="Übungen"
-                                >
-                                    <div className="bg-palette-80 text-palette-50 w-80  hover:text-palette-60 border-l-2 border-t-2 border-r-2 border-palette-50 rounded-t-xl p-4 -ml-20">
-                                        <NavLink
-                                            className=""
-                                            to="/sprachkurs"
-                                            element={<Sprachkurs />}
-                                        >
-                                            <Nav.Menu
-                                                className="text-center appearance-none rounded-xl "
-                                                title="Sprachkurs"
-                                            >
-                                                <div className="flex flex-col w-40 absolute left-96 text-center bg-palette-60/75 rounded-xl border-2 border-palette-50 p-4 -ml-20">
-                                                    <NavLink
-                                                        className="text-palette-50 hover:text-palette-80 rounded-t-lg"
-                                                        to="/sprachkurs/a1"
-                                                        element={<A1 />}
-                                                    >
-                                                        A1
-                                                    </NavLink>
-                                                    <NavLink
-                                                        className=" text-palette-50 hover:text-palette-80"
-                                                        to="/sprachkurs/a2"
-                                                        element={<A2 />}
-                                                    >
-                                                        A2
-                                                    </NavLink>
-                                                    <NavLink
-                                                        className=" text-palette-50 hover:text-palette-80 rounded-b-lg"
-                                                        to="/sprachkurs/b1"
-                                                        element={<B1 />}
-                                                    >
-                                                        B1
-                                                    </NavLink>
-                                                </div>
-                                            </Nav.Menu>
-                                        </NavLink>
-                                    </div>
-                                    <NavLink
-                                        className="flex justify-center border-r-2 border-b-2 border-l-2 border-palette-50 bg-palette-80 text-palette-50 w-80  hover:text-palette-60 rounded-b-xl pb-4 -ml-20"
-                                        to="/einbuergerungstest"
-                                        element={<Einbuergerungstest />}
-                                    >
-                                        Orientierungskurs
-                                    </NavLink>
-                                </Nav.Menu>
-                            </div>
-                            <div className="">
-                                <NavLink
-                                    className="flex justify-center hover:text-palette-80 h-40"
-                                    to="/dictionary"
-                                    element={<Dictionary />}
-                                >
-                                    Wörterbuch
-                                </NavLink>
-                                <NavLink
-                                    className="flex justify-center hover:text-palette-80"
-                                    to="/forum"
-                                    element={<Forum />}
-                                >
-                                    Forum
-                                </NavLink>
-                                {currentUser.accessGroups?.includes(
+                        </nav>
+                                
+                                {/* {currentUser.accessGroups?.includes(
                                     "loggedOutUsers"
                                 ) && (
                                     <div className="flex flex-col mt-10 items-center">
@@ -160,12 +89,10 @@ const NavBar = () => {
 
                                 {currentUser.accessGroups?.includes(
                                     "loggedInUsers"
-                                ) && <PageLogout />}
+                                ) && <PageLogout />} */}
                             </div>
                         </div>
-                    </Nav>
-                </div>
-            </div>
+        
             <NavbarDesktop />
         </div>
     );

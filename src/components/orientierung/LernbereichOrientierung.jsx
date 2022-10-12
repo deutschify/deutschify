@@ -145,6 +145,7 @@ const Lernbereich = () => {
     };
 
     return (
+        <div className="">
         <div className="mb-12 relative">
             <h1 className="title text-palette-80 text-4xl text-center m-5 font-block1">
                 Bereite dich auf den Orientierungstest vor
@@ -239,6 +240,7 @@ const Lernbereich = () => {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     );
