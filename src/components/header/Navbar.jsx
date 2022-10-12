@@ -32,67 +32,77 @@ const NavBar = () => {
                 )}
                 <div
                     className={
-                         (showNav ? "left-10" : "left-full") +
-                        " bg-palette-40/75 fixed right-0 top-28 bottom-10 z-40 text-palette-50 flex justify-center text-center text-2xl rounded-bl-3xl rounded-tl-3xl transition-ease-in duration-1000"
+                        (showNav ? "left-10" : "left-full") +
+                        " bg-palette-40/75 w-full fixed left-10 right-0 top-28 bottom-10 z-40 text-palette-50 flex justify-center text-center text-2xl rounded-bl-3xl rounded-tl-3xl transition-ease-in duration-1000 backdrop-blur-md"
                     }
                     onClick={() => setShowNav(!showNav)}
                 >
-                        <nav className="">
-                            <NavLink>
-                                Sprachkurs
-                            </NavLink>
-                        </nav>
-                                
-                                {/* {currentUser.accessGroups?.includes(
-                                    "loggedOutUsers"
-                                ) && (
-                                    <div className="flex flex-col mt-10 items-center">
-                                        <NavLink
-                                            className="w-60 text-center border-4 border-palette-60 bg-palette-70 p-4 text-2xl rounded-xl shadow-outer hover:shadow-inner hover:text-palette-50 m-8"
-                                            to="/login"
-                                            element={<PageLogin />}
-                                        >
-                                            Login
-                                        </NavLink>
-                                        <NavLink
-                                            className="w-60 text-center bg-palette-80 border-4 border-palette-60 p-4 text-2xl rounded-xl hover:shadow-inner hover:text-palette-50 shadow-outer"
-                                            to="/registration"
-                                            element={<PageRegister />}
-                                        >
-                                            Register
-                                        </NavLink>
-                                    </div>
-                                )}
+                    <nav className="gradient flex flex-col items-center justify-center gap-10  ">
+                        <NavLink to="/sprachkurs" element={<Sprachkurs />}>
+                            Sprachkurs
+                        </NavLink>
+                        <NavLink
+                            to="/einbuergerungstest"
+                            element={<Einbuergerungstest />}
+                        >
+                            Orientierungskurs
+                        </NavLink>
+                        <NavLink to="/dictionary" element={<Dictionary />}>
+                            Wörterbuch
+                        </NavLink>
+                        <NavLink to="/forum" element={<Forum />}>
+                            Forum
+                        </NavLink>
 
-                                {currentUser.accessGroups?.includes(
-                                    "loggedInUsers"
-                                ) && (
-                                    <div className="flex items-center m-5">
-                                        <NavLink
-                                            className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:shadow-inner hover:text-palette-50"
-                                            to={`/${currentUser.firstName}`}
-                                            element={<PageUserSettings />}
-                                        >
-                                            {currentUser.avatar ? (
-                                                <img
-                                                    src={`${currentUser.avatar}`}
-                                                    alt=""
-                                                />
-                                            ) : (
-                                                <p>
-                                                    {currentUser.firstName[0]}
-                                                </p>
-                                            )}
-                                        </NavLink>
-                                    </div>
-                                )}
-
-                                {currentUser.accessGroups?.includes(
-                                    "loggedInUsers"
-                                ) && <PageLogout />} */}
+                        {currentUser.accessGroups?.includes(
+                            "loggedOutUsers"
+                        ) && (
+                            <div className="flex flex-col mt-10 items-center">
+                                <NavLink
+                                    className="w-60 text-center border-4 border-palette-60 bg-palette-70 p-4 text-2xl rounded-xl shadow-outer hover:shadow-inner hover:text-palette-50 m-8"
+                                    to="/login"
+                                    element={<PageLogin />}
+                                >
+                                    Login
+                                </NavLink>
+                                <NavLink
+                                    className="w-60 text-center bg-palette-80 border-4 border-palette-60 p-4 text-2xl rounded-xl hover:shadow-inner hover:text-palette-50 shadow-outer"
+                                    to="/registration"
+                                    element={<PageRegister />}
+                                >
+                                    Register
+                                </NavLink>
                             </div>
-                        </div>
-        
+                        )}
+
+                        {currentUser.accessGroups?.includes(
+                            "loggedInUsers"
+                        ) && (
+                            <div className="flex items-center m-5">
+                                <NavLink
+                                    className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:shadow-inner hover:text-palette-50"
+                                    to={`/${currentUser.firstName}`}
+                                    element={<PageUserSettings />}
+                                >
+                                    {currentUser.avatar ? (
+                                        <img
+                                            src={`${currentUser.avatar}`}
+                                            alt=""
+                                        />
+                                    ) : (
+                                        <p>{currentUser.firstName[0]}</p>
+                                    )}
+                                </NavLink>
+                            </div>
+                        )}
+
+                        {currentUser.accessGroups?.includes(
+                            "loggedInUsers"
+                        ) && <PageLogout />}
+                    </nav>
+                </div>
+            </div>
+
             <NavbarDesktop />
         </div>
     );
