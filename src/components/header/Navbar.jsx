@@ -23,8 +23,8 @@ const NavBar = () => {
     const currentUser = useStore((state) => state.currentUser);
     const [showNav, setShowNav] = useState(false);
     return (
-        <div className="">
-            <div className=" relative text-5xl flex overflow-hidden items-center justify-center rounded-full w-20 h-20 m-5 bg-palette-80 ring-0 ring-palette-70 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md md:hidden">
+        <div className="flex justify-end">
+            <div className="w-full relative text-5xl flex overflow-auto items-center justify-center rounded-full w-20 h-20 m-5 bg-palette-80 ring-0 ring-palette-70 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md md:hidden">
                 {showNav ? (
                     <BiX onClick={() => setShowNav(!showNav)} className="" />
                 ) : (
@@ -32,13 +32,22 @@ const NavBar = () => {
                 )}
                 <div
                     className={
-                        (showNav ? "left-20" : "left-full") +
-                        " bg-palette-40/75 w-full fixed left-20 right-0 top-28 bottom-10 z-40 text-palette-50 flex   justify-center text-center text-2xl rounded-bl-3xl rounded-tl-3xl transition-ease-in duration-1000"
+                        (showNav ? "left-5" : "left-full") +
+                        " bg-palette-40/75 w-full fixed left-20 right-0 top-28 bottom-10 z-40 text-palette-50 flex justify-center text-center text-2xl rounded-bl-3xl rounded-tl-3xl transition-ease-in duration-1000"
                     }
                     onClick={() => setShowNav(!showNav)}
                 >
                     <Nav className="m-4 mt-20 w-44 rounded-xl h-96 p-4 bg-palette-40">
-                        <div className="">
+                        <nav className="">
+                            <NavLink
+                            className="flex justify-center hover:text-palette-80 h-40"
+                            to="/sprachkurs"
+                            element={<Sprachkurs />}
+                            >
+
+                            </NavLink>
+                        </nav>
+                        {/* <div className="">
                             <div className="">
                                 <Nav.Menu
                                     className="border-none hover:text-palette-80 h-40"
@@ -153,7 +162,7 @@ const NavBar = () => {
                                     "loggedInUsers"
                                 ) && <PageLogout />}
                             </div>
-                        </div>
+                        </div> */}
                     </Nav>
                 </div>
             </div>

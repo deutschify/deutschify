@@ -12,14 +12,16 @@ const A1 = () => {
     const navigate = useNavigate();
     return (
         <div className="">
-            <div className="bg-palette-80 border-4 border-palette-50 rounded-xl m-10 text-center md:flex md:justify-center">
-            <button
-                onClick={() => navigate(-1)}
-                className="bg-palette-50 p-1 md:p-6 text-palette-60 border-4 border-palette-60 rounded-full h-20 md:rounded-xl text-xl absolute left-14 top-56 md:top-48 md:left-16"
-                // className="buttons"
-            >
-                zurück
-            </button>
+
+            <div className="cover m-10 text-center mt-40 md:flex md:justify-center">
+
+                <button
+                    onClick={() => navigate(-1)}
+                    className="bg-palette-50 p-1 md:p-6 text-palette-60 border-4 border-palette-60 rounded-full h-20 md:rounded-xl text-xl absolute left-14 top-56 md:top-48 md:left-16"
+                    // className="buttons"
+                >
+                    zurück
+                </button>
                 <div className="text-palette-60 p-4 text-4xl  flex flex-col items-center m- font-block1">
                     Willkommen in deinem Sprachniveau
                     <div className="font-block2 bg-palette-50 border-4 border-palette-60 rounded-xl w-40 m-10 text-center text-5xl p-4">
@@ -50,22 +52,11 @@ const A1 = () => {
                             />
                             Leseverstehen
                         </NavLink>
-                        <NavLink
-                            to="/sprachkurs/a1/sprachbausteine"
-                            element={<SprechenA1 />}
-                            className="w-80 h-60 m-8 p-2  border-4 border-palette-60 rounded-xl flex flex-col justify-center items-center text-center bg-palette-50 col-start-1 col-end-2 row-start-3 row-end-4"
-                        >
-                            <img
-                                src={Sprechen}
-                                alt=""
-                                className="w-56 h-80 bg-palette-40 border-4 border-palette-60 rounded-xl"
-                            />
-                            Sprachbausteine
-                        </NavLink>
+
                         <NavLink
                             to="/sprachkurs/a1/schriftlicher-ausdruck"
                             element={<SchreibenA1 />}
-                            className="w-80 h-60 m-8 p-2 border-4 border-palette-60 rounded-xl flex flex-col justify-center items-center text-center bg-palette-50 col-start-3 col-end-4 row-start-3 row-end-4 text-3xl"
+                            className="w-80 h-60 m-8 p-2 border-4 border-palette-60 rounded-xl flex flex-col justify-center items-center text-center bg-palette-50 col-start-1 col-end-2 row-start-3 row-end-4"
                         >
                             <img
                                 src={Schreiben}
@@ -73,6 +64,18 @@ const A1 = () => {
                                 className="w-56 h-80 bg-palette-40 border-4 border-palette-60 rounded-xl"
                             />
                             schriftlicher Ausdruck
+                        </NavLink>
+                        <NavLink
+                            to="/sprachkurs/a1/sprachbausteine"
+                            element={<SprechenA1 />}
+                            className="w-80 h-60 m-8 p-2  border-4 border-palette-60 rounded-xl flex flex-col justify-center items-center text-center bg-palette-50 col-start-3 col-end-4 row-start-3 row-end-4 text-3xl"
+                        >
+                            <img
+                                src={Sprechen}
+                                alt=""
+                                className="w-56 h-80 bg-palette-40 border-4 border-palette-60 rounded-xl"
+                            />
+                            Sprachbausteine
                         </NavLink>
                     </nav>
                 </div>

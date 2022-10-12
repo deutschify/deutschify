@@ -1,11 +1,12 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, NavLink } from "react-router-dom";
 import { useStore } from "../../store";
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { useEffect } from "react";
-
+import Modelltest from "./LiDMod";
 function ResultLidMod() {
-    // const { category } = useParams();
+    const { category } = useParams();
+
     const result = useStore((state) => state.result);
     const questions = useStore((state) => state.questions);
 
@@ -25,12 +26,37 @@ function ResultLidMod() {
     }, []);
 
     return (
-        <div>
-            <div className={`${result.includes("nicht")  ? "bg-palette-70" : "bg-palette-30"}`}>{result}</div>
+        <div className="w-full">
+            <div
+                className="bg-palette-50 m-10 w-52 md:w-96 text-center md:text-3xl text-palette-60 p-4 border-4 border-palette-80 rounded-xl shadow-outer hover:bg-palette-60 hover:text-palette-50 hover:shadow-inner"
+                
+            >
+                <NavLink className="" to={`/lernbereich/${category}/modelltest`} element={<Modelltest />}>
+                    Test erneut starten
+                </NavLink>
+            </div>
+
+            <div className="flex justify-center m-10">
+                {" "}
+                <div
+                    className={
+                        `${
+                            result.includes("nicht")
+                                ? "bg-palette-70 border-palette-80 text-palette-80"
+                                : "bg-palette-40 border-palette-30 text-palette-30"
+                        } ` +
+                        "border-8 w-10/12 rounded-xl  text-4xl text-center p-8"
+                    }
+                >
+                    {result}
+                </div>
+            </div>
+<div className="flex justify-center text-palette-50 font-block1 text-3xl mt-20"><p>Dein korrigierter Test:</p></div>
             {questions.map((qu, index) => (
                 <div className="flex justify-center" key={index}>
-                    <div className=" bg-palette-80 m-4 w-6/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
-                        <div className="text-xl text-palette-60 flex justify-center p-1 border-4 bg-palette-50 border-palette-60 w-1/12 rounded-full">
+                    
+                    <div className=" bg-palette-80 m-4 md:w-6/12 p-4 text-palette-60  text-center border-4 border-palette-50 rounded-xl">
+                        <div className="text-xl text-palette-60 flex justify-center p-4 border-4 bg-palette-50 border-palette-60 w-16 md:w-1/12 rounded-full">
                             {index + 1}
                         </div>
                         <div className="bg-palette-50 border-4 border-palette-60 rounded-xl m-8 p-4">

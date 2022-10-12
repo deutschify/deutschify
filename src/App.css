@@ -1,6 +1,3 @@
-.normal {
-    
-}
 .right {
     background-color: #ABC4A8 !important;
    
@@ -27,7 +24,7 @@ background-color: #DD9E93 !important;
     -webkit-text-stroke: 2px #BC4B51 !important;
 }
 
-.slider{
+/* .slider{
     animation: slide 3s infinite;
 }
 
@@ -62,7 +59,7 @@ background-color: #DD9E93 !important;
 .slideshowDot.active {
     background-color: #6a0dad;
   }
-  
+   */
 
   /* .active{
     border-bottom: 3px solid #2F4858;

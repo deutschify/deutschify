@@ -49,22 +49,11 @@ const B1 = () => {
                             />
                             Leseverstehen
                         </NavLink>
-                        <NavLink
-                            to="/sprachkurs/b1/sprachbausteine"
-                            element={<SprechenB1 />}
-                            className="w-80 h-60 m-8 p-2  border-4 border-palette-60 rounded-xl flex flex-col justify-center items-center text-center bg-palette-50 col-start-1 col-end-2 row-start-3 row-end-4"
-                        >
-                            <img
-                                src={Sprechen}
-                                alt=""
-                                className="w-56 h-80 bg-palette-40 border-4 border-palette-60 rounded-xl"
-                            />
-                            Sprachbausteine
-                        </NavLink>
+
                         <NavLink
                             to="/sprachkurs/b1/schriftlicher-Ausdruck"
                             element={<SchreibenB1 />}
-                            className="w-80 h-60 m-8 p-2 border-4 border-palette-60 rounded-xl flex flex-col justify-center items-center text-center bg-palette-50 col-start-3 col-end-4 row-start-3 row-end-4 text-3xl"
+                            className="w-80 h-60 m-8 p-2 border-4 border-palette-60 rounded-xl flex flex-col justify-center items-center text-center bg-palette-50 col-start-1 col-end-2 row-start-3 row-end-4"
                         >
                             <img
                                 src={Schreiben}
@@ -72,6 +61,18 @@ const B1 = () => {
                                 className="w-56 h-80 bg-palette-40 border-4 border-palette-60 rounded-xl"
                             />
                             schriftlicher Ausdruck
+                        </NavLink>
+                        <NavLink
+                            to="/sprachkurs/b1/sprachbausteine"
+                            element={<SprechenB1 />}
+                            className="w-80 h-60 m-8 p-2  border-4 border-palette-60 rounded-xl flex flex-col justify-center items-center text-center bg-palette-50 col-start-3 col-end-4 row-start-3 row-end-4 text-3xl"
+                        >
+                            <img
+                                src={Sprechen}
+                                alt=""
+                                className="w-56 h-80 bg-palette-40 border-4 border-palette-60 rounded-xl"
+                            />
+                            Sprachbausteine
                         </NavLink>
                     </nav>
                 </div>
