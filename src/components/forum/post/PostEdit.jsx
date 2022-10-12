@@ -31,7 +31,7 @@ const PostEdit = () => {
     };
 
     return (
-        <div>
+        <div className="mt-48">
             <h3>Edit Post</h3>
             <form onSubmit={editIconHandler}>
                 <div className="editBodyArea">

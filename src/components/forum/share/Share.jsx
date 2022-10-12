@@ -59,7 +59,7 @@ const share = () => {
                     <div className="shareTop flex items-center break-words">
                         <textarea
                             className="shareInput inline-block outline-none w-4/5 rounded-xl ml-8 pl-2  break-words pt-5 border-0 border-solid h-16 resize-none  bg-palette-60 placeholder:text-palette-50/75 shadow-inner mt-2.5 text-palette-50 scrollbar-hide "
-                            placeholder={`Stell uns eine Frage, ${currentUser.firstName} ...`}
+                            placeholder={`stell uns eine Frage, ${currentUser.firstName} ...`}
                             ref={desc}
                         />
                     </div>
@@ -103,7 +103,7 @@ const share = () => {
                             className="shareButton outline-none p-1.5 rounded-md bg-palette-60 mr-5 text-palette-50 border-2 border-palette-80 "
                             type="submit"
                         >
-                            Posten
+                            posten
                         </button>
                     </form>
                 </div>

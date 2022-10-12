@@ -17,9 +17,9 @@ const Post = ({ post }) => {
     const [isLiked, setIsLiked] = useState(false);
     const [likeColor, setLikeColor] = useState("");
     const [user, setUser] = useState({});
-    const [commentOwner, setCommentOwner] = useState({});
     const [postedDate, setPostedDate] = useState(format(post.createdAt));
     const [postUpdated, setPostUpdated] = useState(format(post.updatedAt));
+
     // const [commentDate, setCommentDate] = useState(
     //     format(post.comments.createdAt)
     // );
@@ -180,7 +180,8 @@ const Post = ({ post }) => {
                             <span className="postDate text-xs ml-5 pt-2">
                                 <p>{format(post.createdAt)}</p>
                             </span>
-                            {postUpdated !== postedDate && (
+                            {format(post.createdAt) !==
+                                format(post.updatedAt) && (
                                 <span className="postDate text-xxs ml-5 pt-3">
                                     <p>bearbeitet</p>
                                 </span>
@@ -204,7 +205,7 @@ const Post = ({ post }) => {
                             )}
                         </div>
                     </div>
-                    <hr className="m-5  border-1 border-palette-40 " />
+                    <hr className="m-5  border-1 border-palette-60 " />
 
                     <div className="postCenter mt-5 mb-5">
                         <span className="postText m-12">{post.desc}</span>
@@ -217,7 +218,7 @@ const Post = ({ post }) => {
                             />
                         )}
                     </div>
-                    <hr className="m-5  border-1 border-palette-40 " />
+                    <hr className="m-5  border-1 border-palette-60 " />
 
                     <div className="postBottom flex items-center">
                         {/* <div className="postBottomLeft flex items-center">
@@ -295,25 +296,23 @@ const Post = ({ post }) => {
                                         onSubmit={submitCommentHandler}
                                     >
                                         <textarea
-                                            className="commentFormTextarea w-full  resize-none outline-none p-2 bg-palette-70"
-                                            placeholder="Kommentieren..."
+                                            className="commentFormTextarea w-full  resize-none outline-none p-3 input"
+                                            placeholder={"kommentieren..."}
                                             ref={comment}
                                         ></textarea>
                                         <div className="commentFormBtns mt-2"></div>
                                         <button
-                                            className="commentBtn outline-none p-1.5 rounded-md bg-palette-40 mr-5"
+                                            className="commentBtn bg-palette-60 text-palette-50 p-1.5 btn mr-5"
                                             type="submit"
                                         >
-                                            Kommentieren
+                                            kommentieren
                                         </button>
                                         <button
-                                            className="Abbrechen outline-none p-1.5 rounded-md bg-palette-40 mr-5"
-                                            onClick={() =>
-                                                navigate(`/forum/news-feed/all`)
-                                            }
+                                            className="Abbrechen  bg-palette-60 text-palette-50 p-1.5 btn mr-5"
+                                            type="button"
                                         >
                                             {" "}
-                                            Abbrechen
+                                            abbrechen
                                         </button>
                                     </form>
                                 </div>
