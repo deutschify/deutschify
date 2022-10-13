@@ -30,8 +30,8 @@ const Dictionary = () => {
     return (
         <div className="h-screen w-max">
             {" "}
-            <div className="    xl:grid grid-cols-2 w-full gap-[15rem] ml-2 ">
-                <div className=" h-100% container mx-auto px-3 py-8">
+            <div className="   xl:grid grid-cols-2 w-full gap-[15rem] ml-2   ">
+                <div className="cover h-100% container mx-auto px-3 py-8">
                     <h1 className="text-3xl font-bold  text-white">
                         Simple Dictionary
                     </h1>
@@ -65,7 +65,7 @@ const Dictionary = () => {
                                 onKeyDown={handleInputKeyDown}
                             />
                             <button
-                                className="bg-palette-30 border-l px-4 py-2 text-white"
+                                className="bg-palette-50 border-l px-4 py-2 text-white"
                                 onClick={handleSubmit}
                             >
                                 Search
