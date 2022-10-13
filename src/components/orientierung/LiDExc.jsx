@@ -31,7 +31,6 @@ const LiDExc = () => {
         const rawDeutschlandquestions = await response.json();
         // console.log(rawDeutschlandquestions);
         const _displayQuestions = [];
-        
 
         rawDeutschlandquestions.forEach((rawDeutschlandquestion, index) => {
             const displayQuestion = {
@@ -139,38 +138,32 @@ const LiDExc = () => {
 
         setDisplayQuestions([...displayQuestions]);
         // console.log(answeredQuestions);
-    //    await axios.post(`${baseUrl}}/current-user`, answeredQuestions)
+        //    await axios.post(`${baseUrl}}/current-user`, answeredQuestions)
     };
 
     return (
-        <div className="">
+        <div className="mb-10">
+            {" "}
+           
             {/* Übungssatz {category}
             <div className="">{displayQuestions.length} Fragen</div> */}
-            <div className="">
-                {" "}
-                <nav className="m-10">
-                    <NavLink
-                        to={`/lernbereich/${category}`}
-                        element={<Lernbereich />}
-                        className="bg-palette-50 p-4 m-4 h-max text-palette-60 rounded-xl border-4 border-palette-80 text-xl md:w-2/12 md:text-center hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
-                    >
-                        Zurück zum Lernbereich
-                    </NavLink>
-                </nav>
-                <div className="bg-palette-60 w-80 text-palette-50 border-4 border-palette-50 rounded-2xl p-2 absolute right-10 top-40 shadow-inner">
-                    Hier kannst du für den Integrationstest lernen. Beantworte dafür nacheinander
-                    alle 300 Fragen zu Deutschland und 10 Fragen zu {category.charAt(0).toUpperCase() + category.slice(1)}. Wiederhole den Test bist du dich sicher genug fühlst.
-                    
-                </div>
-                <div className="flex justify-center">
-                    <div className="m-6 w-7/12 p-10 h-100 bg-palette-80 text-palette-60 text-xl flex flex-col items-center justify-center border-4 border-palette-50 rounded-xl shadow-outer">
+            <div className="flex flex-col items-center justify-center">
+                 <div className="coaster m-4 text-left p-4">
+                Hier kannst du für den Integrationstest lernen. Beantworte dafür
+                nacheinander alle 300 Fragen zu Deutschland und 10 Fragen zu{" "}
+                {category.charAt(0).toUpperCase() + category.slice(1)}.
+                Wiederhole den Test bist du dich sicher genug fühlst.
+            </div>
+               
+                <div className="flex flex-col items-center justify-center">
+                    <div className="cover w-64 m-4  text-palette-60 flex flex-col items-center justify-center">
                         {canDisplayQuestions() && (
                             <>
                                 {" "}
-                                <div className="">
+                                <div className="bg-palette-50 border-4 border-palette-60 rounded-xl w-10 text-center m-2">
                                     {getCurrentQuestion().number}
                                 </div>
-                                <div className="bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 shadow-outer">
+                                <div className="coaster w-56 p-2">
                                     {getCurrentQuestion().question}
                                 </div>
                                 <div className="flex justify-center">
@@ -183,12 +176,12 @@ const LiDExc = () => {
                                         />
                                     )}
                                 </div>
-                                <div className="flex flex-col items-center w-full m-20 ">
+                                <div className="flex flex-col items-center">
                                     <button
                                         className={`${
                                             getCurrentQuestion()
                                                 .answerAButtonClass
-                                        } w-6/12   bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer`}
+                                        }    bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer`}
                                         onClick={() => {
                                             rightAnswerHandler("answerA");
                                         }}
@@ -202,7 +195,7 @@ const LiDExc = () => {
                                         className={`${
                                             getCurrentQuestion()
                                                 .answerBButtonClass
-                                        } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer`}
+                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer`}
                                         onClick={() => {
                                             rightAnswerHandler("answerB");
                                         }}
@@ -216,11 +209,13 @@ const LiDExc = () => {
                                         className={`${
                                             getCurrentQuestion()
                                                 .answerCButtonClass
-                                        } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer`}
+                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer`}
                                         onClick={() => {
                                             rightAnswerHandler("answerC");
                                         }}
-                                         disabled={getCurrentQuestion().isAnswered}
+                                        disabled={
+                                            getCurrentQuestion().isAnswered
+                                        }
                                     >
                                         {getCurrentQuestion().answerC}
                                     </button>
@@ -228,7 +223,7 @@ const LiDExc = () => {
                                         className={`${
                                             getCurrentQuestion()
                                                 .answerDButtonClass
-                                        } w-6/12 bg-palette-50 p-4 border-4 border-palette-60 rounded-xl m-4 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer`}
+                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer`}
                                         onClick={() => {
                                             rightAnswerHandler("answerD");
                                         }}
@@ -239,10 +234,10 @@ const LiDExc = () => {
                                         {getCurrentQuestion().answerD}
                                     </button>
                                 </div>
-                                <div className="mt-20 flex justify-around   w-full">
+                                <div className="m-10 flex justify-around text-sm">
                                     {" "}
                                     <button
-                                        className="directionBtn border-4 border-palette-60 w-4/12 p-4 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80 shadow-outer"
+                                        className="btn p-2 w-4/12 border-4 border-palette-60"
                                         onClick={prevQuestionHandler}
                                         disabled={getCurrentQuestion().isFirst}
                                     >
@@ -253,7 +248,7 @@ const LiDExc = () => {
                                         </div>
                                     </button>
                                     <button
-                                        className="directionBtn border-4 border-palette-60 p-4 w-4/12 rounded-xl bg-palette-50 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-80 shadow-outer"
+                                        className="btn p-2 w-4/12 border-4 border-palette-60"
                                         onClick={nextQuestionHandler}
                                     >
                                         <div className="flex justify-center flex-unwrap">
@@ -265,6 +260,15 @@ const LiDExc = () => {
                             </>
                         )}
                     </div>
+                    <nav className="m-6">
+                    <NavLink
+                        to={`/lernbereich/${category}`}
+                        element={<Lernbereich />}
+                        className="btn p-5 w-32 md:w-2/12 md:text-center "
+                    >
+                        Zurück zum Lernbereich
+                    </NavLink>
+                </nav>
                 </div>
             </div>
         </div>

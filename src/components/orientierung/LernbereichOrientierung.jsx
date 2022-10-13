@@ -8,6 +8,7 @@ import ReactPaginate from "react-paginate";
 import LiDExc from "../orientierung/LiDExc";
 import LiDMod from "../orientierung/LiDMod";
 import { Circles } from "react-loader-spinner";
+import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -94,9 +95,11 @@ const Lernbereich = () => {
             return (
                 <div
                     key={index}
-                    className="bg-palette-50 m-4 p-2 w-9/12 text-left rounded-xl border-4 border-palette-80 shadow-outer"
+                    className="coaster m-4 text-left border-palette-80"
                 >
-                    <div className=" text-xl text-palette-60 flex items-center justify-center  px-1 border-2 bg-palette-50 border-palette-80 w-1/12 rounded-full">{question.number}</div>
+                    <div className="text-xl text-palette-60 flex items-center justify-center m-2 px-1 border-2 bg-palette-50 border-palette-80 w-2/12 rounded-full">
+                        {question.number}
+                    </div>
                     <div className="text-palette-60 m-2 p-2">
                         {" "}
                         <div className="mb-2 border-b-2 border-palette-80 ">
@@ -142,24 +145,25 @@ const Lernbereich = () => {
     };
 
     return (
-        <div className="border-4 border-palette-50 m-8 p-4 rounded-xl text-center shadow-inner relative">
-            <h1 className="text-palette-50 text-2xl">
+        <div className="">
+        <div className="mb-12 relative">
+            <h1 className="title text-palette-80 text-4xl text-center m-5 font-block1">
                 Bereite dich auf den Orientierungstest vor
             </h1>
             <nav className="flex flex-col md:flex-row justify-between items-center md:text-2xl">
                 <NavLink
                     to={`/lernbereich/${category}/excercise`}
                     element={<LiDExc />}
-                    className="w-80 bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
+                    className="btn w-60 p-6 border-palette-80 text-center md:w-4/12"
                 >
                     Zum Übungstest
                 </NavLink>
 
                 {/* Searchbar für Testfragen */}
-                <div className="w-80 bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 shadow-outer">
+                <div className="coaster  border-palette-80 w-72 p-6 m-4 md:w-4/12 shadow-outer">
                     <div className="">
                         <input
-                            className="searchInput h-10 bg-palette-60 rounded-3xl p-6 text-palette-50 placeholder:text-palette-50/75 border-4 border-palette-80 shadow-inner focus:outline-none"
+                            className="searchInput w-60  h-10 bg-palette-60 rounded-3xl p-6 text-palette-50 placeholder:text-palette-50/75 border-4 border-palette-80 shadow-inner focus:outline-none"
                             type="text"
                             placeholder="Stichwort..."
                             onChange={(event) => {
@@ -175,12 +179,12 @@ const Lernbereich = () => {
                 <NavLink
                     to={`/lernbereich/${category}/modelltest`}
                     element={<LiDMod />}
-                    className="w-80 bg-palette-50 p-6 m-4 text-palette-60 rounded-xl border-4 border-palette-80 md:w-4/12 hover:bg-palette-80 hover:border-palette-50 active:bg-palette-60 active:text-palette-50 active:border-palette-80 shadow-outer"
+                    className="btn w-60 p-6 border-palette-80 text-center md:w-4/12"
                 >
                     Zum Modelltest
                 </NavLink>
             </nav>
-            <div className="text-2xl p-6 text-palette-50">
+            <div className="text-2xl text-center p-6 text-palette-50">
                 {!query
                     ? `Hier haben wir alle ${
                           questions.length
@@ -192,45 +196,51 @@ const Lernbereich = () => {
                                  für dich`
                     : `Wir haben zu deiner Anfrage ${filteredResults.length} Übereinstimmungen gefunden`}{" "}
             </div>
-
-            <div className="bg-palette-80 rounded-xl border-4  border-palette-50 shadow-outer h-full ms:m-10 -mt-4 p-10">
-                {" "}
-                <div className="text-palette-60 md:p-6 w-full md:-mt-28 md:relative">
-                    <div className="hidden md:block bg-palette-40 w-3/12 border-4 border-palette-60 rounded-xl sticky left top-2/4 left-40 shadow-inner">
-                        <img src="../../../images/illus/study1.png" alt="" />
-                    </div>{" "}
-        
-                    <div className="w-full flex flex-col items-center md:-mt-56">
-                        <div className="w-full flex md:justify-end md:mr-40">
-                            {" "}
-                            <div className="bg-palette-60 border-4 border-palette-50 rounded-xl text-palette-50 flex flex-col items-center w-full md:w-6/12  md:p-10 shadow-inner">
-                                {isLoading ? (
-                                    <Circles color="#2F4858" />
-                                ) : (
-                                    displayQuestions
-                                )}{" "}
+            <div className="flex justify-center">
+                <div className="cover w-72 p-4 h-full">
+                    {" "}
+                    <div className="">
+                        <div className="hidden md:block bg-palette-40 w-3/12 border-4 border-palette-60 rounded-xl sticky left top-2/4 left-40 shadow-inner">
+                            <img
+                                src="../../../images/illus/study1.png"
+                                alt=""
+                            />
+                        </div>{" "}
+                        <div className="w-full flex flex-col items-center md:-mt-56">
+                            <div className=" flex md:justify-end md:mr-40">
+                                {" "}
+                                <div className="input flex flex-col items-center md:w-6/12  md:p-10 ">
+                                    {isLoading ? (
+                                        <Circles color="#2F4858" />
+                                    ) : (
+                                        displayQuestions
+                                    )}{" "}
+                                </div>
                             </div>
-                        </div>
 
-                        <ReactPaginate
-                            previousLabel={"vorherige"}
-                            nextLabel={"nächste"}
-                            pageCount={pageCount}
-                            onPageChange={changePage}
-                            containerClassName={"flex justify-end md:m-6 m-4 w-full -mr-1 md:mr-40 text-sm"}
-                            pageLinkClassName={
-                                "md:p-4 p-2  border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
-                            }
-                            previousLinkClassName={
-                                "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
-                            }
-                            nextLinkClassName={
-                                "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
-                            }
-                            activeClassName={"text-sm text-palette-50"}
-                        />
+                            <ReactPaginate
+                                previousLabel={"<"}
+                                nextLabel={">"}
+                                pageCount={pageCount}
+                                onPageChange={changePage}
+                                containerClassName={
+                                    " flex md:justify-end md:m-6 m-4 md:mr-40 text-palette-60 text-xxs"
+                                }
+                                pageLinkClassName={
+                                    "md:p-4 p-2  border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                }
+                                previousLinkClassName={
+                                    "w-4 text-palette-60 p-2  border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                }
+                                nextLinkClassName={
+                                    "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                }
+                                activeClassName={"text-sm text-palette-50"}
+                            />
+                        </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     );
