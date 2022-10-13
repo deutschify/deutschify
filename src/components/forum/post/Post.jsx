@@ -1,12 +1,14 @@
 import { FaThumbsUp } from "react-icons/fa";
 import { RiDeleteBinLine, RiEditLine } from "react-icons/ri";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
 
 import { useStore } from "../../../store";
 
 import { useNavigate } from "react-router-dom";
+import Comments from "../comments/Comments";
+import Comment from "../comments/Comment";
 
 const Post = ({ post }) => {
     const backend_base_url = "http://localhost:8000";
@@ -17,6 +19,18 @@ const Post = ({ post }) => {
     const [user, setUser] = useState({});
     const [postedDate, setPostedDate] = useState(format(post.createdAt));
     const [postUpdated, setPostUpdated] = useState(format(post.updatedAt));
+
+    // const [commentDate, setCommentDate] = useState(
+    //     format(post.comments.createdAt)
+    // );
+
+    // const [commentUpdated, setCommentUpdated] = useState(
+    //     format(post.comments.comment.updatedAt)
+    // );
+    const [showBox, setShowBox] = useState(false);
+
+    //useRev to add a new comment
+    const comment = useRef();
 
     //trying to navigate the edit btn onClick
 
@@ -59,6 +73,25 @@ const Post = ({ post }) => {
         fetchUser();
     }, [post.userId]);
 
+    //fetching the comment Owner
+
+    // ((((((((((((((( for (const i of post.comments) {
+    //                      return (commentUserId = i.userId);
+    //                              }
+    //                          console.log(commentUserId);
+    //                          post.comments.forEach((i) => console.log(i.userId));
+    //                              useEffect(() => {
+    //                                    const fetchCommentOwner = async () => {
+    //                                        const response = await axios.get(
+    //                                           backend_base_url +
+    //                                           `/posts/comments/${post.comments.map((i) => i.userId)}`
+    //                                                                   );
+    //                                              setCommentOwner(response.data);
+    //                                          console.log(response.data, "commentOwner");
+    //                                               };
+    //                                                        fetchCommentOwner();
+    //                                                       }, [i.userId]); ))))))))))))))))
+
     //like functionality
 
     //to handle the like button
@@ -92,9 +125,9 @@ const Post = ({ post }) => {
     //Delete Handler
 
     const deleteIconHandler = async () => {
-        console.log(post._id);
-        console.log();
-        console.log(currentUser._id);
+        // console.log(post._id);
+        // console.log();
+        // console.log(currentUser._id);
 
         try {
             await axios.delete(backend_base_url + `/posts/${post._id}`, {
@@ -108,62 +141,87 @@ const Post = ({ post }) => {
         }
     };
 
+    //Comment field Handler
+
+    const commentFieldHandler = () => {
+        return setShowBox((show) => !show);
+    };
+
+    //Comment Submit Handler
+
+    const submitCommentHandler = async (e) => {
+        e.preventDefault();
+        const newComment = {
+            userId: currentUser._id,
+            comment: comment.current.value,
+        };
+        try {
+            await axios.post(
+                backend_base_url + `/posts/${post._id}/comment`,
+                newComment
+            );
+            window.location.reload();
+        } catch (error) {}
+    };
+
     return (
-        <div className="post w-1/2 rounded-xl shadow-outer mt-7 mb-7 ">
-            <div className="postWrapper p-2.5 ">
-                <div className="postTop flex items-center justify-between">
-                    <div className="postTopLeft flex items-center">
-                        <span className="postUserName text-sm ml-2.5 text-palette-80 pt-2">
-                            <p>
-                                {" "}
-                                {user.firstName} {user.lastName}
-                            </p>
-                        </span>
-
-                        <span className="postDate text-xs ml-5 pt-2">
-                            <p>{format(post.createdAt)}</p>
-                        </span>
-                        {postUpdated !== postedDate && (
-                            <span className="postDate text-xxs ml-5 pt-3">
-                                <p>bearbeitet</p>
+        <div className=" cover mt-5 mb-5 w-1/2 flex justify-center items-center ">
+            <div className="post w-4/5  mt-7 mb-7 coaster">
+                <div className="postWrapper p-2.5 ">
+                    <div className="postTop flex items-center justify-between">
+                        <div className="postTopLeft flex items-center">
+                            <span className="postUserName text-sm ml-2.5 text-palette-80 pt-2">
+                                <p>
+                                    {" "}
+                                    {user.firstName} {user.lastName}
+                                </p>
                             </span>
+
+                            <span className="postDate text-xs ml-5 pt-2">
+                                <p>{format(post.createdAt)}</p>
+                            </span>
+                            {format(post.createdAt) !==
+                                format(post.updatedAt) && (
+                                <span className="postDate text-xxs ml-5 pt-3">
+                                    <p>bearbeitet</p>
+                                </span>
+                            )}
+                        </div>
+                        <div className="postTopRight flex items-center ">
+                            {/* vertical options */}
+                            {post.userId === currentUser._id && (
+                                <>
+                                    <RiDeleteBinLine
+                                        className="verticalOptions cursor-pointer mr-2"
+                                        title="Delete"
+                                        onClick={deleteIconHandler}
+                                    />
+                                    <RiEditLine
+                                        className="verticalOptions cursor-pointer "
+                                        title="Edit"
+                                        onClick={editNavigatorHandler}
+                                    />
+                                </>
+                            )}
+                        </div>
+                    </div>
+                    <hr className="m-5  border-1 border-palette-60 " />
+
+                    <div className="postCenter mt-5 mb-5">
+                        <span className="postText m-12">{post.desc}</span>
+
+                        {post.img !== undefined && (
+                            <img
+                                className="postImage mt-5 w-full max-h-96 object-contain"
+                                src={post.img}
+                                alt="image"
+                            />
                         )}
                     </div>
-                    <div className="postTopRight flex items-center ">
-                        {/* vertical options */}
-                        {post.userId === currentUser._id && (
-                            <>
-                                <RiDeleteBinLine
-                                    className="verticalOptions cursor-pointer mr-2"
-                                    title="Delete"
-                                    onClick={deleteIconHandler}
-                                />
-                                <RiEditLine
-                                    className="verticalOptions cursor-pointer "
-                                    title="Edit"
-                                    onClick={editNavigatorHandler}
-                                />
-                            </>
-                        )}
-                    </div>
-                </div>
-                <hr className="m-5  border-1 border-palette-40 " />
+                    <hr className="m-5  border-1 border-palette-60 " />
 
-                <div className="postCenter mt-5 mb-5">
-                    <span className="postText m-12">{post.desc}</span>
-
-                    {post.img !== undefined && (
-                        <img
-                            className="postImage mt-5 w-full max-h-96 object-contain"
-                            src={post.img}
-                            alt="image"
-                        />
-                    )}
-                </div>
-
-                <div className="postBottom flex items-center justify-between">
-                    <div className="postBottomLeft flex items-center">
-                        {/* this is an img in the tutorial */}
+                    <div className="postBottom flex items-center">
+                        {/* <div className="postBottomLeft flex items-center">
                         <FaThumbsUp
                             className="likeIcon mr-2.5 w-6 h-6 cursor-pointer ml-2.5 "
                             onClick={likeHandler}
@@ -172,11 +230,94 @@ const Post = ({ post }) => {
                         <span className="postLikeCounter pt-2 text-sm ">
                             {like} People liked this
                         </span>
-                    </div>
-                    <div className="postBottomRight">
-                        <span className="postCommentText cursor-pointer text-sm mr-2.5">
-                            2 Kommentare
-                        </span>
+                    </div> */}
+
+                        <div className="postBottomRight w-full">
+                            <span
+                                className="postCommentText cursor-pointer text-sm   "
+                                onClick={() => commentFieldHandler()}
+                            >
+                                <span className="Kommentare ">
+                                    {" "}
+                                    {post.comments.length} Kommentare
+                                </span>
+                            </span>
+
+                            {showBox && (
+                                <div className="commentsSection mt-2.5 ">
+                                    <>
+                                        {/* <Comment post={post} /> 
+                                <Comments /> */}
+                                        <div className="commentArea flex-col  space-y-3 ">
+                                            {post.comments.map((c, index) => (
+                                                <div
+                                                    className="singleCommentField input p-4 border-2 
+                                                    "
+                                                    key={index}
+                                                >
+                                                    {" "}
+                                                    <div className="flex justify-between ">
+                                                        <div className="commentOwner ">
+                                                            <span className=" text-xs text-palette-80 ">
+                                                                {" "}
+                                                                {
+                                                                    currentUser.firstName
+                                                                }{" "}
+                                                                {""}
+                                                                {
+                                                                    currentUser.lastName
+                                                                }
+                                                                :
+                                                            </span>{" "}
+                                                        </div>
+                                                        <div className="commentAndDate  ">
+                                                            <span className="commentSpan">
+                                                                {" "}
+                                                                {c.comment}{" "}
+                                                                <span className="commentDate ml-16 text-xxs">
+                                                                    {" "}
+                                                                    {format(
+                                                                        c.createdAt
+                                                                    )}
+                                                                </span>{" "}
+                                                            </span>
+                                                        </div>
+                                                        <div className="flex gap-2 ">
+                                                            <RiDeleteBinLine />
+                                                            <RiEditLine />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </>
+                                    <form
+                                        className="commentForm mt-5 flex-col p-4 border-2 border-palette-80 rounded-xl shadow"
+                                        onSubmit={submitCommentHandler}
+                                    >
+                                        <textarea
+                                            className="commentFormTextarea w-full  resize-none outline-none p-3 input"
+                                            placeholder={"kommentieren..."}
+                                            ref={comment}
+                                        ></textarea>
+                                        <div className="commentFormBtns mt-2"></div>
+                                        <button
+                                            className="commentBtn bg-palette-60 text-palette-50 p-1.5 btn mr-5"
+                                            type="submit"
+                                        >
+                                            kommentieren
+                                        </button>
+                                        <button
+                                            className="Abbrechen  bg-palette-60 text-palette-50 p-1.5 btn mr-5"
+                                            type="button"
+                                        >
+                                            {" "}
+                                            abbrechen
+                                        </button>
+                                    </form>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

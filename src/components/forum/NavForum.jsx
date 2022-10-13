@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 
 const NavForum = ({ search, setSearch }) => {
     return (
-        <div className="navBar hidden md:flex md:justify-center md:justify-items-center pt-8 pb-6">
+        <div className="navBar hidden md:flex md:justify-center md:justify-items-center pt-8 pb-6 ">
             <div className="md:border-2 md:border-palette-50 md:rounded-lg md:w-1/2 md:h-20 shadow-outer bg-palette-80 md:flex box-border ">
                 <div className="forumNavLink flex gap-x-24 pl-8 text-palette-60 text-lg ">
                     <NavLink to="/forum/news-feed/all" className="self-center">
