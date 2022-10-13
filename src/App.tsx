@@ -70,8 +70,10 @@ function App() {
     }, []);
 
     return (
-        <div className="w-full h-full fixed overflow-auto bg-palette-60 pb-24 font-block2 font-bold md:w-screen shadow-inner">
+        <div className="w-[100vw] bg-palette-60 pb-24 font-block2 font-bold shadow-inner">
+            <div className="m-auto">
             <Header />
+            </div>
             <Routes>
                 <Route path="/" element={<Navigate to="/home" replace />} />
                 <Route path="/home" element={<Homepage />} />

@@ -2,12 +2,12 @@ import create from "zustand";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-export const baseUrl= import.meta.env.VITE_BACKEND_URL;
+export const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 // APIs for getting and translating languages
 const languagesUrl = "https://libretranslate.com/languages";
 const translateUrl = "https://libretranslate.de/translate";
-const countriesUrl = "https://restcountries.com/v2/all?fields=name"
+const countriesUrl = "https://restcountries.com/v2/all?fields=name";
 
 export const useStore = create((set) => ({
     // currentUser: { email: "", firstName: "", password: "", accessGroups: [], lastName: ""},
@@ -21,14 +21,14 @@ export const useStore = create((set) => ({
                     withCredentials: true,
                 })
             ).data;
-            const user = data.currentUser
+            const user = data.currentUser;
             set((state) => {
-                const _state = {...state}
-                _state.currentUser = user
+                const _state = { ...state };
+                _state.currentUser = user;
                 // console.log(_state.currentUser);
-                _state.loading = false
-                return _state
-            })
+                _state.loading = false;
+                return _state;
+            });
             // set({currentUser: await data})
         } catch (error) {
             set(() => ({ loading: false }));
@@ -42,20 +42,20 @@ export const useStore = create((set) => ({
                     withCredentials: true,
                 })
             ).data;
-            let user = data.currentUser
+            let user = data.currentUser;
             set((state) => {
-                const _state = {...state}
-                _state.currentUser = user
-                _state.loading = false
-                return _state
-            })
-             user = data.currentUser
+                const _state = { ...state };
+                _state.currentUser = user;
+                _state.loading = false;
+                return _state;
+            });
+            user = data.currentUser;
         } catch (error) {
             set(() => ({ loading: false }));
         }
     },
     languages: [],
-    fetchLanguages: async() => {
+    fetchLanguages: async () => {
         set(() => ({ loading: true }));
         try {
             const data = (
@@ -64,34 +64,32 @@ export const useStore = create((set) => ({
                 })
             ).data;
             set((state) => {
-                const _state = {...state}
-                _state.languages = data
-                return _state
-            })
+                const _state = { ...state };
+                _state.languages = data;
+                return _state;
+            });
         } catch (error) {
             set(() => ({ loading: false }));
         }
     },
     countries: [],
-    fetchCountries: async() => {
+    fetchCountries: async () => {
         set(() => ({ loading: true }));
         try {
-            const data = (
-                await axios.get(`${countriesUrl}`)
-            ).data;
+            const data = (await axios.get(`${countriesUrl}`)).data;
             // console.log(data);
             set((state) => {
-                const _state = {...state}
-                _state.countries = data
-                return _state
-            })
+                const _state = { ...state };
+                _state.countries = data;
+                return _state;
+            });
         } catch (error) {
             set(() => ({ loading: false }));
         }
     },
-    result: "", 
-    setResult: ((result) => set({result})),
-    questions: [], 
+    result: "",
+    setResult: (result) => set({ result }),
+    questions: [],
     fetchDataForModelltest: async (category) => {
         const response = await fetch(`${baseUrl}/all-questions/${category}`);
         const questionsDB = await response.json();
@@ -115,9 +113,26 @@ export const useStore = create((set) => ({
             randomQuestion.chosenAnswer = "";
         });
         set((state) => {
-            const _state = {...state}
-            _state.questions = randomQuestions
-            return _state
-        })
-    }
+            const _state = { ...state };
+            _state.questions = randomQuestions;
+            return _state;
+        });
+    },
+    postIds: [],
+    fetchPosts: async () => {
+        set(() => ({ loading: true }));
+        try {
+            const data = (await axios.get(`${baseUrl}/posts/news-feed/all`))
+                .data;
+            //console.log(data);
+            const ids = data.map((i) => i._id);
+            set((state) => {
+                const _state = { ...state };
+                _state.postIds = ids;
+                return _state;
+            });
+        } catch (error) {
+            set(() => ({ loading: false }));
+        }
+    },
 }));
