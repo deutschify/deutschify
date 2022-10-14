@@ -6,7 +6,7 @@ const Example = ({ mean }) => {
                   means.definitions.map((def) => (
                       <div key={def.example}>
                           {def.example ? (
-                              <li className=""> {def.example}</li>
+                              <li className=" p-2"> {def.example}</li>
                           ) : (
                               ""
                           )}

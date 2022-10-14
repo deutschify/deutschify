@@ -7,7 +7,7 @@ const MeanigList = ({ mean }) => {
               val.meanings.map((means) =>
                   means.definitions.map((def) => (
                       <div key={def.definition}>
-                          <li className=" bg-palette-20">{def.definition}</li>
+                          <li className=" bg-palette-20 p-2">{def.definition}</li>
                       
                       </div>
                   ))
