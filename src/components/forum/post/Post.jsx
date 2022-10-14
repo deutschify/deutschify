@@ -19,7 +19,7 @@ const Post = ({ post }) => {
     const [user, setUser] = useState({});
     const [postedDate, setPostedDate] = useState(format(post.createdAt));
     const [postUpdated, setPostUpdated] = useState(format(post.updatedAt));
-
+    const [deletedCommentId, setDeletedCommentId] = useState("");
     // const [commentDate, setCommentDate] = useState(
     //     format(post.comments.createdAt)
     // );
@@ -165,17 +165,18 @@ const Post = ({ post }) => {
     };
 
     // Delete Comment Handler
-    const deleteCommentIconHandler = async () => {
-        // console.log(post._id);
+    const deleteCommentIconHandler = async (_id) => {
+        // console.log(
+        //     post.comments.map((comment) => comment.userId !== currentUser._id),
+        //     "2"
+        // );
+
         // console.log();
-        // console.log(currentUser._id);
+        console.log(currentUser._id);
 
         try {
             await axios.delete(
-                backend_base_url +
-                    `/posts/comments/comment/${post.comments.map(
-                        (comment) => comment._id
-                    )}`,
+                backend_base_url + `/posts/comments/comment/${_id}`,
                 {
                     data: {
                         userId: currentUser._id,
@@ -187,6 +188,11 @@ const Post = ({ post }) => {
             console.log(`Error ${error.message}`);
         }
     };
+
+    // const commentOwner = post.comments.map((comment) => {
+    //     return comment.userId;
+    // });
+    // console.log(commentOwner);
 
     return (
         <div className=" cover mt-5 mb-5 w-1/2 flex justify-center items-center ">
@@ -282,7 +288,7 @@ const Post = ({ post }) => {
                                                     {" "}
                                                     <div className="flex justify-between ">
                                                         <div className="commentOwner ">
-                                                            <span className=" text-xs text-palette-80 ">
+                                                            {/* <span className=" text-xs text-palette-80 ">
                                                                 {" "}
                                                                 {
                                                                     currentUser.firstName
@@ -292,7 +298,7 @@ const Post = ({ post }) => {
                                                                     currentUser.lastName
                                                                 }
                                                                 :
-                                                            </span>{" "}
+                                                            </span>{" "} */}
                                                         </div>
                                                         <div className="commentAndDate  ">
                                                             <span className="commentSpan">
@@ -310,8 +316,10 @@ const Post = ({ post }) => {
                                                             <RiDeleteBinLine
                                                                 className="DeleteCommentIcon cursor-pointer mr-2"
                                                                 title="Löschen"
-                                                                onClick={
-                                                                    deleteCommentIconHandler
+                                                                onClick={() =>
+                                                                    deleteCommentIconHandler(
+                                                                        c._id
+                                                                    )
                                                                 }
                                                             />
                                                             <RiEditLine />
