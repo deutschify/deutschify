@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function LesenB1() {
     const navigate = useNavigate();
     return (
-        <div className="mb-12 h-[100vh]">
+        <div className="mb-12">
             {" "}
             <div className="cover m-6 md:flex justify-center items-center">
                 <div className=" coaster p-4 text-xl text-center m-4 text-palette-60">

@@ -88,7 +88,8 @@ const LiDExc = () => {
             index++;
         }
 
-        if (getCurrentQuestion().length === 0) {
+        if (getCurrentQuestion()?.length === 0) {
+
             displayQuestions[0].current = true;
             console.log(displayQuestions);
         }

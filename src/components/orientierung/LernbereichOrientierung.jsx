@@ -95,7 +95,7 @@ const Lernbereich = () => {
             return (
                 <div
                     key={index}
-                    className="coaster m-4 text-left border-palette-80"
+                    className="coaster m-4 text-left border-palette-80 md:w-96"
                 >
                     <div className="text-xl text-palette-60 flex items-center justify-center m-2 px-1 border-2 bg-palette-50 border-palette-80 w-2/12 rounded-full">
                         {question.number}
@@ -197,17 +197,17 @@ const Lernbereich = () => {
                     : `Wir haben zu deiner Anfrage ${filteredResults.length} Übereinstimmungen gefunden`}{" "}
             </div>
             <div className="flex justify-center">
-                <div className="cover w-72 p-4 h-full">
+                <div className="cover w-72 md:w-[80%] p-4 h-full">
                     {" "}
                     <div className="">
-                        <div className="hidden md:block bg-palette-40 w-3/12 border-4 border-palette-60 rounded-xl sticky left top-2/4 left-40 shadow-inner">
+                        <div className="hidden md:block bg-palette-40 w-3/12 border-4 border-palette-60 rounded-xl sticky left top-2/4 left-72 shadow-inner">
                             <img
                                 src="../../../images/illus/study1.png"
                                 alt=""
                             />
                         </div>{" "}
-                        <div className="w-full flex flex-col items-center md:-mt-56">
-                            <div className=" flex md:justify-end md:mr-40">
+                        <div className="w-full flex flex-col items-center md:-mt-56 md:items-end md:w-">
+                            <div className="flex md:justify-end md:mr-40 md:w-[80%]">
                                 {" "}
                                 <div className="input flex flex-col items-center md:w-6/12  md:p-10 ">
                                     {isLoading ? (
@@ -224,13 +224,14 @@ const Lernbereich = () => {
                                 pageCount={pageCount}
                                 onPageChange={changePage}
                                 containerClassName={
-                                    " flex md:justify-end md:m-6 m-4 md:mr-40 text-palette-60 text-xxs"
+                                    " flex md:justify-end md:m-6 m-4 md:mr-36 text-palette-60 text-xxs"
                                 }
                                 pageLinkClassName={
                                     "md:p-4 p-2  border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
                                 }
                                 previousLinkClassName={
-                                    "w-4 text-palette-60 p-2  border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                    // "w-4 md: text-palette-60 p-2  border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                    "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
                                 }
                                 nextLinkClassName={
                                     "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
