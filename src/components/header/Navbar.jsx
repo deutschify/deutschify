@@ -23,7 +23,7 @@ const NavBar = () => {
     const currentUser = useStore((state) => state.currentUser);
     const [showNav, setShowNav] = useState(false);
     return (
-        <div className="flex justify-end h-full">
+        <div className="w-full">     <div className="flex justify-end h-full">
             <div className="w-full relative text-5xl flex overflow-auto items-center justify-center rounded-full w-20 h-20 m-5 bg-palette-80 ring-0 ring-palette-70 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md md:hidden">
                 {showNav ? (
                     <BiX onClick={() => setShowNav(!showNav)} className="" />
@@ -80,7 +80,7 @@ const NavBar = () => {
                         ) && (
                             <div className="flex items-center m-5">
                                 <NavLink
-                                    className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:shadow-inner hover:text-palette-50"
+                                    className="bg-palette-80 p-4 text-2xl py-2 rounded-full  hover:text-palette-50 hover:border-4 hover:border-palette-60"
                                     to={`/${currentUser.firstName}`}
                                     element={<PageUserSettings />}
                                 >
@@ -104,7 +104,8 @@ const NavBar = () => {
             </div>
 
             <NavbarDesktop />
-        </div>
+        </div></div>
+   
     );
 };
 

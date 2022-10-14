@@ -88,7 +88,7 @@ const LiDExc = () => {
             index++;
         }
 
-        if (getCurrentQuestion().length === 0) {
+        if (getCurrentQuestion()?.length === 0) {
             displayQuestions[0].current = true;
             console.log(displayQuestions);
         }
@@ -144,29 +144,30 @@ const LiDExc = () => {
     return (
         <div className="mb-10">
             {" "}
-           
             {/* Übungssatz {category}
             <div className="">{displayQuestions.length} Fragen</div> */}
             <div className="flex flex-col items-center justify-center">
-                 <div className="coaster m-4 text-left p-4">
-                Hier kannst du für den Integrationstest lernen. Beantworte dafür
-                nacheinander alle 300 Fragen zu Deutschland und 10 Fragen zu{" "}
-                {category.charAt(0).toUpperCase() + category.slice(1)}.
-                Wiederhole den Test bist du dich sicher genug fühlst.
-            </div>
-               
+                <div className="coaster m-4 text-left p-4 md:text-2xl md:text-center">
+                    Hier kannst du für den Integrationstest lernen. Beantworte
+                    dafür nacheinander alle 300 Fragen zu Deutschland und 10
+                    Fragen zu{" "}
+                    {category.charAt(0).toUpperCase() + category.slice(1)}.
+                    Wiederhole den Test bist du dich sicher genug fühlst.
+                </div>
+
                 <div className="flex flex-col items-center justify-center">
-                    <div className="cover w-64 m-4  text-palette-60 flex flex-col items-center justify-center">
+                    <div className="cover w-64 m-4 md:w-[50vw] text-palette-60 flex flex-col items-center justify-center">
                         {canDisplayQuestions() && (
                             <>
                                 {" "}
-                                <div className="bg-palette-50 border-4 border-palette-60 rounded-xl w-10 text-center m-2">
+                                
+                                <div className="coaster text-center m-2 mb-4 md:text-2xl p-2 px-4 md:px-5 rounded-full">
                                     {getCurrentQuestion().number}
                                 </div>
-                                <div className="coaster w-56 p-2">
+                                <div className="coaster w-56 p-2 md:w-10/12 md:text-2xl md:text-center">
                                     {getCurrentQuestion().question}
                                 </div>
-                                <div className="flex justify-center">
+                                <div className="flex justify-center md:w-10/12 md:text-2xl md:text-center md:m-10">
                                     {getCurrentQuestion().imageURL && (
                                         <AdvancedImage
                                             cldImg={fetchImage(
@@ -181,7 +182,7 @@ const LiDExc = () => {
                                         className={`${
                                             getCurrentQuestion()
                                                 .answerAButtonClass
-                                        }    bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer`}
+                                        }    bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4`}
                                         onClick={() => {
                                             rightAnswerHandler("answerA");
                                         }}
@@ -195,7 +196,7 @@ const LiDExc = () => {
                                         className={`${
                                             getCurrentQuestion()
                                                 .answerBButtonClass
-                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer`}
+                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4` }
                                         onClick={() => {
                                             rightAnswerHandler("answerB");
                                         }}
@@ -209,7 +210,7 @@ const LiDExc = () => {
                                         className={`${
                                             getCurrentQuestion()
                                                 .answerCButtonClass
-                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer`}
+                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4`}
                                         onClick={() => {
                                             rightAnswerHandler("answerC");
                                         }}
@@ -223,7 +224,7 @@ const LiDExc = () => {
                                         className={`${
                                             getCurrentQuestion()
                                                 .answerDButtonClass
-                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer`}
+                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4`}
                                         onClick={() => {
                                             rightAnswerHandler("answerD");
                                         }}
@@ -234,7 +235,7 @@ const LiDExc = () => {
                                         {getCurrentQuestion().answerD}
                                     </button>
                                 </div>
-                                <div className="m-10 flex justify-around text-sm">
+                                <div className="m-10 flex justify-around text-sm md:text-lg md:w-5/6 md:justify-between">
                                     {" "}
                                     <button
                                         className="btn p-2 w-4/12 border-4 border-palette-60"
@@ -261,14 +262,14 @@ const LiDExc = () => {
                         )}
                     </div>
                     <nav className="m-6">
-                    <NavLink
-                        to={`/lernbereich/${category}`}
-                        element={<Lernbereich />}
-                        className="btn p-5 w-32 md:w-2/12 md:text-center "
-                    >
-                        Zurück zum Lernbereich
-                    </NavLink>
-                </nav>
+                        <NavLink
+                            to={`/lernbereich/${category}`}
+                            element={<Lernbereich />}
+                            className="btn p-5 w-32 md:w-2/12 md:text-center "
+                        >
+                            Zurück zum Lernbereich
+                        </NavLink>
+                    </nav>
                 </div>
             </div>
         </div>

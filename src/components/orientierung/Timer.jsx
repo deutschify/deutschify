@@ -6,8 +6,8 @@ const hourSeconds = 3600;
 
 const timerProps = {
   isPlaying: true,
-  size: 110,
-  strokeWidth: 10,
+  size: 100,
+  strokeWidth: 6,
   };
 
 const renderTime = (dimension, time) => {
@@ -31,8 +31,8 @@ export default function App() {
     <div className="App">
       <CountdownCircleTimer
         {...timerProps}
-        colors="#2F4858"
-        trailColor="#FDF0D5"
+        colors="#FDF0D5"
+        trailColor="#2F4858"
         // colors="#FDF0D5"
         
         duration={hourSeconds}
@@ -42,7 +42,7 @@ export default function App() {
         })}
       >
         {({ elapsedTime, color }) => (
-          <span style={{ color: "#FDF0D5" }}>
+          <span style={{ color: "#FDF0D5", textAlign:"center"}}>
             {renderTime("Minuten", getTimeMinutes(hourSeconds - elapsedTime))}
           </span>
         )}

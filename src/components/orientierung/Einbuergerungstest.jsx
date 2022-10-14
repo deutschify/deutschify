@@ -6,24 +6,24 @@ import "../../App.css";
 
 const Einbuergerungstest = () => {
     return (
-        <div className="mb-12">
+        <div className="mb-12 md:m-12">
             {" "}
-            <div className="cover m-4 overflow-hidden">
-                <h1 className="title text-center text-3xl p-5 text-palette-60 font-block1">
+            <div className="cover m-4 overflow-hidden md:flex md:flex-col md:items-center">
+                <h1 className="title text-center text-3xl md:text-5xl p-5 text-palette-60 font-block1">
                     Übungen zum Orientierungskurs
                 </h1>
-                <h3 className="text-center text-xl p-5 text-palette-60">
+                <h3 className="text-center text-xl md:text-2xl p-5 text-palette-60">
                     Bereite dich hier auf den Einbürgerungstest vor!
                 </h3>
-                <h2 className="coaster text-center text-xl text-palette-60 m-4">
+                <h2 className="coaster text-center text-xl text-palette-60 m-4 md:w-80 md:p-4 md:m-2">
                     Wähle zuerst dein Bundesland aus
                 </h2>
 
-                <nav className="coaster p-4 flex flex-col items-center justify-center  md:flex-row md:flex-wrap md:w-11/12 md:justify-center shadow-outer">
+                <nav className="coaster p-4 md:w-[80%] flex md:m-10 md:p-20 flex-col items-center justify-center  md:flex-row md:flex-wrap md:justify-center shadow-outer">
                     <NavLink
                         to="/lernbereich/baden-wuerttemberg"
                         element={<Lernbereich />}
-                        className="bg-palette-60 w-60 h-20 rounded-xl m-4 flex justify-center items-center text-xl text-palette-50 hover:text-palette-80 font-block3 font-bold shadow-inner hover:underline underline-offset-4"
+                        className="bg-palette-60 w-60  h-20 rounded-xl m-4 flex justify-center items-center text-xl text-palette-50 hover:text-palette-80 font-block3 font-bold shadow-inner hover:underline underline-offset-4"
                     >
                         Baden-Württemberg
                     </NavLink>

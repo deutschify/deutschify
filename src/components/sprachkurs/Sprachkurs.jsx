@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import A1 from "./A1";
 import A2 from "./A2";
 import B1 from "./B1";
@@ -7,8 +7,9 @@ import ImgSprachkursA from "../../../public/images/illus/sprachkurs2.png";
 import ImgSprachkursB from "../../../public/images/illus/sprachkurs3.png";
 
 const Sprachkurs = () => {
+    const navigate = useNavigate();
     return (
-        <div className="">
+        <div className="mb-12">
             <div className="cover m-10">
                 <div className="title text-center text-2xl p-2 text-palette-60 font-block3">
                     Hier hast du die Möglichkeit dich in den vier Bereichen,
@@ -17,7 +18,7 @@ const Sprachkurs = () => {
                 </div>
             </div>
           
-            <div className="cover flex flex-col md:flex-row items-center m-5 mb-16">
+            <div className="cover flex flex-col items-center m-5 mb-16">
             <div className="coaster m-10">
                 {" "}
                 <div className="text-center text-palette-60 p-2 font-block1 text-xl">
@@ -63,6 +64,16 @@ const Sprachkurs = () => {
                 <div className="imgFrame w-40 border-4 mb-10 shadow-outer">
                     <img src={ImgSprachkursB} alt="" className="mt-4" />
                 </div>
+            </div>
+            <div className="flex justify-center">
+                {" "}
+                <button
+                    onClick={() => navigate(-1)}
+                    className="btn p-1 md:p-6 text-palette-60 rounded-full h-20 md:rounded-xl text-lg"
+                    
+                >
+                    zurück
+                </button>
             </div>
         </div>
     );
