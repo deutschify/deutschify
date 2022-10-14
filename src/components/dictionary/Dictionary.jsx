@@ -28,16 +28,16 @@ const Dictionary = () => {
     };
 
     return (
-        <div className="h-screen w-max">
+        <div className="mb-12">
             {" "}
-            <div className="   xl:grid grid-cols-2 w-full gap-[15rem] ml-2   ">
+            <div className="  xl:grid grid-cols-2 w-full  ml-2   ">
                 <div className="cover h-100% container mx-auto px-3 py-8">
                     <h1 className="text-3xl font-bold  text-white">
-                        Simple Dictionary
+                        Wörterbuch
                     </h1>
 
                     <input
-                        className=" md:hidden py-2 px-2  w-[6rem]  "
+                        className=" w-[7rem] md:hidden py-2 px-4 "
                         type="tex  "
                         placeholder="language"
                     />
@@ -50,7 +50,7 @@ const Dictionary = () => {
                         <HiArrowNarrowLeft />
                     </button>
                     <input
-                        className="md:hidden py-2 px-2 ml-6 w-[6rem]  "
+                        className=" w-[7rem] md:hidden py-2 px-2 ml-6  "
                         type="text "
                         placeholder="language"
                     />
@@ -72,11 +72,11 @@ const Dictionary = () => {
                             </button>
                         </div>
                         <input
-                            className="hidden md:block py-2 ml-6 w-[6rem]"
+                            className="hidden md:block py-2 ml-6  w-[7rem] pl-2"
                             type="text "
                             placeholder="language"
                         />
-                        <button className="hidden md:block mt-6 pl-4">
+                        <button className="hidden md:block mt-6 pl-4 ">
                             {" "}
                             <HiArrowNarrowRight />
                         </button>
@@ -85,7 +85,7 @@ const Dictionary = () => {
                             <HiArrowNarrowLeft />
                         </button>
                         <input
-                            className="hidden md:block py-2 ml-6 w-[6rem]"
+                            className="hidden md:block py-2 ml-6  w-[7rem] pl-2"
                             type="text "
                             placeholder="language"
                         />
@@ -94,7 +94,7 @@ const Dictionary = () => {
                     {inputValue && (
                         <>
                             <h3 className="text-palette-50 mt-4">
-                                Result for:{" "}
+                                Ergebnis für:{" "}
                                 <span className="text-palette-50 font-bold">
                                     {inputValue}
                                 </span>

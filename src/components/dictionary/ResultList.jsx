@@ -53,19 +53,19 @@ const ResultList = ({ inputValue }) => {
     return (
         <div>
             {response && (
-                <div >
-                    <div >
+                <div>
+                    <div>
                         <div>
                             <h3 className="text-2xl font-bold mt-4 text-center ">
-                                Meaning & Definitions:
+                                Bedeutung & Definitionen:
                             </h3>
                             <MeanigList mean={response} />
                             <h3 className="text-2xl font-bold mt-4 text-center ">
-                                Example:
+                                Beispiel:
                             </h3>
                             <Example mean={response} />
                             <h3 className="text-2xl font-bold mt-4 text-center ">
-                                Synonym:
+                                Synonyme:
                             </h3>
                             <Synonym mean={response} />
                             {/* <h3 className="text-2xl font-bold mt-4">
