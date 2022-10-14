@@ -19,7 +19,7 @@ const Einbuergerungstest = () => {
                     Wähle zuerst dein Bundesland aus
                 </h2>
 
-                <nav className="coaster p-4 md:w-[80%] flex md:m-2 md:p-20 flex-col items-center justify-center  md:flex-row md:flex-wrap md:justify-center shadow-outer">
+                <nav className="coaster p-4 md:w-[80%] flex md:m-10 md:p-20 flex-col items-center justify-center  md:flex-row md:flex-wrap md:justify-center shadow-outer">
                     <NavLink
                         to="/lernbereich/baden-wuerttemberg"
                         element={<Lernbereich />}
