@@ -122,9 +122,9 @@ const Post = ({ post }) => {
         setIsLiked(!isLiked);
     };
 
-    //Delete Handler
+    //Delete Post Handler
 
-    const deleteIconHandler = async () => {
+    const deletePostIconHandler = async () => {
         // console.log(post._id);
         // console.log();
         // console.log(currentUser._id);
@@ -164,6 +164,30 @@ const Post = ({ post }) => {
         } catch (error) {}
     };
 
+    // Delete Comment Handler
+    const deleteCommentIconHandler = async () => {
+        // console.log(post._id);
+        // console.log();
+        // console.log(currentUser._id);
+
+        try {
+            await axios.delete(
+                backend_base_url +
+                    `/posts/comments/comment/${post.comments.map(
+                        (comment) => comment._id
+                    )}`,
+                {
+                    data: {
+                        userId: currentUser._id,
+                    },
+                }
+            );
+            window.location.reload();
+        } catch (error) {
+            console.log(`Error ${error.message}`);
+        }
+    };
+
     return (
         <div className=" cover mt-5 mb-5 w-1/2 flex justify-center items-center ">
             <div className="post w-4/5  mt-7 mb-7 coaster">
@@ -192,13 +216,13 @@ const Post = ({ post }) => {
                             {post.userId === currentUser._id && (
                                 <>
                                     <RiDeleteBinLine
-                                        className="verticalOptions cursor-pointer mr-2"
-                                        title="Delete"
-                                        onClick={deleteIconHandler}
+                                        className="DeletePostIcon cursor-pointer mr-2"
+                                        title="Löschen"
+                                        onClick={deletePostIconHandler}
                                     />
                                     <RiEditLine
-                                        className="verticalOptions cursor-pointer "
-                                        title="Edit"
+                                        className="EditPostIcon cursor-pointer "
+                                        title="Bearbeiten"
                                         onClick={editNavigatorHandler}
                                     />
                                 </>
@@ -283,7 +307,13 @@ const Post = ({ post }) => {
                                                             </span>
                                                         </div>
                                                         <div className="flex gap-2 ">
-                                                            <RiDeleteBinLine />
+                                                            <RiDeleteBinLine
+                                                                className="DeleteCommentIcon cursor-pointer mr-2"
+                                                                title="Löschen"
+                                                                onClick={
+                                                                    deleteCommentIconHandler
+                                                                }
+                                                            />
                                                             <RiEditLine />
                                                         </div>
                                                     </div>

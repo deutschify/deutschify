@@ -13,7 +13,7 @@ const NavForum = ({ search, setSearch }) => {
                         New Post
                     </NavLink> */}
                     <NavLink to="/forum/my-posts" className="self-center">
-                        Meine Posten
+                        Meine Beiträge
                     </NavLink>
                     {/* search bar for forum */}
                     <div className="self-center flex  ">
