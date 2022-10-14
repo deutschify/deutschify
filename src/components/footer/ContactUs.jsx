@@ -39,43 +39,43 @@ const ContactUs = () => {
     return (
         <>
             {currentUser.accessGroups?.includes("loggedInUsers") ? (
-                <div className="bg-palette-60  p-4 ">
+                <div className="bg-palette-60 p-4 mb-4">
                     <h1 className="text-center text-3xl text-palette-50">
                         Wir freuen uns von dir zu hören!
                     </h1>
-                    <h2 className="text-center text-2xl text-palette-50">
+                    <h2 className="text-center text-2xl mt-10 text-palette-50">
                         Dein direkter Draht zu uns
                     </h2>
-                    <div className="flex justify-center p-10 relative">
+                    <div className="flex justify-center p-4 relative">
                         <img src={ContactA} alt="contact us" className="hidden md:block bg-palette-50 w-80 h-60 absolute left-60 rounded-xl bottom-72 border-8 border-palette-60 "/>
                         <form
                             onSubmit={sendEmail}
-                            className="bg-palette-80 border-4 border-palette-50 md:w-2/4 md:h-full md:p-4 flex justify-center rounded-2xl shadow-outer"
+                            className="bg-palette-80 border-4 border-palette-50 w-full md:w-2/4 md:h-full md:p-4 flex justify-center rounded-2xl shadow-outer"
                         >
                             <div className="">
-                                <div className="m-6">
+                                <div className="m-6 flex justify-center">
                                     <input
                                         type="text"
                                         required
-                                        className="w-96 h-10 p-5 rounded-xl bg-palette-60 border-4 border-palette-50 shadow-inner outline-none placeholder:text-palette-50/75"
+                                        className="input p-3 md:w-80 border-palette-50"
                                         placeholder="Name"
                                         name="from_name"
                                     />
                                 </div>
-                                <div className="m-6">
+                                <div className="m-6 flex justify-center">
                                     <input
                                         type="email"
                                         required
-                                        className="w-96 h-10 p-5 rounded-xl bg-palette-60 shadow-inner outline-none border-4 border-palette-50 placeholder:text-palette-50/75"
+                                        className="input md:w-80 p-3 border-palette-50"
                                         placeholder="Email Adresse"
                                         name="reply_to"
                                     />
                                 </div>
-                                <div className="m-6">
+                                <div className="m-6 flex justify-center">
                                     <textarea
                                         type="text"
                                         required
-                                        className="w-96 h-60 p-4 rounded-xl bg-palette-60 shadow-inner border-4 border-palette-50 outline-none placeholder:text-palette-50/75"
+                                        className="input w-11/12 p-3 border-palette-50"
                                         name="message"
                                         id=""
                                         cols={3}
@@ -84,15 +84,15 @@ const ContactUs = () => {
                                     ></textarea>
                                 </div>
 
-                                <div className="m-6">
+                                <div className="m-6 flex justify-center">
                                     <input
                                         type="submit"
-                                        className="w-96 h-10 border-4 border-palette-60 rounded-xl bg-palette-50 text-palette-60 shadow-outer hover:bg-palette-60 hover:text-palette-50 hover:border-4 border-palette-50 hover:box-border active:shadow-inner"
+                                        className="p-4 btn border-palette-60"
                                         value="abschicken"
                                     />
                                 </div>
                                 <div className="relative">
-                                    <div className="absolute">
+                                    <div className="absolute bottom-10">
                                         {isOpen && (
                                             <ContactPopup
                                                 content={
