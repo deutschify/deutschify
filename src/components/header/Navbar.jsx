@@ -80,7 +80,7 @@ const NavBar = () => {
                         ) && (
                             <div className="flex items-center m-5">
                                 <NavLink
-                                    className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:shadow-inner hover:text-palette-50"
+                                    className="bg-palette-80 p-4 text-2xl py-2 rounded-full  hover:text-palette-50 hover:border-4 hover:border-palette-60"
                                     to={`/${currentUser.firstName}`}
                                     element={<PageUserSettings />}
                                 >

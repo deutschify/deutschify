@@ -19,7 +19,7 @@ export const PageLogout = () => {
 		navigate("/home");
 	}
 	return (
-		<div className="pageLogout w-40 text-center bg-palette-70 p-4 text-xl rounded-xl hover:shadow-inner hover:text-palette-50 m-5 ml-60">
+		<div className="pageLogout w-40 text-center bg-palette-70 p-4 text-xl rounded-xl hover:shadow-inner hover:text-palette-50 m-5 md:ml-60">
 			<button onClick={handleLogoutButton}>Logout</button>
 		</div>
 	);

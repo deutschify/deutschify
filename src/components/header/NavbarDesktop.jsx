@@ -83,7 +83,7 @@ function NavbarDesktop() {
                         </NavLink>
 
                         <NavLink
-                            className="py-10 px-4 text-2xl hover:text-palette-80"
+                            className="py-10 px-4 text-2xl hover:text-palette-80 mr-40"
                             to="/forum"
                             element={<Forum />}
                         >
@@ -92,7 +92,7 @@ function NavbarDesktop() {
                         {currentUser.accessGroups?.includes(
                             "loggedOutUsers"
                         ) && (
-                            <div className="flex items-center ml-40">
+                            <div className="flex items-center m-5">
                                 <NavLink
                                     className="w-40 text-center border-4 border-palette-60 bg-palette-70 p-4 text-xl rounded-xl shadow-outer hover:shadow-inner hover:text-palette-50 m-5"
                                     to="/login"
@@ -113,9 +113,9 @@ function NavbarDesktop() {
                         {currentUser.accessGroups?.includes(
                             "loggedInUsers"
                         ) && (
-                            <div className="flex items-center m-5">
+                            <div className="w-40 flex items-center justify-end">
                                 <NavLink
-                                    className="bg-palette-80 p-4 text-2xl py-2 rounded-full hover:shadow-inner hover:text-palette-50"
+                                    className="bg-palette-80 p-4 text-2xl py-2 rounded-full  hover:text-palette-50 hover:border-4 hover:border-palette-60"
                                     to={`/${currentUser.firstName}`}
                                     element={<PageUserSettings />}
                                 >
