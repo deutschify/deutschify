@@ -95,32 +95,29 @@ const PageRegister = (props: IPageRegistrationProps) => {
     };
 
     return (
-        <div className="  md:grid grid-cols-2 min-h-[800px] ">
+        <div className="  md:grid grid-cols-2  m-10">
             <div className=" hidden md:flex flex-col justify-center items-start w-[700px]">
-
                 <div>
                     {" "}
                     <img className=" w-[600px]" src={Image} alt="" />{" "}
                 </div>
             </div>
-            <div className=" py-[200px] flex flex-col justify-center items-center ">
+            <div className=" cover  flex flex-col justify-center items-center ">
                 <div>
-
-                    <h1 className="text-center text-2xl pb-3 ">
-                        Welcome to Register
-                    </h1>
                     {success ? (
-                <p>go to your Email to verify your account.</p>
-            ) : (
-                notification
-            )}
+                        <p className="text-palette-60">
+                            go to your Email to verify your account.
+                        </p>
+                    ) : (
+                        notification
+                    )}
                     <form
-                        className=" flex-col"
+                        className=" flex-col m-4"
                         onSubmit={handleSubmit(onSubmit)}
                     >
                         <div className="py-[20px] ">
                             <input
-                                className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 defaultValue=""
                                 {...register("firstName")}
                                 placeholder="firstName"
@@ -131,7 +128,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
                         </div>
                         <div className="py-[20px] ">
                             <input
-                                className="  w-[20rem] text-palette-50 border-2 border-palette-30  bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                className=" w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 defaultValue=""
                                 {...register("lastName")}
                                 placeholder="lastName"
@@ -143,7 +140,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
 
                         <div className="py-[20px] ">
                             <input
-                                className="  w-[20rem] text-palette-50 border-2 border-palette-30  bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                className=" w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 defaultValue=""
                                 {...register("email")}
                                 placeholder="email"
@@ -152,7 +149,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
                         </div>
                         <div className="py-[20px] ">
                             <input
-                                className="  w-[20rem] text-palette-50 border-2 border-palette-30  bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                className=" w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 defaultValue=""
                                 {...register("password")}
                                 placeholder="password"
@@ -163,7 +160,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
                         </div>
                         <div className="py-[20px] ">
                             <input
-                                className="  w-[20rem] text-palette-50 border-2 border-palette-30  bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 placeholder="repeat-password"
                                 defaultValue=""
                                 {...register("repeatPassword")}
@@ -174,28 +171,28 @@ const PageRegister = (props: IPageRegistrationProps) => {
                         </div>
                         <div className=" text-center">
                             <select
-                                className="border-2 border-palette-30   text-center bg-palette-20 rounded-3xl px-5 py-2"
+                                className="w-[10rem] input mb-2 border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   text-palette-60 bg-palette-50 "
                                 {...register("language")}
-                        onChange={(e) =>
-                            setValue("language", e.target.value, {
-                                shouldValidate: true,
-                            })
-                        } // Using setValue
-                        defaultValue=""
-                        name="language"
+                                onChange={(e) =>
+                                    setValue("language", e.target.value, {
+                                        shouldValidate: true,
+                                    })
+                                } // Using setValue
+                                defaultValue=""
+                                name="language"
                             >
                                 {languages.map((language: ILanguage) => {
-                            return (
-                                <option
-                                className="bg-palette-60 "
-                                    key={language.code}
-                                    value={`${language.code}`}
-                                >
-                                    {" "}
-                                    {language.name}
-                                </option>
-                            );})}
-                               
+                                    return (
+                                        <option
+                                            className="bg-palette-50 "
+                                            key={language.code}
+                                            value={`${language.code}`}
+                                        >
+                                            {" "}
+                                            {language.name}
+                                        </option>
+                                    );
+                                })}
                             </select>
                             {errors.language && (
                                 <p>{errors?.language?.message}</p>
@@ -203,28 +200,28 @@ const PageRegister = (props: IPageRegistrationProps) => {
                         </div>
                         <div className=" text-center">
                             <select
-                                className="border-2 border-palette-30   text-center bg-palette-20 rounded-3xl px-5 py-2"
+                                className="w-[10rem] input mb-2 border-2 text-center rounded-3xl py-3 px-4 focus:outline-none  text-palette-60  bg-palette-50"
                                 {...register("nationality")}
                                 onChange={(e) =>
-                            setValue("nationality", e.target.value, {
-                                shouldValidate: true,
-                            })
-                        } // Using setValue
-                        defaultValue=""
-                        name="nationality"
+                                    setValue("nationality", e.target.value, {
+                                        shouldValidate: true,
+                                    })
+                                } // Using setValue
+                                defaultValue=""
+                                name="nationality"
                             >
                                 {countries.map((country: ICountry) => {
-                            return (
-                                <option
-                                className="bg-palette-60 "
-                                    key={country.name}
-                                    value={`${country.name}`}
-                                >
-                                    {" "}
-                                    {country.name.substring(0, 18)}
-                                </option>
-                            );
-                        })}
+                                    return (
+                                        <option
+                                            className="bg-palette-50 "
+                                            key={country.name}
+                                            value={`${country.name}`}
+                                        >
+                                            {" "}
+                                            {country.name.substring(0, 18)}
+                                        </option>
+                                    );
+                                })}
                             </select>
                             {errors.nationality && (
                                 <p>{errors?.nationality?.message}</p>
@@ -232,14 +229,13 @@ const PageRegister = (props: IPageRegistrationProps) => {
                         </div>
                         <div className="text-center py-[20px]">
                             <input
-                                className="bg-palette-30 px-8 py-2 rounded-3xl "
+                                className="bg-palette-80 input text-palette-60 px-8 py-2 rounded-3xl "
                                 type="submit"
                                 value="Sign Up"
                             />
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
     );
