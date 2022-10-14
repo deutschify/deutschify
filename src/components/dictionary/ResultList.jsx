@@ -56,15 +56,15 @@ const ResultList = ({ inputValue }) => {
                 <div>
                     <div>
                         <div>
-                            <h3 className="text-2xl font-bold mt-4 text-center ">
+                            <h3 className="text-2xl font-bold mt-4 text-center text-palette-60  ">
                                 Bedeutung & Definitionen:
                             </h3>
                             <MeanigList mean={response} />
-                            <h3 className="text-2xl font-bold mt-4 text-center ">
+                            <h3 className="text-2xl font-bold mt-4 text-center text-palette-60 ">
                                 Beispiel:
                             </h3>
                             <Example mean={response} />
-                            <h3 className="text-2xl font-bold mt-4 text-center ">
+                            <h3 className="text-2xl font-bold mt-4 text-center text-palette-60  ">
                                 Synonyme:
                             </h3>
                             <Synonym mean={response} />
