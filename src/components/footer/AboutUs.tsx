@@ -111,7 +111,7 @@ const AboutUs = () => {
                         <p className="mt-6">Das sind wir</p> {/* zubia */}
                         <div className="bg-palette-80 w-11/12 md:w-9/12 mZ-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60 grid grid-cols-3 items-center">
                             <img
-                                src="../../../public/images/imgZubi.png"
+                                src="../../../images/imgZubi.png"
                                 alt="image"
                                 className="w-10/12 hidden md:block"
                             />
@@ -120,7 +120,7 @@ const AboutUs = () => {
                                 <div className="border-b-2 border-palette-60 mb-4">
                                     Zubia Rashid 
                                     <img
-                                src="../../../public/images/imgZubi.png"
+                                src="../../../images/imgZubi.png"
                                 alt="image"
                                 className="w-10/12  md:hidden m-2"
                             />
@@ -147,7 +147,7 @@ const AboutUs = () => {
                         </div>
                         <div className="bg-palette-80 w-10/12 md:w-9/12 mt-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60 grid grid-cols-3 items-center">
                             <img
-                                src="../../../public/images/omar.jpg"
+                                src="../../../images/omar.jpg"
                                 alt="image"
                                 className="w-9/12 hidden md:block"
                             />
@@ -156,7 +156,7 @@ const AboutUs = () => {
                                 <div className="border-b-2 border-palette-60 mb-4">
                                     Omar Rajla Tabaa
                                     <img
-                                src="../../../public/images/omar.jpg"
+                                src="../../../images/omar.jpg"
                                 alt="image"
                                 className="w-9/12 m-2 md:hidden"
                             />
@@ -177,7 +177,7 @@ const AboutUs = () => {
                         </div>
                         <div className="bg-palette-80 w-10/12 md:w-9/12 mt-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60 grid grid-cols-3 items-center">
                             <img
-                                src="../../../public/images/mezekir.jpg"
+                                src="../../../images/mezekir.jpg"
                                 alt="image"
                                 className="w-10/12 hidden md:block"
                             />
@@ -186,7 +186,7 @@ const AboutUs = () => {
                                 <div className="border-b-2 border-palette-60 mb-4">
                                     Mezekir Abraham Ghebreyesus
                                     <img
-                                src="../../../public/images/mezekir.jpg"
+                                src="../../../images/mezekir.jpg"
                                 alt="image"
                                 className="w-10/12 m-2  md:hidden"
                             />
@@ -199,7 +199,7 @@ const AboutUs = () => {
                         </div>
                         <div className="bg-palette-80 w-10/12 md:w-9/12 my-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60 grid grid-cols-3 items-center">
                             <img
-                                src="../../../public/images/sali.jpg"
+                                src="../../../images/sali.jpg"
                                 alt="image"
                                 className="w-10/12 hidden md:block"
                             />
@@ -208,7 +208,7 @@ const AboutUs = () => {
                                 <div className="border-b-2 border-palette-60 mb-4">
                                     Sali Taymour
                                     <img
-                                src="../../../public/images/sali.jpg"
+                                src="../../../images/sali.jpg"
                                 alt="image"
                                 className="w-10/12 m-2 md:hidden"
                             />
