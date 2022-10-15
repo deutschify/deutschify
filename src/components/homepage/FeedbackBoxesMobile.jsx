@@ -1,33 +1,34 @@
 import { useState, useEffect, useRef } from "react";
 import "../../App.css";
 
-const colors = ["#0088FE", "#00C49F", "#FFBB28"];
+
 const feedbacks = [
     {
         name: "Samira",
         image: "../../../images/samira.png",
-        comment: "Ich habe mit Hilfe dieser Webseite meinen Einbürgerungstest bestanden."
+        comment:
+            "Ich habe mit Hilfe dieser Webseite meinen Einbürgerungstest bestanden.",
     },
     {
         name: "Rahul",
         image: "../../../images/rahul.png",
-        comment: "Ich kann mich sehr gut auf meine b1 Prüfung vorbereiten."
+        comment: "Ich kann mich sehr gut auf meine b1 Prüfung vorbereiten.",
     },
     {
         name: "Yassir",
         image: "../../../images/yassir.png",
-        comment: "Es macht mir spaß!"
+        comment: "Es macht mir spaß!",
     },
     {
         name: "Enrico",
         image: "../../../images/enrico.png",
-        comment: "Alles Top!"
+        comment: "Alles Top!",
     },
     {
         name: "Craig",
         image: "../../../images/craig.png",
-        comment: "Ich lerne viel schneller."
-    }
+        comment: "Ich lerne viel schneller.",
+    },
 ];
 const delay = 3000;
 
@@ -57,21 +58,30 @@ const FeedbackBoxesMobile = () => {
 
     return (
         <div className="md:hidden">
-      
             <div className="w-96  h-72 flex items-center justify-center  bg-palette-50 border-4 border-palette-80 rounded-xl">
-                <div className="slideshow w-52 h-60  overflow-hidden ">
+                <div className="slideshow w-52 h-60 overflow-hidden">
                     <div
-                        className="slideshowSlider whitespace-nowrap transition ease-in-out 2s"
+                        className="slideshowSlider whitespace-nowrap transition ease-in-out 5s"
                         style={{
                             transform: `translate3d(${-index * 100}%, 0, 0)`,
                         }}
                     >
                         {feedbacks.map((feedback, index) => (
                             <div
-                                className="slide mb-40 inline-block h-72 w-52 text-palette-60"
+                                className="slide inline-block bg-palette-80 min-h-72" 
                                 key={index}
-                                
-                            >{feedback.name}</div>
+                            >
+                                <div className="bg-palette-60 w-52 p-2 text-palette-50">
+                                    <img
+                                        src={feedback.image}
+                                        alt="fimage"
+                                        className="w-16 h-16 rounded-full border-4 border-palette-50"
+                                    />
+                                    <div className="p-2 whitespace-normal h-36">{feedback.comment}</div>
+                                    <div className="italic">{feedback.name}</div>
+                                </div>
+
+                            </div>
                         ))}
                     </div>
 
