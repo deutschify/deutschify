@@ -45,7 +45,7 @@ const FeedbackBoxesMobile = () => {
         timeoutRef.current = setTimeout(
             () =>
                 setIndex((prevIndex) =>
-                    prevIndex === colors.length - 1 ? 0 : prevIndex + 1
+                    prevIndex === feedbacks.length - 1 ? 0 : prevIndex + 1
                 ),
             delay
         );
@@ -57,8 +57,8 @@ const FeedbackBoxesMobile = () => {
 
     return (
         <div className="md:hidden">
-            {" "}
-            {/* <div className="w-96  h-72 flex items-center justify-center  bg-palette-50 border-4 border-palette-80 rounded-xl">
+      
+            <div className="w-96  h-72 flex items-center justify-center  bg-palette-50 border-4 border-palette-80 rounded-xl">
                 <div className="slideshow w-52 h-60  overflow-hidden ">
                     <div
                         className="slideshowSlider whitespace-nowrap transition ease-in-out 2s"
@@ -66,16 +66,16 @@ const FeedbackBoxesMobile = () => {
                             transform: `translate3d(${-index * 100}%, 0, 0)`,
                         }}
                     >
-                        {colors.map((backgroundColor, index) => (
+                        {feedbacks.map((feedback, index) => (
                             <div
-                                className="slide mb-40 inline-block h-72 w-52"
+                                className="slide mb-40 inline-block h-72 w-52 text-palette-60"
                                 key={index}
-                                style={{ backgroundColor }}
-                            ></div>
+                                
+                            >{feedback.name}</div>
                         ))}
                     </div>
 
-                    <div className="slideshowDots text-center h-4 w-4 bg-palette-80">
+                    {/* <div className="slideshowDots text-center h-4 w-4 bg-palette-80">
                         {colors.map((_, idx) => (
                             <div
                                 key={idx}
@@ -87,9 +87,9 @@ const FeedbackBoxesMobile = () => {
                                 }}
                             ></div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
-            </div> */}
+            </div>
         </div>
     );
 };
