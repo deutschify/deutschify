@@ -142,12 +142,12 @@ const LiDMod = () => {
             </div>
             <div className="flex justify-center">
                 <div className="">
-                    <div className="mt-20">
+                    <div className="">
                         {timePopup && (
                             <TimeoutPopup
                                 content={
                                     <>
-                                        <p className="shadow-outer">
+                                        <p className="w-80 ">
                                             Die Zeit ist leider abgelaufen.
                                             Versuche es erneut!
                                         </p>
@@ -164,7 +164,7 @@ const LiDMod = () => {
                             <div
                                 className={
                                     (isShown ? "left-0" : "-left-60") +
-                                    " flex md:flex-col items-center justify-end justify-around w-72 fixed top-40 left-10 right-20  md:left-0 md:top-56 md:w-1/12 h-max bg-palette-50 md:bg-palette-80 text-palette-60 md:text-palette-50 border-t-4 border-r-4 border-b-4 border-palette-50 rounded-tr-xl rounded-br-xl shadow-outer transition-ease-in duration-1000"
+                                    " flex md:flex-col items-center justify-end justify-around w-72 fixed top-40 left-10 right-20  md:left-0 md:top-56 md:w-1/12 h-max bg-palette-50  text-palette-60 border-t-4 border-r-4 border-b-4 border-palette-50 rounded-tr-xl rounded-br-xl shadow-outer transition-ease-in duration-1000"
                                 }
                                 onClick={() => setIsShown(!isShown)}
                             >

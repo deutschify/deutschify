@@ -6,7 +6,7 @@ import "../../App.css";
 
 const Einbuergerungstest = () => {
     return (
-        <div className="mb-12 md:m-12">
+        <div className="mb-12 p-2">
             {" "}
             <div className="cover m-4 overflow-hidden md:flex md:flex-col md:items-center">
                 <h1 className="title text-center text-3xl md:text-5xl p-5 text-palette-60 font-block1">
