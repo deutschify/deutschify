@@ -29,42 +29,28 @@
 
 
 
-/* .slider{
-    animation: slide 3s infinite;
-}
-
-@keyframes slide{
-    0%{
-        transform: translateX(0);
-    }
-    25%{
-        transform: translateX(0);
-    }
-    30%{
-        transform: translateX(-100%);
-    }
-    50%{
-        transform: translateX(-100%);
-    }
-    55%{
-        transform: translateX(-200%);
-    }
-    75%{
-        transform: translateX(-200%);
-    }
-    80%{
-        transform: translateX(-300%);
-    }
-    100%{
-        transform: translateX(-300%);
-    }
+ .slideAnimation{
+    animation: myAnim 8s ease-in both;
 }
 
 
-.slideshowDot.active {
-    background-color: #6a0dad;
-  }
-   */
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: translateX(350px);
+	}
+    50% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+   
+	100% {
+		opacity: 0;
+		transform: translateX(-350px);
+	}
+}
+
+
 
 /* .active{
     border-bottom: 3px solid #2F4858;
