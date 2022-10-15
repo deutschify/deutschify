@@ -31,39 +31,49 @@ const PostEdit = () => {
     };
 
     return (
-        <div className="mt-48">
-            <h3>Edit Post</h3>
-            <form onSubmit={editIconHandler}>
-                <div className="editBodyArea">
-                    <textarea
-                        className="descriptionArea"
-                        value={post.desc}
-                        onChange={(e) =>
-                            setPost({
-                                ...post,
-                                desc: e.target.value,
-                            })
-                        }
-                    ></textarea>
-                </div>
-                <div className="editSubmitBtn">
-                    <button className="editBtn border-8 mr-2" type="submit">
-                        Post bearbeiten
-                    </button>
-                    <button
-                        className="editCancelBtn border-8"
-                        onClick={() => navigate("/forum/news-feed/all")}
-                    >
-                        {" "}
-                        Abbrechen
-                    </button>
-                </div>
-            </form>
+        <div className="flex flex-col justify-center items-center mt-20  ">
+            <div className="cover w-1/2 flex-col flex items-center justify-center">
+                <h3 className=" mb-6 mt-6 text-palette-60 ">
+                    Beitrag bearbeiten...
+                </h3>
+                <form
+                    onSubmit={editIconHandler}
+                    className="coaster w-4/5 flex flex-col items-center justify-center mb-12  "
+                >
+                    <div className="editBodyArea  w-full">
+                        <textarea
+                            className="descriptionArea input  w-4/5 p-5 resize-none scrollbar-hide mt-6 mb-6 md:ml-16"
+                            value={post.desc}
+                            onChange={(e) =>
+                                setPost({
+                                    ...post,
+                                    desc: e.target.value,
+                                })
+                            }
+                        ></textarea>
+                    </div>
+                    <div className="editSubmitBtn flex flex-col items-center  mb-6 md:flex-row">
+                        <button
+                            className="editBtn btn bg-palette-60 text-palette-50 p-1.5"
+                            type="submit"
+                        >
+                            bearbeiten
+                        </button>
+                        <button
+                            className="editCancelBtn btn mt-4 bg-palette-60 text-palette-50 p-1.5 md:mt-0 md:ml-5"
+                            onClick={() => navigate("/forum/news-feed/all")}
+                        >
+                            {" "}
+                            abbrechen
+                        </button>
+                    </div>
+                </form>
 
-            <div>
+                {/* <div>
                 {location.state.id} <span>and</span>{" "}
                 {location.state.description} <span>and</span>{" "}
                 {location.state.userId}
+            </div> */}
             </div>
         </div>
     );
