@@ -76,19 +76,19 @@ const Slides = () => {
                 {" "}
                 <div className="relative">
                     <MdArrowBackIos
-                        className="slideshow-left-arrow absolute -left-60 top-40 text-7xl text-palette-60/25 cursor-pointer"
+                        className="slideshow-left-arrow fixed left-60 top-96 text-7xl text-palette-60/25 cursor-pointer"
                         onClick={previousSlideHandler}
                     />
                 </div>
                 <div className="relative">
                     <MdArrowForwardIos
-                        className="slideshow-right-arrow absolute -right-60 top-40 text-7xl text-palette-60/25 cursor-pointer"
+                        className="slideshow-right-arrow fixed right-60 top-96 z-10 text-7xl text-palette-60/25 cursor-pointer"
                         onClick={nextSlideHandler}
                     />
                 </div>
-                <div className="flex flex-col items-center ">
+                <div className="flex justify-center border">
                     {" "}
-                    <div className="flex justify-center">
+                    <div className="">
                         {sliderData.map((slider, index) => {
                             return (
                                 <div
@@ -103,7 +103,7 @@ const Slides = () => {
                                         <>
                                             <NavLink
                                                 to={slider.href}
-                                                className="hidden md:block"
+                                                className="hidden md:block "
                                             >
                                                 <div className="flex flex-col items-center bg-palette-50 p-6 border-4 border-palette-60 rounded-xl shadow-outer text-palette-60 w-10/12 slideAnimation">
                                                     {" "}
