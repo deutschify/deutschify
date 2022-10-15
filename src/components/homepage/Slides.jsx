@@ -86,7 +86,7 @@ const Slides = () => {
                         onClick={nextSlideHandler}
                     />
                 </div>
-                <div className="flex justify-center border">
+                <div className="flex justify-center">
                     {" "}
                     <div className="">
                         {sliderData.map((slider, index) => {
