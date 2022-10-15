@@ -90,7 +90,7 @@ const Slides = () => {
                 <div className="flex justify-center">
 
                     {" "}
-                    <div className="flex flex-col items-center w-10/12 ">
+                    <div className="flex flex-col items-center w-full">
                         {sliderData.map((slider, index) => {
                             return (
                                 <div
@@ -105,9 +105,9 @@ const Slides = () => {
                                         <>
                                             <NavLink
                                                 to={slider.href}
-                                                className="hidden md:block "
+                                                className="hidden md:block"
                                             >
-                                                <div className=" bg-palette-50 p-6 border-4 border-palette-60 rounded-xl shadow-outer text-palette-60 slideAnimation">
+                                                <div className="flex flex-col items-center bg-palette-50 p-6 border-4 border-palette-60 rounded-xl shadow-outer text-palette-60 slideAnimation">
                                                     {" "}
                                                     <p className="singleSlideTitle text-center font-block1 text-5xl p-2">
                                                         {slider.title}
@@ -128,8 +128,6 @@ const Slides = () => {
                 </div>
             </div>
         </div>
-
-        // mobile  ansicht
     );
 };
 
