@@ -76,17 +76,17 @@ const Slides = () => {
                 {" "}
                 <div className="relative">
                     <MdArrowBackIos
-                        className="slideshow-left-arrow fixed left-60 top-96 text-7xl text-palette-60/25 cursor-pointer"
+                        className="slideshow-left-arrow absolute -left-60 top-48 text-7xl text-palette-60/25 cursor-pointer"
                         onClick={previousSlideHandler}
                     />
                 </div>
                 <div className="relative">
                     <MdArrowForwardIos
-                        className="slideshow-right-arrow fixed right-60 top-96 z-10 text-7xl text-palette-60/25 cursor-pointer"
+                        className="slideshow-right-arrow absolute -right-60 top-48 z-10 text-7xl text-palette-60/25 cursor-pointer"
                         onClick={nextSlideHandler}
                     />
                 </div>
-                <div className="flex justify-center border">
+                <div className="flex justify-center w-10/12 border">
                     {" "}
                     <div className="">
                         {sliderData.map((slider, index) => {
