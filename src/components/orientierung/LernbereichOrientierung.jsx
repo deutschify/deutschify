@@ -96,8 +96,7 @@ const Lernbereich = () => {
 
     const filteredResults = filteredQuestions();
 
-    const handelClick = (text, num, e) => {
-        console.log(e.currentTarget.id);
+    const handelClick = (text, e) => {
         const id = e.currentTarget.id;
         console.log(text);
         translation(
@@ -107,7 +106,7 @@ const Lernbereich = () => {
         );
         console.log(textArr);
         setQuestionId(id);
-        setIsClicked(true);
+        setIsClicked(!isClicked);
     };
 
     //    For Pagination
@@ -124,15 +123,19 @@ const Lernbereich = () => {
                     </div>
                     <div className="text-xl text-palette-60 flex items-center justify-center m-2 px-1 border-2 bg-palette-50 border-palette-80 w-2/12 rounded-full">
                         <button
-                            id={question.id}
-                            onClick={function (e) {
-                                return handelClick(
-                                    `Frage * ${question.question} * die Antwort * ${question[question.correctAnswer]} * ${question.explanation &&
-                                    `die Erklärung * ${question.explanation}`}`,
-                                    question.number,
+                            id={`${question.number}`}
+                            onClick={(e) =>
+                                handelClick(
+                                    `Frage * ${
+                                        question.question
+                                    } * die Antwort * ${
+                                        question[question.correctAnswer]
+                                    } * ${
+                                        question.explanation &&
+                                        `die Erklärung * ${question.explanation}`
+                                    }`,
                                     e
-                                );
-                            }
+                                )
                             }
                         >
                             <BsTranslate />
