@@ -44,8 +44,8 @@ const ResultList = ({ inputValue }) => {
 
     if (error) {
         return (
-            <h3 className="text-center mt-10 font-semibold text-gray-500">
-                No Definitions Found 😥
+            <h3 className="text-center mt-10 font-semibold text-palette-60">
+                Keine Definitionen gefunden 😥
             </h3>
         );
     }
