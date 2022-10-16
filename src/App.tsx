@@ -41,7 +41,7 @@ import { PageLogout } from "./Pages/PageLogout";
 import { baseUrl } from "./store";
 import PageUserSettings from "./Pages/PageUserSettings";
 import NewsFeed from "./components/forum/news-feed/NewsFeed";
-import MyPosts from "./components/forum/MyPosts";
+import MyPosts from "./components/forum/myPosts/MyPosts";
 import ResultLidMod from "./components/orientierung/ResultLidMod";
 import PostEdit from "./components/forum/post/PostEdit";
 
@@ -72,7 +72,7 @@ function App() {
     return (
         <div className="w-[100vw] bg-palette-60 pb-24 font-block2 font-bold shadow-inner">
             <div className="m-auto">
-            <Header />
+                <Header />
             </div>
             <Routes>
                 <Route path="/" element={<Navigate to="/home" replace />} />
@@ -85,25 +85,52 @@ function App() {
                     path="/sprachkurs/a1/schriftlicher-Ausdruck"
                     element={<SchreibenA1 />}
                 />
-                <Route path="/sprachkurs/a1/leseverstehen" element={<LesenA1 />} />
-                <Route path="/sprachkurs/a1/hoerverstehen" element={<HoerenA1 />} />
-                <Route path="/sprachkurs/a1/sprachbausteine" element={<SprechenA1 />} />
+                <Route
+                    path="/sprachkurs/a1/leseverstehen"
+                    element={<LesenA1 />}
+                />
+                <Route
+                    path="/sprachkurs/a1/hoerverstehen"
+                    element={<HoerenA1 />}
+                />
+                <Route
+                    path="/sprachkurs/a1/sprachbausteine"
+                    element={<SprechenA1 />}
+                />
                 <Route path="/sprachkurs/a2" element={<A2 />} />
                 <Route
                     path="/sprachkurs/a2/schriftlicher-Ausdruck"
                     element={<SchreibenA2 />}
                 />
-                <Route path="/sprachkurs/a2/leseverstehen" element={<LesenA2 />} />
-                <Route path="/sprachkurs/a2/hoerverstehen" element={<HoerenA2 />} />
-                <Route path="/sprachkurs/a2/sprachbausteine" element={<SprechenA2 />} />
+                <Route
+                    path="/sprachkurs/a2/leseverstehen"
+                    element={<LesenA2 />}
+                />
+                <Route
+                    path="/sprachkurs/a2/hoerverstehen"
+                    element={<HoerenA2 />}
+                />
+                <Route
+                    path="/sprachkurs/a2/sprachbausteine"
+                    element={<SprechenA2 />}
+                />
                 <Route path="/sprachkurs/b1" element={<B1 />} />
                 <Route
                     path="/sprachkurs/b1/schriftlicher-Ausdruck"
                     element={<SchreibenB1 />}
                 />
-                <Route path="/sprachkurs/b1/leseverstehen" element={<LesenB1 />} />
-                <Route path="/sprachkurs/b1/hoerverstehen" element={<HoerenB1 />} />
-                <Route path="/sprachkurs/b1/sprachbausteine" element={<SprechenB1 />} />
+                <Route
+                    path="/sprachkurs/b1/leseverstehen"
+                    element={<LesenB1 />}
+                />
+                <Route
+                    path="/sprachkurs/b1/hoerverstehen"
+                    element={<HoerenB1 />}
+                />
+                <Route
+                    path="/sprachkurs/b1/sprachbausteine"
+                    element={<SprechenB1 />}
+                />
                 <Route
                     path="/einbuergerungstest/*"
                     element={<Einbuergerungstest />}

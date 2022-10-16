@@ -3,12 +3,8 @@ import { RiDeleteBinLine, RiEditLine } from "react-icons/ri";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
-
 import { useStore } from "../../../store";
-
 import { useNavigate } from "react-router-dom";
-import Comments from "../comments/Comments";
-import Comment from "../comments/Comment";
 
 const Post = ({ post }) => {
     const backend_base_url = "http://localhost:8000";
