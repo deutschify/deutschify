@@ -88,6 +88,20 @@ const Lernbereich = () => {
 
     const filteredResults = filteredQuestions();
 
+    const handelClick = (text, num, e) => {
+        console.log(e.currentTarget.id);
+        const id = e.currentTarget.id;
+        console.log(text);
+        translation(
+            text,
+            "de",
+            currentUser.language.substring(0, 2).toLowerCase()
+        );
+        console.log(textArr);
+        setQuestionId(id);
+        setIsClicked(true);
+    };
+
     //    For Pagination
     const displayQuestions = filteredResults
         .slice(pagesVisited, pagesVisited + usersPerPage)

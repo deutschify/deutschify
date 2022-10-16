@@ -193,18 +193,18 @@ const PageUserSettings = () => {
                 <div>
                     <div>
                         <h2 className="text-center  text-xl text-palette-60">
-                            User Information
+                            Nutzer Konto
                         </h2>
                     </div>
                     <div>
                         <h4 className="text-center  text-xl text-palette-60">
-                            change your name
+                            Vor- oder Nachname ändern
                         </h4>
                         <input
                             className=" m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                             defaultValue=""
                             {...register("firstName")}
-                            placeholder="firstName"
+                            placeholder="Vorname"
                         />
                         {errors.firstName && (
                             <p>{errors?.firstName?.message}</p>
@@ -215,7 +215,7 @@ const PageUserSettings = () => {
                             className="m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                             defaultValue=""
                             {...register("lastName")}
-                            placeholder="lastName"
+                            placeholder="Nachname"
                         />
                         {errors.lastName && <p>{errors?.lastName?.message}</p>}
                     </div>
@@ -224,7 +224,7 @@ const PageUserSettings = () => {
                     <div>
                         <div>
                             <h4 className="text-center  text-xl text-palette-60">
-                                change Password
+                                Kennwort ändern
                             </h4>
                         </div>
                         <input
@@ -245,7 +245,7 @@ const PageUserSettings = () => {
                             />
                             {errors.repeatPassword && (
                                 <p className="text-center  text-xl text-palette-60">
-                                    Password don't match!
+                                    Kennwort stimmt nicht!
                                 </p>
                             )}
                         </div>
@@ -254,7 +254,7 @@ const PageUserSettings = () => {
                 <div>
                     <div>
                         <h4 className="text-center  text-xl text-palette-60">
-                            change the language
+                            Sprache ändern
                         </h4>
                     </div>
                     <div>
@@ -287,7 +287,7 @@ const PageUserSettings = () => {
                     <input
                         className="bg-palette-80 input text-palette-60 px-8 py-2 rounded-3xl"
                         type="submit"
-                        value="Save"
+                        value="Speichern"
                     />
                     <button
                         className="bg-palette-80 input text-palette-60 px-8 py-2 rounded-3xl"
@@ -296,7 +296,7 @@ const PageUserSettings = () => {
                         }}
                         type="reset"
                     >
-                        cancel
+                        Abbrechen
                     </button>
                 </div>
                
