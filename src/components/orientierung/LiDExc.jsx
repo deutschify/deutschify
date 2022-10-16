@@ -141,6 +141,12 @@ const LiDExc = () => {
         // console.log(answeredQuestions);
         //    await axios.post(`${baseUrl}}/current-user`, answeredQuestions)
     };
+    
+    const handelClick = (text) => {
+        translation(text, "de", currentUser.language.substring(0, 2).toLowerCase());
+        console.log(textArr);
+        setIsClicked((click) => !click);
+    };
 
     return (
         <div className="mb-10">
