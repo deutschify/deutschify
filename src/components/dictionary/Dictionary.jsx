@@ -107,17 +107,7 @@ const Dictionary = () => {
                         />
                     </div>
 
-                    {inputValue && (
-                        <>
-                            <h3 className="text-palette-60  mt-4">
-                                Ergebnis für:{" "}
-                                <span className="text-palette-60 font-bold">
-                                    {inputValue}
-                                </span>
-                            </h3>
-                            <ResultList inputValue={inputValue} />
-                        </>
-                    )}
+                    {inputValue && <ResultList inputValue={inputValue} />}
                 </div>
                 <div className="flex  justify-end items-center mr-4 mt-40 ">
                     <div className="">
