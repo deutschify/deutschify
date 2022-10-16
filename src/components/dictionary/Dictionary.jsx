@@ -30,7 +30,7 @@ const Dictionary = () => {
     return (
         <div className=" m-10 md:m-20">
             {" "}
-            <div className="  xl:grid grid-cols-2 w-full  ml-2   ">
+            <div className=" mt-[6rem] xl:grid grid-cols-2 w-full  ml-2   ">
                 <div className="cover h-100% container mx-auto px-3 py-8">
                     <h1 className="text-3xl font-bold  text-palette-60n">
                         Wörterbuch
