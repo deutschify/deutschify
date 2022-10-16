@@ -8,6 +8,8 @@ import ReactPaginate from "react-paginate";
 import LiDExc from "../orientierung/LiDExc";
 import LiDMod from "../orientierung/LiDMod";
 import { Circles } from "react-loader-spinner";
+import {useStore} from '../../store'
+import { BsTranslate } from "react-icons/bs";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
@@ -17,6 +19,12 @@ const Lernbereich = () => {
     const [questionsPerPage, setQuestionsPerPage] = useState(0);
     const [query, setQuery] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [questionId, setQuestionId] = useState('');
+    const textArr = useStore((state) => state.textArr);
+    const [isClicked, setIsClicked] = useState(false);
+    const translation = useStore((state) => state.translation)
+    const fetchCurrentUser = useStore((state) => state.fetchCurrentUser)
+    const currentUser = useStore((state) => state.currentUser)
 
     // Create a Cloudinary instance and set your cloud name.
     const cld = new Cloudinary({
