@@ -38,20 +38,6 @@ const share = () => {
         // console.log(currentUser._id);
     }, []);
 
-    //after fetching the currentUser I dont think we need this anymore!
-    // useEffect(() => {
-    //     const fetchUser = async () => {
-    //         const response = await axios.get(
-    //             backend_base_url + `/users/${currentUser._id}`
-    //         );
-    //         const userName = response.data.firstName;
-    //         // console.log(userName);
-    //         // setUser(userName);
-    //         // setUser(userName);
-    //     };
-    //     fetchUser();
-    // }, []);
-
     return (
         <div className="bg-palette-80 w-1/2 flex justify-center items-center mb-7 rounded-xl border-4 border-palette-50 shadow-outer">
             <div className="share w-4/5   rounded-xl shadow-outer mb-5 mt-5 bg-palette-50">

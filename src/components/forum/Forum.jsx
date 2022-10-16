@@ -7,11 +7,7 @@ import { useStore } from "../../store";
 import PostEdit from "./post/PostEdit";
 
 const Forum = () => {
-    const [search, setSearches] = useState("");
-    const [searchResult, setSearchResult] = useState([]);
-
     const currentUser = useStore((state) => state.currentUser);
-
     return (
         <>
             {currentUser.accessGroups?.includes("loggedInUsers") ? (
@@ -28,7 +24,6 @@ const Forum = () => {
                             element={<PostEdit />}
                         />
                     </Routes>
-                    {/* <AboutForum /> */}
                 </div>
             ) : (
                 <>
