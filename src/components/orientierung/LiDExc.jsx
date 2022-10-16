@@ -7,11 +7,15 @@ import { MdArrowForwardIos } from "react-icons/md";
 import "../../App.css";
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
+import {useStore} from "../../store"
+import {BsTranslate} from 'react-icons/bs'
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDExc = () => {
     const [displayQuestions, setDisplayQuestions] = useState([]);
-    // const [rightAnswerCounter, setRightAnswerCounter] = useState(0);
+    const translation = useStore((state) => state.translation);
+    const textArr = useStore((state) => state.textArr);
+    const [isClicked, setIsClicked] = useState(false);
 
     const cld = new Cloudinary({
         cloud: {
