@@ -31,7 +31,7 @@ const PostEdit = () => {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center mt-20  ">
+        <div className="flex flex-col justify-center items-center h-[70vh] ">
             <div className="cover w-1/2 flex-col flex items-center justify-center">
                 <h3 className=" mb-6 mt-6 text-palette-60 ">
                     Beitrag bearbeiten...
