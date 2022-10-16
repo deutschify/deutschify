@@ -38,17 +38,28 @@ const MyPosts = () => {
             );
         };
         fetchMyPosts();
-    }, [currentUser._id, myPosts]);
+        console.log(myPosts);
+    }, [currentUser._id]);
 
     return (
-        <div>
+        <div className="h-[70vh]">
             <DropDownMenu />
             <NavForum />
-            <div className="myPostsWrapper flex flex-col justify-center items-center pt-8 pb-6 ">
-                {myPosts.map((p) => (
-                    <Post key={p._id} post={p} />
-                ))}
-            </div>
+            {myPosts.length === 0 ? (
+                <>
+                    <div className="NoPosts flex flex-col justify-center items-center pt-8 pb-6 ">
+                        <span className="text-palette-50">
+                            Du hast noch keine Beiträge...
+                        </span>
+                    </div>
+                </>
+            ) : (
+                <div className="myPostsWrapper flex flex-col justify-center items-center pt-8 pb-6  ">
+                    {myPosts.map((p) => (
+                        <Post key={p._id} post={p} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
