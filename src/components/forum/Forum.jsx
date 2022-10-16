@@ -24,7 +24,6 @@ const Forum = () => {
                             element={<PostEdit />}
                         />
                     </Routes>
-                    {/* <AboutForum /> */}
                 </div>
             ) : (
                 <>
