@@ -32,7 +32,7 @@ const NewsFeed = () => {
             <DropDownMenu />
             <NavForum />
             <div className="feedWrapper flex flex-col justify-center items-center pt-8 pb-6 ">
-                <Share />
+                <Share posts={posts} setPosts={setPosts} />
                 {posts.map((p) => (
                     <Post key={p._id} post={p} />
                 ))}
