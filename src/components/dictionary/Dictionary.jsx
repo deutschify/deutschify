@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ResultList from "./ResultList";
 import { useStore } from "../../store";
@@ -9,23 +9,41 @@ import ImageDictionary from "../../../public/images/dictionary1.png";
 
 const Dictionary = () => {
     const [value, setValue] = useState("");
-    const [inputValue, setInputValue] = useState("");
+    const [preferedLanguage, setPreferedLanguage] = useState("");
 
     const currentUser = useStore((state) => state.currentUser);
+    const [inputValue, setInputValue] = useState(["", currentUser?.language]);
+    const fetchlanguages = useStore((state) => state.fetchLanguages);
+    const textArr = useStore((state) => state.textArr);
+    const translation = useStore((state) => state.translation);
+    const languages = useStore((state) => state.languages);
+    const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
 
-    const handleInputChange = (e) => setValue(e.target.value);
+    const translate = () => {
+        translation(value, "de", "en");
+    };
 
-    const handleSubmit = () => {
-        setInputValue(value);
+    useEffect(() => {
+        translate();
+    }, [value]);
+
+    const handleSubmit = (arr) => {
+        setInputValue(arr);
         setValue("");
     };
 
     const handleInputKeyDown = (e) => {
         if (e.key === "Enter") {
-            setInputValue(value);
+            setInputValue(arr);
             setValue("");
         }
     };
+
+    useEffect(() => {
+        fetchCurrentUser();
+        fetchlanguages();
+        console.log(currentUser);
+    }, []);
 
     return (
         <div className=" m-10 md:m-20">
