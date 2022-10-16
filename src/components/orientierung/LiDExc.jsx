@@ -7,13 +7,14 @@ import { MdArrowForwardIos } from "react-icons/md";
 import "../../App.css";
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
-import {useStore} from "../../store"
-import {BsTranslate} from 'react-icons/bs'
+import { useStore } from "../../store";
+import { BsTranslate } from "react-icons/bs";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDExc = () => {
     const [displayQuestions, setDisplayQuestions] = useState([]);
     const translation = useStore((state) => state.translation);
+    const currentUser = useStore((state) => state.currentUser);
     const textArr = useStore((state) => state.textArr);
     const [isClicked, setIsClicked] = useState(false);
 
@@ -141,9 +142,13 @@ const LiDExc = () => {
         // console.log(answeredQuestions);
         //    await axios.post(`${baseUrl}}/current-user`, answeredQuestions)
     };
-    
+
     const handelClick = (text) => {
-        translation(text, "de", currentUser.language.substring(0, 2).toLowerCase());
+        translation(
+            text,
+            "de",
+            currentUser.language.substring(0, 2).toLowerCase()
+        );
         console.log(textArr);
         setIsClicked((click) => !click);
     };
@@ -167,12 +172,44 @@ const LiDExc = () => {
                         {canDisplayQuestions() && (
                             <>
                                 {" "}
-                                
-                                <div className="coaster text-center m-2 mb-4 md:text-2xl p-2 px-4 md:px-5 rounded-full">
-                                    {getCurrentQuestion().number}
+                                <div className="flex">
+                                    <div className="coaster text-center m-2 mb-4 md:text-2xl p-2 px-4 md:px-5 rounded-full">
+                                        {getCurrentQuestion().number}
+                                    </div>
+                                    <div className="flex-end coaster text-center m-2 mb-4 md:text-2xl p-1 px-2 md:px-3 rounded-full">
+                                        <button
+                                            id={getCurrentQuestion().number}
+                                            onClick={(e) =>
+                                                handelClick(
+                                                    `${
+                                                        getCurrentQuestion()
+                                                            .question
+                                                    } * ${
+                                                        getCurrentQuestion()
+                                                            .answerA
+                                                    } * ${
+                                                        getCurrentQuestion()
+                                                            .answerB
+                                                    } * ${
+                                                        getCurrentQuestion()
+                                                            .answerC
+                                                    } * ${
+                                                        getCurrentQuestion()
+                                                            .answerD
+                                                    }`,
+                                                    getCurrentQuestion().number,
+                                                    e
+                                                )
+                                            }
+                                        >
+                                            <BsTranslate />
+                                        </button>
+                                    </div>
                                 </div>
                                 <div className="coaster w-56 p-2 md:w-10/12 md:text-2xl md:text-center">
-                                    {getCurrentQuestion().question}
+                                    {isClicked
+                                        ? textArr[0]
+                                        : getCurrentQuestion().question}
                                 </div>
                                 <div className="flex justify-center md:w-10/12 md:text-2xl md:text-center md:m-10">
                                     {getCurrentQuestion().imageURL && (
@@ -197,13 +234,15 @@ const LiDExc = () => {
                                             getCurrentQuestion().isAnswered
                                         }
                                     >
-                                        {getCurrentQuestion().answerA}
+                                        {isClicked
+                                            ? textArr[1]
+                                            : getCurrentQuestion().answerA}
                                     </button>
                                     <button
                                         className={`${
                                             getCurrentQuestion()
                                                 .answerBButtonClass
-                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4` }
+                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4`}
                                         onClick={() => {
                                             rightAnswerHandler("answerB");
                                         }}
@@ -211,7 +250,9 @@ const LiDExc = () => {
                                             getCurrentQuestion().isAnswered
                                         }
                                     >
-                                        {getCurrentQuestion().answerB}
+                                        {isClicked
+                                            ? textArr[2]
+                                            : getCurrentQuestion().answerB}
                                     </button>
                                     <button
                                         className={`${
@@ -225,7 +266,9 @@ const LiDExc = () => {
                                             getCurrentQuestion().isAnswered
                                         }
                                     >
-                                        {getCurrentQuestion().answerC}
+                                        {isClicked
+                                            ? textArr[3]
+                                            : getCurrentQuestion().answerC}
                                     </button>
                                     <button
                                         className={`${
@@ -239,7 +282,9 @@ const LiDExc = () => {
                                             getCurrentQuestion().isAnswered
                                         }
                                     >
-                                        {getCurrentQuestion().answerD}
+                                        {isClicked
+                                            ? textArr[4]
+                                            : getCurrentQuestion().answerD}
                                     </button>
                                 </div>
                                 <div className="m-10 flex justify-around text-sm md:text-lg md:w-5/6 md:justify-between">
