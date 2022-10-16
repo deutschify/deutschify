@@ -76,19 +76,21 @@ const Slides = () => {
                 {" "}
                 <div className="relative">
                     <MdArrowBackIos
-                        className="slideshow-left-arrow fixed left-60 top-96 text-7xl text-palette-60/25 cursor-pointer"
+                        className="slideshow-left-arrow hidden md:block absolute -left-60 top-48 text-7xl text-palette-60/25 cursor-pointer"
                         onClick={previousSlideHandler}
                     />
                 </div>
                 <div className="relative">
                     <MdArrowForwardIos
-                        className="slideshow-right-arrow fixed right-60 top-96 z-10 text-7xl text-palette-60/25 cursor-pointer"
+                        className="slideshow-right-arrow hidden md:block absolute -right-60 top-48 z-10 text-7xl text-palette-60/25 cursor-pointer"
                         onClick={nextSlideHandler}
                     />
                 </div>
-                <div className="flex justify-center border">
+
+                <div className="flex justify-center">
+
                     {" "}
-                    <div className="">
+                    <div className="flex flex-col items-center w-full">
                         {sliderData.map((slider, index) => {
                             return (
                                 <div
@@ -103,15 +105,15 @@ const Slides = () => {
                                         <>
                                             <NavLink
                                                 to={slider.href}
-                                                className="hidden md:block "
+                                                className="hidden md:block"
                                             >
-                                                <div className="flex flex-col items-center bg-palette-50 p-6 border-4 border-palette-60 rounded-xl shadow-outer text-palette-60 w-10/12 slideAnimation">
+                                                <div className="flex flex-col items-center bg-palette-50 p-6 border-4 border-palette-60 rounded-xl shadow-outer text-palette-60 slideAnimation">
                                                     {" "}
                                                     <p className="singleSlideTitle text-center font-block1 text-5xl p-2">
                                                         {slider.title}
                                                     </p>
                                                     <img
-                                                        className="w-10/12 rounded-xl border-4 border-palette-80 bg-palette-60 shadow-outer p-2"
+                                                        className=" rounded-xl border-4 border-palette-80 bg-palette-60 shadow-outer p-2"
                                                         src={slider.slideImage}
                                                         alt="slideshow image"
                                                     />
@@ -126,8 +128,6 @@ const Slides = () => {
                 </div>
             </div>
         </div>
-
-        // mobile  ansicht
     );
 };
 
