@@ -125,58 +125,97 @@ const Lernbereich = () => {
                     <div className="text-xl text-palette-60 flex items-center justify-center m-2 px-1 border-2 bg-palette-50 border-palette-80 w-2/12 rounded-full">
                         <button
                             id={question.id}
-                            onClick={() =>
-                                handelClick(
-                                    `Frage * ${
-                                        question.question
-                                    } * die Antwort * ${
-                                        question[question.correctAnswer]
-                                    } * ${
-                                        question.explanation &&
-                                        `die Erklärung * ${question.explanation}`
-                                    }`,
+                            onClick={function (e) {
+                                return handelClick(
+                                    `Frage * ${question.question} * die Antwort * ${question[question.correctAnswer]} * ${question.explanation &&
+                                    `die Erklärung * ${question.explanation}`}`,
                                     question.number,
                                     e
-                                )
+                                );
+                            }
                             }
                         >
                             <BsTranslate />
                         </button>
                     </div>
-                    <div className="text-palette-60 m-2 p-2">
-                        {" "}
-                        <div className="mb-2 border-b-2 border-palette-80 ">
-                            Frage
-                        </div>
-                        {question.question}
-                    </div>{" "}
-                    {question.imageURL && (
+                    {isClicked && questionId === question.number ? (
                         <>
-                            <div className="text-palette-60 m-2 p-2 flex justify-center">
+                            <div className="text-palette-60 m-2 p-2">
                                 {" "}
-                                <AdvancedImage
-                                    className="bg-palette-60 rounded-xl border-4 border-palette-80"
-                                    cldImg={fetchImage(question.imageURL)}
-                                    // publicId={`${question.imageURL}`}
-                                />
+                                <div className="mb-2 border-b-2 border-palette-80 ">
+                                    {textArr[0]}
+                                </div>
+                                {textArr[1]}
                             </div>{" "}
-                        </>
-                    )}
-                    <div className="text-palette-60 m-2 p-2">
-                        <div className="mb-2 border-b-2 border-palette-80">
-                            Antwort
-                        </div>
-                        {question.correctAnswer in question
-                            ? question[question.correctAnswer]
-                            : question.correctAnswer}
-                    </div>
-                    {question.explanation !== "" && (
-                        <div className="text-palette-60 m-2 p-2">
-                            <div className="mb-2 border-b-2 border-palette-80">
-                                Erklärung
+                            {question.imageURL && (
+                                <>
+                                    <div className="text-palette-60 m-2 p-2 flex justify-center">
+                                        {" "}
+                                        <AdvancedImage
+                                            className="bg-palette-60 rounded-xl border-4 border-palette-80"
+                                            cldImg={fetchImage(
+                                                question.imageURL
+                                            )}
+                                            // publicId={`${question.imageURL}`}
+                                        />
+                                    </div>{" "}
+                                </>
+                            )}
+                            <div className="text-palette-60 m-2 p-2">
+                                <div className="mb-2 border-b-2 border-palette-80">
+                                    {textArr[2]}
+                                </div>
+                                {textArr[3]}
                             </div>
-                            {question.explanation}
-                        </div>
+                            {question.explanation !== "" && (
+                                <div className="text-palette-60 m-2 p-2">
+                                    <div className="mb-2 border-b-2 border-palette-80">
+                                        {question.explanation && textArr[4]}
+                                    </div>
+                                    {question.explanation && textArr[5]}
+                                </div>
+                            )}
+                        </>
+                    ) : (
+                        <>
+                            <div className="text-palette-60 m-2 p-2">
+                                {" "}
+                                <div className="mb-2 border-b-2 border-palette-80 ">
+                                    Frage
+                                </div>
+                                {question.question}
+                            </div>{" "}
+                            {question.imageURL && (
+                                <>
+                                    <div className="text-palette-60 m-2 p-2 flex justify-center">
+                                        {" "}
+                                        <AdvancedImage
+                                            className="bg-palette-60 rounded-xl border-4 border-palette-80"
+                                            cldImg={fetchImage(
+                                                question.imageURL
+                                            )}
+                                            // publicId={`${question.imageURL}`}
+                                        />
+                                    </div>{" "}
+                                </>
+                            )}
+                            <div className="text-palette-60 m-2 p-2">
+                                <div className="mb-2 border-b-2 border-palette-80">
+                                    Antwort
+                                </div>
+                                {question.correctAnswer in question
+                                    ? question[question.correctAnswer]
+                                    : question.correctAnswer}
+                            </div>
+                            {question.explanation !== "" && (
+                                <div className="text-palette-60 m-2 p-2">
+                                    <div className="mb-2 border-b-2 border-palette-80">
+                                        Erklärung
+                                    </div>
+                                    {question.explanation}
+                                </div>
+                            )}
+                        </>
                     )}
                 </div>
             );
