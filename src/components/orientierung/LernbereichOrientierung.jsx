@@ -8,7 +8,7 @@ import ReactPaginate from "react-paginate";
 import LiDExc from "../orientierung/LiDExc";
 import LiDMod from "../orientierung/LiDMod";
 import { Circles } from "react-loader-spinner";
-import {useStore} from '../../store'
+import { useStore } from "../../store";
 import { BsTranslate } from "react-icons/bs";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
@@ -19,12 +19,12 @@ const Lernbereich = () => {
     const [questionsPerPage, setQuestionsPerPage] = useState(0);
     const [query, setQuery] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [questionId, setQuestionId] = useState('');
+    const [questionId, setQuestionId] = useState("");
     const textArr = useStore((state) => state.textArr);
     const [isClicked, setIsClicked] = useState(false);
-    const translation = useStore((state) => state.translation)
-    const fetchCurrentUser = useStore((state) => state.fetchCurrentUser)
-    const currentUser = useStore((state) => state.currentUser)
+    const translation = useStore((state) => state.translation);
+    const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
+    const currentUser = useStore((state) => state.currentUser);
 
     // Create a Cloudinary instance and set your cloud name.
     const cld = new Cloudinary({
@@ -122,6 +122,27 @@ const Lernbereich = () => {
                     <div className="text-xl text-palette-60 flex items-center justify-center m-2 px-1 border-2 bg-palette-50 border-palette-80 w-2/12 rounded-full">
                         {question.number}
                     </div>
+                    <div className="text-xl text-palette-60 flex items-center justify-center m-2 px-1 border-2 bg-palette-50 border-palette-80 w-2/12 rounded-full">
+                        <button
+                            id={question.id}
+                            onClick={() =>
+                                handelClick(
+                                    `Frage * ${
+                                        question.question
+                                    } * die Antwort * ${
+                                        question[question.correctAnswer]
+                                    } * ${
+                                        question.explanation &&
+                                        `die Erklärung * ${question.explanation}`
+                                    }`,
+                                    question.number,
+                                    e
+                                )
+                            }
+                        >
+                            <BsTranslate />
+                        </button>
+                    </div>
                     <div className="text-palette-60 m-2 p-2">
                         {" "}
                         <div className="mb-2 border-b-2 border-palette-80 ">
@@ -168,102 +189,102 @@ const Lernbereich = () => {
 
     return (
         <div className="">
-        <div className="mb-12 relative">
-            <h1 className="title text-palette-80 text-4xl text-center m-5 font-block1">
-                Bereite dich auf den Orientierungstest vor
-            </h1>
-            <nav className="flex flex-col md:flex-row justify-between items-center md:text-2xl">
-                <NavLink
-                    to={`/lernbereich/${category}/excercise`}
-                    element={<LiDExc />}
-                    className="btn w-60 p-6 border-palette-80 text-center md:w-4/12"
-                >
-                    Zum Übungstest
-                </NavLink>
+            <div className="mb-12 relative">
+                <h1 className="title text-palette-80 text-4xl text-center m-5 font-block1">
+                    Bereite dich auf den Orientierungstest vor
+                </h1>
+                <nav className="flex flex-col md:flex-row justify-between items-center md:text-2xl">
+                    <NavLink
+                        to={`/lernbereich/${category}/excercise`}
+                        element={<LiDExc />}
+                        className="btn w-60 p-6 border-palette-80 text-center md:w-4/12"
+                    >
+                        Zum Übungstest
+                    </NavLink>
 
-                {/* Searchbar für Testfragen */}
-                <div className="coaster  border-palette-80 w-72 p-6 m-4 md:w-4/12 shadow-outer">
-                    <div className="">
-                        <input
-                            className="searchInput w-60  h-10 bg-palette-60 rounded-3xl p-6 text-palette-50 placeholder:text-palette-50/75 border-4 border-palette-80 shadow-inner focus:outline-none"
-                            type="text"
-                            placeholder="Stichwort..."
-                            onChange={(event) => {
-                                setQuery(event.target.value);
-                            }}
-                        />
-                    </div>
-                    {/* <div className="text-palette-80">
+                    {/* Searchbar für Testfragen */}
+                    <div className="coaster  border-palette-80 w-72 p-6 m-4 md:w-4/12 shadow-outer">
+                        <div className="">
+                            <input
+                                className="searchInput w-60  h-10 bg-palette-60 rounded-3xl p-6 text-palette-50 placeholder:text-palette-50/75 border-4 border-palette-80 shadow-inner focus:outline-none"
+                                type="text"
+                                placeholder="Stichwort..."
+                                onChange={(event) => {
+                                    setQuery(event.target.value);
+                                }}
+                            />
+                        </div>
+                        {/* <div className="text-palette-80">
                         {filteredQuestions().length} Fragen
                     </div> */}
-                </div>
+                    </div>
 
-                <NavLink
-                    to={`/lernbereich/${category}/modelltest`}
-                    element={<LiDMod />}
-                    className="btn w-60 p-6 border-palette-80 text-center md:w-4/12"
-                >
-                    Zum Modelltest
-                </NavLink>
-            </nav>
-            <div className="text-2xl text-center p-6 text-palette-50">
-                {!query
-                    ? `Hier haben wir alle ${
-                          questions.length
-                      } Fragen zu Deutschland und
+                    <NavLink
+                        to={`/lernbereich/${category}/modelltest`}
+                        element={<LiDMod />}
+                        className="btn w-60 p-6 border-palette-80 text-center md:w-4/12"
+                    >
+                        Zum Modelltest
+                    </NavLink>
+                </nav>
+                <div className="text-2xl text-center p-6 text-palette-50">
+                    {!query
+                        ? `Hier haben wir alle ${
+                              questions.length
+                          } Fragen zu Deutschland und
                             ${
                                 category.charAt(0).toUpperCase() +
                                 category.slice(1)
                             }
                                  für dich`
-                    : `Wir haben zu deiner Anfrage ${filteredResults.length} Übereinstimmungen gefunden`}{" "}
-            </div>
-            <div className="flex justify-center">
-                <div className="cover w-72 md:w-[80%] p-4 h-full">
-                    {" "}
-                    <div className="">
-                        <div className="hidden md:block bg-palette-40 w-3/12 border-4 border-palette-60 rounded-xl sticky left top-2/4 left-72 shadow-inner">
-                            <img
-                                src="../../../images/illus/study1.png"
-                                alt=""
-                            />
-                        </div>{" "}
-                        <div className="w-full flex flex-col items-center md:-mt-56 md:items-end md:w-">
-                            <div className="flex md:justify-end md:mr-40 md:w-[80%]">
-                                {" "}
-                                <div className="input flex flex-col items-center md:w-6/12  md:p-10 ">
-                                    {isLoading ? (
-                                        <Circles color="#2F4858" />
-                                    ) : (
-                                        displayQuestions
-                                    )}{" "}
+                        : `Wir haben zu deiner Anfrage ${filteredResults.length} Übereinstimmungen gefunden`}{" "}
+                </div>
+                <div className="flex justify-center">
+                    <div className="cover w-72 md:w-[80%] p-4 h-full">
+                        {" "}
+                        <div className="">
+                            <div className="hidden md:block bg-palette-40 w-3/12 border-4 border-palette-60 rounded-xl sticky left top-2/4 left-72 shadow-inner">
+                                <img
+                                    src="../../../images/illus/study1.png"
+                                    alt=""
+                                />
+                            </div>{" "}
+                            <div className="w-full flex flex-col items-center md:-mt-56 md:items-end md:w-">
+                                <div className="flex md:justify-end md:mr-40 md:w-[80%]">
+                                    {" "}
+                                    <div className="input flex flex-col items-center md:w-6/12  md:p-10 ">
+                                        {isLoading ? (
+                                            <Circles color="#2F4858" />
+                                        ) : (
+                                            displayQuestions
+                                        )}{" "}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <ReactPaginate
-                                previousLabel={"<"}
-                                nextLabel={">"}
-                                pageCount={pageCount}
-                                onPageChange={changePage}
-                                containerClassName={
-                                    " flex md:justify-end md:m-6 m-4 md:mr-36 text-palette-60 text-xxs"
-                                }
-                                pageLinkClassName={
-                                    "md:p-4 p-2  border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
-                                }
-                                previousLinkClassName={
-                                    // "w-4 md: text-palette-60 p-2  border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
-                                    "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
-                                }
-                                nextLinkClassName={
-                                    "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
-                                }
-                                activeClassName={"text-sm text-palette-50"}
-                            />
+                                <ReactPaginate
+                                    previousLabel={"<"}
+                                    nextLabel={">"}
+                                    pageCount={pageCount}
+                                    onPageChange={changePage}
+                                    containerClassName={
+                                        " flex md:justify-end md:m-6 m-4 md:mr-36 text-palette-60 text-xxs"
+                                    }
+                                    pageLinkClassName={
+                                        "md:p-4 p-2  border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                    }
+                                    previousLinkClassName={
+                                        // "w-4 md: text-palette-60 p-2  border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 hover:text-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                        "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                    }
+                                    nextLinkClassName={
+                                        "p-2 md:p-4 md:m-10 border-4 border-palette-50 rounded-xl hover:bg-palette-50 hover:border-palette-60 active:bg-palette-60 active:text-palette-50 active:border-palette-50"
+                                    }
+                                    activeClassName={"text-sm text-palette-50"}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     );
