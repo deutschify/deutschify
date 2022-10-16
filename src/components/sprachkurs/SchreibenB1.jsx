@@ -52,6 +52,10 @@ const Schreiben = () => {
                 />
             </div>
             <div className="flex flex-col cover  justify-center align-center md:w-[50%] m-10 text-center">
+                <h1 className="text-2xl p-2 text-palette-60">
+                    {" "}
+                    Ordnen Sie die folgenden Sätze an
+                </h1>
                 {list &&
                     list.map((item, index) => (
                         <>
