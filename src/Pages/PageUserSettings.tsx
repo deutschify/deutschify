@@ -112,15 +112,14 @@ const PageUserSettings = () => {
     >(obj: T): V {
         return Object.fromEntries(
             Object.entries(obj).filter(
-                ([, v]) =>
-                    !(
-                        (typeof v === "string" && !v.length) ||
-                        v === null ||
-                        typeof v === "undefined" ||
-                        (typeof v === "object" && !Object.keys(v).length)
-                    )
+                ([, v]) => !(
+                    (typeof v === "string" && !v.length) ||
+                    v === null ||
+                    typeof v === "undefined" ||
+                    (typeof v === "object" && !Object.keys(v).length)
+                )
             )
-        ) as V;
+        ) as unknown as V;
     }
     const onSubmit: SubmitHandler<IUserEditForm> = async (
         data: IUserEditForm
@@ -147,7 +146,7 @@ const PageUserSettings = () => {
     };
 
     return (
-        <div>
+        <div className=" cover  m-20 flex flex-col justify-center items-center ">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <div className="relative h-40 w-40">
@@ -165,7 +164,7 @@ const PageUserSettings = () => {
                                 className="rounded-full absolute"
                             />
                         )}
-                        <div className="absolute bottom-0 right-0">
+                        <div className="absolute bottom-0 right-0 ">
                             <input
                                 id="avatar"
                                 type="file"
@@ -187,18 +186,22 @@ const PageUserSettings = () => {
                             <p>{errors.imagePublicId?.message}</p>
                         )}
                     </div>
-                    <div>
+                    <div className="text-center  text-xl text-palette-60">
                         {currentUser.firstName + " " + currentUser.lastName}
                     </div>
                 </div>
                 <div>
                     <div>
-                        <h2>User Information</h2>
+                        <h2 className="text-center  text-xl text-palette-60">
+                            User Information
+                        </h2>
                     </div>
                     <div>
-                        <h4>change your name</h4>
+                        <h4 className="text-center  text-xl text-palette-60">
+                            change your name
+                        </h4>
                         <input
-                            className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                            className=" m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                             defaultValue=""
                             {...register("firstName")}
                             placeholder="firstName"
@@ -209,7 +212,7 @@ const PageUserSettings = () => {
                     </div>
                     <div>
                         <input
-                            className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                            className="m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                             defaultValue=""
                             {...register("lastName")}
                             placeholder="lastName"
@@ -220,10 +223,12 @@ const PageUserSettings = () => {
                 <div>
                     <div>
                         <div>
-                            <h4>change Password</h4>
+                            <h4 className="text-center  text-xl text-palette-60">
+                                change Password
+                            </h4>
                         </div>
                         <input
-                            className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                            className=" m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                             defaultValue={password}
                             {...register("password")}
                             placeholder="password"
@@ -233,24 +238,28 @@ const PageUserSettings = () => {
                     {password && (
                         <div>
                             <input
-                                className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 placeholder="repeat-password"
                                 defaultValue=""
                                 {...register("repeatPassword")}
                             />
                             {errors.repeatPassword && (
-                                <p>Password don't match!</p>
+                                <p className="text-center  text-xl text-palette-60">
+                                    Password don't match!
+                                </p>
                             )}
                         </div>
                     )}
                 </div>
                 <div>
                     <div>
-                        <h4>change the language</h4>
+                        <h4 className="text-center  text-xl text-palette-60">
+                            change the language
+                        </h4>
                     </div>
                     <div>
                         <select
-                            className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                            className=" ml-20 mt-2 w-[10rem] input mb-2 border-2 text-center rounded-3xl py-3 px-4 focus:outline-none  text-palette-60  bg-palette-50"
                             {...register("language")}
                             onChange={(e) =>
                                 setValue("language", e.target.value, {
@@ -274,11 +283,14 @@ const PageUserSettings = () => {
                         </select>
                     </div>
                 </div>
-                <div>
-                    <input type="submit" value="Save" />
-                </div>
-                <div>
+                <div className='flex justify-between m-2' >
+                    <input
+                        className="bg-palette-80 input text-palette-60 px-8 py-2 rounded-3xl"
+                        type="submit"
+                        value="Save"
+                    />
                     <button
+                        className="bg-palette-80 input text-palette-60 px-8 py-2 rounded-3xl"
                         onClick={() => {
                             navigate("/home");
                         }}
@@ -287,6 +299,7 @@ const PageUserSettings = () => {
                         cancel
                     </button>
                 </div>
+               
             </form>
         </div>
     );
