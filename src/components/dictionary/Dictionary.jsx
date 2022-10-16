@@ -28,64 +28,64 @@ const Dictionary = () => {
     };
 
     return (
-        <div className="h-screen w-max">
+        <div className=" m-10 md:m-20">
             {" "}
-            <div className="    xl:grid grid-cols-2 w-full gap-[15rem] ml-2 ">
-                <div className=" h-100% container mx-auto px-3 py-8">
-                    <h1 className="text-3xl font-bold  text-white">
-                        Simple Dictionary
+            <div className="  xl:grid grid-cols-2 w-full  ml-2   ">
+                <div className="cover h-100% container mx-auto px-3 py-8">
+                    <h1 className="text-3xl font-bold  text-palette-60n">
+                        Wörterbuch
                     </h1>
 
                     <input
-                        className=" md:hidden py-2 px-2  w-[6rem]  "
+                        className=" w-[7rem] md:hidden py-4 px-4  input"
                         type="tex  "
                         placeholder="language"
                     />
-                    <button className=" pl-2 md:hidden">
+                    <button className=" p-2 mb-3 md:hidden">
                         {" "}
-                        <HiArrowNarrowRight />
+                        <HiArrowNarrowRight className=" mt-3" />
                     </button>
-                    <button className="  absolute mt-5 md:hidden  ">
+                    <button className="  absolute mt-3 md:hidden  ">
                         {" "}
-                        <HiArrowNarrowLeft />
+                        <HiArrowNarrowLeft className=" mt-4" />
                     </button>
                     <input
-                        className="md:hidden py-2 px-2 ml-6 w-[6rem]  "
+                        className=" w-[7rem] md:hidden py-4 px-2 ml-6 input "
                         type="text "
                         placeholder="language"
                     />
                     <div className="flex items-start justify-start mt-5">
-                        <div className="flex border-2 border-gray-200 rounded">
+                        <div className="flex  border-gray-200 rounded">
                             <input
-                                className="px-4 py-2 md:w-80"
-                                type="text"
+                                className="px-4 py-2 md:w-80 input"
+                                type="text input"
                                 placeholder="Search..."
                                 onChange={handleInputChange}
                                 value={value}
                                 onKeyDown={handleInputKeyDown}
                             />
                             <button
-                                className="bg-palette-30 border-l px-4 py-2 text-white"
+                                className="bg-palette-60 border-l px-4 py-4  input  "
                                 onClick={handleSubmit}
                             >
                                 Search
                             </button>
                         </div>
                         <input
-                            className="hidden md:block py-2 ml-6 w-[6rem]"
+                            className="hidden md:block py-4 ml-6  w-[7rem] pl-2 input"
                             type="text "
                             placeholder="language"
                         />
-                        <button className="hidden md:block mt-6 pl-4">
+                        <button className="hidden md:block mt-6 pl-4 ">
                             {" "}
-                            <HiArrowNarrowRight />
+                            <HiArrowNarrowRight className=" mt-3" />
                         </button>
-                        <button className="hidden md:block ">
+                        <button className="hidden mt-3 md:block ">
                             {" "}
-                            <HiArrowNarrowLeft />
+                            <HiArrowNarrowLeft className="mt-2" />
                         </button>
                         <input
-                            className="hidden md:block py-2 ml-6 w-[6rem]"
+                            className="hidden md:block py-4 ml-6  w-[7rem] pl-2 input"
                             type="text "
                             placeholder="language"
                         />
@@ -93,9 +93,9 @@ const Dictionary = () => {
 
                     {inputValue && (
                         <>
-                            <h3 className="text-palette-50 mt-4">
-                                Result for:{" "}
-                                <span className="text-palette-50 font-bold">
+                            <h3 className="text-palette-60  mt-4">
+                                Ergebnis für:{" "}
+                                <span className="text-palette-60 font-bold">
                                     {inputValue}
                                 </span>
                             </h3>
