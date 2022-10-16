@@ -16,13 +16,6 @@ const Post = ({ post }) => {
     const [postedDate, setPostedDate] = useState(format(post.createdAt));
     const [postUpdated, setPostUpdated] = useState(format(post.updatedAt));
     const [deletedCommentId, setDeletedCommentId] = useState("");
-    // const [commentDate, setCommentDate] = useState(
-    //     format(post.comments.createdAt)
-    // );
-
-    // const [commentUpdated, setCommentUpdated] = useState(
-    //     format(post.comments.comment.updatedAt)
-    // );
     const [showBox, setShowBox] = useState(false);
 
     //useRev to add a new comment
@@ -68,25 +61,6 @@ const Post = ({ post }) => {
         };
         fetchUser();
     }, [post.userId]);
-
-    //fetching the comment Owner
-
-    // ((((((((((((((( for (const i of post.comments) {
-    //                      return (commentUserId = i.userId);
-    //                              }
-    //                          console.log(commentUserId);
-    //                          post.comments.forEach((i) => console.log(i.userId));
-    //                              useEffect(() => {
-    //                                    const fetchCommentOwner = async () => {
-    //                                        const response = await axios.get(
-    //                                           backend_base_url +
-    //                                           `/posts/comments/${post.comments.map((i) => i.userId)}`
-    //                                                                   );
-    //                                              setCommentOwner(response.data);
-    //                                          console.log(response.data, "commentOwner");
-    //                                               };
-    //                                                        fetchCommentOwner();
-    //                                                       }, [i.userId]); ))))))))))))))))
 
     //like functionality
 
@@ -162,12 +136,6 @@ const Post = ({ post }) => {
 
     // Delete Comment Handler
     const deleteCommentIconHandler = async (_id) => {
-        // console.log(
-        //     post.comments.map((comment) => comment.userId !== currentUser._id),
-        //     "2"
-        // );
-
-        // console.log();
         console.log(currentUser._id);
 
         try {
@@ -184,11 +152,6 @@ const Post = ({ post }) => {
             console.log(`Error ${error.message}`);
         }
     };
-
-    // const commentOwner = post.comments.map((comment) => {
-    //     return comment.userId;
-    // });
-    // console.log(commentOwner);
 
     return (
         <div className=" cover mt-5 mb-5 w-1/2 flex justify-center items-center ">
@@ -234,7 +197,7 @@ const Post = ({ post }) => {
                     <hr className="m-5  border-1 border-palette-60 " />
 
                     <div className="postCenter mt-5 mb-5">
-                        <span className="postText m-12">{post.desc}</span>
+                        <div className="postText m-8">{post.desc}</div>
 
                         {post.img !== undefined && (
                             <img

@@ -184,6 +184,7 @@ function App() {
                 {currentUser.email !== "anonymousUser" && (
                     <>
                         {" "}
+                        <Route path="/forum" element={<Forum />} />
                         <Route
                             path="/forum/news-feed/all"
                             element={<NewsFeed />}

@@ -3,16 +3,13 @@ import NavForum from "../NavForum";
 import { useState, useEffect, useRef } from "react";
 import { useStore } from "../../../store";
 import axios from "axios";
-import { format } from "timeago.js";
-import { useNavigate } from "react-router-dom";
-import { RiDeleteBinLine, RiEditLine } from "react-icons/ri";
+
 import Post from "../post/Post";
 
 const MyPosts = () => {
     const backend_base_url = "http://localhost:8000";
     const [myPosts, setMyPosts] = useState([]);
 
-    const [user, setUser] = useState({});
     //fetching the current user
     const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
     const currentUser = useStore((state) => state.currentUser);

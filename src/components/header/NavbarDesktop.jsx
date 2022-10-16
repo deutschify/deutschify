@@ -5,7 +5,7 @@ import A2 from "../sprachkurs/A2";
 import B1 from "../sprachkurs/SchreibenB1";
 import Einbuergerungstest from "../orientierung/Einbuergerungstest";
 import Dictionary from "../dictionary/Dictionary";
-import Forum from "../Forum";
+import Forum from "../forum/Forum";
 import { NavLink } from "react-router-dom";
 import { useStore } from "../../store";
 import PageLogin from "../../Pages/PageLogin";
@@ -18,23 +18,25 @@ function NavbarDesktop() {
     const currentUser = useStore((state) => state.currentUser);
 
     return (
-            <div className="hidden md:block">
-                <Nav className=" w-full h-24">
-                    <div className="flex h-24 mt-6">
-                        <div className="p-10 w-80 relative">
-                            <Nav.Menu
-                                className="text-2xl border-none hover:text-palette-80"
-                                trigger={["click", "hover"]}
-                                title="Übungen"
-                            >
-                                {" "}
-                                <div className="bg-palette-80 w-80 rounded-lg p-4 border-2 border-palette-60  ">
-                                    <div className=" text-palette-50 hover:text-palette-60 pb-4 ">
+        <div className="hidden md:block">
+            <Nav className=" w-full h-24">
+                <div className="flex h-24 mt-6">
+                    <div className="p-10 w-80 relative">
+                        <Nav.Menu
+                            className="text-2xl border-none hover:text-palette-80"
+                            trigger={["click", "hover"]}
+                            title="Übungen"
+                        >
+                            {" "}
+                            <div className="bg-palette-80 w-80 rounded-lg p-4 border-2 border-palette-60  ">
+                                <div className=" text-palette-50 hover:text-palette-60 pb-4 ">
                                     <NavLink
-                                            className=""
-                                            to="/sprachkurs"
-                                            element={<Sprachkurs />}
-                                        > <Nav.Menu
+                                        className=""
+                                        to="/sprachkurs"
+                                        element={<Sprachkurs />}
+                                    >
+                                        {" "}
+                                        <Nav.Menu
                                             className="text-center "
                                             title="Sprachkurs"
                                         >
@@ -61,82 +63,75 @@ function NavbarDesktop() {
                                                     B1
                                                 </NavLink>
                                             </div>
-                                        </Nav.Menu></NavLink>
-                                       
-                                    </div>{" "}
-                                    <NavLink
-                                        className="bg-palette-80 text-palette-50 hover:text-palette-60 flex justify-center rounded-b-xl "
-                                        to="/einbuergerungstest"
-                                        element={<Einbuergerungstest />}
-                                    >
-                                        Orientierungskurs
+                                        </Nav.Menu>
                                     </NavLink>
-                                </div>
-                            </Nav.Menu>
-                        </div>
-                        <NavLink
-                            className="py-10 px-4 mr-28 text-2xl hover:text-palette-80"
-                            to="/dictionary"
-                            element={<Dictionary />}
-                        >
-                            Wörterbuch
-                        </NavLink>
-
-                        <NavLink
-                            className="py-10 px-4 text-2xl hover:text-palette-80 mr-40"
-                            to="/forum"
-                            element={<Forum />}
-                        >
-                            Forum
-                        </NavLink>
-                        {currentUser.accessGroups?.includes(
-                            "loggedOutUsers"
-                        ) && (
-                            <div className="flex items-center m-5">
+                                </div>{" "}
                                 <NavLink
-                                    className="w-40 text-center border-4 border-palette-60 bg-palette-70 p-4 text-xl rounded-xl shadow-outer hover:shadow-inner hover:text-palette-50 m-5"
-                                    to="/login"
-                                    element={<PageLogin />}
+                                    className="bg-palette-80 text-palette-50 hover:text-palette-60 flex justify-center rounded-b-xl "
+                                    to="/einbuergerungstest"
+                                    element={<Einbuergerungstest />}
                                 >
-                                    Login
-                                </NavLink>
-                                <NavLink
-                                    className="w-40 text-center bg-palette-80 border-4 border-palette-60 p-4 text-xl rounded-xl hover:shadow-inner hover:text-palette-50 shadow-outer"
-                                    to="/registration"
-                                    element={<PageRegister />}
-                                >
-                                    Register
+                                    Orientierungskurs
                                 </NavLink>
                             </div>
-                        )}
-
-                        {currentUser.accessGroups?.includes(
-                            "loggedInUsers"
-                        ) && (
-                            <div className="w-40 flex items-center justify-end">
-                                <NavLink
-                                    className="bg-palette-80 p-4 text-2xl py-2 rounded-full  hover:text-palette-50 hover:border-4 hover:border-palette-60"
-                                    to={`/${currentUser.firstName}`}
-                                    element={<PageUserSettings />}
-                                >
-                                    {currentUser.avatar ? (
-                                        <img
-                                            src={`${currentUser.avatar}`}
-                                            alt=""
-                                        />
-                                    ) : (
-                                        <p>{currentUser.firstName[0]}</p>
-                                    )}
-                                </NavLink>
-                            </div>
-                        )}
-
-                        {currentUser.accessGroups?.includes(
-                            "loggedInUsers"
-                        ) && <PageLogout />}
+                        </Nav.Menu>
                     </div>
-                </Nav>
-            </div>
+                    <NavLink
+                        className="py-10 px-4 mr-28 text-2xl hover:text-palette-80"
+                        to="/dictionary"
+                        element={<Dictionary />}
+                    >
+                        Wörterbuch
+                    </NavLink>
+
+                    <NavLink
+                        className="py-10 px-4 text-2xl hover:text-palette-80 mr-40"
+                        to="/forum"
+                        element={<Forum />}
+                    >
+                        Forum
+                    </NavLink>
+                    {currentUser.accessGroups?.includes("loggedOutUsers") && (
+                        <div className="flex items-center m-5">
+                            <NavLink
+                                className="w-40 text-center border-4 border-palette-60 bg-palette-70 p-4 text-xl rounded-xl shadow-outer hover:shadow-inner hover:text-palette-50 m-5"
+                                to="/login"
+                                element={<PageLogin />}
+                            >
+                                Login
+                            </NavLink>
+                            <NavLink
+                                className="w-40 text-center bg-palette-80 border-4 border-palette-60 p-4 text-xl rounded-xl hover:shadow-inner hover:text-palette-50 shadow-outer"
+                                to="/registration"
+                                element={<PageRegister />}
+                            >
+                                Register
+                            </NavLink>
+                        </div>
+                    )}
+
+                    {currentUser.accessGroups?.includes("loggedInUsers") && (
+                        <div className="w-40 flex items-center justify-end">
+                            <NavLink
+                                className="bg-palette-80 p-4 text-2xl py-2 rounded-full  hover:text-palette-50 hover:border-4 hover:border-palette-60"
+                                to={`/${currentUser.firstName}`}
+                                element={<PageUserSettings />}
+                            >
+                                {currentUser.avatar ? (
+                                    <img src={`${currentUser.avatar}`} alt="" />
+                                ) : (
+                                    <p>{currentUser.firstName[0]}</p>
+                                )}
+                            </NavLink>
+                        </div>
+                    )}
+
+                    {currentUser.accessGroups?.includes("loggedInUsers") && (
+                        <PageLogout />
+                    )}
+                </div>
+            </Nav>
+        </div>
     );
 }
 
