@@ -50,7 +50,7 @@ const Dictionary = () => {
             {" "}
             <div className="  xl:grid grid-cols-2 w-full  ml-2   ">
                 <div className="cover h-100% container mx-auto px-3 py-8">
-                    <h1 className="text-3xl font-bold  text-palette-60n">
+                    <h1 className="text-3xl font-bold  text-palette-60">
                         Wörterbuch
                     </h1>
 
@@ -63,10 +63,6 @@ const Dictionary = () => {
                         {" "}
                         <HiArrowNarrowRight className=" mt-3" />
                     </button>
-                    <button className="  absolute mt-3 md:hidden  ">
-                        {" "}
-                        <HiArrowNarrowLeft className=" mt-4" />
-                    </button>
                     <input
                         className=" w-[7rem] md:hidden py-4 px-2 ml-6 input "
                         type="text "
@@ -78,34 +74,36 @@ const Dictionary = () => {
                                 className="px-4 py-2 md:w-80 input"
                                 type="text input"
                                 placeholder="Search..."
-                                onChange={handleInputChange}
+                                onChange={(e) => setValue(e.target.value)}
                                 value={value}
                                 onKeyDown={handleInputKeyDown}
                             />
                             <button
+                                type="submit"
                                 className="bg-palette-60 border-l px-4 py-4  input  "
-                                onClick={handleSubmit}
+                                onClick={() =>
+                                    handleSubmit([textArr[0], "English"])
+                                }
                             >
                                 Search
                             </button>
                         </div>
                         <input
-                            className="hidden md:block py-4 ml-6  w-[7rem] pl-2 input"
+                            className="hidden text-center bg-palette-50 text-palette-60 md:block py-4 ml-6  w-[7rem] pl-2 input"
                             type="text "
-                            placeholder="language"
+                            name="Deutsch"
+                            value="Deutsch"
+                            id=""
                         />
                         <button className="hidden md:block mt-6 pl-4 ">
                             {" "}
                             <HiArrowNarrowRight className=" mt-3" />
                         </button>
-                        <button className="hidden mt-3 md:block ">
-                            {" "}
-                            <HiArrowNarrowLeft className="mt-2" />
-                        </button>
                         <input
-                            className="hidden md:block py-4 ml-6  w-[7rem] pl-2 input"
+                            className="hidden text-center bg-palette-50 text-palette-60 md:block py-4 ml-6 w-[7rem] pl-2 input"
                             type="text "
-                            placeholder="language"
+                            name="English"
+                            value="English"
                         />
                     </div>
 
