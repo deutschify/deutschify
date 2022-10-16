@@ -1,12 +1,12 @@
-import DropDownMenu from "./DropDownMenu";
-import NavForum from "./NavForum";
+import DropDownMenu from "../DropDownMenu";
+import NavForum from "../NavForum";
 import { useState, useEffect, useRef } from "react";
-import { useStore } from "../../store";
+import { useStore } from "../../../store";
 import axios from "axios";
 import { format } from "timeago.js";
 import { useNavigate } from "react-router-dom";
 import { RiDeleteBinLine, RiEditLine } from "react-icons/ri";
-import Post from "./post/Post";
+import Post from "../post/Post";
 
 const MyPosts = () => {
     const backend_base_url = "http://localhost:8000";
@@ -38,16 +38,14 @@ const MyPosts = () => {
             );
         };
         fetchMyPosts();
-        console.log(myPosts);
     }, [currentUser._id]);
-
     return (
-        <div className="h-[70vh]">
+        <div className="">
             <DropDownMenu />
             <NavForum />
             {myPosts.length === 0 ? (
                 <>
-                    <div className="NoPosts flex flex-col justify-center items-center pt-8 pb-6 ">
+                    <div className="NoPosts flex flex-col justify-center items-center pt-8 pb-6 h-[70vh]">
                         <span className="text-palette-50">
                             Du hast noch keine Beiträge...
                         </span>

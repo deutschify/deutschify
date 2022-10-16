@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import DropDownMenu from "./DropDownMenu";
 import NewsFeed from "./news-feed/NewsFeed";
-import MyPosts from "./MyPosts";
-import NavForum from "./NavForum";
-import AboutForum from "./AboutForum";
+import MyPosts from "./myPosts/MyPosts";
 import { useStore } from "../../store";
 import PostEdit from "./post/PostEdit";
 
@@ -19,10 +16,8 @@ const Forum = () => {
         <>
             {currentUser.accessGroups?.includes("loggedInUsers") ? (
                 <div className="forumMainPage">
-                    <DropDownMenu />
-                    <NavForum search={search} setSearches={setSearches} />
                     <Routes>
-                        <Route path="/" element={<AboutForum />} />
+                        <Route path="/" element={<NewsFeed />} />
                         <Route
                             path="/forum/news-feed/all"
                             element={<NewsFeed />}
