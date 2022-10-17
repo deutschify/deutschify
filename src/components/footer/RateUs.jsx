@@ -6,8 +6,8 @@ import "../../App.css";
 const RateUs = () => {
     const backend_base_url = "http://localhost:8000";
     const [rateUsData, setRateUsData] = useState({
-        firstName: "omar",
-        lastName: "tabaa",
+        firstName: currentUser.firstName,
+        lastName: currentUser.lastName,
         feedback: "",
     });
 
