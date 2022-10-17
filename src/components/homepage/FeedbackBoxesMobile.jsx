@@ -68,10 +68,10 @@ const FeedbackBoxesMobile = () => {
                     >
                         {feedbacks.map((feedback, index) => (
                             <div
-                                className="slide inline-block bg-palette-80 min-h-72" 
+                                className="slide h-64 inline-block bg-palette-80 min-h-72 rounded-xl" 
                                 key={index}
                             >
-                                <div className="bg-palette-60 w-52 p-2 text-palette-50">
+                                <div className="bg-palette-60 w-52 p-2 text-palette-50 border-4 border-palette-80 rounded-2xl">
                                     <img
                                         src={feedback.image}
                                         alt="fimage"
