@@ -10,19 +10,7 @@ const SlidesMobile = () => {
     return (
         <div className="h-full overflow-auto scrollbar-hide md:hidden grid gap-4 justify-items-center m-4">
             {/* dictionary */}
-            <div className="bg-palette-80 w-11/12 border-8 border-palette-50 rounded-xl">
-                <NavLink
-                    to="/dictionary"
-                    className="dictionary w-full flex justify-center"
-                >
-                    <img
-                        src={ImgDictionary}
-                        alt="Wörterbuch"
-                        title="dictionary"
-                        className="w-10/12 m-4 border-4 border-palette-60 rounded-xl"
-                    />
-                </NavLink>
-            </div>
+            
             <div className="bg-palette-80 w-11/12 border-8 border-palette-50 rounded-xl">
                 <NavLink
                     to="/sprachkurs"
@@ -61,6 +49,19 @@ const SlidesMobile = () => {
                         src={ImgForum}
                         alt="forum"
                         title="forum"
+                        className="w-10/12 m-4 border-4 border-palette-60 rounded-xl"
+                    />
+                </NavLink>
+            </div>
+            <div className="bg-palette-80 w-11/12 border-8 border-palette-50 rounded-xl">
+                <NavLink
+                    to="/dictionary"
+                    className="dictionary w-full flex justify-center"
+                >
+                    <img
+                        src={ImgDictionary}
+                        alt="Wörterbuch"
+                        title="dictionary"
                         className="w-10/12 m-4 border-4 border-palette-60 rounded-xl"
                     />
                 </NavLink>

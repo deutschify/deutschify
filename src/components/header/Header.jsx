@@ -19,8 +19,8 @@ const Header = () => {
                     alt=""
                 />
             </NavLink>
-{/* 
-            <SearchBar /> */}
+
+            <SearchBar />
             <NavBar />
         </div>
     );
