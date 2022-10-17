@@ -2,7 +2,7 @@ import emailjs from "emailjs-com";
 import { useState } from "react";
 import { useStore } from "../../store";
 import { Navigate } from "react-router";
-import ContactPopup from "./ContactPopop";
+import ContactPopup from "./ContactPopup";
 import ContactA from "../../../public/images/illus/contact1.png"
 import ContactB from "../../../public/images/illus/contact2.png"
 
