@@ -238,7 +238,7 @@ const Post = ({ post }) => {
                                         {/* <Comment post={post} /> 
                                 <Comments /> */}
                                         <div className="commentArea flex-col  space-y-3 ">
-                                            {post.comments.map((c, index) => (
+                                            {post.comments?.map((c, index) => (
                                                 <div
                                                     className="singleCommentField input p-4 border-2 
                                                     "
