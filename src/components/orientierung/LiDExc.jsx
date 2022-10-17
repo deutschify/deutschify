@@ -7,11 +7,16 @@ import { MdArrowForwardIos } from "react-icons/md";
 import "../../App.css";
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
+import { useStore } from "../../store";
+import { BsTranslate } from "react-icons/bs";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LiDExc = () => {
     const [displayQuestions, setDisplayQuestions] = useState([]);
-    // const [rightAnswerCounter, setRightAnswerCounter] = useState(0);
+    const translation = useStore((state) => state.translation);
+    const currentUser = useStore((state) => state.currentUser);
+    const textArr = useStore((state) => state.textArr);
+    const [isClicked, setIsClicked] = useState(false);
 
     const cld = new Cloudinary({
         cloud: {
@@ -138,138 +143,224 @@ const LiDExc = () => {
         //    await axios.post(`${baseUrl}}/current-user`, answeredQuestions)
     };
 
-    return (
-        <div className="mb-10">
-            {" "}
-            {/* Übungssatz {category}
-            <div className="">{displayQuestions.length} Fragen</div> */}
-            <div className="flex flex-col items-center justify-center">
-                <div className="coaster m-4 text-left p-4 md:text-2xl md:text-center">
-                    Hier kannst du für den Integrationstest lernen. Beantworte
-                    dafür nacheinander alle 300 Fragen zu Deutschland und 10
-                    Fragen zu{" "}
-                    {category.charAt(0).toUpperCase() + category.slice(1)}.
-                    Wiederhole den Test bist du dich sicher genug fühlst.
-                </div>
+    const handelClick = (text) => {
+        translation(
+            text,
+            "de",
+            currentUser.language.substring(0, 2).toLowerCase()
+        );
+        console.log(textArr);
+        setIsClicked((click) => !click);
+    };
 
-                <div className="flex flex-col items-center justify-center">
-                    <div className="cover w-64 m-4 md:w-[50vw] text-palette-60 flex flex-col items-center justify-center">
-                        {canDisplayQuestions() && (
-                            <>
-                                {" "}
-                                
-                                <div className="coaster text-center m-2 mb-4 md:text-2xl p-2 px-4 md:px-5 rounded-full">
-                                    {getCurrentQuestion().number}
-                                </div>
-                                <div className="coaster w-56 p-2 md:w-10/12 md:text-2xl md:text-center">
-                                    {getCurrentQuestion().question}
-                                </div>
-                                <div className="flex justify-center md:w-10/12 md:text-2xl md:text-center md:m-10">
-                                    {getCurrentQuestion().imageURL && (
-                                        <AdvancedImage
-                                            cldImg={fetchImage(
-                                                getCurrentQuestion().imageURL
+    return (
+        <>
+            {currentUser.accessGroups?.includes("loggedInUsers") ? (
+                <div className="mb-10">
+                    {" "}
+                    {/* Übungssatz {category}
+            <div className="">{displayQuestions.length} Fragen</div> */}
+                    <div className="flex flex-col items-center justify-center">
+                        <div className="coaster m-4 text-left p-4 md:text-2xl md:text-center">
+                            Hier kannst du für den Integrationstest lernen.
+                            Beantworte dafür nacheinander alle 300 Fragen zu
+                            Deutschland und 10 Fragen zu{" "}
+                            {category.charAt(0).toUpperCase() +
+                                category.slice(1)}
+                            . Wiederhole den Test bist du dich sicher genug
+                            fühlst.
+                        </div>
+
+                        <div className="flex flex-col items-center justify-center">
+                            <div className="cover w-64 m-4 md:w-[50vw] text-palette-60 flex flex-col items-center justify-center">
+                                {canDisplayQuestions() && (
+                                    <>
+                                        {" "}
+                                        <div className="flex">
+                                            <div className="coaster text-center m-2 mb-4 md:text-2xl p-2 px-4 md:px-5 rounded-full">
+                                                {getCurrentQuestion().number}
+                                            </div>
+                                            <div className="flex-end coaster text-center m-2 mb-4 md:text-2xl p-1 px-2 md:px-3 rounded-full">
+                                                <button
+                                                    id={
+                                                        getCurrentQuestion()
+                                                            .number
+                                                    }
+                                                    onClick={(e) =>
+                                                        handelClick(
+                                                            `${
+                                                                getCurrentQuestion()
+                                                                    .question
+                                                            } * ${
+                                                                getCurrentQuestion()
+                                                                    .answerA
+                                                            } * ${
+                                                                getCurrentQuestion()
+                                                                    .answerB
+                                                            } * ${
+                                                                getCurrentQuestion()
+                                                                    .answerC
+                                                            } * ${
+                                                                getCurrentQuestion()
+                                                                    .answerD
+                                                            }`,
+                                                            getCurrentQuestion()
+                                                                .number,
+                                                            e
+                                                        )
+                                                    }
+                                                >
+                                                    <BsTranslate />
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div className="coaster w-56 p-2 md:w-10/12 md:text-2xl md:text-center">
+                                            {isClicked
+                                                ? textArr[0]
+                                                : getCurrentQuestion().question}
+                                        </div>
+                                        <div className="flex justify-center md:w-10/12 md:text-2xl md:text-center md:m-10">
+                                            {getCurrentQuestion().imageURL && (
+                                                <AdvancedImage
+                                                    cldImg={fetchImage(
+                                                        getCurrentQuestion()
+                                                            .imageURL
+                                                    )}
+                                                    className="bg-palette-60 rounded-xl border-4 border-palette-80"
+                                                />
                                             )}
-                                            className="bg-palette-60 rounded-xl border-4 border-palette-80"
-                                        />
-                                    )}
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <button
-                                        className={`${
-                                            getCurrentQuestion()
-                                                .answerAButtonClass
-                                        }    bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4`}
-                                        onClick={() => {
-                                            rightAnswerHandler("answerA");
-                                        }}
-                                        disabled={
-                                            getCurrentQuestion().isAnswered
-                                        }
-                                    >
-                                        {getCurrentQuestion().answerA}
-                                    </button>
-                                    <button
-                                        className={`${
-                                            getCurrentQuestion()
-                                                .answerBButtonClass
-                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4` }
-                                        onClick={() => {
-                                            rightAnswerHandler("answerB");
-                                        }}
-                                        disabled={
-                                            getCurrentQuestion().isAnswered
-                                        }
-                                    >
-                                        {getCurrentQuestion().answerB}
-                                    </button>
-                                    <button
-                                        className={`${
-                                            getCurrentQuestion()
-                                                .answerCButtonClass
-                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4`}
-                                        onClick={() => {
-                                            rightAnswerHandler("answerC");
-                                        }}
-                                        disabled={
-                                            getCurrentQuestion().isAnswered
-                                        }
-                                    >
-                                        {getCurrentQuestion().answerC}
-                                    </button>
-                                    <button
-                                        className={`${
-                                            getCurrentQuestion()
-                                                .answerDButtonClass
-                                        } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4`}
-                                        onClick={() => {
-                                            rightAnswerHandler("answerD");
-                                        }}
-                                        disabled={
-                                            getCurrentQuestion().isAnswered
-                                        }
-                                    >
-                                        {getCurrentQuestion().answerD}
-                                    </button>
-                                </div>
-                                <div className="m-10 flex justify-around text-sm md:text-lg md:w-5/6 md:justify-between">
-                                    {" "}
-                                    <button
-                                        className="btn p-2 w-4/12 border-4 border-palette-60"
-                                        onClick={prevQuestionHandler}
-                                        disabled={getCurrentQuestion().isFirst}
-                                    >
-                                        <div className="flex justify-center flex-unwrap">
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <button
+                                                className={`${
+                                                    getCurrentQuestion()
+                                                        .answerAButtonClass
+                                                }    bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4`}
+                                                onClick={() => {
+                                                    rightAnswerHandler(
+                                                        "answerA"
+                                                    );
+                                                }}
+                                                disabled={
+                                                    getCurrentQuestion()
+                                                        .isAnswered
+                                                }
+                                            >
+                                                {isClicked
+                                                    ? textArr[1]
+                                                    : getCurrentQuestion()
+                                                          .answerA}
+                                            </button>
+                                            <button
+                                                className={`${
+                                                    getCurrentQuestion()
+                                                        .answerBButtonClass
+                                                } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4`}
+                                                onClick={() => {
+                                                    rightAnswerHandler(
+                                                        "answerB"
+                                                    );
+                                                }}
+                                                disabled={
+                                                    getCurrentQuestion()
+                                                        .isAnswered
+                                                }
+                                            >
+                                                {isClicked
+                                                    ? textArr[2]
+                                                    : getCurrentQuestion()
+                                                          .answerB}
+                                            </button>
+                                            <button
+                                                className={`${
+                                                    getCurrentQuestion()
+                                                        .answerCButtonClass
+                                                } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4`}
+                                                onClick={() => {
+                                                    rightAnswerHandler(
+                                                        "answerC"
+                                                    );
+                                                }}
+                                                disabled={
+                                                    getCurrentQuestion()
+                                                        .isAnswered
+                                                }
+                                            >
+                                                {isClicked
+                                                    ? textArr[3]
+                                                    : getCurrentQuestion()
+                                                          .answerC}
+                                            </button>
+                                            <button
+                                                className={`${
+                                                    getCurrentQuestion()
+                                                        .answerDButtonClass
+                                                } bg-palette-50 p-2 border-4 border-palette-60 rounded-xl m-6 hover:bg-palette-60 hover:border-palette-50 hover:text-palette-50 shadow-outer md:text-xl md:w-11/12 md:p-4`}
+                                                onClick={() => {
+                                                    rightAnswerHandler(
+                                                        "answerD"
+                                                    );
+                                                }}
+                                                disabled={
+                                                    getCurrentQuestion()
+                                                        .isAnswered
+                                                }
+                                            >
+                                                {isClicked
+                                                    ? textArr[4]
+                                                    : getCurrentQuestion()
+                                                          .answerD}
+                                            </button>
+                                        </div>
+                                        <div className="m-10 flex justify-around text-sm md:text-lg md:w-5/6 md:justify-between">
                                             {" "}
-                                            <MdArrowBackIos className="text-3xl" />
-                                            vorherige Frage
+                                            <button
+                                                className="btn p-2 w-4/12 border-4 border-palette-60"
+                                                onClick={prevQuestionHandler}
+                                                disabled={
+                                                    getCurrentQuestion().isFirst
+                                                }
+                                            >
+                                                <div className="flex justify-center flex-unwrap">
+                                                    {" "}
+                                                    <MdArrowBackIos className="text-3xl" />
+                                                    vorherige Frage
+                                                </div>
+                                            </button>
+                                            <button
+                                                className="btn p-2 w-4/12 border-4 border-palette-60"
+                                                onClick={nextQuestionHandler}
+                                            >
+                                                <div className="flex justify-center flex-unwrap">
+                                                    nächste Frage{" "}
+                                                    <MdArrowForwardIos className="text-3xl" />{" "}
+                                                </div>
+                                            </button>
                                         </div>
-                                    </button>
-                                    <button
-                                        className="btn p-2 w-4/12 border-4 border-palette-60"
-                                        onClick={nextQuestionHandler}
-                                    >
-                                        <div className="flex justify-center flex-unwrap">
-                                            nächste Frage{" "}
-                                            <MdArrowForwardIos className="text-3xl" />{" "}
-                                        </div>
-                                    </button>
-                                </div>
-                            </>
-                        )}
+                                    </>
+                                )}
+                            </div>
+                            <nav className="m-6">
+                                <NavLink
+                                    to={`/lernbereich/${category}`}
+                                    element={<Lernbereich />}
+                                    className="btn p-5 w-32 md:w-2/12 md:text-center "
+                                >
+                                    Zurück zum Lernbereich
+                                </NavLink>
+                            </nav>
+                        </div>
                     </div>
-                    <nav className="m-6">
-                        <NavLink
-                            to={`/lernbereich/${category}`}
-                            element={<Lernbereich />}
-                            className="btn p-5 w-32 md:w-2/12 md:text-center "
-                        >
-                            Zurück zum Lernbereich
-                        </NavLink>
-                    </nav>
                 </div>
-            </div>
-        </div>
+            ) : (
+                <>
+                    <p>Login to see our form</p>
+                    <Navigate replace to="/login" />
+
+                    {/* <PageLogin baseUrl={""}/> */}
+                </>
+            )}
+        </>
     );
 };
 

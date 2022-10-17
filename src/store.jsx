@@ -135,4 +135,26 @@ export const useStore = create((set) => ({
             set(() => ({ loading: false }));
         }
     },
+    textArr : [],
+    translation: async (text, translatedLanguage, sourceLanguage) => {
+        const res = await fetch("https://libretranslate.de/translate", {
+            method: "POST",
+            body: JSON.stringify({
+                q: text,
+                source: translatedLanguage,
+                target: sourceLanguage,
+                format: "text",
+            }),
+            headers: { "Content-Type": "application/json" },
+        });
+        let result = (await res.json()).translatedText
+        result = result.split(/[*]/)
+        console.log(result);
+        set((state) => {
+            const _state = { ...state };
+            _state.textArr = result;
+            return _state;
+        });
+        // return result
+    },
 }));

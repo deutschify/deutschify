@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ResultList from "./ResultList";
 import { useStore } from "../../store";
@@ -9,30 +9,48 @@ import ImageDictionary from "../../../public/images/dictionary1.png";
 
 const Dictionary = () => {
     const [value, setValue] = useState("");
-    const [inputValue, setInputValue] = useState("");
+    const [preferedLanguage, setPreferedLanguage] = useState("");
 
     const currentUser = useStore((state) => state.currentUser);
+    const [inputValue, setInputValue] = useState(["", currentUser?.language]);
+    const fetchlanguages = useStore((state) => state.fetchLanguages);
+    const textArr = useStore((state) => state.textArr);
+    const translation = useStore((state) => state.translation);
+    const languages = useStore((state) => state.languages);
+    const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
 
-    const handleInputChange = (e) => setValue(e.target.value);
+    const translate = () => {
+        translation(value, "de", "en");
+    };
 
-    const handleSubmit = () => {
-        setInputValue(value);
+    useEffect(() => {
+        translate();
+    }, [value]);
+
+    const handleSubmit = (arr) => {
+        setInputValue(arr);
         setValue("");
     };
 
     const handleInputKeyDown = (e) => {
         if (e.key === "Enter") {
-            setInputValue(value);
+            setInputValue(arr);
             setValue("");
         }
     };
+
+    useEffect(() => {
+        fetchCurrentUser();
+        fetchlanguages();
+        console.log(currentUser);
+    }, []);
 
     return (
         <div className=" m-10 md:m-20">
             {" "}
             <div className=" mt-[6rem] xl:grid grid-cols-2 w-full  ml-2   ">
                 <div className="cover h-100% container mx-auto px-3 py-8">
-                    <h1 className="text-3xl font-bold  text-palette-60n">
+                    <h1 className="text-3xl font-bold  text-palette-60">
                         Wörterbuch
                     </h1>
 
@@ -45,10 +63,6 @@ const Dictionary = () => {
                         {" "}
                         <HiArrowNarrowRight className=" mt-3" />
                     </button>
-                    <button className="  absolute mt-3 md:hidden  ">
-                        {" "}
-                        <HiArrowNarrowLeft className=" mt-4" />
-                    </button>
                     <input
                         className=" w-[7rem] md:hidden py-4 px-2 ml-6 input "
                         type="text "
@@ -60,48 +74,40 @@ const Dictionary = () => {
                                 className="px-4 py-2 md:w-80 input"
                                 type="text input"
                                 placeholder="Search..."
-                                onChange={handleInputChange}
+                                onChange={(e) => setValue(e.target.value)}
                                 value={value}
                                 onKeyDown={handleInputKeyDown}
                             />
                             <button
+                                type="submit"
                                 className="bg-palette-60 border-l px-4 py-4  input  "
-                                onClick={handleSubmit}
+                                onClick={() =>
+                                    handleSubmit([textArr[0], "English"])
+                                }
                             >
                                 Search
                             </button>
                         </div>
                         <input
-                            className="hidden md:block py-4 ml-6  w-[7rem] pl-2 input"
+                            className="hidden text-center bg-palette-50 text-palette-60 md:block py-4 ml-6  w-[7rem] pl-2 input"
                             type="text "
-                            placeholder="language"
+                            name="Deutsch"
+                            value="Deutsch"
+                            id=""
                         />
                         <button className="hidden md:block mt-6 pl-4 ">
                             {" "}
                             <HiArrowNarrowRight className=" mt-3" />
                         </button>
-                        <button className="hidden mt-3 md:block ">
-                            {" "}
-                            <HiArrowNarrowLeft className="mt-2" />
-                        </button>
                         <input
-                            className="hidden md:block py-4 ml-6  w-[7rem] pl-2 input"
+                            className="hidden text-center bg-palette-50 text-palette-60 md:block py-4 ml-6 w-[7rem] pl-2 input"
                             type="text "
-                            placeholder="language"
+                            name="English"
+                            value="English"
                         />
                     </div>
 
-                    {inputValue && (
-                        <>
-                            <h3 className="text-palette-60  mt-4">
-                                Ergebnis für:{" "}
-                                <span className="text-palette-60 font-bold">
-                                    {inputValue}
-                                </span>
-                            </h3>
-                            <ResultList inputValue={inputValue} />
-                        </>
-                    )}
+                    {inputValue && <ResultList inputValue={inputValue} />}
                 </div>
                 <div className="flex  justify-end items-center mr-4 mt-40 ">
                     <div className="">

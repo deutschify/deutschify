@@ -1,0 +1,5 @@
+<>
+            {currentUser.accessGroups?.includes("loggedInUsers") ? () : () }
+        </>
+
+        const currentUser = useStore((state) => state.currentUser);
