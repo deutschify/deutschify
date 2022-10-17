@@ -36,6 +36,7 @@ const MyPosts = () => {
         };
         fetchMyPosts();
     }, [currentUser._id]);
+    
     return (
         <div className=" h-[70vh]">
             <DropDownMenu />

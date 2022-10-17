@@ -59,6 +59,7 @@ const PageLogin = (props: IPageLoginProps) => {
             console.log("bad login");
         } else {
             fetchCurrentUser()
+            localStorage.setItem('user', JSON.stringify(_currentUser));
             // console.log(currentUser);
             navigate('/home');
         }

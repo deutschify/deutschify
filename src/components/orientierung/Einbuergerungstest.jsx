@@ -6,10 +6,11 @@ import "../../App.css";
 import { useStore } from "../../store";
 
 const Einbuergerungstest = () => {
+    const userLoggedIn = JSON.parse(localStorage.getItem('user'))
     const currentUser = useStore((state) => state.currentUser);
     return (
         <>
-            {currentUser.accessGroups?.includes("loggedInUsers") ? (
+            {userLoggedIn && userLoggedIn.accessGroups?.includes("loggedInUsers") ? (
                 <div className="mb-12 p-2">
                     {" "}
                     <div className="cover m-4 overflow-hidden md:flex md:flex-col md:items-center">
