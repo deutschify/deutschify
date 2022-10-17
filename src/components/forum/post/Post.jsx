@@ -228,7 +228,7 @@ const Post = ({ post }) => {
                             >
                                 <span className="Kommentare ">
                                     {" "}
-                                    {post.comments.length} Kommentare
+                                    {post.comments?.length} Kommentare
                                 </span>
                             </span>
 
