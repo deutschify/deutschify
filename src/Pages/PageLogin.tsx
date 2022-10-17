@@ -88,7 +88,7 @@ const PageLogin = (props: IPageLoginProps) => {
                                 className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 defaultValue=""
                                 {...register("email")}
-                                placeholder="email"
+                                placeholder="Email"
                             />
                             {errors.email && <p>{errors?.email?.message}</p>}
                         </div>
@@ -96,8 +96,9 @@ const PageLogin = (props: IPageLoginProps) => {
                             <input
                                 className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 defaultValue=""
+                                type="password"
                                 {...register("password")}
-                                placeholder="password"
+                                placeholder="Kennwort"
                             />
                             {errors.password && (
                                 <p>{errors?.password?.message}</p>
@@ -115,14 +116,14 @@ const PageLogin = (props: IPageLoginProps) => {
 
                     <div className="form-group">
                         <span className="indent-1 mx-8 text-palette-60">
-                            Need an Account?
+                            Kein Konto?
                             <span className="line">
                                 <span className="line">
                                     <NavLink
                                         to="/registration"
                                         className="text-palette-60 underline mx-4"
                                     >
-                                        Sign Up
+                                        registrieren
                                     </NavLink>
                                 </span>
                                 <Routes>
