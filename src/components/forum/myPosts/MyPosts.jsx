@@ -37,12 +37,12 @@ const MyPosts = () => {
         fetchMyPosts();
     }, [currentUser._id]);
     return (
-        <div className="">
+        <div className=" h-[70vh]">
             <DropDownMenu />
             <NavForum />
             {myPosts.length === 0 ? (
                 <>
-                    <div className="NoPosts flex flex-col justify-center items-center pt-8 pb-6 h-[70vh]">
+                    <div className="NoPosts flex flex-col justify-center items-center pt-8 pb-6 ">
                         <span className="text-palette-50">
                             Du hast noch keine Beiträge...
                         </span>
