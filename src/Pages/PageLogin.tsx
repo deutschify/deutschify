@@ -67,38 +67,38 @@ const PageLogin = (props: IPageLoginProps) => {
     };
 
     return (
-
-        <div  className="md:grid grid-cols-2 min-h-[800px]">
-            <  div className="hidden md:flex flex-col justify-center items-start w-[700px]">
-
+        <div className="md:grid grid-cols-2  m-10 ">
+            <div className="hidden md:flex flex-col justify-center items-start w-[700px] ">
                 <div>
                     {" "}
                     <img className="w-[600px]" src={Image} alt="" />{" "}
                 </div>
-
             </div>
-            <div className=" py-[200px] flex flex-col justify-center items-center">
+            <div className=" cover py-[120px] flex flex-col justify-center items-center">
                 <div className="">
-                    <h1 className="text-center text-2xl pb-3">LOGIN</h1>
+                    <h1 className="text-center  text-palette-60 text-2xl pb-3 text-pal">
+                        LOGIN
+                    </h1>
                     <form
                         className=" flex-col "
                         onSubmit={handleSubmit(onSubmit)}
                     >
                         <div className="py-[30px] ">
                             <input
-                                className="  w-[20rem] text-palette-50 border-2 border-palette-30   bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 defaultValue=""
                                 {...register("email")}
-                                placeholder="email"
+                                placeholder="Email"
                             />
                             {errors.email && <p>{errors?.email?.message}</p>}
                         </div>
                         <div>
                             <input
-                                className="  w-[20rem] text-palette-50 border-2 border-palette-30  bg-palette-40 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 defaultValue=""
+                                type="password"
                                 {...register("password")}
-                                placeholder="password"
+                                placeholder="Kennwort"
                             />
                             {errors.password && (
                                 <p>{errors?.password?.message}</p>
@@ -107,7 +107,7 @@ const PageLogin = (props: IPageLoginProps) => {
 
                         <div className="text-center py-7">
                             <input
-                                className="bg-palette-30 px-8 py-2 rounded-3xl "
+                                className="input bg-palette-50 text-palette-60 px-8 py-2 rounded-3xl "
                                 type="submit"
                                 value="login"
                             />
@@ -115,16 +115,23 @@ const PageLogin = (props: IPageLoginProps) => {
                     </form>
 
                     <div className="form-group">
-                        <span className="indent-1 mx-8">
-                            Need an Account? 
+                        <span className="indent-1 mx-8 text-palette-60">
+                            Kein Konto?
                             <span className="line">
                                 <span className="line">
-                                    <NavLink to="/registration" className="text-palette-40 underline mx-4">Sign Up</NavLink>
+                                    <NavLink
+                                        to="/registration"
+                                        className="text-palette-60 underline mx-4"
+                                    >
+                                        registrieren
+                                    </NavLink>
                                 </span>
                                 <Routes>
                                     <Route
                                         path="/registration"
-                                        element={<PageConfirmRegistration baseUrl="" />}
+                                        element={
+                                            <PageConfirmRegistration baseUrl="" />
+                                        }
                                     />
                                 </Routes>
                             </span>

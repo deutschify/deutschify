@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ResultList from "./ResultList";
 import { useStore } from "../../store";
@@ -9,99 +9,105 @@ import ImageDictionary from "../../../public/images/dictionary1.png";
 
 const Dictionary = () => {
     const [value, setValue] = useState("");
-    const [inputValue, setInputValue] = useState("");
+    const [preferedLanguage, setPreferedLanguage] = useState("");
 
     const currentUser = useStore((state) => state.currentUser);
+    const [inputValue, setInputValue] = useState(["", currentUser?.language]);
+    const fetchlanguages = useStore((state) => state.fetchLanguages);
+    const textArr = useStore((state) => state.textArr);
+    const translation = useStore((state) => state.translation);
+    const languages = useStore((state) => state.languages);
+    const fetchCurrentUser = useStore((state) => state.fetchCurrentUser);
 
-    const handleInputChange = (e) => setValue(e.target.value);
+    const translate = () => {
+        translation(value, "de", "en");
+    };
 
-    const handleSubmit = () => {
-        setInputValue(value);
+    useEffect(() => {
+        translate();
+    }, [value]);
+
+    const handleSubmit = (arr) => {
+        setInputValue(arr);
         setValue("");
     };
 
     const handleInputKeyDown = (e) => {
         if (e.key === "Enter") {
-            setInputValue(value);
+            setInputValue(arr);
             setValue("");
         }
     };
 
+    useEffect(() => {
+        fetchCurrentUser();
+        fetchlanguages();
+        console.log(currentUser);
+    }, []);
+
     return (
-        <div className="h-screen w-max">
+        <div className=" m-10 md:m-20">
             {" "}
-            <div className="    xl:grid grid-cols-2 w-full gap-[15rem] ml-2 ">
-                <div className=" h-100% container mx-auto px-3 py-8">
-                    <h1 className="text-3xl font-bold  text-white">
-                        Simple Dictionary
+            <div className=" mt-[6rem] xl:grid grid-cols-2 w-full  ml-2   ">
+                <div className="cover h-100% container mx-auto px-3 py-8">
+                    <h1 className="text-3xl font-bold  text-palette-60">
+                        Wörterbuch
                     </h1>
 
                     <input
-                        className=" md:hidden py-2 px-2  w-[6rem]  "
+                        className=" w-[7rem] md:hidden py-4 px-4  input"
                         type="tex  "
                         placeholder="language"
                     />
-                    <button className=" pl-2 md:hidden">
+                    <button className=" p-2 mb-3 md:hidden">
                         {" "}
-                        <HiArrowNarrowRight />
-                    </button>
-                    <button className="  absolute mt-5 md:hidden  ">
-                        {" "}
-                        <HiArrowNarrowLeft />
+                        <HiArrowNarrowRight className=" mt-3" />
                     </button>
                     <input
-                        className="md:hidden py-2 px-2 ml-6 w-[6rem]  "
+                        className=" w-[7rem] md:hidden py-4 px-2 ml-6 input "
                         type="text "
                         placeholder="language"
                     />
                     <div className="flex items-start justify-start mt-5">
-                        <div className="flex border-2 border-gray-200 rounded">
+                        <div className="flex  border-gray-200 rounded">
                             <input
-                                className="px-4 py-2 md:w-80"
-                                type="text"
+                                className="px-4 py-2 md:w-80 input"
+                                type="text input"
                                 placeholder="Search..."
-                                onChange={handleInputChange}
+                                onChange={(e) => setValue(e.target.value)}
                                 value={value}
                                 onKeyDown={handleInputKeyDown}
                             />
                             <button
-                                className="bg-palette-30 border-l px-4 py-2 text-white"
-                                onClick={handleSubmit}
+                                type="submit"
+                                className="bg-palette-60 border-l px-4 py-4  input  "
+                                onClick={() =>
+                                    handleSubmit([textArr[0], "English"])
+                                }
                             >
                                 Search
                             </button>
                         </div>
                         <input
-                            className="hidden md:block py-2 ml-6 w-[6rem]"
+                            className="hidden text-center bg-palette-50 text-palette-60 md:block py-4 ml-6  w-[7rem] pl-2 input"
                             type="text "
-                            placeholder="language"
+                            name="Deutsch"
+                            value="Deutsch"
+                            id=""
                         />
-                        <button className="hidden md:block mt-6 pl-4">
+                        <button className="hidden md:block mt-6 pl-4 ">
                             {" "}
-                            <HiArrowNarrowRight />
-                        </button>
-                        <button className="hidden md:block ">
-                            {" "}
-                            <HiArrowNarrowLeft />
+                            <HiArrowNarrowRight className=" mt-3" />
                         </button>
                         <input
-                            className="hidden md:block py-2 ml-6 w-[6rem]"
+                            className="hidden text-center bg-palette-50 text-palette-60 md:block py-4 ml-6 w-[7rem] pl-2 input"
                             type="text "
-                            placeholder="language"
+                            name="English"
+                            value="English"
                         />
                     </div>
 
-                    {inputValue && (
-                        <>
-                            <h3 className="text-palette-50 mt-4">
-                                Result for:{" "}
-                                <span className="text-palette-50 font-bold">
-                                    {inputValue}
-                                </span>
-                            </h3>
-                            <ResultList inputValue={inputValue} />
-                        </>
-                    )}
+                    {inputValue && <ResultList inputValue={inputValue} />}
                 </div>
                 <div className="flex  justify-end items-center mr-4 mt-40 ">
                     <div className="">

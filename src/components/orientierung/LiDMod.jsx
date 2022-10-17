@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, NavLink, useNavigate } from "react-router-dom";
+import { useParams, NavLink, useNavigate, Navigate } from "react-router-dom";
 import Lernbereich from "./LernbereichOrientierung";
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
@@ -20,7 +20,8 @@ const LiDMod = () => {
     const [timePopup, setTimePopup] = useState(false);
     const [isShown, setIsShown] = useState(false);
     const result = useStore((state) => state.result);
-    const setResult = useStore((state) => state.setResult);
+        const currentUser = useStore((state) => state.currentUser);
+        const setResult = useStore((state) => state.setResult);
     const fetchDataForModelltest = useStore(
         (state) => state.fetchDataForModelltest
     );
@@ -111,7 +112,8 @@ const LiDMod = () => {
     };
 
     return (
-        <div className="">
+        <>
+            {currentUser.accessGroups?.includes("loggedInUsers") ? (<div className="">
             <div className="">
                 <div className="flex justify-center">
                     {" "}
@@ -287,7 +289,12 @@ const LiDMod = () => {
                     Zurück zum Lernbereich
                 </NavLink>
             </nav>
-        </div>
+        </div>) : (<>
+                    <p>Login to see our form</p>
+                    <Navigate replace to="/login" />
+                </>) }
+        </>
+        
     );
 };
 
