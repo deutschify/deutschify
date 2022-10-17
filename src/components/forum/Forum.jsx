@@ -7,10 +7,11 @@ import { useStore } from "../../store";
 import PostEdit from "./post/PostEdit";
 
 const Forum = () => {
+    const userLoggedIn = JSON.parse(localStorage.getItem('user'))
     const currentUser = useStore((state) => state.currentUser);
     return (
         <>
-            {currentUser.accessGroups?.includes("loggedInUsers") ? (
+            {userLoggedIn && userLoggedIn.accessGroups?.includes("loggedInUsers") ? (
                 <div className="forumMainPage">
                     <Routes>
                         <Route path="/" element={<NewsFeed />} />

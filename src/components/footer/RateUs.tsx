@@ -8,7 +8,6 @@ import rateA from "../../../public/images/rate1.png"
 
 const RateUs = () => {
     const currentUser = useStore((state) => state.currentUser);
-
     return (
         <>
         

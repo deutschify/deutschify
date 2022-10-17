@@ -16,6 +16,7 @@ export const PageLogout = () => {
 
 	const handleLogoutButton = () => {
 		fetchLoggedOutUser()
+		window.localStorage.removeItem('user');
 		navigate("/home");
 	}
 	return (
