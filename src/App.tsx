@@ -79,78 +79,7 @@ function App() {
                 <Route path="/home" element={<Homepage />} />
 
                 <Route path="/dictionary" element={<Dictionary />} />
-                <Route path="/sprachkurs" element={<Sprachkurs />} />
-                <Route path="/sprachkurs/a1" element={<A1 />} />
-                <Route
-                    path="/sprachkurs/a1/schriftlicher-Ausdruck"
-                    element={<SchreibenA1 />}
-                />
-                <Route
-                    path="/sprachkurs/a1/leseverstehen"
-                    element={<LesenA1 />}
-                />
-                <Route
-                    path="/sprachkurs/a1/hoerverstehen"
-                    element={<HoerenA1 />}
-                />
-                <Route
-                    path="/sprachkurs/a1/sprachbausteine"
-                    element={<SprechenA1 />}
-                />
-                <Route path="/sprachkurs/a2" element={<A2 />} />
-                <Route
-                    path="/sprachkurs/a2/schriftlicher-Ausdruck"
-                    element={<SchreibenA2 />}
-                />
-                <Route
-                    path="/sprachkurs/a2/leseverstehen"
-                    element={<LesenA2 />}
-                />
-                <Route
-                    path="/sprachkurs/a2/hoerverstehen"
-                    element={<HoerenA2 />}
-                />
-                <Route
-                    path="/sprachkurs/a2/sprachbausteine"
-                    element={<SprechenA2 />}
-                />
-                <Route path="/sprachkurs/b1" element={<B1 />} />
-                <Route
-                    path="/sprachkurs/b1/schriftlicher-Ausdruck"
-                    element={<SchreibenB1 />}
-                />
-                <Route
-                    path="/sprachkurs/b1/leseverstehen"
-                    element={<LesenB1 />}
-                />
-                <Route
-                    path="/sprachkurs/b1/hoerverstehen"
-                    element={<HoerenB1 />}
-                />
-                <Route
-                    path="/sprachkurs/b1/sprachbausteine"
-                    element={<SprechenB1 />}
-                />
-                <Route
-                    path="/einbuergerungstest/*"
-                    element={<Einbuergerungstest />}
-                />
-                <Route
-                    path="/lernbereich/:category/*"
-                    element={<Lernbereich />}
-                />
-                <Route
-                    path="/lernbereich/:category/excercise/*"
-                    element={<LiDExc />}
-                />
-                <Route
-                    path="/lernbereich/:category/modelltest/*"
-                    element={<LiDMod />}
-                />
-                <Route
-                    path="/lernbereich/:category/modelltest/result"
-                    element={<ResultLidMod />}
-                />
+                
                 <Route path="/forum/*" element={<Forum />} />
 
                 <Route
@@ -181,6 +110,81 @@ function App() {
                         />
                     }
                 />
+
+<Route path="/sprachkurs" element={<Sprachkurs />} />
+                    <Route path="/sprachkurs/a1" element={<A1 />} />
+                    <Route
+                        path="/sprachkurs/a1/schriftlicher-Ausdruck"
+                        element={<SchreibenA1 />}
+                    />
+                    <Route
+                        path="/sprachkurs/a1/leseverstehen"
+                        element={<LesenA1 />}
+                    />
+                    <Route
+                        path="/sprachkurs/a1/hoerverstehen"
+                        element={<HoerenA1 />}
+                    />
+                    <Route
+                        path="/sprachkurs/a1/sprachbausteine"
+                        element={<SprechenA1 />}
+                    />
+                    <Route path="/sprachkurs/a2" element={<A2 />} />
+                    <Route
+                        path="/sprachkurs/a2/schriftlicher-Ausdruck"
+                        element={<SchreibenA2 />}
+                    />
+                    <Route
+                        path="/sprachkurs/a2/leseverstehen"
+                        element={<LesenA2 />}
+                    />
+                    <Route
+                        path="/sprachkurs/a2/hoerverstehen"
+                        element={<HoerenA2 />}
+                    />
+                    <Route
+                        path="/sprachkurs/a2/sprachbausteine"
+                        element={<SprechenA2 />}
+                    />
+                    <Route path="/sprachkurs/b1" element={<B1 />} />
+                    <Route
+                        path="/sprachkurs/b1/schriftlicher-Ausdruck"
+                        element={<SchreibenB1 />}
+                    />
+                    <Route
+                        path="/sprachkurs/b1/leseverstehen"
+                        element={<LesenB1 />}
+                    />
+                    <Route
+                        path="/sprachkurs/b1/hoerverstehen"
+                        element={<HoerenB1 />}
+                    />
+                    <Route
+                        path="/sprachkurs/b1/sprachbausteine"
+                        element={<SprechenB1 />}
+                    />
+                    <Route
+                        path="/einbuergerungstest/*"
+                        element={<Einbuergerungstest />}
+                    />
+                    <Route
+                        path="/lernbereich/:category/*"
+                        element={<Lernbereich />}
+                    />
+                    <Route
+                        path="/lernbereich/:category/excercise/*"
+                        element={<LiDExc />}
+                    />
+                    <Route
+                        path="/lernbereich/:category/modelltest/*"
+                        element={<LiDMod />}
+                    />
+                    <Route
+                        path="/lernbereich/:category/modelltest/result"
+                        element={<ResultLidMod />}
+                    />
+
+                    
                 {currentUser.email !== "anonymousUser" && (
                     <>
                         {" "}

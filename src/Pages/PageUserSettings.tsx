@@ -268,10 +268,11 @@ const PageUserSettings = () => {
                             }
                             defaultValue={currentUser.language}
                         >
+                            <option selected>{currentUser.language}</option>
                             {languages.map((language: ILanguage) => {
                                 return (
                                     <option
-                                        className="bg-palette-60 "
+                                       
                                         key={language.code}
                                         value={`${language.name}`}
                                     >
