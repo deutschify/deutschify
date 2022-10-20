@@ -17,7 +17,7 @@ const MyPosts = () => {
     useEffect(() => {
         fetchCurrentUser();
         // console.log(currentUser);
-        // console.log(currentUser._id);
+        console.log(currentUser._id);
     }, []);
 
     useEffect(() => {
