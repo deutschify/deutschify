@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const NewsFeed = () => {
-    const backend_base_url = "http://localhost:8000";
+    const backend_base_url = import.meta.env.VITE_BACKEND_URL;
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {

@@ -6,7 +6,7 @@ import axios from "axios";
 import { useStore } from "../../../store";
 
 const share = () => {
-    const backend_base_url = "http://localhost:8000";
+    const backend_base_url = import.meta.env.VITE_BACKEND_URL;
     // const [user, setUser] = useState({});
 
     //fetching the current user
