@@ -35,7 +35,7 @@ const MyPosts = () => {
             );
         };
         fetchMyPosts();
-    }, [currentUser._id]);
+    }, [currentUser._id, myPosts]);
 
     return (
         <div className=" h-[100vh]">
