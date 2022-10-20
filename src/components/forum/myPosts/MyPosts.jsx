@@ -36,9 +36,9 @@ const MyPosts = () => {
         };
         fetchMyPosts();
     }, [currentUser._id]);
-    
+
     return (
-        <div className=" h-[70vh]">
+        <div className=" h-[100vh]">
             <DropDownMenu />
             <NavForum />
             {myPosts.length === 0 ? (
