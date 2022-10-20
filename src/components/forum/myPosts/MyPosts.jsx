@@ -38,7 +38,7 @@ const MyPosts = () => {
     }, [currentUser._id]);
 
     return (
-        <div className=" h-[100vh]">
+        <div className=" h-[100vh] mb-40">
             <DropDownMenu />
             <NavForum />
             {myPosts.length === 0 ? (
