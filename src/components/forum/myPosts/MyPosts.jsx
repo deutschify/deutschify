@@ -7,7 +7,7 @@ import axios from "axios";
 import Post from "../post/Post";
 
 const MyPosts = () => {
-    const backend_base_url = "http://localhost:8000";
+    const backend_base_url = import.meta.env.VITE_BACKEND_URL;
     const [myPosts, setMyPosts] = useState([]);
 
     //fetching the current user

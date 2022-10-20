@@ -7,7 +7,7 @@ import { useStore } from "../../../store";
 import { useNavigate } from "react-router-dom";
 
 const Post = ({ post }) => {
-    const backend_base_url = "http://localhost:8000";
+    const backend_base_url = import.meta.env.VITE_BACKEND_URL;
 
     const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLiked] = useState(false);
@@ -162,7 +162,7 @@ const Post = ({ post }) => {
                             <span className="postUserName text-sm ml-2.5 text-palette-80 pt-2">
                                 <p>
                                     {" "}
-                                    {user.firstName} {user.lastName}
+                                    {user?.firstName} {user?.lastName}
                                 </p>
                             </span>
 
