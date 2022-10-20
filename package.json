@@ -6,7 +6,7 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview",
-        "reload": "git pull && npm i && npm run build"
+        "deploy": "git pull && npm i && npm run build"
     },
     "dependencies": {
         "@cloudinary/react": "^1.5.0",

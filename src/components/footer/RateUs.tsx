@@ -14,7 +14,7 @@ const RateUs = () => {
     const backend_base_url = "http://localhost:8000";
     const [isOpen, setIsOpen] = useState(false);
 
-    const feedback = useRef();
+    const feedback = useRef<HTMLTextAreaElement>(null);
     const navigate = useNavigate();
 
     const togglePopup = () => {
