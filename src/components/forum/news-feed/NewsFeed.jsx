@@ -25,7 +25,7 @@ const NewsFeed = () => {
             );
         };
         fetchPosts();
-    }, []);
+    }, [posts]);
 
     return (
         <div>
