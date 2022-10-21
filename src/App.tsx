@@ -66,6 +66,7 @@ function App() {
         fetchLanguages();
         fetchCurrentUser();
         fetchCountries();
+        localStorage.setItem('user', JSON.stringify(currentUser));
         //   console.log(currentUser);
     }, []);
 
