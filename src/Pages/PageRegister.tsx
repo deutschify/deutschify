@@ -256,7 +256,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
                         </div>
                         <div className="text-center py-[20px]">
                             <input
-                                className="btn px-8 p-2  "
+                                className="btn px-8 p-2"
                                 type="submit"
                                 value="Register"
                             />
