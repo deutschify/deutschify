@@ -11,7 +11,7 @@ import ContactPopup from "./ContactPopop";
 
 const RateUs = () => {
     const currentUser = useStore((state) => state.currentUser);
-    const backend_base_url = "http://localhost:8000";
+    const backend_base_url = import.meta.env.VITE_BACKEND_URL;
     const [isOpen, setIsOpen] = useState(false);
 
     const feedback = useRef<HTMLTextAreaElement>(null);
