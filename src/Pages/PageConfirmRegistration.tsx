@@ -49,12 +49,29 @@ const PageConfirmRegistration = (
         <>
             {confirmStatus === ConfirmStatus.succeeded && (
                 <>
-                    <p>Thank you for confirming your email address.</p>
-                    <p>You are now a member of this site!</p>
-                    <p>
-                        Please log in to the site here:{" "}
-                        <NavLink to="/login">Login</NavLink>
-                    </p>
+                    <div className="flex flex-col  cover justify-center  p-10   m-20 h-[30rem] ">
+                        <div className="coaster text-center p-">
+                            <div className="p-3 text-xl">
+                                {" "}
+                                <p>
+                                    Thank you for confirming your email address.
+                                </p>
+                            </div>
+                            <div className="p-3 text-xl">
+                                {" "}
+                                <p>You are now a member of this site!</p>
+                            </div>
+                            <div className="p-3 text-xl">
+                                {" "}
+                                <div className="p-3 text-xl">
+                                    <p> Please log in to the site here: </p>
+                                </div>
+                                <button className="w-40 text-center border-4 border-palette-60 bg-palette-70 p-2 text-xl rounded-xl shadow-outer hover:shadow-inner hover:text-palette-50 m-5">
+                                    <NavLink to="/login">Login</NavLink>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </>
             )}
             {confirmStatus === ConfirmStatus.failed && (

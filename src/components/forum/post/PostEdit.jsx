@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const PostEdit = () => {
-    const backend_base_url = "http://localhost:8000";
+    const backend_base_url = import.meta.env.VITE_BACKEND_URL;
 
     const location = useLocation();
     const navigate = useNavigate();

@@ -7,16 +7,18 @@ import { useStore } from "../../../store";
 import { useNavigate } from "react-router-dom";
 
 const Post = ({ post }) => {
-    const backend_base_url = "http://localhost:8000";
+    const backend_base_url = import.meta.env.VITE_BACKEND_URL;
 
     const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLiked] = useState(false);
     const [likeColor, setLikeColor] = useState("");
     const [user, setUser] = useState({});
+
     const [postedDate, setPostedDate] = useState(format(post.createdAt));
     const [postUpdated, setPostUpdated] = useState(format(post.updatedAt));
     const [deletedCommentId, setDeletedCommentId] = useState("");
     const [showBox, setShowBox] = useState(false);
+    const [allUsers, setAllUsers] = useState({});
 
     //useRev to add a new comment
     const comment = useRef();
@@ -62,6 +64,16 @@ const Post = ({ post }) => {
         fetchUser();
     }, [post.userId]);
 
+    // fetching all Users to be able to find the comment owner
+
+    useEffect(() => {
+        const fetchAllUsers = async () => {
+            const response = await axios.get(backend_base_url + `/users`);
+            setAllUsers(response.data);
+            //console.log(response.data);
+        };
+        fetchAllUsers();
+    }, []);
     //like functionality
 
     //to handle the like button
@@ -162,7 +174,7 @@ const Post = ({ post }) => {
                             <span className="postUserName text-sm ml-2.5 text-palette-80 pt-2">
                                 <p>
                                     {" "}
-                                    {user.firstName} {user.lastName}
+                                    {user?.firstName} {user?.lastName}
                                 </p>
                             </span>
 
@@ -235,29 +247,49 @@ const Post = ({ post }) => {
                             {showBox && (
                                 <div className="commentsSection mt-2.5 ">
                                     <>
-                                        {/* <Comment post={post} /> 
-                                <Comments /> */}
                                         <div className="commentArea flex-col  space-y-3 ">
                                             {post.comments?.map((c, index) => (
                                                 <div
-                                                    className="singleCommentField input p-4 border-2 
+                                                    className="singleCommentField input p-5 mr-1 ml-1 border-2 
                                                     "
                                                     key={index}
                                                 >
                                                     {" "}
                                                     <div className="flex justify-between ">
-                                                        <div className="commentOwner ">
-                                                            {/* <span className=" text-xs text-palette-80 ">
-                                                                {" "}
-                                                                {
-                                                                    currentUser.firstName
-                                                                }{" "}
-                                                                {""}
-                                                                {
-                                                                    currentUser.lastName
-                                                                }
-                                                                :
-                                                            </span>{" "} */}
+                                                        <div className="commentOwner pr-2 ">
+                                                            {c.userId ===
+                                                            currentUser._id ? (
+                                                                <span className=" text-xs text-palette-80 ">
+                                                                    {
+                                                                        currentUser.firstName
+                                                                    }{" "}
+                                                                    {
+                                                                        currentUser.lastName
+                                                                    }
+                                                                </span>
+                                                            ) : (
+                                                                <span className=" text-xs text-palette-80  ">
+                                                                    {allUsers.map(
+                                                                        (i) => {
+                                                                            if (
+                                                                                i._id ===
+                                                                                c.userId
+                                                                            ) {
+                                                                                return (
+                                                                                    <span>
+                                                                                        {
+                                                                                            i.firstName
+                                                                                        }{" "}
+                                                                                        {
+                                                                                            i.lastName
+                                                                                        }
+                                                                                    </span>
+                                                                                );
+                                                                            }
+                                                                        }
+                                                                    )}
+                                                                </span>
+                                                            )}
                                                         </div>
                                                         <div className="commentAndDate  ">
                                                             <span className="commentSpan">
@@ -271,18 +303,23 @@ const Post = ({ post }) => {
                                                                 </span>{" "}
                                                             </span>
                                                         </div>
-                                                        <div className="flex gap-2 ">
-                                                            <RiDeleteBinLine
-                                                                className="DeleteCommentIcon cursor-pointer mr-2"
-                                                                title="Löschen"
-                                                                onClick={() =>
-                                                                    deleteCommentIconHandler(
-                                                                        c._id
-                                                                    )
-                                                                }
-                                                            />
-                                                            <RiEditLine />
-                                                        </div>
+                                                        {c.userId ===
+                                                        currentUser._id ? (
+                                                            <div className="flex  ">
+                                                                <RiDeleteBinLine
+                                                                    className="DeleteCommentIcon cursor-pointer mr-2"
+                                                                    title="Löschen"
+                                                                    onClick={() =>
+                                                                        deleteCommentIconHandler(
+                                                                            c._id
+                                                                        )
+                                                                    }
+                                                                />
+                                                                <RiEditLine />
+                                                            </div>
+                                                        ) : (
+                                                            <div className="flex gap-2 "></div>
+                                                        )}
                                                     </div>
                                                 </div>
                                             ))}

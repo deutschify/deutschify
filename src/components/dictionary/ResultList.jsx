@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useStore } from "../../store";
 // import Antonym from "./Antonym";
 import Example from "./Example";
 import MeanigList from "./MeaningList";
@@ -11,19 +10,13 @@ const dictionaryAPI = "https://api.dictionaryapi.dev/api/v2/entries/en";
 const ResultList = ({ inputValue }) => {
     const [response, setResponse] = useState(null);
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);    
-    const textArr = useStore((state) => state.textArr);
-    const translation = useStore((state) => state.translation);
-    const [preferedLanguage, setPreferedLanguage] = useState("");
-    
-    // console.log(inputValue);
+    const [loading, setLoading] = useState(false);
+
     const fetchData = async (param) => {
         try {
             setLoading(true);
-            const res = await axios(`${dictionaryAPI}/${param[0]}`);
+            const res = await axios(`${dictionaryAPI}/${param}`);
             setResponse(res.data);
-            // setPreferedLanguage(param[1].toLowerCase()) 
-            // console.log(response);
             setError(null);
         } catch (err) {
             setError(err);
@@ -33,7 +26,7 @@ const ResultList = ({ inputValue }) => {
     };
 
     useEffect(() => {
-        if (inputValue.length>1) {
+        if (inputValue.length) {
             fetchData(inputValue);
         }
     }, [inputValue]);
@@ -51,8 +44,8 @@ const ResultList = ({ inputValue }) => {
 
     if (error) {
         return (
-            <h3 className="text-center mt-10 font-semibold text-palette-60">
-                Keine Definitionen gefunden 😥
+            <h3 className="text-center mt-10 font-semibold text-gray-500">
+                No Definitions Found 😥
             </h3>
         );
     }

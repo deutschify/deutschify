@@ -7,7 +7,7 @@ import axios from "axios";
 import Post from "../post/Post";
 
 const MyPosts = () => {
-    const backend_base_url = "http://localhost:8000";
+    const backend_base_url = import.meta.env.VITE_BACKEND_URL;
     const [myPosts, setMyPosts] = useState([]);
 
     //fetching the current user
@@ -17,7 +17,7 @@ const MyPosts = () => {
     useEffect(() => {
         fetchCurrentUser();
         // console.log(currentUser);
-        // console.log(currentUser._id);
+        console.log(currentUser._id);
     }, []);
 
     useEffect(() => {
@@ -36,14 +36,14 @@ const MyPosts = () => {
         };
         fetchMyPosts();
     }, [currentUser._id]);
-    
+
     return (
-        <div className="">
+        <div className=" h-[100vh] mb-40">
             <DropDownMenu />
             <NavForum />
             {myPosts.length === 0 ? (
                 <>
-                    <div className="NoPosts flex flex-col justify-center items-center pt-8 pb-6 h-[70vh]">
+                    <div className="NoPosts flex flex-col justify-center items-center pt-8 pb-6 ">
                         <span className="text-palette-50">
                             Du hast noch keine Beiträge...
                         </span>
