@@ -176,81 +176,87 @@ const PageRegister = (props: IPageRegistrationProps) => {
                                 <p>Kennwort stimmt nicht</p>
                             )}
                         </div>
-                        <div className=" text-center">
-                            <select
-                                className="w-[10rem] input mb-2 border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   text-palette-60 bg-palette-50 "
-                                {...register("language")}
-                                onChange={(e) =>
-                                    setValue("language", e.target.value, {
-                                        shouldValidate: true,
-                                    })
-                                } // Using setValue
-                                defaultValue=""
-                                name="language"
-                            >
-                                <option
-                                    className="bg-palette-50"
-                                    selected
-                                    disabled
+                        <div className="md:flex md:flex-row  gap-2">
+                            <div className=" text-center ">
+                                <select
+                                    className="w-[10rem] mb-2 border-2 border-palette-60 text-center rounded-3xl py-3 px-4 outline-none text-palette-60 bg-palette-50 "
+                                    {...register("language")}
+                                    onChange={(e) =>
+                                        setValue("language", e.target.value, {
+                                            shouldValidate: true,
+                                        })
+                                    } // Using setValue
+                                    defaultValue=""
+                                    name="language"
                                 >
-                                    Sprache
-                                </option>
-                                {languages.map((language: ILanguage) => {
-                                    return (
-                                        <option
-                                            className="bg-palette-50 "
-                                            key={language.code}
-                                            value={`${language.code}`}
-                                        >
-                                            {" "}
-                                            {language.name}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            {errors.language && (
-                                <p>{errors?.language?.message}</p>
-                            )}
-                        </div>
-                        <div className=" text-center">
-                            <select
-                                className="w-[10rem] input mb-2 border-2 text-center rounded-3xl py-3 px-4 focus:outline-none  text-palette-60  bg-palette-50"
-                                {...register("nationality")}
-                                onChange={(e) =>
-                                    setValue("nationality", e.target.value, {
-                                        shouldValidate: true,
-                                    })
-                                } // Using setValue
-                                defaultValue=""
-                                name="nationality"
-                            >
-                                <option
-                                    className="bg-palette-50"
-                                    selected
-                                    disabled
+                                    <option
+                                        className="bg-palette-50"
+                                        selected
+                                        disabled
+                                    >
+                                        Sprache
+                                    </option>
+                                    {languages.map((language: ILanguage) => {
+                                        return (
+                                            <option
+                                                className="bg-palette-50 "
+                                                key={language.code}
+                                                value={`${language.code}`}
+                                            >
+                                                {" "}
+                                                {language.name}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
+                                {errors.language && (
+                                    <p>{errors?.language?.message}</p>
+                                )}
+                            </div>
+                            <div className=" text-center">
+                                <select
+                                    className="w-[10rem] mb-2 border-2 border-palette-60 text-center rounded-3xl py-3 px-4 outline-none text-palette-60 bg-palette-50"
+                                    {...register("nationality")}
+                                    onChange={(e) =>
+                                        setValue(
+                                            "nationality",
+                                            e.target.value,
+                                            {
+                                                shouldValidate: true,
+                                            }
+                                        )
+                                    } // Using setValue
+                                    defaultValue=""
+                                    name="nationality"
                                 >
-                                    Land
-                                </option>
-                                {countries.map((country: ICountry) => {
-                                    return (
-                                        <option
-                                            className="bg-palette-50 "
-                                            key={country.name}
-                                            value={`${country.name}`}
-                                        >
-                                            {" "}
-                                            {country.name.substring(0, 18)}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            {errors.nationality && (
-                                <p>{errors?.nationality?.message}</p>
-                            )}
+                                    <option
+                                        className="bg-palette-50"
+                                        selected
+                                        disabled
+                                    >
+                                        Land
+                                    </option>
+                                    {countries.map((country: ICountry) => {
+                                        return (
+                                            <option
+                                                className="bg-palette-50 "
+                                                key={country.name}
+                                                value={`${country.name}`}
+                                            >
+                                                {" "}
+                                                {country.name.substring(0, 18)}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
+                                {errors.nationality && (
+                                    <p>{errors?.nationality?.message}</p>
+                                )}
+                            </div>
                         </div>
                         <div className="text-center py-[20px]">
                             <input
-                                className="bg-palette-80 input text-palette-60 px-8 py-2 rounded-3xl "
+                                className="btn px-8 p-2"
                                 type="submit"
                                 value="Register"
                             />

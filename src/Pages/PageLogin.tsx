@@ -60,8 +60,8 @@ const PageLogin = (props: IPageLoginProps) => {
             fetchCurrentUser();
             // let userObj = {user: _currentUser, timestamp: new Date().getTime()}
             localStorage.setItem("user", JSON.stringify(_currentUser));
-            localStorage.setItem("saved", `${new Date().getTime()}`)
-            
+            localStorage.setItem("saved", `${new Date().getTime()}`);
+
             // console.log(currentUser);
             navigate("/home");
         }
@@ -109,7 +109,7 @@ const PageLogin = (props: IPageLoginProps) => {
 
                         <div className="text-center py-7">
                             <input
-                                className="input bg-palette-50 text-palette-60 px-8 py-2 rounded-3xl "
+                                className="btn  px-8 p-2 "
                                 type="submit"
                                 value="login"
                             />
