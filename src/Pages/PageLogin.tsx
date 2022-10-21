@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import Image from '../../public/images/login-pic.png'
+import Image from "../../public/images/login-pic.png";
 
 import { IUserLoginForm } from "../interfaces";
 import axios from "axios";
@@ -10,7 +10,6 @@ import { useStore } from "../store";
 import { Route, Routes, useNavigate } from "react-router";
 import PageConfirmRegistration from "./PageConfirmRegistration";
 import { NavLink } from "react-router-dom";
-
 
 export interface IPageLoginProps {
     baseUrl: string;
@@ -52,19 +51,21 @@ const PageLogin = (props: IPageLoginProps) => {
             )
         ).data;
         const _currentUser = user.currentUser;
-        console.log({_currentUser});
-        
+        console.log({ _currentUser });
+
         if (_currentUser.email === "anonymousUser") {
             // errors('bad login');
             console.log("bad login");
         } else {
-            fetchCurrentUser()
-            localStorage.setItem('user', JSON.stringify(_currentUser));
+            fetchCurrentUser();
+            // let userObj = {user: _currentUser, timestamp: new Date().getTime()}
+            localStorage.setItem("user", JSON.stringify(_currentUser));
+            localStorage.setItem("saved", `${new Date().getTime()}`)
+            
             // console.log(currentUser);
-            navigate('/home');
+            navigate("/home");
         }
         // console.log(data);
-        
     };
 
     return (

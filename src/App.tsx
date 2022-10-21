@@ -47,6 +47,7 @@ import PostEdit from "./components/forum/post/PostEdit";
 
 function App() {
     const navigate = useNavigate();
+    
 
     // const loading = useStore((state) => state.loading);
     const fetchLanguages = useStore(
@@ -61,14 +62,28 @@ function App() {
     const currentUser = useStore(
         (state: { currentUser: any }) => state.currentUser
     );
+    
 
     useEffect(() => {
         fetchLanguages();
         fetchCurrentUser();
         fetchCountries();
-        localStorage.setItem('user', JSON.stringify(currentUser));
         //   console.log(currentUser);
     }, []);
+
+    useEffect(() => {
+        let loginSecondsMax = 9000;
+        localStorage.setItem('user', JSON.stringify(currentUser));
+        let saved = Number(localStorage.getItem("saved"));
+            if (
+                saved &&
+                new Date().getTime() - saved > loginSecondsMax * 1000
+            ) {
+                localStorage.clear();
+            }
+            console.log();
+            
+    },[new Date().getTime()])
 
     return (
         <div className="w-[100vw] bg-palette-60 pb-24 font-block2 font-bold shadow-inner">

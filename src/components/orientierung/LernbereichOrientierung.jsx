@@ -1,4 +1,4 @@
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, Navigate } from "react-router-dom";
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { thumbnail } from "@cloudinary/url-gen/actions/resize";
@@ -230,8 +230,6 @@ const Lernbereich = () => {
                         <>
                             <p>Login to see our form</p>
                             <Navigate replace to="/login" />
-
-                            {/* <PageLogin baseUrl={""}/> */}
                         </>
                     )}
                 </>
