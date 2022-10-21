@@ -176,7 +176,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
                                 <p>Kennwort stimmt nicht</p>
                             )}
                         </div>
-                        <div className="flex flex-row justify-center items-center justify-between">
+                        <div className="md:flex md:flex-row md:justify-center md:items-center md:justify-between">
                             <div className=" text-center ">
                                 <select
                                     className="w-[10rem] mb-2 border-2 border-palette-60 text-center rounded-3xl py-3 px-4 outline-none text-palette-60 bg-palette-50 "
