@@ -29,7 +29,7 @@ const A1 = () => {
                                     >
                                         <img
                                             src="/images/hoeren.png"
-                                            alt=""
+                                            alt="images"
                                             className="w-56 h-80 bg-palette-40 border-4 border-palette-60 mb-4 rounded-xl"
                                         />
                                         Hörverstehen
