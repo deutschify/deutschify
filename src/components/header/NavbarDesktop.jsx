@@ -23,12 +23,12 @@ function NavbarDesktop() {
                 <div className="flex h-24 mt-6">
                     <div className="p-10 w-80 relative">
                         <Nav.Menu
-                            className="text-2xl border-none hover:text-palette-80"
+                            className="text-2xl border-none hover:text-palette-80 z-40"
                             trigger={["click", "hover"]}
                             title="Übungen"
                         >
                             {" "}
-                            <div className="bg-palette-80 w-80 rounded-lg p-4 border-2 border-palette-60  ">
+                            <div className="bg-palette-80 w-80 rounded-lg p-4 border-2 border-palette-60 z-40 ">
                                 <div className=" text-palette-50 hover:text-palette-60 pb-4 ">
                                     <NavLink
                                         className=""
@@ -37,10 +37,10 @@ function NavbarDesktop() {
                                     >
                                         {" "}
                                         <Nav.Menu
-                                            className="text-center "
+                                            className="text-center z-40"
                                             title="Sprachkurs"
                                         >
-                                            <div className="flex flex-col w-40 absolute left-48 border-2 border-palette-60 rounded-xl p-4 bg-palette-70 transition duration-500 ease-in">
+                                            <div className="flex flex-col w-40 absolute left-48 border-2 border-palette-60 rounded-xl p-4 bg-palette-70 transition duration-500 ease-in z-40">
                                                 <NavLink
                                                     className=" text-palette-50 hover:text-palette-60"
                                                     to="/sprachkurs/a1"
@@ -49,14 +49,14 @@ function NavbarDesktop() {
                                                     A1
                                                 </NavLink>
                                                 <NavLink
-                                                    className="text-palette-50 hover:text-palette-60 p-4"
+                                                    className="text-palette-50 hover:text-palette-60 p-4 z-40"
                                                     to="//sprachkurs/a2"
                                                     element={<A2 />}
                                                 >
                                                     A2
                                                 </NavLink>
                                                 <NavLink
-                                                    className="text-palette-50 hover:text-palette-0"
+                                                    className="text-palette-50 hover:text-palette-0 z-40"
                                                     to="/sprachkurs/b1"
                                                     element={<B1 />}
                                                 >
@@ -67,7 +67,7 @@ function NavbarDesktop() {
                                     </NavLink>
                                 </div>{" "}
                                 <NavLink
-                                    className="bg-palette-80 text-palette-50 hover:text-palette-60 flex justify-center rounded-b-xl "
+                                    className="bg-palette-80 text-palette-50 hover:text-palette-60 flex justify-center rounded-b-xl z-40"
                                     to="/einbuergerungstest"
                                     element={<Einbuergerungstest />}
                                 >
