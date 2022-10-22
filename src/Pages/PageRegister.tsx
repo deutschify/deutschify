@@ -10,8 +10,6 @@ import { NavLink } from "react-router-dom";
 import PageLogin from "./PageLogin";
 import { useStore } from "../store";
 
-import Image from "../../public/images/person-studying-online.png";
-
 interface IPageRegistrationProps {
     baseUrl: string;
     // setCurrentUser: React.Dispatch<React.SetStateAction<IUserLoginForm>>;
@@ -100,10 +98,10 @@ const PageRegister = (props: IPageRegistrationProps) => {
 
     return (
         <div className="  md:grid grid-cols-2  m-10">
-            <div className=" hidden md:flex flex-col justify-center items-start w-[700px]">
+            <div className="hidden md:flex flex-col justify-center items-start w-[700px]">
                 <div>
                     {" "}
-                    <img className=" w-[600px]" src={Image} alt="" />{" "}
+                    <img className="" src="/images/illus/register.png" alt="" />{" "}
                 </div>
             </div>
             <div className=" cover  flex flex-col justify-center items-center ">

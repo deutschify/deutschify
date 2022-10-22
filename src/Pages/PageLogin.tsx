@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import Image from "../../public/images/login-pic.png";
-
 import { IUserLoginForm } from "../interfaces";
 import axios from "axios";
 import { useStore } from "../store";
@@ -73,7 +71,7 @@ const PageLogin = (props: IPageLoginProps) => {
             <div className="hidden md:flex flex-col justify-center items-start w-[700px] ">
                 <div>
                     {" "}
-                    <img className="w-[600px]" src={Image} alt="" />{" "}
+                    <img className="" src="/images/illus/login.png" alt="" />{" "}
                 </div>
             </div>
             <div className=" cover py-[120px] flex flex-col justify-center items-center">
