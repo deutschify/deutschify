@@ -54,17 +54,17 @@ const PageConfirmRegistration = (
                             <div className="p-3 text-xl">
                                 {" "}
                                 <p>
-                                    Thank you for confirming your email address.
+                                    Danke für die Bestätigung
                                 </p>
                             </div>
                             <div className="p-3 text-xl">
                                 {" "}
-                                <p>You are now a member of this site!</p>
+                                <p>Willkommen, du bist nun Mitglied dieser Seite. Dir steht ab sofort alle Übungen, sowie das Forum zur Verfügung. Viel spaß bei den Übungen und viel Erfolg! Melde dich im Forum, wenn wir dir helfen können. </p>
                             </div>
                             <div className="p-3 text-xl">
                                 {" "}
                                 <div className="p-3 text-xl">
-                                    <p> Please log in to the site here: </p>
+                                    <p> Bitte logge dich hier ein </p>
                                 </div>
                                 <button className="w-40 text-center border-4 border-palette-60 bg-palette-70 p-2 text-xl rounded-xl shadow-outer hover:shadow-inner hover:text-palette-50 m-5">
                                     <NavLink to="/login">Login</NavLink>
@@ -76,10 +76,10 @@ const PageConfirmRegistration = (
             )}
             {confirmStatus === ConfirmStatus.failed && (
                 <>
-                    <p>Sorry, the confirmation code is not valid.</p>
+                    <p>Der Bestätigungscode ist leider nicht gültig</p>
                     <p>
-                        Please <NavLink to="/register">register again</NavLink>{" "}
-                        to become a member.
+                        Bitte <NavLink to="/register">registriere dich erneut</NavLink>{" "}
+                        um alle Funktionen der Seite zu nutzen
                     </p>
                 </>
             )}

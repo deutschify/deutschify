@@ -146,7 +146,7 @@ const PageUserSettings = () => {
     };
 
     return (
-        <div className=" cover  m-20 flex flex-col justify-center items-center ">
+        <div className="cover  m-20 flex flex-col justify-center items-center ">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <div className="relative h-40 w-40">
@@ -193,7 +193,7 @@ const PageUserSettings = () => {
                 <div>
                     <div>
                         <h2 className="text-center  text-xl text-palette-60">
-                            Nutzer Konto
+                            Nutzerkonto
                         </h2>
                     </div>
                     <div>
@@ -245,7 +245,7 @@ const PageUserSettings = () => {
                             />
                             {errors.repeatPassword && (
                                 <p className="text-center  text-xl text-palette-60">
-                                    Kennwort stimmt nicht!
+                                    Kennwort stimmt nicht überein!
                                 </p>
                             )}
                         </div>
@@ -284,20 +284,20 @@ const PageUserSettings = () => {
                         </select>
                     </div>
                 </div>
-                <div className='flex justify-between m-2' >
+                <div className='flex justify-between m-4' >
                     <input
-                        className="bg-palette-80 input text-palette-60 px-8 py-2 rounded-3xl"
+                        className="btn p-4 w-40 border-palette-60 hover:bg-palette-60 hover:text-palette-50 active:text-palette-80"
                         type="submit"
-                        value="Speichern"
+                        value="speichern"
                     />
                     <button
-                        className="bg-palette-80 input text-palette-60 px-8 py-2 rounded-3xl"
+                        className="btn p-4 w-40 ml-8 border-palette-60 hover:bg-palette-60 hover:text-palette-50 active:text-palette-80"
                         onClick={() => {
                             navigate("/home");
                         }}
                         type="reset"
                     >
-                        Abbrechen
+                        abbrechen
                     </button>
                 </div>
                
