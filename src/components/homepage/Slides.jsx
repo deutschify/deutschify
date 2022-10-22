@@ -1,37 +1,32 @@
 import { useState, useEffect } from "react";
-// import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 import "../../App.css";
 import { NavLink } from "react-router-dom";
-// import ImgSprachkurs from "../../../public/images/deutschify-smallletter.png"
-// import ImgDictionary from "../../../public/images/deutschify-smallletter.png"
-// import ImgForum from "../../../public/images/deutschify-smallletter.png"
-// import ImgOrientierungskurs from "../../../public/images/deutschify-smallletter.png"
-// import ImgMainLogo from "../../../public/images/deutschify-smallletter.png"
+
 
 const sliderData = [
     {
-        slideImage: "../../images/mainpage.png",
+        slideImage: "/images/mainpage.png",
         href: "/",
         title: "Willkommen bei deutschify",
     },
     {
-        slideImage: "../../images/illus/sprachkurs1.png",
+        slideImage: "/images/illus/sprachkurs1.png",
         href: "/sprachkurs",
         title: "Übungen zum Sprachkurs",
     },
     {
-        slideImage: "../../images/dictionary1.png",
+        slideImage: "/images/dictionary1.png",
         href: "/dictionary",
         title: "Wörterbuch",
     },
     {
-        slideImage: "../../images/illus/forum2.png",
+        slideImage: "/images/illus/forum2.png",
         href: "/forum",
         title: "Forum",
     },
     {
-        slideImage: "../../images/illus/orientierungskurs1.png",
+        slideImage: "/images/illus/orientierungskurs1.png",
         href: "/einbuergerungstest",
         title: "Übungen zum Orientierungskurs",
     },

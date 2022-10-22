@@ -1,9 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-// import deutschify from "../../../public/images/deutschify.png";
-import ImgDictionary from "../../../public/images/slide-dictionary.png";
 import ImgForum from "../../../public/images/slide-forum.png";
-import ImgSprachkurs from "../../../public/images/slide-sprachkurs.png";
 import ImgOrientierungskurs from "../../../public/images/slide-orientierungskurs.png";
 
 const SlidesMobile = () => {
@@ -16,7 +13,7 @@ const SlidesMobile = () => {
                     className="dictionary w-full flex justify-center"
                 >
                     <img
-                        src={ImgDictionary}
+                        src="/images/slide-dictionary.png"
                         alt="Wörterbuch"
                         title="dictionary"
                         className="w-10/12 m-4 border-4 border-palette-60 rounded-xl"
@@ -29,7 +26,7 @@ const SlidesMobile = () => {
                     className="sprachkurs w-full flex justify-center"
                 >
                     <img
-                        src={ImgSprachkurs}
+                        src="/images/slide-sprachkurs.png"
                         alt="language-levels"
                         title="Sprachkurs"
                         className="w-10/12 m-4 border-4 border-palette-60 rounded-xl"
@@ -44,7 +41,7 @@ const SlidesMobile = () => {
                     className="einbuergerungstest w-full flex justify-center"
                 >
                     <img
-                        src={ImgOrientierungskurs}
+                        src="/images/slide-orientierungskurs.png"
                         alt="einbuergerungstest"
                         title="einbuergerungstest"
                         className="w-10/12 m-4 border-4 border-palette-60 rounded-xl"
@@ -58,7 +55,7 @@ const SlidesMobile = () => {
                     className="forum w-full flex justify-center"
                 >
                     <img
-                        src={ImgForum}
+                        src="/images/slide-forum.png"
                         alt="forum"
                         title="forum"
                         className="w-10/12 m-4 border-4 border-palette-60 rounded-xl"
