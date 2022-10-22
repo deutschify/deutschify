@@ -32,7 +32,7 @@ const Sprachkurs = () => {
                             </div>
                         </div>
                         <div className="imgFrame w-40 border-4 shadow-outer">
-                            <img src={ImgSprachkursA} alt="" className="" />
+                            <img src="/images/illus/sprachkurs2.png" alt="" className="" />
                         </div>
 
                         <nav className="md:flex justify-center">
@@ -68,7 +68,7 @@ const Sprachkurs = () => {
                             </div>
                         </nav>
                         <div className="imgFrame w-40 border-4 mb-10 shadow-outer">
-                            <img src={ImgSprachkursB} alt="" className="mt-4" />
+                            <img src="/images/illus/sprachkurs3.png" alt="" className="mt-4" />
                         </div>
                     </div>
                     <div className="flex justify-center">

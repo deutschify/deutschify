@@ -146,7 +146,7 @@ const PageUserSettings = () => {
     };
 
     return (
-        <div className="cover  m-20 flex flex-col justify-center items-center ">
+        <div className="cover m-20 flex flex-col justify-center items-center ">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <div className="relative h-40 w-40">

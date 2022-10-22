@@ -1,8 +1,4 @@
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
-import Lesen from "../../../public/images/lesen.png";
-import Schreiben from "../../../public/images/schreiben.png";
-import Hoeren from "../../../public/images/hoeren.png";
-import Sprechen from "../../../public/images/sprechen.png";
 import LesenA2 from "./LesenA2";
 import HoerenA2 from "./HoerenA2";
 import SchreibenA2 from "./SchreibenA2";
@@ -32,7 +28,7 @@ const A2 = () => {
                                         className="coaster w-48 h-60 m-8 p-2 rounded-xl flex  flex-col justify-center items-center text-center text-2xl col-start-1 col-end-2 row-start-1 row-end-2"
                                     >
                                         <img
-                                            src={Hoeren}
+                                            src="/images/hoeren.png"
                                             alt=""
                                             className="w-56 h-80 bg-palette-40 border-4 border-palette-60 mb-4 rounded-xl"
                                         />
@@ -44,7 +40,7 @@ const A2 = () => {
                                         className="coaster w-48 h-60 m-8 p-2 rounded-xl flex  flex-col justify-center items-center text-center text-2xl col-start-3 col-end-4 row-start-1 row-end-2"
                                     >
                                         <img
-                                            src={Lesen}
+                                            src="/images/lesen.png"
                                             alt=""
                                             className="w-56 h-80 bg-palette-40 border-4 border-palette-60 rounded-xl"
                                         />
@@ -56,7 +52,7 @@ const A2 = () => {
                                         className="coaster w-48 h-60 m-8 p-2 rounded-xl flex  flex-col justify-center items-center text-center text-2xl col-start-1 col-end-2 row-start-3 row-end-4"
                                     >
                                         <img
-                                            src={Schreiben}
+                                            src="/images/schreiben.png"
                                             alt=""
                                             className="w-56 h-80 bg-palette-40 border-4 border-palette-60 rounded-xl"
                                         />
@@ -68,7 +64,7 @@ const A2 = () => {
                                         className="coaster w-48 h-60 m-8 p-2 rounded-xl flex  flex-col justify-center items-center text-center text-2xl col-start-3 col-end-4 row-start-3 row-end-4"
                                     >
                                         <img
-                                            src={Sprechen}
+                                            src="/images/sprechen.png"
                                             alt=""
                                             className="w-56 h-80 bg-palette-40 border-4 border-palette-60 rounded-xl"
                                         />

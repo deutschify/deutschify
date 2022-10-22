@@ -1,5 +1,4 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import Construction from "../../../public/images/construction.png";
 import { useStore } from "../../store";
 
 function SprechenB1() {
@@ -18,7 +17,7 @@ function SprechenB1() {
                         <div className="text-palette-60 text-center font-block1 text-4xl m-6 flex flex-col items-center">
                             Wir sind bald für euch da
                             <img
-                                src={Construction}
+                                src="/images/construction.png"
                                 alt=""
                                 className="w-8/12 bg-palette-40 m-4 border-4 border-palette-60 rounded-xl "
                             />
