@@ -173,7 +173,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
                             )}
                         </div>
                         <div className="md:flex gap-4 m-4">
-                            <div className="text-center m-4">
+                            <div className="text-center">
                                 <select
                                     className="border-2 border-palette-60 text-center rounded-3xl p-4 outline-none text-palette-60 bg-palette-50 w-80"
                                     {...register("language")}
@@ -235,7 +235,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
                                     {countries.map((country: ICountry) => {
                                         return (
                                             <option
-                                                className="bg-palette-50 w-[200rem]"
+                                                className="bg-palette-50 w-[20rem]"
                                                 key={country.name}
                                                 value={`${country.name}`}
                                             >
