@@ -164,7 +164,7 @@ const PageUserSettings = () => {
                                 className="rounded-full absolute"
                             />
                         )}
-                        <div className="absolute bottom-0 right-0 ">
+                        <div className="absolute bottom-0 right-0">
                             <input
                                 id="avatar"
                                 type="file"
@@ -196,8 +196,8 @@ const PageUserSettings = () => {
                             Nutzerkonto
                         </h2>
                     </div>
-                    <div>
-                        <h4 className="text-center  text-xl text-palette-60">
+                    <div className="flex flex-col items-center mt-4">
+                        <h4 className="text-center flex justify-center text-xl text-palette-60">
                             Vor- oder Nachname ändern
                         </h4>
                         <input
@@ -210,7 +210,7 @@ const PageUserSettings = () => {
                             <p>{errors?.firstName?.message}</p>
                         )}
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center">
                         <input
                             className="m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                             defaultValue=""
@@ -221,7 +221,7 @@ const PageUserSettings = () => {
                     </div>
                 </div>
                 <div>
-                    <div>
+                    <div className="flex flex-col items-center mt-4">
                         <div>
                             <h4 className="text-center  text-xl text-palette-60">
                                 Kennwort ändern
@@ -231,7 +231,7 @@ const PageUserSettings = () => {
                             className=" m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                             defaultValue={password}
                             {...register("password")}
-                            placeholder="password"
+                            placeholder="Kennwort"
                         />
                         {errors.password && <p>{errors?.password?.message}</p>}
                     </div>
@@ -251,7 +251,7 @@ const PageUserSettings = () => {
                         </div>
                     )}
                 </div>
-                <div>
+                <div className="flex flex-col items-center mt-4">
                     <div>
                         <h4 className="text-center  text-xl text-palette-60">
                             Sprache ändern
@@ -259,7 +259,7 @@ const PageUserSettings = () => {
                     </div>
                     <div>
                         <select
-                            className=" ml-20 mt-2 w-[10rem] input mb-2 border-2 text-center rounded-3xl py-3 px-4 focus:outline-none  text-palette-60  bg-palette-50"
+                            className="w-80 m-2 input mb-2 border-2 text-center rounded-3xl py-3 px-4 focus:outline-none  text-palette-60  bg-palette-50"
                             {...register("language")}
                             onChange={(e) =>
                                 setValue("language", e.target.value, {

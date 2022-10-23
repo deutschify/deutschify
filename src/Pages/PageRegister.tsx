@@ -150,7 +150,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
                         </div>
                         <div className="mb-4">
                             <input
-                                className=" w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                className=" w-80 input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 defaultValue=""
                                 type="password"
                                 {...register("password")}
@@ -162,7 +162,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
                         </div>
                         <div className="mb-4">
                             <input
-                                className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                className="w-80 input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                 placeholder="Wiederhole das Kennwort"
                                 defaultValue=""
                                 type="password"
@@ -173,9 +173,9 @@ const PageRegister = (props: IPageRegistrationProps) => {
                             )}
                         </div>
                         <div className="md:flex gap-4 m-4">
-                            <div className=" text-center ">
+                            <div className="text-center m-4">
                                 <select
-                                    className=" border-2 border-palette-60 text-center rounded-3xl p-4 outline-none text-palette-60 bg-palette-50 "
+                                    className="border-2 border-palette-60 text-center rounded-3xl p-4 outline-none text-palette-60 bg-palette-50 w-80"
                                     {...register("language")}
                                     onChange={(e) =>
                                         setValue("language", e.target.value, {
@@ -211,7 +211,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
                             </div>
                             <div className=" text-center">
                                 <select
-                                    className="mb-2 border-2 border-palette-60 text-center rounded-3xl p-4 outline-none text-palette-60 bg-palette-50"
+                                    className="mb-2 border-2 border-palette-60 text-center rounded-3xl p-4 outline-none text-palette-60 bg-palette-50 w-80"
                                     {...register("nationality")}
                                     onChange={(e) =>
                                         setValue(
@@ -226,7 +226,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
                                     name="nationality"
                                 >
                                     <option
-                                        className="bg-palette-50"
+                                        className="bg-palette-50 w-[10rem]"
                                         selected
                                         disabled
                                     >
@@ -235,7 +235,7 @@ const PageRegister = (props: IPageRegistrationProps) => {
                                     {countries.map((country: ICountry) => {
                                         return (
                                             <option
-                                                className="bg-palette-50 "
+                                                className="bg-palette-50 w-[200rem]"
                                                 key={country.name}
                                                 value={`${country.name}`}
                                             >

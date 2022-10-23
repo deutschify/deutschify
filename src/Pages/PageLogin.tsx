@@ -107,9 +107,9 @@ const PageLogin = (props: IPageLoginProps) => {
 
                         <div className="text-center py-7">
                             <input
-                                className="btn  px-8 p-2 "
+                                className="btn w-80 p-4 border-palette-60 hover:bg-palette-60 hover:text-palette-50 active:text-palette-80"
                                 type="submit"
-                                value="login"
+                                value="einloggen"
                             />
                         </div>
                     </form>
