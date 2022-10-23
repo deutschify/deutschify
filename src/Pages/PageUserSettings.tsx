@@ -152,7 +152,7 @@ const PageUserSettings = () => {
             <div className="hidden md:block">
                 <img src="/images/illus/setting.png" alt="" />
             </div>{" "}
-            <div className="cover m-4 w-auto md:m-20 md:w-[50%] flex flex-col justify-center items-center ">
+            <div className="cover w-auto m-4 w-auto md:m-20 md:w-[50%] flex flex-col justify-center items-center ">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div>
                         <div className="relative h-40 w-40 m-2">
