@@ -67,75 +67,84 @@ const PageLogin = (props: IPageLoginProps) => {
     };
 
     return (
-        <div className="md:grid grid-cols-2  m-10 ">
-            <div className="hidden md:flex flex-col justify-center items-start w-[700px] ">
-                <div>
-                    {" "}
-                    <img className="" src="/images/illus/login.png" alt="" />{" "}
+        <div className="h-[75vh] flex flex-col justify-center">
+            {" "}
+            <div className="md:grid grid-cols-2 m-4 md:m-10">
+                <div className="hidden md:flex flex-col justify-center items-start w-[700px] ">
+                    <div>
+                        {" "}
+                        <img
+                            className=""
+                            src="/images/illus/login.png"
+                            alt=""
+                        />{" "}
+                    </div>
                 </div>
-            </div>
-            <div className=" cover py-[120px] flex flex-col justify-center items-center">
-                <div className="">
-                    <h1 className="text-center  text-palette-60 text-2xl pb-3 text-pal">
-                        LOGIN
-                    </h1>
-                    <form
-                        className=" flex-col "
-                        onSubmit={handleSubmit(onSubmit)}
-                    >
-                        <div className="py-[30px] ">
-                            <input
-                                className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
-                                defaultValue=""
-                                {...register("email")}
-                                placeholder="Email"
-                            />
-                            {errors.email && <p>{errors?.email?.message}</p>}
-                        </div>
-                        <div>
-                            <input
-                                className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
-                                defaultValue=""
-                                type="password"
-                                {...register("password")}
-                                placeholder="Kennwort"
-                            />
-                            {errors.password && (
-                                <p>{errors?.password?.message}</p>
-                            )}
-                        </div>
+                <div className=" cover py-[120px] flex flex-col justify-center items-center">
+                    <div className="">
+                        <h1 className="text-center  text-palette-60 text-2xl pb-3 text-pal">
+                            LOGIN
+                        </h1>
+                        <form
+                            className=" flex-col "
+                            onSubmit={handleSubmit(onSubmit)}
+                        >
+                            <div className="py-[30px] ">
+                                <input
+                                    className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                    defaultValue=""
+                                    {...register("email")}
+                                    placeholder="Email"
+                                />
+                                {errors.email && (
+                                    <p>{errors?.email?.message}</p>
+                                )}
+                            </div>
+                            <div>
+                                <input
+                                    className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                    defaultValue=""
+                                    type="password"
+                                    {...register("password")}
+                                    placeholder="Kennwort"
+                                />
+                                {errors.password && (
+                                    <p>{errors?.password?.message}</p>
+                                )}
+                            </div>
 
-                        <div className="text-center py-7">
-                            <input
-                                className="btn w-80 p-4 border-palette-60 hover:bg-palette-60 hover:text-palette-50 active:text-palette-80"
-                                type="submit"
-                                value="einloggen"
-                            />
-                        </div>
-                    </form>
+                            <div className="text-center py-7">
+                                <input
+                                    className="btn w-80 p-4 border-palette-60 hover:bg-palette-60 hover:text-palette-50 active:text-palette-80"
+                                    type="submit"
+                                    value="einloggen"
+                                />
+                            </div>
+                        </form>
 
-                    <div className="form-group">
-                        <span className="indent-1 mx-8 text-palette-60">
-                            Kein Konto?
-                            <span className="line">
+                        <div className="form-group">
+                            <span className="indent-1 mx-8 text-palette-60">
+                                Kein Konto?
                                 <span className="line">
-                                    <NavLink
-                                        to="/registration"
-                                        className="text-palette-60 underline mx-4"
-                                    >
-                                        registrieren
-                                    </NavLink>
+                                    <span className="line">
+                                        <NavLink
+                                            to="/registration"
+                                            className="text-palette-60 underline mx-4"
+                                        >
+                                            registrieren
+                                        </NavLink>
+                                    </span>
+                                    <Routes>
+                                        <Route
+                                            path="/registration"
+                                            element={
+                                                <PageConfirmRegistration baseUrl="" />
+                                            }
+                                        />
+                                    </Routes>
                                 </span>
-                                <Routes>
-                                    <Route
-                                        path="/registration"
-                                        element={
-                                            <PageConfirmRegistration baseUrl="" />
-                                        }
-                                    />
-                                </Routes>
                             </span>
-                        </span>
+                        </div>
                     </div>
                 </div>
             </div>

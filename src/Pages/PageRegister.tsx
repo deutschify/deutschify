@@ -96,169 +96,187 @@ const PageRegister = (props: IPageRegistrationProps) => {
     };
 
     return (
-        <div className="md:grid grid-cols-2 m-10">
-            <div className="hidden md:flex flex-col justify-center items-center">
-                <div>
-                    {" "}
-                    <img className="" src="/images/illus/register.png" alt="" />{" "}
+        <div className="h-[75vh] flex flex-col justify-center">
+            {" "}
+            <div className="md:grid grid-cols-2 m-4 md:m-10">
+                <div className="hidden md:flex flex-col justify-center items-center">
+                    <div>
+                        {" "}
+                        <img
+                            className=""
+                            src="/images/illus/register.png"
+                            alt=""
+                        />{" "}
+                    </div>
                 </div>
-            </div>
-            <div className="cover flex flex-col justify-center items-center">
-                <div>
-                    {success ? (
-                        <p className="text-palette-60 py-3 px-4 bg-palette-80">
-                            Wir haben Ihnen zur Verifizierung eine Email gesendet.
-                        </p>
-                    ) : (
-                        notification
-                    )}
-                    <form
-                        className="flex flex-col items-center"
-                        onSubmit={handleSubmit(onSubmit)}
-                    >
-                        <div className="m-4">
-                            <input
-                                className="w-80 input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
-                                defaultValue=""
-                                {...register("firstName")}
-                                placeholder="Vorname"
-                            />
-                            {errors.firstName && (
-                                <p>{errors?.firstName?.message}</p>
-                            )}
-                        </div>
-                        <div className="mb-4">
-                            <input
-                                className=" w-80 input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
-                                defaultValue=""
-                                {...register("lastName")}
-                                placeholder="Nachname"
-                            />
-                            {errors.lastName && (
-                                <p>{errors?.lastName?.message}</p>
-                            )}
-                        </div>
+                <div className="cover mt-20  flex flex-col justify-center items-center">
+                    <div>
+                        {success ? (
+                            <p className="text-palette-60 py-3 px-4 bg-palette-80">
+                                Wir haben Ihnen zur Verifizierung eine Email
+                                gesendet.
+                            </p>
+                        ) : (
+                            notification
+                        )}
+                        <form
+                            className="flex flex-col items-center"
+                            onSubmit={handleSubmit(onSubmit)}
+                        >
+                            <div className="m-4">
+                                <input
+                                    className="w-80 input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                    defaultValue=""
+                                    {...register("firstName")}
+                                    placeholder="Vorname"
+                                />
+                                {errors.firstName && (
+                                    <p>{errors?.firstName?.message}</p>
+                                )}
+                            </div>
+                            <div className="mb-4">
+                                <input
+                                    className=" w-80 input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                    defaultValue=""
+                                    {...register("lastName")}
+                                    placeholder="Nachname"
+                                />
+                                {errors.lastName && (
+                                    <p>{errors?.lastName?.message}</p>
+                                )}
+                            </div>
 
-                        <div className="mb-4">
-                            <input
-                                className=" w-80 input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
-                                defaultValue=""
-                                {...register("email")}
-                                placeholder="Emailadresse"
-                            />
-                            {errors.email && <p>{errors?.email?.message}</p>}
-                        </div>
-                        <div className="mb-4">
-                            <input
-                                className=" w-80 input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
-                                defaultValue=""
-                                type="password"
-                                {...register("password")}
-                                placeholder="Kennwort"
-                            />
-                            {errors.password && (
-                                <p>{errors?.password?.message}</p>
-                            )}
-                        </div>
-                        <div className="mb-4">
-                            <input
-                                className="w-80 input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
-                                placeholder="Wiederhole das Kennwort"
-                                defaultValue=""
-                                type="password"
-                                {...register("repeatPassword")}
-                            />
-                            {errors.repeatPassword && (
-                                <p>Kennwort stimmt nicht überein</p>
-                            )}
-                        </div>
-                        <div className="md:flex gap-4 m-4 md:">
-                            <div className="text-center m-4 md:m-0">
-                                <select
-                                    className="border-2 border-palette-60 text-center rounded-3xl p-4 outline-none text-palette-60 bg-palette-50 w-80"
-                                    {...register("language")}
-                                    onChange={(e) =>
-                                        setValue("language", e.target.value, {
-                                            shouldValidate: true,
-                                        })
-                                    } // Using setValue
+                            <div className="mb-4">
+                                <input
+                                    className=" w-80 input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
                                     defaultValue=""
-                                    name="language"
-                                >
-                                    <option
-                                        className="bg-palette-50"
-                                        selected
-                                        disabled
-                                    >
-                                        Wähle eine Sprache aus
-                                    </option>
-                                    {languages.map((language: ILanguage) => {
-                                        return (
-                                            <option
-                                                className="bg-palette-50 "
-                                                key={language.code}
-                                                value={`${language.code}`}
-                                            >
-                                                {" "}
-                                                {language.name}
-                                            </option>
-                                        );
-                                    })}
-                                </select>
-                                {errors.language && (
-                                    <p>{errors?.language?.message}</p>
+                                    {...register("email")}
+                                    placeholder="Emailadresse"
+                                />
+                                {errors.email && (
+                                    <p>{errors?.email?.message}</p>
                                 )}
                             </div>
-                            <div className=" text-center">
-                                <select
-                                    className="mb-2 border-2 border-palette-60 text-center rounded-3xl p-4 outline-none text-palette-60 bg-palette-50 w-80"
-                                    {...register("nationality")}
-                                    onChange={(e) =>
-                                        setValue(
-                                            "nationality",
-                                            e.target.value,
-                                            {
-                                                shouldValidate: true,
+                            <div className="mb-4">
+                                <input
+                                    className=" w-80 input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                    defaultValue=""
+                                    type="password"
+                                    {...register("password")}
+                                    placeholder="Kennwort"
+                                />
+                                {errors.password && (
+                                    <p>{errors?.password?.message}</p>
+                                )}
+                            </div>
+                            <div className="mb-4">
+                                <input
+                                    className="w-80 input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                    placeholder="Wiederhole das Kennwort"
+                                    defaultValue=""
+                                    type="password"
+                                    {...register("repeatPassword")}
+                                />
+                                {errors.repeatPassword && (
+                                    <p>Kennwort stimmt nicht überein</p>
+                                )}
+                            </div>
+                            <div className="md:flex gap-4 m-4 md:">
+                                <div className="text-center m-4 md:m-0">
+                                    <select
+                                        className="border-2 border-palette-60 text-center rounded-3xl p-4 outline-none text-palette-60 bg-palette-50 w-80"
+                                        {...register("language")}
+                                        onChange={(e) =>
+                                            setValue(
+                                                "language",
+                                                e.target.value,
+                                                {
+                                                    shouldValidate: true,
+                                                }
+                                            )
+                                        } // Using setValue
+                                        defaultValue=""
+                                        name="language"
+                                    >
+                                        <option
+                                            className="bg-palette-50"
+                                            selected
+                                            disabled
+                                        >
+                                            Wähle eine Sprache aus
+                                        </option>
+                                        {languages.map(
+                                            (language: ILanguage) => {
+                                                return (
+                                                    <option
+                                                        className="bg-palette-50 "
+                                                        key={language.code}
+                                                        value={`${language.code}`}
+                                                    >
+                                                        {" "}
+                                                        {language.name}
+                                                    </option>
+                                                );
                                             }
-                                        )
-                                    } // Using setValue
-                                    defaultValue=""
-                                    name="nationality"
-                                >
-                                    <option
-                                        className="bg-palette-50 w-[10rem]"
-                                        selected
-                                        disabled
+                                        )}
+                                    </select>
+                                    {errors.language && (
+                                        <p>{errors?.language?.message}</p>
+                                    )}
+                                </div>
+                                <div className=" text-center">
+                                    <select
+                                        className="mb-2 border-2 border-palette-60 text-center rounded-3xl p-4 outline-none text-palette-60 bg-palette-50 w-80"
+                                        {...register("nationality")}
+                                        onChange={(e) =>
+                                            setValue(
+                                                "nationality",
+                                                e.target.value,
+                                                {
+                                                    shouldValidate: true,
+                                                }
+                                            )
+                                        } // Using setValue
+                                        defaultValue=""
+                                        name="nationality"
                                     >
-                                        Wähle dein Ursprungsland aus
-                                    </option>
-                                    {countries.map((country: ICountry) => {
-                                        return (
-                                            <option
-                                                className="bg-palette-50 w-[20rem]"
-                                                key={country.name}
-                                                value={`${country.name}`}
-                                            >
-                                                {" "}
-                                                {country.name.substring(0, 18)}
-                                            </option>
-                                        );
-                                    })}
-                                </select>
-                                {errors.nationality && (
-                                    <p>{errors?.nationality?.message}</p>
-                                )}
+                                        <option
+                                            className="bg-palette-50 w-[10rem]"
+                                            selected
+                                            disabled
+                                        >
+                                            Wähle dein Ursprungsland aus
+                                        </option>
+                                        {countries.map((country: ICountry) => {
+                                            return (
+                                                <option
+                                                    className="bg-palette-50 w-[20rem]"
+                                                    key={country.name}
+                                                    value={`${country.name}`}
+                                                >
+                                                    {" "}
+                                                    {country.name.substring(
+                                                        0,
+                                                        18
+                                                    )}
+                                                </option>
+                                            );
+                                        })}
+                                    </select>
+                                    {errors.nationality && (
+                                        <p>{errors?.nationality?.message}</p>
+                                    )}
+                                </div>
                             </div>
-                        </div>
-                        <div className="text-center py-[20px]">
-                            <input
-                                className="btn w-80 p-4 border-palette-60 hover:bg-palette-60 hover:text-palette-50 active:text-palette-80"
-                                type="submit"
-                                value="registrieren"
-                            
-                            />
-                        </div>
-                    </form>
+                            <div className="text-center py-[20px]">
+                                <input
+                                    className="btn w-80 p-4 border-palette-60 hover:bg-palette-60 hover:text-palette-50 active:text-palette-80"
+                                    type="submit"
+                                    value="registrieren"
+                                />
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

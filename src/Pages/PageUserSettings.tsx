@@ -69,9 +69,9 @@ const PageUserSettings = () => {
         thumbnail().width(150).height(150).gravity(focusOn(FocusOn.face()))
     );
 
-    const previewFile = (e:any) => {
+    const previewFile = (e: any) => {
         const file = e.target.files;
-        setSelectedImage(file)
+        setSelectedImage(file);
         console.log(selectedImage);
         if (file) {
             setPreviewSource(URL.createObjectURL(file[0]));
@@ -83,7 +83,7 @@ const PageUserSettings = () => {
         formData.append("file", selectedImage[0]);
         formData.append("upload_preset", "di60eyhz");
         formData.append("folder", "users-profile-img");
-        if (selectedImage.length===0) {
+        if (selectedImage.length === 0) {
             return "";
         }
         const res = await axios
@@ -112,12 +112,13 @@ const PageUserSettings = () => {
     >(obj: T): V {
         return Object.fromEntries(
             Object.entries(obj).filter(
-                ([, v]) => !(
-                    (typeof v === "string" && !v.length) ||
-                    v === null ||
-                    typeof v === "undefined" ||
-                    (typeof v === "object" && !Object.keys(v).length)
-                )
+                ([, v]) =>
+                    !(
+                        (typeof v === "string" && !v.length) ||
+                        v === null ||
+                        typeof v === "undefined" ||
+                        (typeof v === "object" && !Object.keys(v).length)
+                    )
             )
         ) as unknown as V;
     }
@@ -125,7 +126,7 @@ const PageUserSettings = () => {
         data: IUserEditForm
     ) => {
         const { firstName, lastName, password, imagePublicId, language } = data;
-        console.log(imagePublicId);        
+        console.log(imagePublicId);
         uploadImage(imagePublicId)
             .then((response) => {
                 const newData = { ...data, imagePublicId: response };
@@ -146,162 +147,170 @@ const PageUserSettings = () => {
     };
 
     return (
-        <div className="cover m-20 flex flex-col justify-center items-center ">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <div className="relative h-40 w-40">
-                        {previewSource ? (
-                            <img
-                                className="rounded-full absolute"
-                                id="showImg"
-                                src={previewSource}
-                                alt="chosen"
-                                style={{ height: "150px", width: "150px" }}
-                            />
-                        ) : (
-                            <AdvancedImage
-                                cldImg={myImage}
-                                className="rounded-full absolute"
-                            />
-                        )}
-                        <div className="absolute bottom-0 right-0">
-                            <input
-                                id="avatar"
-                                type="file"
-                                {...register("imagePublicId")}
-                                accept=".jpeg, .jpg, .png, .svg"
-                                hidden
-                                onChange={previewFile}
-                            />
-
-                            <label htmlFor="avatar">
-                                <BiImageAdd
-                                    className="cursor-pointer"
-                                    size="50px"
-                                    style={{ color: "blue" }}
-                                />
-                            </label>
-                        </div>
-                        {errors.imagePublicId && (
-                            <p>{errors.imagePublicId?.message}</p>
-                        )}
-                    </div>
-                    <div className="text-center  text-xl text-palette-60">
-                        {currentUser.firstName + " " + currentUser.lastName}
-                    </div>
-                </div>
-                <div>
+        <div className="flex items-center">
+            {" "}
+            <div className="hidden md:block">
+                <img src="/images/illus/setting.png" alt="" />
+            </div>{" "}
+            <div className="cover m-4 w-auto md:m-20 md:w-[50%] flex flex-col justify-center items-center ">
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div>
-                        <h2 className="text-center  text-xl text-palette-60">
-                            Nutzerkonto
-                        </h2>
+                        <div className="relative h-40 w-40 m-2">
+                            {previewSource ? (
+                                <img
+                                    className="rounded-full absolute"
+                                    id="showImg"
+                                    src={previewSource}
+                                    alt="chosen"
+                                    style={{ height: "150px", width: "150px" }}
+                                />
+                            ) : (
+                                <AdvancedImage
+                                    cldImg={myImage}
+                                    className="rounded-full absolute"
+                                />
+                            )}
+                            <div className="absolute bottom-0 right-0">
+                                <input
+                                    id="avatar"
+                                    type="file"
+                                    {...register("imagePublicId")}
+                                    accept=".jpeg, .jpg, .png, .svg"
+                                    hidden
+                                    onChange={previewFile}
+                                />
+
+                                <label htmlFor="avatar">
+                                    <BiImageAdd
+                                        className="cursor-pointer"
+                                        size="50px"
+                                        style={{ color: "blue" }}
+                                    />
+                                </label>
+                            </div>
+                            {errors.imagePublicId && (
+                                <p>{errors.imagePublicId?.message}</p>
+                            )}
+                        </div>
+                        <div className="text-center  text-xl text-palette-60">
+                            {currentUser.firstName + " " + currentUser.lastName}
+                        </div>
                     </div>
-                    <div className="flex flex-col items-center mt-4">
-                        <h4 className="text-center flex justify-center text-xl text-palette-60">
-                            Vor- oder Nachname ändern
-                        </h4>
-                        <input
-                            className=" m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
-                            defaultValue=""
-                            {...register("firstName")}
-                            placeholder="Vorname"
-                        />
-                        {errors.firstName && (
-                            <p>{errors?.firstName?.message}</p>
+                    <div>
+                        <div>
+                            <h2 className="text-center  text-xl text-palette-60">
+                                Nutzerkonto
+                            </h2>
+                        </div>
+                        <div className="flex flex-col items-center mt-4">
+                            <h4 className="text-center flex justify-center text-xl text-palette-60">
+                                Vor- oder Nachname ändern
+                            </h4>
+                            <input
+                                className=" m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                defaultValue=""
+                                {...register("firstName")}
+                                placeholder="Vorname"
+                            />
+                            {errors.firstName && (
+                                <p>{errors?.firstName?.message}</p>
+                            )}
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <input
+                                className="m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                defaultValue=""
+                                {...register("lastName")}
+                                placeholder="Nachname"
+                            />
+                            {errors.lastName && (
+                                <p>{errors?.lastName?.message}</p>
+                            )}
+                        </div>
+                    </div>
+                    <div>
+                        <div className="flex flex-col items-center mt-4">
+                            <div>
+                                <h4 className="text-center  text-xl text-palette-60">
+                                    Kennwort ändern
+                                </h4>
+                            </div>
+                            <input
+                                className=" m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                defaultValue={password}
+                                {...register("password")}
+                                placeholder="Kennwort"
+                            />
+                            {errors.password && (
+                                <p>{errors?.password?.message}</p>
+                            )}
+                        </div>
+                        {password && (
+                            <div>
+                                <input
+                                    className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
+                                    placeholder="repeat-password"
+                                    defaultValue=""
+                                    {...register("repeatPassword")}
+                                />
+                                {errors.repeatPassword && (
+                                    <p className="text-center  text-xl text-palette-60">
+                                        Kennwort stimmt nicht überein!
+                                    </p>
+                                )}
+                            </div>
                         )}
                     </div>
-                    <div className="flex flex-col items-center">
-                        <input
-                            className="m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
-                            defaultValue=""
-                            {...register("lastName")}
-                            placeholder="Nachname"
-                        />
-                        {errors.lastName && <p>{errors?.lastName?.message}</p>}
-                    </div>
-                </div>
-                <div>
                     <div className="flex flex-col items-center mt-4">
                         <div>
                             <h4 className="text-center  text-xl text-palette-60">
-                                Kennwort ändern
+                                Sprache ändern
                             </h4>
                         </div>
-                        <input
-                            className=" m-2 w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
-                            defaultValue={password}
-                            {...register("password")}
-                            placeholder="Kennwort"
-                        />
-                        {errors.password && <p>{errors?.password?.message}</p>}
-                    </div>
-                    {password && (
                         <div>
-                            <input
-                                className="  w-[20rem] input border-2 text-center rounded-3xl py-3 px-4 focus:outline-none   placeholder-palette-50"
-                                placeholder="repeat-password"
-                                defaultValue=""
-                                {...register("repeatPassword")}
-                            />
-                            {errors.repeatPassword && (
-                                <p className="text-center  text-xl text-palette-60">
-                                    Kennwort stimmt nicht überein!
-                                </p>
-                            )}
+                            <select
+                                className="w-80 m-2 input mb-2 border-2 text-center rounded-3xl py-3 px-4 focus:outline-none  text-palette-60  bg-palette-50"
+                                {...register("language")}
+                                onChange={(e) =>
+                                    setValue("language", e.target.value, {
+                                        shouldValidate: true,
+                                    })
+                                }
+                                defaultValue={currentUser.language}
+                            >
+                                <option selected>{currentUser.language}</option>
+                                {languages.map((language: ILanguage) => {
+                                    return (
+                                        <option
+                                            key={language.code}
+                                            value={`${language.name}`}
+                                        >
+                                            {" "}
+                                            {language.name}
+                                        </option>
+                                    );
+                                })}
+                            </select>
                         </div>
-                    )}
-                </div>
-                <div className="flex flex-col items-center mt-4">
-                    <div>
-                        <h4 className="text-center  text-xl text-palette-60">
-                            Sprache ändern
-                        </h4>
                     </div>
-                    <div>
-                        <select
-                            className="w-80 m-2 input mb-2 border-2 text-center rounded-3xl py-3 px-4 focus:outline-none  text-palette-60  bg-palette-50"
-                            {...register("language")}
-                            onChange={(e) =>
-                                setValue("language", e.target.value, {
-                                    shouldValidate: true,
-                                })
-                            }
-                            defaultValue={currentUser.language}
+                    <div className="flex justify-between m-4">
+                        <input
+                            className="btn p-4 w-40 border-palette-60 hover:bg-palette-60 hover:text-palette-50 active:text-palette-80"
+                            type="submit"
+                            value="speichern"
+                        />
+                        <button
+                            className="btn p-4 w-40 ml-8 border-palette-60 hover:bg-palette-60 hover:text-palette-50 active:text-palette-80"
+                            onClick={() => {
+                                navigate("/home");
+                            }}
+                            type="reset"
                         >
-                            <option selected>{currentUser.language}</option>
-                            {languages.map((language: ILanguage) => {
-                                return (
-                                    <option
-                                       
-                                        key={language.code}
-                                        value={`${language.name}`}
-                                    >
-                                        {" "}
-                                        {language.name}
-                                    </option>
-                                );
-                            })}
-                        </select>
+                            abbrechen
+                        </button>
                     </div>
-                </div>
-                <div className='flex justify-between m-4' >
-                    <input
-                        className="btn p-4 w-40 border-palette-60 hover:bg-palette-60 hover:text-palette-50 active:text-palette-80"
-                        type="submit"
-                        value="speichern"
-                    />
-                    <button
-                        className="btn p-4 w-40 ml-8 border-palette-60 hover:bg-palette-60 hover:text-palette-50 active:text-palette-80"
-                        onClick={() => {
-                            navigate("/home");
-                        }}
-                        type="reset"
-                    >
-                        abbrechen
-                    </button>
-                </div>
-               
-            </form>
+                </form>
+            </div>
         </div>
     );
 };
