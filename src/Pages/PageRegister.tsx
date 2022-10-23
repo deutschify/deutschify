@@ -172,8 +172,8 @@ const PageRegister = (props: IPageRegistrationProps) => {
                                 <p>Kennwort stimmt nicht überein</p>
                             )}
                         </div>
-                        <div className="md:flex gap-4 m-4">
-                            <div className="text-center">
+                        <div className="md:flex gap-4 m-4 md:">
+                            <div className="text-center m-4 md:m-0">
                                 <select
                                     className="border-2 border-palette-60 text-center rounded-3xl p-4 outline-none text-palette-60 bg-palette-50 w-80"
                                     {...register("language")}
