@@ -111,9 +111,9 @@ const AboutUs = () => {
                         <p className="mt-6">Das sind wir</p> {/* zubia */}
                         <div className="bg-palette-80 w-11/12 md:w-9/12 mZ-10 p-6 border-4 border-palette-60 rounded-xl text-palette-60 grid grid-cols-3 items-center">
                             <img
-                                src="../../../images/imgZubi.png"
+                                src="../../../images/illus/AUZubi.png"
                                 alt="image"
-                                className="w-10/12 hidden md:block"
+                                className="bg-palette-40 w-11/12 rounded-xl hidden md:block"
                             />
                             <div className="col-span-2">
                                 {" "}
