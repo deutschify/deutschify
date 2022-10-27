@@ -120,7 +120,7 @@ const AboutUs = () => {
                                 <div className="border-b-2 border-palette-60 mb-4">
                                     Zubia Rashid 
                                     <img
-                                src="../../../images/imgZubi.png"
+                                src="../../../images/AUZubi.png"
                                 alt="image"
                                 className="w-10/12  md:hidden m-2"
                             />
