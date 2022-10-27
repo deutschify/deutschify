@@ -122,7 +122,7 @@ const AboutUs = () => {
                                     <img
                                 src="/images/illus/AUZubi.png"
                                 alt="image"
-                                className="w-10/12  md:hidden m-2"
+                                className="bg-palette-40 w-11/12 rounded-xl w-10/12  md:hidden m-2"
                             />
                                 </div>
                                 <div className="">
